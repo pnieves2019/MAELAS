@@ -23,6 +23,7 @@ python3 --version
 In case you need to install it in your machine, you can type
 
 sudo apt-get update
+
 sudo apt-get install python3.8
 
 In HPC facilities you may need to load the Python3 module. For example, in Centos 7 Linux you can check all installed Python modules by typing
@@ -36,19 +37,29 @@ ml Python/3.8.2-GCC-8.3.0-2.32-base
 Additionally, MAELAS makes use of the following python libraries: pymatgen, scikit-learn, pyfiglet, argparse, numpy, matplotlib, scipy, math, os and stat. In case you need to install them, you can do it using pip3 as:
 
 pip3 install pymatgen
+
 pip3 install scikit-learn
+
 pip3 install pyfiglet
+
 pip3 install argparse
+
 pip3 install numpy
+
 pip3 install matplotlib
+
 pip3 install scipy
+
 pip3 install math
+
 pip3 install os
+
 pip3 install stat
 
 In case you need to install pip3 in Ubuntu Linux
 
 sudo apt-get update
+
 sudo apt-get install python3-pip
 
 
