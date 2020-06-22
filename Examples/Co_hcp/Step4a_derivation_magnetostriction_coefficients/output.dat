@@ -1,0 +1,152 @@
+    __  ______    ________    ___   _____
+   /  |/  /   |  / ____/ /   /   | / ___/
+  / /|_/ / /| | / __/ / /   / /| | \__ \ 
+ / /  / / ___ |/ /___/ /___/ ___ |___/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/  
+                                         
+
+MAELAS code v1.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+--------------------------------------------------------------------------------------------------------
+Derivation of spin-dependent magnetostriction coefficients from the energy written in the OSZICAR files:
+--------------------------------------------------------------------------------------------------------
+Space group number = 194
+Space group symbol = P6_3/mmc
+Hexagonal (I) system
+Point group = 6/mmm
+Number of spin-dependent magnestostriction coefficients = 4
+
+Fit of quadratic function f(x)=a*x²+b*x+c to energy vs distortion data
+ 
+-------------------------
+Calculation of λ 1α,2:
+-------------------------
+ 
+Lattice distorsion along [1,0,0] direction
+
+Fitting parameters for spin parallel to 111 (data from file ene_1_1.dat):
+a = 4.276477561018758 , b = -21.380053252017618 , c = 12.654794727851492
+R-squared = 0.9895703724689078
+
+X minimum = -b/(2*a) = 2.4997270471968034
+
+Fitting parameters for spin parallel to 110 (data from file ene_1_2.dat):
+a = 4.275178881857536 , b = -21.373431582608102 , c = 12.646366873453296
+R-squared = 0.989624656879965
+
+X minimum = -b/(2*a) = 2.499711962148528
+
+ 
+-------------------------
+Calculation of λ 2α,2:
+-------------------------
+ 
+Lattice distorsion along [0,0,1] direction
+
+Fitting parameters for spin parallel to 001 (data from file ene_2_1.dat):
+a = 1.943505262410898 , b = -15.695764592438067 , c = 17.622354966200913
+R-squared = 0.9973413767293114
+
+X minimum = -b/(2*a) = 4.038004140253172
+
+Fitting parameters for spin parallel to 100 (data from file ene_2_2.dat)::
+a = 1.9456272859986619 , b = -15.713300897257904 , c = 17.658591576942
+R-squared = 0.9973644560940332
+
+X minimum = -b/(2*a) = 4.0381066328416795
+
+ 
+-------------------------
+Calculation of λ γ,2:
+-------------------------
+ 
+Lattice distorsion along [1,0,0] direction
+
+Fitting parameters for spin parallel to 100 (data from file ene_3_1.dat):
+a = 4.274984629252824 , b = -21.37261923327169 , c = 12.645550247908908
+R-squared = 0.989643370340707
+
+X minimum = -b/(2*a) = 2.4997305355232546
+
+Fitting parameters for spin parallel to 010 (data from file ene_3_2.dat:
+a = 4.274169638476248 , b = -21.36820411347896 , c = 12.63960588787183
+R-squared = 0.9896456128826155
+
+X minimum = -b/(2*a) = 2.499690690926434
+
+ 
+-------------------------
+Calculation of λ ε,2:
+-------------------------
+ 
+Lattice distorsion along [1,0,1] direction
+
+Fitting parameters for spin parallel to 101 (data from file ene_4_1.dat):
+a = 1.75872548824735 , b = -16.692658092127772 , c = 25.541610848817115
+R-squared = 0.9758440490692426
+
+WARNING!! R-squared is lower than 0.98. Check figure fit_ene_4_1.png
+
+X minimum = -b/(2*a) = 4.745669009653907
+
+Fitting parameters for spin parallel to -101 (data from file ene_4_2.dat):
+a = 1.7587773091779368 , b = -16.693643690197916 , c = 25.54512110961721
+R-squared = 0.9758419536188423
+
+WARNING!! R-squared is lower than 0.98. Check figure fit_ene_4_2.png
+
+X minimum = -b/(2*a) = 4.745809376515275
+
+ 
+----------------------------------------------
+Spin-dependent magnetostriction coefficients:
+----------------------------------------------
+ 
+ 
+Using the convention in reference E.A. Clark et al., Phys. Rev. 138, A216 (1965):
+ 
+λ 1α,2 = 18.104034549283114 x 10⁻⁶
+ 
+λ 2α,2 = -25.38199193163324 x 10⁻⁶
+ 
+λ γ,2 = 15.93955678597317 x 10⁻⁶
+ 
+λ ε,2 = -29.577886928573744 x 10⁻⁶
+ 
+...............
+ 
+Using the convention in reference W.P. Mason, Phys. Rev. 96, 302 (1954):
+ 
+λA = -10.134256156296528 x 10⁻⁶
+ 
+λB = -26.0738129422697 x 10⁻⁶
+ 
+λC = 25.38199193163324 x 10⁻⁶
+ 
+λD = -10.977009520452695 x 10⁻⁶
+ 
+...............
+ 
+Using the convention in reference R.R. Birss, Advances in Physics 8, 252 (1959):
+ 
+Q2 = 10.134256156296528 x 10⁻⁶
+ 
+Q4 = 15.24773577533671 x 10⁻⁶
+ 
+Q6 = -59.15577385714749 x 10⁻⁶
+ 
+Q8 = 15.93955678597317 x 10⁻⁶
+ 
+...............
+ 
+Using the convention in reference E.R. Callen et al., Phys. Rev. 139, A455 (1965):
+ 
+λ 12α = 12.500877133192844 x 10⁻⁶
+ 
+λ 22α = -25.106669094744255 x 10⁻⁶
+ 
+λ γ = 15.93955678597317 x 10⁻⁶
+ 
+λ ε = -29.577886928573744 x 10⁻⁶
