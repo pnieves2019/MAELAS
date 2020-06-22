@@ -3,21 +3,18 @@ MAELAS code v1.0
 
 Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut
 
-===================================================================================
-
+-------------------------
 WHAT IS MAELAS CODE?
-
-===================================================================================
+-------------------------
 
 MAELAS code is a software to calculate spin-dependent magnetostriction coefficients and magnetoelastic constants up to second order. It generates required input files for VASP code to perform Density Functional Theory calculations, and it deduces the value of magnetostriction coefficients from the calculated energies given by VASP. If the elastic tensor is provided, then it can also calculate the magnetoelastic constants.
 
 MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.
 
-===================================================================================
 
+------------------
 INSTALLATION
-
-===================================================================================
+------------------
 
 MAELAS code is just one python3 file "maelas.py", so it only requires to have Python3 and imported python libraries. For example, in Ubuntu Linux machine you can check the installed version of python3 by opening a terminal and typing
 
@@ -54,13 +51,12 @@ In case you need to install pip3 in Ubuntu Linux
 sudo apt-get update
 sudo apt-get install python3-pip
 
-===================================================================================
 
+----------------------------------
 HOW TO USE MAELAS CODE
+----------------------------------
 
-===================================================================================
-
-Running MAELAS code consists in four steps.
+Running MAELAS code consists in the following four steps.
 
 
 --------------------------------------------------------
