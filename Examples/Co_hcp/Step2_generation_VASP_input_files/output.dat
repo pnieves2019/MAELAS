@@ -1,0 +1,32 @@
+    __  ______    ________    ___   _____
+   /  |/  /   |  / ____/ /   /   | / ___/
+  / /|_/ / /| | / __/ / /   / /| | \__ \ 
+ / /  / / ___ |/ /___/ /___/ ___ |___/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/  
+                                         
+
+MAELAS code v1.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+---------------------------------------------------------------------------------------------
+Generation of VASP files for the calculation of spin-dependent magnetostriction coefficients:
+---------------------------------------------------------------------------------------------
+Name of the initial POSCAR file:  POSCAR_Co_hcp_rlx
+Number of distorted states for each magnetostriction mode =  7
+Maximum strain =  0.01
+Number of atoms (original POSCAR)= 2
+Number of atoms (after conventional cell transformation)= 2
+Species = [Element Co, Element Co]
+Space group number = 194
+Space group symbol = P6_3/mmc
+Hexagonal (I) system
+Point group = 6/mmm
+Number of spin-dependent magnestostriction coefficients = 4
+strain -0.01
+strain -0.006666666666666666
+strain -0.003333333333333333
+strain 0.0
+strain 0.003333333333333334
+strain 0.006666666666666666
+strain 0.01
