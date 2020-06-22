@@ -315,22 +315,27 @@ Using MAELAS with other DFT codes instead of VASP
 MAELAS has been designed to read and write files for VASP code automatically. However, it is possible to use MAELAS with other DFT codes instead of VASP, after file conversion to VASP format files. Although, this process might require some extra work for the user. Namely, converting initial and distorted POSCAR files into the other DFT code format, reading the spin direction of each state from INCAR_A_C files (variable SAXIS) and write the calculated energies in a OSZICAR-like file (called OSZICAR_A_B_C) on the penultimate line and third column with same format as in VASP (this is the place where MAELAS reads the energy value of each OSZICAR_A_B_C file). See the Manual for more details. 
 
 
---------------------------------------------------------------------
-Limitations of MAELAS v1.0
---------------------------------------------------------------------
+--------------------------------------------------------------------------
+Crystal systems supported by MAELAS v1.0
+--------------------------------------------------------------------------
 
-Note current version **doesn’t** support the following crystal systems:
+Current version supports the following crystal systems:
 
-Hexagonal (II) point groups 6, 6̅  (space groups 168-174)
+Cubic (I) (space groups 207-230)
 
-Trigonal (II) (space groups 143-148)
+Cubic (II) (space groups 195-206)
 
-Tetragonal (II) (space groups 75-88)
+Hexagonal (I) (space groups 177-194)
 
-Triclinic (space groups 3-15)
+Hexagonal (II) point group 6/m (space groups 175-176)
 
-Monoclinic (space groups 1-2)
+Trigonal (I) (space groups 149-167)
+
+Tetragonal (I) (space groups 89-142)
+
+Orthorhombic (space groups 16-74)
 
 
-In the future, if the theoretical expressions of magnetostriction are derived for these crystal systems, then we will try to implement them in the new versions of the code.
+In the future, if the theoretical expressions of magnetostriction are derived for the remain crystal systems, then we will try to implement them in the new versions of the code.
+
 
