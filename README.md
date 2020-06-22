@@ -319,7 +319,7 @@ MAELAS has been designed to read and write files for VASP code automatically. Ho
 Limitations of MAELAS v1.0
 --------------------------------------------------------------------
 
-Note current version doesn’t support the following crystal systems:
+Note current version **doesn’t** support the following crystal systems:
 
 Hexagonal (II) point groups 6, 6̅  (space groups 168-174)
 
