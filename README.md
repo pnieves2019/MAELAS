@@ -309,8 +309,6 @@ optional arguments:
                   
   -q QUEUE        Type of queue to be used for VASP calculations in HPC
                   facilities (default: qprod)
-TODO:
-  --precision P   POSCAR reading precision               
                   
 
 ---------------------------------------------------------------------------------
