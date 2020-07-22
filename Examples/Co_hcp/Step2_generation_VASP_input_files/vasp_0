@@ -1,19 +1,34 @@
 #!/bin/bash
+
 mpiexec.hydra -np 24 vasp_std > vasp.out
+
 fold1=ncl_1
 fold2=ncl_2
+
+# if fold1 and fold2 do not exist there is not reason to continue
+[ -d ${fold1} ] || exit
+[ -d ${fold2} ] || exit
+
 cp WAVECAR ./${fold1}/
 cp CHGCAR  ./${fold1}/
-nbands=`grep "NBANDS" OUTCAR | awk '{printf"%d",$15}'`
-nbands=`echo "2*$nbands" | bc -l | awk '{printf"%d",$1}'`
-cd ./${fold1}
+
+nbands=$(grep "NBANDS" OUTCAR | awk '{printf"%d",$15}')
+nbands=$(echo "2*$nbands" | bc -l | awk '{printf"%d",$1}')
+
+(
+# new subshell
+cd ./${fold1} || exit # if cd fails the subshell closes
 sed -i "s/nbands/$nbands/" INCAR
 mpiexec.hydra -np 24 vasp_ncl > vasp.out
-cd ..
+# no need for unsafe 'cd ..'
+)
+
 cp WAVECAR ./${fold2}/
 cp CHGCAR  ./${fold2}/
-nbands=`grep "NBANDS" OUTCAR | awk '{printf"%d",$15}'`
-nbands=`echo "2*$nbands" | bc -l | awk '{printf"%d",$1}'`
-cd ./${fold2}
+nbands=$(grep "NBANDS" OUTCAR | awk '{printf"%d",$15}')
+nbands=$(echo "2*$nbands" | bc -l | awk '{printf"%d",$1}')
+(
+cd ./${fold2} || exit
 sed -i "s/nbands/$nbands/" INCAR
 mpiexec.hydra -np 24 vasp_ncl > vasp.out
+)
