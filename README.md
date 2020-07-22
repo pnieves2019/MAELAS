@@ -233,15 +233,15 @@ MAELAS code v1.0
 
 optional arguments:
 
-  -h, --help      show this help message and exit
+  -h, --help      Show this help message and exit
   
-  -i POS          name of the initial non-distorted POSCAR file (default:
+  -i POS          Name of the initial non-distorted POSCAR file (default:
                   POSCAR)
                   
-  -n NDIST        number of distorted states for each magnetostriction mode
+  -n NDIST        Number of distorted states for each magnetostriction mode
                   (default: 7)
                   
-  -s STRAIN       maximum strain to generate the distorted POSCAR files
+  -s STRAIN       Maximum strain to generate the distorted POSCAR files
                   (default: 0.01)
                   
   -k KP           VASP automatic k-point mesh generation to create the KPOINTS
@@ -286,6 +286,10 @@ optional arguments:
   -e ELAS         File with the elastic tensor data in the same format and
                   units (GPa) as it is written by ELAS code (file ELADAT). You
                   can check this format in the Examples folder
+         
+  -sp SYMPRE      Tolerance for symmetry finding (default: 0.01)
+  
+  -sa SYMANG      Angle tolerance for symmetry finding (default: 5.0)
                   
   -c CORE         Number of cores for the VASP calculation (default: 24)
   

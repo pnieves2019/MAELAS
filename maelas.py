@@ -10,6 +10,7 @@ import stat
 from pymatgen import Lattice, Structure
 from pymatgen.transformations.standard_transformations import ConventionalCellTransformation,DeformStructureTransformation
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
+from pymatgen.io.vasp import Poscar
 from scipy.optimize import curve_fit
 from pyfiglet import Figlet
 from sklearn.metrics import r2_score
@@ -22,15 +23,17 @@ print(f.renderText('MAELAS'))
 
 
 parser = argparse.ArgumentParser(description='MAELAS code v1.0')
-parser.add_argument('-i', dest='pos', type=str, nargs=1, default=['POSCAR'], help='name of the initial non-distorted POSCAR file (default: POSCAR)')
-parser.add_argument('-n', dest='ndist', type=int, nargs=1, default=['7'], help='number of distorted states for each magnetostriction mode (default: 7)')
-parser.add_argument('-s', dest='strain', type=float, nargs=1, default=['0.01'], help='maximum strain to generate the distorted POSCAR files (default: 0.01)')
+parser.add_argument('-i', dest='pos', type=str, nargs=1, default=['POSCAR'], help='Name of the initial non-distorted POSCAR file (default: POSCAR)')
+parser.add_argument('-n', dest='ndist', type=int, nargs=1, default=['7'], help='Number of distorted states for each magnetostriction mode (default: 7)')
+parser.add_argument('-s', dest='strain', type=float, nargs=1, default=['0.01'], help='Maximum strain to generate the distorted POSCAR files (default: 0.01)')
 parser.add_argument('-k', dest='kp', type=int, nargs=1, default=['60'], help='VASP automatic k-point mesh generation to create the KPOINTS file (default: 60)')
 parser.add_argument('-g', dest='gen', action='store_true', default=False, help='Generation of required VASP files for the calculation of magnetostriction coefficients. Notation of the generated output files: POSCAR_A_B (volume-conserving distorted cell where A=magnetostriction mode, B=distorted cell), INCAR_A_C (non-collinear calculation where A=magnetostriction mode, C=spin orientation case), INCAR_std (collinear calculation). How to run the VASP calculations: For each generated POSCAR_A_B one should run first a collinear calculation using INCAR_std and use the generated WAVECAR and CHGCAR files to run non-collinear calculations for each INCAR_A_C using the same POSCAR_A_B. It also generates bash scripts to run VASP calculations easily (vasp_maelas, vasp_jsub, vasp_0) and to get calculated OSZICAR_A_B_C files (vasp_cp_oszicar)' )
 parser.add_argument('-d', dest='der', action='store_true', default=False, help='Derivation of magnetostriction coefficients from the energy written in the OSZICAR files. WARNING!: OSZICAR files must be in the same folder where you run MAELAS using the notation OSZICAR_A_B_C obtained for POSCAR_A_B and INCAR_A_C. Distorted POSCAR files (POSCAR_A_B) must be in this folder too (jointly with the initial non-distorted POSCAR which should be specified using tag -i). Specify the number of distorted states to be considered in the calculation of magnetostriction coefficients using tag -n. Energy values extracted from OSZICAR_A_B_C files are shown in files ene_A_C.dat and fit_ene_A_C.png. The energy difference between the two spin configurations for each magnetostriction mode are shown in Figs. dE_A.png')
 parser.add_argument('-r', dest='rel', action='store_true', default=False, help='Generation of required VASP files for the cell relaxation')
 parser.add_argument('-b', dest='delas', action='store_true', default=False, help='Calculation of the magnetoelastic constants from the calculated magnetostriction coefficients and provided elastic tensor. For this option the tag -d must be included as well as tag -e with the elastic tensor file')
 parser.add_argument('-e', dest='elas', type=str, nargs=1, default=['ELADAT'], help='File with the elastic tensor data in the same format and units (GPa) as it is written by ELAS code (file ELADAT). You can check this format in the Examples folder')
+parser.add_argument('-sp', dest='sympre', type=float, nargs=1, default=['0.01'], help='Tolerance for symmetry finding (default: 0.01)')
+parser.add_argument('-sa', dest='symang', type=float, nargs=1, default=['5.0'], help='Angle tolerance for symmetry finding (default: 5.0)')
 parser.add_argument('-c', dest='core', type=int, nargs=1, default=['24'], help='Number of cores for the VASP calculation (default: 24)')
 parser.add_argument('-t', dest='time', type=int, nargs=1, default=['48'], help='Number of maximum CPU hours for the VASP calculation (default: 48)')
 parser.add_argument('-f', dest='vasp_fold', type=str, nargs=1, default=['/scratch'], help='Folder where you will run VASP calculations (default: /scratch)')
@@ -74,11 +77,13 @@ if args.gen == True:
     nat = len(structure0.species)
     print("Number of atoms (original POSCAR)= {}".format(len(structure0.species)))
 
+    sym1 = float(args.sympre[0])
+    sym2 = float(args.symang[0])
 
-    aa = SpacegroupAnalyzer(structure0)
+    aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
     structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
 
-    bb = ConventionalCellTransformation(symprec=0.01, angle_tolerance=5, international_monoclinic=True)
+    bb = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
     structure2 = bb.apply_transformation(structure1)
 
     nat = len(structure2.species)
@@ -115,7 +120,9 @@ if args.rel == True:
     print('--------------------------------------------------------------------------------------------------------')
 
     structure0 = Structure.from_file(args.pos[0])
-    aa = SpacegroupAnalyzer(structure0)
+    sym1 = float(args.sympre[0])
+    sym2 = float(args.symang[0])
+    aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
     sg = aa.get_space_group_number()
     print("Space group number =", sg)
     spg = aa.get_space_group_symbol()
@@ -169,7 +176,11 @@ if args.rel == True:
     
     
     pos_name = "POSCAR"
-    structure0.to(filename = pos_name)
+    
+    structure00 = Poscar(structure0)
+
+    structure00.write_file(filename = pos_name,significant_figures=16)
+    
     
     
     # bash script to run vasp: vasp_jsub_rlx
@@ -231,7 +242,9 @@ if args.der == True:
     print('--------------------------------------------------------------------------------------------------------')
 
     structure0 = Structure.from_file(args.pos[0])
-    aa = SpacegroupAnalyzer(structure0)
+    sym1 = float(args.sympre[0])
+    sym2 = float(args.symang[0])
+    aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
     sg = aa.get_space_group_number()
     print("Space group number =", sg)
     spg = aa.get_space_group_symbol()
@@ -528,13 +541,18 @@ if 230 >= sg >= 207:
             a2 = a1
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure3 = dd.apply_transformation(structure2)
-            pos_name = "POSCAR_1_" + str(i+1)
-            structure3.to(filename = pos_name )
+            pos_name = "POSCAR_1_" + str(i+1)       
+            
+            structure33 = Poscar(structure3)
+            structure33.write_file(filename = pos_name,significant_figures=16)
+
+
 
         #lambda_111
 
-               
-            a12 = strain1
+            const = (4/(4-3*(strain1**2)+strain1**3))**(1/3) 
+            
+            a12 = const*strain1*0.5
             a13 = a12
             a21 = a12
             a22 = a12
@@ -543,18 +561,16 @@ if 230 >= sg >= 207:
             a32 = a12
             a33 = a12
 
-       
-            const = (1-2*strain1**3+math.sqrt(1-4*strain1**3))**(1/3)
-
-            a11 = ((2**(1/3)*strain1**2)/const)+(const/(2**(1/3)))   
-            a22 = a11
-            a33 = a11
+            a11 = const  
+            a22 = const
+            a33 = const
 
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure4 = cc.apply_transformation(structure2)
             pos_name2 = "POSCAR_2_" + str(i+1)
-            structure4.to(filename = pos_name2 )
 
+            structure44 = Poscar(structure4)
+            structure44.write_file(filename = pos_name2,significant_figures=16)
 
 
 
@@ -643,7 +659,7 @@ if 230 >= sg >= 207:
                           
                     osz.close()
 
-                    dat.write(str(var1))
+                    dat.write(repr(var1))
                     dat.write('  ')
                     dat.write(str(ene2))
                     dat.write('\n')
@@ -1063,8 +1079,9 @@ elif 206 >= sg >= 195:
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure3 = dd.apply_transformation(structure2)
             pos_name3 = "POSCAR_1_" + str(i+1)
-            structure3.to(filename = pos_name3 )
 
+            structure33 = Poscar(structure3)
+            structure33.write_file(filename = pos_name3,significant_figures=16)
         
         #lambda_2_gamma
 
@@ -1084,8 +1101,9 @@ elif 206 >= sg >= 195:
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure4 = cc.apply_transformation(structure2)
             pos_name4 = "POSCAR_2_" + str(i+1)
-            structure4.to(filename = pos_name4 )
-        
+       
+            structure44 = Poscar(structure4)
+            structure44.write_file(filename = pos_name4,significant_figures=16)
         
         #lambda_epsilon
             
@@ -1105,9 +1123,10 @@ elif 206 >= sg >= 195:
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure5 = cc.apply_transformation(structure2)
             pos_name5 = "POSCAR_3_" + str(i+1)
-            structure5.to(filename = pos_name5 )
 
-
+            structure55 = Poscar(structure5)
+            structure55.write_file(filename = pos_name5,significant_figures=16)
+            
     # INCAR_1_1 m=0,0,1
 
         path_inc_ncl_1_1 = 'INCAR_1_1'
@@ -1222,7 +1241,7 @@ elif 206 >= sg >= 195:
                           
                     osz.close()
 
-                    dat.write(str(var1))
+                    dat.write(repr(var1))
                     dat.write('  ')
                     dat.write(str(ene2))
                     dat.write('\n')
@@ -1816,8 +1835,9 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure3 = dd.apply_transformation(structure2b)
             pos_name = "POSCAR_1_" + str(i+1)
-            structure3.to(filename = pos_name )
 
+            structure33 = Poscar(structure3)
+            structure33.write_file(filename = pos_name,significant_figures=16)
 
         #lambda_alpha_2_2
 
@@ -1828,8 +1848,9 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure3 = dd.apply_transformation(structure2b)
             pos_name2 = "POSCAR_2_" + str(i+1)
-            structure3.to(filename = pos_name2 )
 
+            structure33 = Poscar(structure3)
+            structure33.write_file(filename = pos_name2,significant_figures=16)
 
         #lambda_gamma_2
 
@@ -1840,7 +1861,9 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure3 = dd.apply_transformation(structure2b)
             pos_name3 = "POSCAR_3_" + str(i+1)
-            structure3.to(filename = pos_name3 )
+            
+            structure33 = Poscar(structure3)
+            structure33.write_file(filename = pos_name3,significant_figures=16)
 
         #lambda_epsilon_2
 
@@ -1859,13 +1882,17 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure4 = cc.apply_transformation(structure2b)
             pos_name4 = "POSCAR_4_" + str(i+1)
-            structure4.to(filename = pos_name4 )
+            
+            structure44 = Poscar(structure4)
+            structure44.write_file(filename = pos_name4,significant_figures=16)
 
             if 175 <= sg <= 176:         
                 #lambda_bar
                 
                 pos_name5 = "POSCAR_5_" + str(i+1)
-                structure4.to(filename = pos_name5 )
+                
+                structure44 = Poscar(structure4)
+                structure44.write_file(filename = pos_name5,significant_figures=16)
                 
             if 89 <= sg <= 142:
                 # lambda delta2
@@ -1884,7 +1911,9 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
                 cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
                 structure5 = cc.apply_transformation(structure2b)
                 pos_name5 = "POSCAR_5_" + str(i+1)
-                structure5.to(filename = pos_name5 )
+                
+                structure55 = Poscar(structure5)
+                structure55.write_file(filename = pos_name5,significant_figures=16)
                 
         # INCAR_1_1 m=1,1,1
 
@@ -2101,7 +2130,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
                           
                     osz.close()
 
-                    dat.write(str(var1))
+                    dat.write(repr(var1))
                     dat.write('  ')
                     dat.write(str(ene2))
                     dat.write('\n')
@@ -3052,9 +3081,9 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             print(" ")
             print("Using the convention in reference R.R. Birss, Advances in Physics 8, 252 (1959):")
             print(" ")
-            print("Q2 =", (lambda_alpha_1_2-0.5*lambda_gamma_2)*1e6,u'x 10\u207B\u2076')
+            print("Q2 =", (-lambda_alpha_1_2-0.5*lambda_gamma_2)*1e6,u'x 10\u207B\u2076')
             print(" ")
-            print("Q4 =", (-lambda_alpha_1_2+0.5*lambda_gamma_2-lambda_alpha_2_2)*1e6,u'x 10\u207B\u2076')
+            print("Q4 =", (lambda_alpha_1_2+0.5*lambda_gamma_2-lambda_alpha_2_2)*1e6,u'x 10\u207B\u2076')
             print(" ")
             print("Q6 =", 2*lambda_epsilon_2*1e6,u'x 10\u207B\u2076')
             print(" ")
@@ -3246,7 +3275,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             print(" ")
             print("\u03BB1 =", (-lambda_alpha_1_2+0.5*lambda_gamma_2)*1e6,u'x 10\u207B\u2076')
             print(" ")
-            print("\u03BB2 =", 0.5*(lambda_epsilon_2-0.5*lambda_alpha_2_2)*1e6,u'x 10\u207B\u2076')
+            print("\u03BB2 =", 0.5*(lambda_epsilon_2-0.5*lambda_alpha_2_2-0.5*lambda_alpha_1_2+0.25*lambda_gamma_2)*1e6,u'x 10\u207B\u2076')
             print(" ") 
             print("\u03BB3 =", (0.5*lambda_delta-lambda_alpha_1_2)*1e6,u'x 10\u207B\u2076')
             print(" ")
@@ -3372,8 +3401,9 @@ elif 149 <= sg <= 167:
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure3 = dd.apply_transformation(structure2b)
             pos_name3 = "POSCAR_1_" + str(i+1)
-            structure3.to(filename = pos_name3 )
 
+            structure33 = Poscar(structure3)
+            structure33.write_file(filename = pos_name3,significant_figures=16)
         
         #lambda_alpha_2_2
 
@@ -3384,8 +3414,9 @@ elif 149 <= sg <= 167:
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure4 = dd.apply_transformation(structure2b)
             pos_name4 = "POSCAR_2_" + str(i+1)
-            structure4.to(filename = pos_name4 )
         
+            structure44 = Poscar(structure4)
+            structure44.write_file(filename = pos_name4,significant_figures=16)
         
         #lambda_gamma_1
             
@@ -3395,8 +3426,9 @@ elif 149 <= sg <= 167:
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure5 = dd.apply_transformation(structure2b)
             pos_name5 = "POSCAR_3_" + str(i+1)
-            structure5.to(filename = pos_name5 )
             
+            structure55 = Poscar(structure5)
+            structure55.write_file(filename = pos_name5,significant_figures=16)
             
         
         #lambda_gamma_2
@@ -3415,19 +3447,25 @@ elif 149 <= sg <= 167:
 
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure6 = cc.apply_transformation(structure2b)
-            pos_name6 = "POSCAR_4_" + str(i+1)
-            structure6.to(filename = pos_name6 )        
+            pos_name6 = "POSCAR_4_" + str(i+1)      
+            
+            structure66 = Poscar(structure6)
+            structure66.write_file(filename = pos_name6,significant_figures=16)
             
         #lambda_1_2
             
             pos_name7 = "POSCAR_5_" + str(i+1)
-            structure6.to(filename = pos_name7 )
+            
+            structure77 = Poscar(structure6)
+            structure77.write_file(filename = pos_name7,significant_figures=16)
                   
             
         #lambda_2_1
             
             pos_name8 = "POSCAR_6_" + str(i+1)
-            structure6.to(filename = pos_name8 )
+            
+            structure88 = Poscar(structure6)
+            structure88.write_file(filename = pos_name8,significant_figures=16)
             
 
     # INCAR_1_1 m=0,0,1
@@ -3635,7 +3673,7 @@ elif 149 <= sg <= 167:
                           
                     osz.close()
 
-                    dat.write(str(var1))
+                    dat.write(repr(var1))
                     dat.write('  ')
                     dat.write(str(ene2))
                     dat.write('\n')
@@ -4698,8 +4736,9 @@ elif 16 <= sg <= 74:
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure3 = dd.apply_transformation(structure2b)
             pos_name3 = "POSCAR_1_" + str(i+1)
-            structure3.to(filename = pos_name3 )
 
+            structure33 = Poscar(structure3)
+            structure33.write_file(filename = pos_name3,significant_figures=16)
         
         #lambda_2
 
@@ -4710,8 +4749,9 @@ elif 16 <= sg <= 74:
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure4 = dd.apply_transformation(structure2b)
             pos_name4 = "POSCAR_2_" + str(i+1)
-            structure4.to(filename = pos_name4 )
         
+            structure44 = Poscar(structure4)
+            structure44.write_file(filename = pos_name4,significant_figures=16)
         
         #lambda_3
             
@@ -4721,8 +4761,9 @@ elif 16 <= sg <= 74:
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure5 = dd.apply_transformation(structure2b)
             pos_name5 = "POSCAR_3_" + str(i+1)
-            structure5.to(filename = pos_name5 )
             
+            structure55 = Poscar(structure5)
+            structure55.write_file(filename = pos_name5,significant_figures=16)
             
         #lambda_4
             
@@ -4731,9 +4772,10 @@ elif 16 <= sg <= 74:
             a3 = a1
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure6 = dd.apply_transformation(structure2b)
-            pos_name6 = "POSCAR_4_" + str(i+1)
-            structure6.to(filename = pos_name6 )    
+            pos_name6 = "POSCAR_4_" + str(i+1)   
             
+            structure66 = Poscar(structure6)
+            structure66.write_file(filename = pos_name6,significant_figures=16)
             
             
        #lambda_5
@@ -4743,10 +4785,10 @@ elif 16 <= sg <= 74:
             a2 = a1
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure7 = dd.apply_transformation(structure2b)
-            pos_name7 = "POSCAR_5_" + str(i+1)
-            structure7.to(filename = pos_name7 )      
+            pos_name7 = "POSCAR_5_" + str(i+1)     
             
-            
+            structure77 = Poscar(structure7)
+            structure77.write_file(filename = pos_name7,significant_figures=16)
             
        #lambda_6
             
@@ -4756,7 +4798,9 @@ elif 16 <= sg <= 74:
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
             structure8 = dd.apply_transformation(structure2b)
             pos_name8 = "POSCAR_6_" + str(i+1)
-            structure8.to(filename = pos_name8 )      
+            
+            structure88 = Poscar(structure8)
+            structure88.write_file(filename = pos_name8,significant_figures=16)
         
         #lambda_7
             
@@ -4775,7 +4819,9 @@ elif 16 <= sg <= 74:
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure9 = cc.apply_transformation(structure2b)
             pos_name9 = "POSCAR_7_" + str(i+1)
-            structure9.to(filename = pos_name9 )
+            
+            structure99 = Poscar(structure9)
+            structure99.write_file(filename = pos_name9,significant_figures=16)
             
         #lambda_8
             
@@ -4794,7 +4840,9 @@ elif 16 <= sg <= 74:
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure10 = cc.apply_transformation(structure2b)
             pos_name10 = "POSCAR_8_" + str(i+1)
-            structure10.to(filename = pos_name10 ) 
+            
+            structure1010 = Poscar(structure10)
+            structure1010.write_file(filename = pos_name10,significant_figures=16)
          
          
         #lambda_8
@@ -4813,10 +4861,10 @@ elif 16 <= sg <= 74:
 
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure11 = cc.apply_transformation(structure2b)
-            pos_name11 = "POSCAR_9_" + str(i+1)
-            structure11.to(filename = pos_name11 ) 
+            pos_name11 = "POSCAR_9_" + str(i+1) 
             
-            
+            structure1111 = Poscar(structure11)
+            structure1111.write_file(filename = pos_name11,significant_figures=16)
        
             
 
@@ -5112,7 +5160,7 @@ elif 16 <= sg <= 74:
                           
                     osz.close()
 
-                    dat.write(str(var1))
+                    dat.write(repr(var1))
                     dat.write('  ')
                     dat.write(str(ene2))
                     dat.write('\n')
@@ -5370,13 +5418,11 @@ elif 16 <= sg <= 74:
             
                 b6 = -c13*lambda_ortho[1]-c23*lambda_ortho[3]-c33*lambda_ortho[5]
 
-                b7 = c44*(lambda_ortho[3]+lambda_ortho[5]-4*lambda_ortho[8])
+                b7 = c66*(lambda_ortho[0]+lambda_ortho[1]+lambda_ortho[2]+lambda_ortho[3]-4*lambda_ortho[6])
 
-                b8 = c55*(lambda_ortho[0]+lambda_ortho[4]-4*lambda_ortho[7])
+                b8 = c55*(lambda_ortho[0]+lambda_ortho[4]-4*lambda_ortho[7])              
                 
-                b9 = c66*(lambda_ortho[0]+lambda_ortho[1]+lambda_ortho[2]+lambda_ortho[3]-4*lambda_ortho[6])
-                
-                
+                b9 = c44*(lambda_ortho[3]+lambda_ortho[5]-4*lambda_ortho[8])
                            
             
                 print("c11 =", str(c11), 'GPa')
