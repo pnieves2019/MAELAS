@@ -155,8 +155,8 @@ if args.rel == True:
     inc_rlx_list = ['ISTART = 0\n', 'NSW = 40\n', 'IBRION = 2\n', 'ISIF = 3\n', '# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n', 'LCHARG = FALSE\n', 'LWAVE = FALSE\n', 'PREC  = Normal\n', 'EDIFF  = 1.e-06\n', 'NELM   = 100\n', 'NELMIN = 4\n', 'ISMEAR = 1\n', 'SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n']
     path_inc_rlx = 'INCAR'
     inc_rlx = open(path_inc_rlx,'w')
-    for j in range(len(inc_rlx_list)):
-        inc_rlx.write(str(inc_rlx_list[j]))
+    for record in inc_rlx_list:
+        inc_rlx.write(str(record))
     mom_rlx = 'MAGMOM = ' + str(nat) + '*5'
     inc_rlx.write(mom_rlx)
     inc_rlx.close()
@@ -293,8 +293,8 @@ if args.gen == True:
     inc_std_list = ['ISTART = 0\n', 'LORBIT = 11\n', 'ISYM = -1\n', 'PREC  = Accurate\n', 'EDIFF  = 1.e-09\n', 'NELM   = 100\n', 'NELMIN = 4\n','# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n', 'ADDGRID = TRUE\n', 'ISMEAR = 1\n', 'SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n', 'GGA_COMPAT = FALSE\n', 'LREAL = FALSE\n', 'LCHARG = TRUE\n', 'LWAVE = TRUE\n']
     path_inc_std = 'INCAR_std'
     inc_std = open(path_inc_std,'w')
-    for j in range(len(inc_std_list)):
-        inc_std.write(str(inc_std_list[j]))
+    for record in inc_std_list:
+        inc_std.write(str(record))
     mom_std = 'MAGMOM = ' + str(nat) + '*5'
     inc_std.write(mom_std)
     inc_std.close()
@@ -581,8 +581,10 @@ if 230 >= sg >= 207:
         inc_ncl_list_1_1 = inc_ncl_list[:]
         inc_ncl_list_1_1 += ['SAXIS = 0 0 1.0\n']
 
-        for j in range(len(inc_ncl_list_1_1)):
-            inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+#        for j in range(len(inc_ncl_list_1_1)):
+#            inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+        for record in inc_ncl_list_1_1:
+            inc_ncl_1_1.write(str(record))
 
         inc_ncl_1_1.close()
 
@@ -594,8 +596,8 @@ if 230 >= sg >= 207:
         inc_ncl_list_1_2 = inc_ncl_list[:]
         inc_ncl_list_1_2 += ['SAXIS = 1.0 0 0.0\n']
 
-        for j in range(len(inc_ncl_list_1_2)):
-            inc_ncl_1_2.write(str(inc_ncl_list_1_2[j]))
+        for record in inc_ncl_list_1_2:
+            inc_ncl_1_1.write(str(record))
 
         inc_ncl_1_2.close()
 
@@ -606,8 +608,8 @@ if 230 >= sg >= 207:
         inc_ncl_list_2_1 = inc_ncl_list[:]
         inc_ncl_list_2_1 += ['SAXIS = 1.0 1.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_2_1)):
-            inc_ncl_2_1.write(str(inc_ncl_list_2_1[j]))
+        for record in inc_ncl_list_2_1:
+            inc_ncl_2_1.write(str(record))
 
         inc_ncl_2_1.close()
 
@@ -619,8 +621,8 @@ if 230 >= sg >= 207:
         inc_ncl_list_2_2 = inc_ncl_list[:]
         inc_ncl_list_2_2 += ['SAXIS = 1.0 0.0 -1.0\n']
 
-        for j in range(len(inc_ncl_list_2_2)):
-            inc_ncl_2_2.write(str(inc_ncl_list_2_2[j]))
+        for record in inc_ncl_list_2_2:
+            inc_ncl_2_2.write(str(record))
 
         inc_ncl_2_2.close()
 
@@ -687,7 +689,7 @@ if 230 >= sg >= 207:
         
         f = open('ene_1_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -733,7 +735,7 @@ if 230 >= sg >= 207:
 
         f = open('ene_1_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -794,8 +796,8 @@ if 230 >= sg >= 207:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -839,7 +841,7 @@ if 230 >= sg >= 207:
 
         f = open('ene_2_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -885,7 +887,7 @@ if 230 >= sg >= 207:
 
         f = open('ene_2_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -947,8 +949,8 @@ if 230 >= sg >= 207:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -1134,8 +1136,8 @@ elif 206 >= sg >= 195:
         inc_ncl_list_1_1 = inc_ncl_list[:]
         inc_ncl_list_1_1 += ['SAXIS = 0 0 1.0\n']
 
-        for j in range(len(inc_ncl_list_1_1)):
-            inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+        for record in inc_ncl_list_1_1:
+            inc_ncl_1_1.write(str(record))
 
         inc_ncl_1_1.close()
 
@@ -1147,8 +1149,8 @@ elif 206 >= sg >= 195:
         inc_ncl_list_1_2 = inc_ncl_list[:]
         inc_ncl_list_1_2 += ['SAXIS = 1.0 1.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_1_2)):
-            inc_ncl_1_2.write(str(inc_ncl_list_1_2[j]))
+        for record in inc_ncl_list_1_2:
+            inc_ncl_1_2.write(str(record))
 
         inc_ncl_1_2.close()
         
@@ -1160,8 +1162,8 @@ elif 206 >= sg >= 195:
         inc_ncl_list_2_1 = inc_ncl_list[:]
         inc_ncl_list_2_1 += ['SAXIS = 0 1.0 0\n']
 
-        for j in range(len(inc_ncl_list_2_1)):
-            inc_ncl_2_1.write(str(inc_ncl_list_2_1[j]))
+        for record in inc_ncl_list_2_1:
+            inc_ncl_2_1.write(str(record))
 
         inc_ncl_2_1.close()
 
@@ -1173,8 +1175,8 @@ elif 206 >= sg >= 195:
         inc_ncl_list_2_2 = inc_ncl_list[:]
         inc_ncl_list_2_2 += ['SAXIS = 1.0 0.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_2_2)):
-            inc_ncl_2_2.write(str(inc_ncl_list_2_2[j]))
+        for record in inc_ncl_list_2_2:
+            inc_ncl_2_2.write(str(record))
 
         inc_ncl_2_2.close()        
         
@@ -1186,8 +1188,8 @@ elif 206 >= sg >= 195:
         inc_ncl_list_3_1 = inc_ncl_list[:]
         inc_ncl_list_3_1 += ['SAXIS = 1.0 1.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_3_1)):
-            inc_ncl_3_1.write(str(inc_ncl_list_3_1[j]))
+        for record in inc_ncl_list_3_1:
+            inc_ncl_3_1.write(str(record))
 
         inc_ncl_3_1.close()
 
@@ -1199,8 +1201,8 @@ elif 206 >= sg >= 195:
         inc_ncl_list_3_2 = inc_ncl_list[:]
         inc_ncl_list_3_2 += ['SAXIS = 1.0 0.0 -1.0\n']
 
-        for j in range(len(inc_ncl_list_3_2)):
-            inc_ncl_3_2.write(str(inc_ncl_list_3_2[j]))
+        for record in inc_ncl_list_3_2:
+            inc_ncl_3_2.write(str(record))
 
         inc_ncl_3_2.close()
 
@@ -1269,7 +1271,7 @@ elif 206 >= sg >= 195:
         
         f = open('ene_1_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -1315,7 +1317,7 @@ elif 206 >= sg >= 195:
 
         f = open('ene_1_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -1375,8 +1377,8 @@ elif 206 >= sg >= 195:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -1419,7 +1421,7 @@ elif 206 >= sg >= 195:
 
         f = open('ene_2_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -1465,7 +1467,7 @@ elif 206 >= sg >= 195:
 
         f = open('ene_2_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -1524,8 +1526,8 @@ elif 206 >= sg >= 195:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -1565,7 +1567,7 @@ elif 206 >= sg >= 195:
 
         f = open('ene_3_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -1611,7 +1613,7 @@ elif 206 >= sg >= 195:
 
         f = open('ene_3_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -1671,8 +1673,8 @@ elif 206 >= sg >= 195:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -1922,8 +1924,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         inc_ncl_list_1_1 = inc_ncl_list[:]
         inc_ncl_list_1_1 += ['SAXIS = 1.0 1.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_1_1)):
-            inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+        for record in inc_ncl_list_1_1:
+            inc_ncl_1_1.write(str(record))
 
         inc_ncl_1_1.close()
 
@@ -1935,8 +1937,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         inc_ncl_list_1_2 = inc_ncl_list[:]
         inc_ncl_list_1_2 += ['SAXIS = 1.0 1.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_1_2)):
-            inc_ncl_1_2.write(str(inc_ncl_list_1_2[j]))
+        for record in inc_ncl_list_1_2:
+            inc_ncl_1_2.write(str(record))
 
         inc_ncl_1_2.close()
         
@@ -1949,8 +1951,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         inc_ncl_list_2_1 = inc_ncl_list[:]
         inc_ncl_list_2_1 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_2_1)):
-            inc_ncl_2_1.write(str(inc_ncl_list_2_1[j]))
+        for record in inc_ncl_list_2_1:
+            inc_ncl_2_1.write(str(record))
 
         inc_ncl_2_1.close()
 
@@ -1962,8 +1964,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         inc_ncl_list_2_2 = inc_ncl_list[:]
         inc_ncl_list_2_2 += ['SAXIS = 1.0 0.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_2_2)):
-            inc_ncl_2_2.write(str(inc_ncl_list_2_2[j]))
+        for record in inc_ncl_list_2_2:
+            inc_ncl_2_2.write(str(record))
 
         inc_ncl_2_2.close()
          
@@ -1975,8 +1977,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         inc_ncl_list_3_1 = inc_ncl_list[:]
         inc_ncl_list_3_1 += ['SAXIS = 1.0 0.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_3_1)):
-            inc_ncl_3_1.write(str(inc_ncl_list_3_1[j]))
+        for record in inc_ncl_list_3_1:
+            inc_ncl_3_1.write(str(record))
 
         inc_ncl_3_1.close()
 
@@ -1988,8 +1990,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         inc_ncl_list_3_2 = inc_ncl_list[:]
         inc_ncl_list_3_2 += ['SAXIS = 0.0 1.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_3_2)):
-            inc_ncl_3_2.write(str(inc_ncl_list_3_2[j]))
+        for record in inc_ncl_list_3_2:
+            inc_ncl_3_2.write(str(record))
 
         inc_ncl_3_2.close()
 
@@ -2001,8 +2003,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         inc_ncl_list_4_1 = inc_ncl_list[:]
         inc_ncl_list_4_1 += ['SAXIS = 1.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_4_1)):
-            inc_ncl_4_1.write(str(inc_ncl_list_4_1[j]))
+        for record in inc_ncl_list_4_1:
+            inc_ncl_4_1.write(str(record))
 
         inc_ncl_4_1.close()
 
@@ -2014,8 +2016,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         inc_ncl_list_4_2 = inc_ncl_list[:]
         inc_ncl_list_4_2 += ['SAXIS = -1.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_4_2)):
-            inc_ncl_4_2.write(str(inc_ncl_list_4_2[j]))
+        for record in inc_ncl_list_4_2:
+            inc_ncl_4_2.write(str(record))
 
         inc_ncl_4_2.close()
 
@@ -2028,8 +2030,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             inc_ncl_list_5_1 = inc_ncl_list[:]
             inc_ncl_list_5_1 += ['SAXIS = 0.0 -1.0 1.0\n']
 
-            for j in range(len(inc_ncl_list_5_1)):
-                inc_ncl_5_1.write(str(inc_ncl_list_5_1[j]))
+            for record in inc_ncl_list_5_1:
+                inc_ncl_5_1.write(str(record))
 
             inc_ncl_5_1.close()
 
@@ -2041,8 +2043,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             inc_ncl_list_5_2 = inc_ncl_list[:]
             inc_ncl_list_5_2 += ['SAXIS = 0.0 1.0 1.0\n']
 
-            for j in range(len(inc_ncl_list_5_2)):
-                inc_ncl_5_2.write(str(inc_ncl_list_5_2[j]))
+            for record in inc_ncl_list_5_2:
+                inc_ncl_5_2.write(str(record))
 
             inc_ncl_5_2.close()
             
@@ -2055,8 +2057,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             inc_ncl_list_5_1 = inc_ncl_list[:]
             inc_ncl_list_5_1 += ['SAXIS = 1.0 1.0 0.0\n']
 
-            for j in range(len(inc_ncl_list_5_1)):
-                inc_ncl_5_1.write(str(inc_ncl_list_5_1[j]))
+            for record in inc_ncl_list_5_1:
+                inc_ncl_5_1.write(str(record))
 
             inc_ncl_5_1.close()
 
@@ -2068,8 +2070,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
             inc_ncl_list_5_2 = inc_ncl_list[:]
             inc_ncl_list_5_2 += ['SAXIS = -1.0 1.0 0.0\n']
 
-            for j in range(len(inc_ncl_list_5_2)):
-                inc_ncl_5_2.write(str(inc_ncl_list_5_2[j]))
+            for record in inc_ncl_list_5_2:
+                inc_ncl_5_2.write(str(record))
 
             inc_ncl_5_2.close() 
             
@@ -2160,7 +2162,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         
         f = open('ene_1_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -2207,7 +2209,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
         f = open('ene_1_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -2266,8 +2268,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -2311,7 +2313,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
         f = open('ene_2_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -2357,7 +2359,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
         f = open('ene_2_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -2415,8 +2417,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -2461,7 +2463,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
         f = open('ene_3_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -2507,7 +2509,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
         f = open('ene_3_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -2566,8 +2568,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -2613,7 +2615,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
         f = open('ene_4_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -2658,7 +2660,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
         f = open('ene_4_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -2719,8 +2721,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -2763,7 +2765,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
             f = open('ene_5_1.dat','r')
             l = f.readlines()
-            f.close
+            f.close()
 
             x = []
             y = []
@@ -2807,7 +2809,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
             f = open('ene_5_2.dat','r')
             l = f.readlines()
-            f.close
+            f.close()
 
             x = []
             y = []
@@ -2865,8 +2867,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         
             s1 = f1.readlines()
             s2 = f2.readlines()
-            f1.close
-            f2.close
+            f1.close()
+            f2.close()
 
             x = []
             y = []
@@ -2909,7 +2911,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
             f = open('ene_5_1.dat','r')
             l = f.readlines()
-            f.close
+            f.close()
 
             x = []
             y = []
@@ -2953,7 +2955,7 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
 
             f = open('ene_5_2.dat','r')
             l = f.readlines()
-            f.close
+            f.close()
 
             x = []
             y = []
@@ -3011,8 +3013,8 @@ elif (175 <= sg <= 194) or (89 <= sg <= 142):
         
             s1 = f1.readlines()
             s2 = f2.readlines()
-            f1.close
-            f2.close
+            f1.close()
+            f2.close()
 
             x = []
             y = []
@@ -3475,8 +3477,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_1_1 = inc_ncl_list[:]
         inc_ncl_list_1_1 += ['SAXIS = 0 0 1.0\n']
 
-        for j in range(len(inc_ncl_list_1_1)):
-            inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+        for record in inc_ncl_list_1_1:
+            inc_ncl_1_1.write(str(record))
 
         inc_ncl_1_1.close()
 
@@ -3488,8 +3490,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_1_2 = inc_ncl_list[:]
         inc_ncl_list_1_2 += ['SAXIS = 1.0 1.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_1_2)):
-            inc_ncl_1_2.write(str(inc_ncl_list_1_2[j]))
+        for record in inc_ncl_list_1_2:
+            inc_ncl_1_2.write(str(record))
 
         inc_ncl_1_2.close()
         
@@ -3501,8 +3503,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_2_1 = inc_ncl_list[:]
         inc_ncl_list_2_1 += ['SAXIS = 0 0 1.0\n']
 
-        for j in range(len(inc_ncl_list_2_1)):
-            inc_ncl_2_1.write(str(inc_ncl_list_2_1[j]))
+        for record in inc_ncl_list_2_1:
+            inc_ncl_2_1.write(str(record))
 
         inc_ncl_2_1.close()
 
@@ -3514,8 +3516,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_2_2 = inc_ncl_list[:]
         inc_ncl_list_2_2 += ['SAXIS = 1.0 0.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_2_2)):
-            inc_ncl_2_2.write(str(inc_ncl_list_2_2[j]))
+        for record in inc_ncl_list_2_2:
+            inc_ncl_2_2.write(str(record))
 
         inc_ncl_2_2.close()        
         
@@ -3527,8 +3529,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_3_1 = inc_ncl_list[:]
         inc_ncl_list_3_1 += ['SAXIS = 1.0 0.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_3_1)):
-            inc_ncl_3_1.write(str(inc_ncl_list_3_1[j]))
+        for record in inc_ncl_list_3_1:
+            inc_ncl_3_1.write(str(record))
 
         inc_ncl_3_1.close()
 
@@ -3540,8 +3542,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_3_2 = inc_ncl_list[:]
         inc_ncl_list_3_2 += ['SAXIS = 0.0 1.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_3_2)):
-            inc_ncl_3_2.write(str(inc_ncl_list_3_2[j]))
+        for record in inc_ncl_list_3_2:
+            inc_ncl_3_2.write(str(record))
 
         inc_ncl_3_2.close()
         
@@ -3554,8 +3556,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_4_1 = inc_ncl_list[:]
         inc_ncl_list_4_1 += ['SAXIS = 1.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_4_1)):
-            inc_ncl_4_1.write(str(inc_ncl_list_4_1[j]))
+        for record in inc_ncl_list_4_1:
+            inc_ncl_4_1.write(str(record))
 
         inc_ncl_4_1.close()
 
@@ -3567,8 +3569,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_4_2 = inc_ncl_list[:]
         inc_ncl_list_4_2 += ['SAXIS = 1.0 0.0 -1.0\n']
 
-        for j in range(len(inc_ncl_list_4_2)):
-            inc_ncl_4_2.write(str(inc_ncl_list_4_2[j]))
+        for record in inc_ncl_list_4_2:
+            inc_ncl_4_2.write(str(record))
 
         inc_ncl_4_2.close()
      
@@ -3581,8 +3583,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_5_1 = inc_ncl_list[:]
         inc_ncl_list_5_1 += ['SAXIS = 0 1.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_5_1)):
-            inc_ncl_5_1.write(str(inc_ncl_list_5_1[j]))
+        for record in inc_ncl_list_5_1:
+            inc_ncl_5_1.write(str(record))
 
         inc_ncl_5_1.close()
 
@@ -3594,8 +3596,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_5_2 = inc_ncl_list[:]
         inc_ncl_list_5_2 += ['SAXIS = 0 1.0 -1.0\n']
 
-        for j in range(len(inc_ncl_list_5_2)):
-            inc_ncl_5_2.write(str(inc_ncl_list_5_2[j]))
+        for record in inc_ncl_list_5_2:
+            inc_ncl_5_2.write(str(record))
 
         inc_ncl_5_2.close()
      
@@ -3607,8 +3609,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_6_1 = inc_ncl_list[:]
         inc_ncl_list_6_1 += ['SAXIS = 1.0 1.0 0\n']
 
-        for j in range(len(inc_ncl_list_6_1)):
-            inc_ncl_6_1.write(str(inc_ncl_list_6_1[j]))
+        for record in inc_ncl_list_6_1:
+            inc_ncl_6_1.write(str(record))
 
         inc_ncl_6_1.close()
 
@@ -3620,8 +3622,8 @@ elif 149 <= sg <= 167:
         inc_ncl_list_6_2 = inc_ncl_list[:]
         inc_ncl_list_6_2 += ['SAXIS = 1.0 -1.0 0\n']
 
-        for j in range(len(inc_ncl_list_6_2)):
-            inc_ncl_6_2.write(str(inc_ncl_list_6_2[j]))
+        for record in inc_ncl_list_6_2:
+            inc_ncl_6_2.write(str(record))
 
         inc_ncl_6_2.close()
 
@@ -3701,7 +3703,7 @@ elif 149 <= sg <= 167:
         
         f = open('ene_1_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -3747,7 +3749,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_1_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -3807,8 +3809,8 @@ elif 149 <= sg <= 167:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -3849,7 +3851,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_2_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -3895,7 +3897,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_2_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -3955,8 +3957,8 @@ elif 149 <= sg <= 167:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -3997,7 +3999,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_3_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -4043,7 +4045,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_3_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -4102,8 +4104,8 @@ elif 149 <= sg <= 167:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -4147,7 +4149,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_4_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -4193,7 +4195,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_4_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -4252,8 +4254,8 @@ elif 149 <= sg <= 167:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -4296,7 +4298,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_5_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -4342,7 +4344,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_5_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -4402,8 +4404,8 @@ elif 149 <= sg <= 167:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -4443,7 +4445,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_6_1.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -4489,7 +4491,7 @@ elif 149 <= sg <= 167:
 
         f = open('ene_6_2.dat','r')
         l = f.readlines()
-        f.close
+        f.close()
 
         x = []
         y = []
@@ -4549,8 +4551,8 @@ elif 149 <= sg <= 167:
         
         s1 = f1.readlines()
         s2 = f2.readlines()
-        f1.close
-        f2.close
+        f1.close()
+        f2.close()
 
         x = []
         y = []
@@ -4875,8 +4877,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_1_1 = inc_ncl_list[:]
         inc_ncl_list_1_1 += ['SAXIS = 1.0 0 0\n']
 
-        for j in range(len(inc_ncl_list_1_1)):
-            inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+        for record in inc_ncl_list_1_1:
+            inc_ncl_1_1.write(str(record))
 
         inc_ncl_1_1.close()
 
@@ -4888,8 +4890,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_1_2 = inc_ncl_list[:]
         inc_ncl_list_1_2 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_1_2)):
-            inc_ncl_1_2.write(str(inc_ncl_list_1_2[j]))
+        for record in inc_ncl_list_1_2:
+            inc_ncl_1_2.write(str(record))
 
         inc_ncl_1_2.close()
         
@@ -4901,8 +4903,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_2_1 = inc_ncl_list[:]
         inc_ncl_list_2_1 += ['SAXIS = 0 1.0 0\n']
 
-        for j in range(len(inc_ncl_list_2_1)):
-            inc_ncl_2_1.write(str(inc_ncl_list_2_1[j]))
+        for record in inc_ncl_list_2_1:
+            inc_ncl_2_1.write(str(record))
 
         inc_ncl_2_1.close()
 
@@ -4914,8 +4916,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_2_2 = inc_ncl_list[:]
         inc_ncl_list_2_2 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_2_2)):
-            inc_ncl_2_2.write(str(inc_ncl_list_2_2[j]))
+        for record in inc_ncl_list_2_2:
+            inc_ncl_2_2.write(str(record))
 
         inc_ncl_2_2.close()        
         
@@ -4927,8 +4929,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_3_1 = inc_ncl_list[:]
         inc_ncl_list_3_1 += ['SAXIS = 1.0 0.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_3_1)):
-            inc_ncl_3_1.write(str(inc_ncl_list_3_1[j]))
+        for record in inc_ncl_list_3_1:
+            inc_ncl_3_1.write(str(record))
 
         inc_ncl_3_1.close()
 
@@ -4940,8 +4942,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_3_2 = inc_ncl_list[:]
         inc_ncl_list_3_2 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_3_2)):
-            inc_ncl_3_2.write(str(inc_ncl_list_3_2[j]))
+        for record in inc_ncl_list_3_2:
+            inc_ncl_3_2.write(str(record))
 
         inc_ncl_3_2.close()
         
@@ -4954,8 +4956,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_4_1 = inc_ncl_list[:]
         inc_ncl_list_4_1 += ['SAXIS = 0 1.0 0\n']
 
-        for j in range(len(inc_ncl_list_4_1)):
-            inc_ncl_4_1.write(str(inc_ncl_list_4_1[j]))
+        for record in inc_ncl_list_4_1:
+            inc_ncl_4_1.write(str(record))
 
         inc_ncl_4_1.close()
 
@@ -4967,8 +4969,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_4_2 = inc_ncl_list[:]
         inc_ncl_list_4_2 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_4_2)):
-            inc_ncl_4_2.write(str(inc_ncl_list_4_2[j]))
+        for record in inc_ncl_list_4_2:
+            inc_ncl_4_2.write(str(record))
 
         inc_ncl_4_2.close()
      
@@ -4981,8 +4983,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_5_1 = inc_ncl_list[:]
         inc_ncl_list_5_1 += ['SAXIS = 1.0 0.0 0.0\n']
 
-        for j in range(len(inc_ncl_list_5_1)):
-            inc_ncl_5_1.write(str(inc_ncl_list_5_1[j]))
+        for record in inc_ncl_list_5_1:
+            inc_ncl_5_1.write(str(record))
 
         inc_ncl_5_1.close()
 
@@ -4994,8 +4996,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_5_2 = inc_ncl_list[:]
         inc_ncl_list_5_2 += ['SAXIS = 0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_5_2)):
-            inc_ncl_5_2.write(str(inc_ncl_list_5_2[j]))
+        for record in inc_ncl_list_5_2:
+            inc_ncl_5_2.write(str(record))
 
         inc_ncl_5_2.close()
      
@@ -5007,8 +5009,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_6_1 = inc_ncl_list[:]
         inc_ncl_list_6_1 += ['SAXIS = 0.0 1.0 0\n']
 
-        for j in range(len(inc_ncl_list_6_1)):
-            inc_ncl_6_1.write(str(inc_ncl_list_6_1[j]))
+        for record in inc_ncl_list_6_1:
+            inc_ncl_6_1.write(str(record))
 
         inc_ncl_6_1.close()
 
@@ -5020,8 +5022,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_6_2 = inc_ncl_list[:]
         inc_ncl_list_6_2 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_6_2)):
-            inc_ncl_6_2.write(str(inc_ncl_list_6_2[j]))
+        for record in inc_ncl_list_6_2:
+            inc_ncl_6_2.write(str(record))
 
         inc_ncl_6_2.close()
 
@@ -5036,8 +5038,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_7_1 = inc_ncl_list[:]
         inc_ncl_list_7_1 += ['SAXIS = 1.0 1.0 0\n']
 
-        for j in range(len(inc_ncl_list_7_1)):
-            inc_ncl_7_1.write(str(inc_ncl_list_7_1[j]))
+        for record in inc_ncl_list_7_1:
+            inc_ncl_7_1.write(str(record))
 
         inc_ncl_7_1.close()
 
@@ -5049,8 +5051,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_7_2 = inc_ncl_list[:]
         inc_ncl_list_7_2 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_7_2)):
-            inc_ncl_7_2.write(str(inc_ncl_list_7_2[j]))
+        for record in inc_ncl_list_7_2:
+            inc_ncl_7_2.write(str(record))
 
         inc_ncl_7_2.close()
 
@@ -5063,8 +5065,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_8_1 = inc_ncl_list[:]
         inc_ncl_list_8_1 += ['SAXIS = 1.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_8_1)):
-            inc_ncl_8_1.write(str(inc_ncl_list_8_1[j]))
+        for record in inc_ncl_list_8_1:
+            inc_ncl_8_1.write(str(record))
 
         inc_ncl_8_1.close()
 
@@ -5076,8 +5078,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_8_2 = inc_ncl_list[:]
         inc_ncl_list_8_2 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_8_2)):
-            inc_ncl_8_2.write(str(inc_ncl_list_8_2[j]))
+        for record in inc_ncl_list_8_2:
+            inc_ncl_8_2.write(str(record))
 
         inc_ncl_8_2.close()
 
@@ -5089,8 +5091,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_9_1 = inc_ncl_list[:]
         inc_ncl_list_9_1 += ['SAXIS = 0.0 1.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_9_1)):
-            inc_ncl_9_1.write(str(inc_ncl_list_9_1[j]))
+        for record in inc_ncl_list_9_1:
+            inc_ncl_9_1.write(str(record))
 
         inc_ncl_9_1.close()
 
@@ -5102,8 +5104,8 @@ elif 16 <= sg <= 74:
         inc_ncl_list_9_2 = inc_ncl_list[:]
         inc_ncl_list_9_2 += ['SAXIS = 0.0 0.0 1.0\n']
 
-        for j in range(len(inc_ncl_list_9_2)):
-            inc_ncl_9_2.write(str(inc_ncl_list_9_2[j]))
+        for record in inc_ncl_list_9_2:
+            inc_ncl_9_2.write(str(record))
 
         inc_ncl_9_2.close()
 
@@ -5210,7 +5212,7 @@ elif 16 <= sg <= 74:
             
             f = open(ene_dat1,'r')
             l = f.readlines()
-            f.close
+            f.close()
 
             x = []
             y = []
@@ -5263,7 +5265,7 @@ elif 16 <= sg <= 74:
        
             f = open(ene_dat2,'r')
             l = f.readlines()
-            f.close
+            f.close()
 
             x = []
             y = []
@@ -5317,8 +5319,8 @@ elif 16 <= sg <= 74:
             f2 = open(ene_dat2,'r')
             s1 = f1.readlines()
             s2 = f2.readlines()
-            f1.close
-            f2.close
+            f1.close()
+            f2.close()
 
             x = []
             y = []
