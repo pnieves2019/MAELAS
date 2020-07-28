@@ -95,15 +95,41 @@ Note that generated INCAR and KPOINTS files contain standard setting for cell re
 In case your structure is already relaxed or you do not want to perform a cell relaxation, then you can skip this step and move to step 2.
 
 
+--------------------------------------------------------
+Step 2: Test MAE
+--------------------------------------------------------
+
+It is recommended to verify the Magnetocrystalline Anisotropy Energy (MAE) before the calculation of magentostriction coefficients. In order to test MAE, copy the relaxed POSCAR, POTCAR and maelas.py files in the same folder where you want to generate the input files for VASP jobs. In the terminal, after going to this folder then type
+
+python3 maelas.py -m -i POSCAR_rlx -k 70 –s1 1 0 0 –s2 0 0 1
+
+where -m indicates that you want to generate input VASP files for the calculation of MAE, -i POSCAR_rlx is the initial relaxed POSCAR file (you can name it whatever you want), -k 70 is the length parameter that determines a regular mesh of k-points, -s1 1 0 0 is the first spin direction to calculate MAE: s1x s1y s1z and –s2 0 0 1 is the second spin direction to calculate MAE: s2x s2y s2z . It will generate the following files:
+
+POSCAR_0_0 (it is the same POSCAR as )
+INCAR_0_C (non-collinear calculation where C=1,2 is the spin orientation case)
+INCAR_std (collinear calculation to generate the WAVECAR and CHGCAR files to run non-collinear calculations)
+KPOINTS (file for the kpoint generation of VASP)
+vasp_mae, vasp_mae_jsub and vasp_mae_0 (interconnected bash scripts to run VASP calculations automatically)
+vasp_mae_cp_oszicar (bash script to get the calculated OSZICAR_0_0_C files after VASP calculation is finished)
+
+The generated files vasp_mae, vasp_mae_jsub and vasp_mae_0 are interconnected scripts to submit jobs in HPC facilities. One needs only to execute the file vasp_mae in order to run all VASP jobs automatically. You can specify some job settings in these scripts by adding more tags in the command line. For instance,
+
+python3 maelas.py -m -i POSCAR_rlx -k 70 –s1 1 0 0 –s2 0 0 1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
+
+where -t 48 indicates that the number of maximum CPU hours for the VASP calculation is 48 hours,-c 24 means that the number of cores for the VASP calculation is 24, -q qprod set to production queuethe type of queue in HPC facilities, -a OPEN-00-00 is the project identification number for running jobs in HPC facilities and -f /scratch/example_mag is the folder where you want to run VASP calculations. This procedure might be helpful for high-throughput routines. More options can be added in these script files through the terminal command line, to see them just type 
+
+python3 maelas.py –h
+
+
 ----------------------------------------------------------------------------------------------------
-Step 2: Generation of VASP files for the calculation of spin-dependent magnetostriction coefficients
+Step 3: Generation of VASP files for the calculation of anisotropic magnetostriction coefficients
 ----------------------------------------------------------------------------------------------------
 
 Copy the relaxed POSCAR, POTCAR and maelas.py files in the same folder where you want to generate the input files for VASP run. In the terminal, after going to this folder then type
 
 python3 maelas.py -g -i POSCAR_rlx -k 70 -n 7 -s 0.01
 
-where -g indicates that you want to generate input VASP files for the calculation of spin-dependent magnetostriction coefficients, -i POSCAR_rlx is the initial relaxed POSCAR file (you can name it whatever you want), -k 40 is the length parameter that determines a regular mesh of k-points, -n 7 means that it will generate 7 distorted states for each magentostriction mode and -s 0.01 is the maximum strain applied for distorting the structure. It will generate the following files:
+where -g indicates that you want to generate input VASP files for the calculation of anisotropic magnetostriction coefficients, -i POSCAR_rlx is the initial relaxed POSCAR file (you can name it whatever you want), -k 40 is the length parameter that determines a regular mesh of k-points, -n 7 means that it will generate 7 distorted states for each magentostriction mode and -s 0.01 is the maximum strain applied for distorting the structure. It will generate the following files:
 
 
 POSCAR_A_B (volume-conserving distorted cell where A=magnetostriction mode, B=1,...,n distorted cell for each magentostriction mode)
@@ -131,7 +157,7 @@ Note that generated INCAR_std, INCAR_A_C and KPOINTS files contain standard sett
 
 
 -----------------------------
-Step 3: Run VASP calculations
+Step 4: Run VASP calculations
 -----------------------------
 
 For each generated POSCAR_A_B one should run first a collinear calculation using INCAR_std and use the generated WAVECAR and CHGCAR files to run non-collinear calculations for each INCAR_A_C (C=1,2) using the same POSCAR_A_B. This procedure can be automatically done in HPC facilities just by running the generated bash script
@@ -148,10 +174,10 @@ it will copy these OSZICAR files and name them as OSZICAR_A_B_C (C=1,2) in the s
 
 
 ---------------------------------------------------------------------------------------------------------------
-Step 4: Derivation of spin-dependent magnetostriction coefficients from the energy written in the OSZICAR files
+Step 5: Derivation of anisotropic magnetostriction coefficients from the energy written in the OSZICAR files
 ---------------------------------------------------------------------------------------------------------------
 
-Finally, to derive the spin-dependent magnetostriction coefficients one needs to have in the same folder the following files:
+Finally, to derive the anisotropic magnetostriction coefficients one needs to have in the same folder the following files:
     
 
 maelas.py
@@ -167,7 +193,7 @@ Next, in the terminal go to this folder a type
 
 python3 maelas.py -d -i POSCAR_rlx -n 7
 
-where -d indicates that you want to derive the spin-dependent magnetostriction coefficients from the calculated OSZICAR files, -i POSCAR_rlx is the relaxed POSCAR file used as input in step 2 (you can name it whatever you want) and -n 7 is the number of distorted states for each magentostriction mode used in step 2.
+where -d indicates that you want to derive the anisotropic magnetostriction coefficients from the calculated OSZICAR files, -i POSCAR_rlx is the relaxed POSCAR file used as input in step 2 (you can name it whatever you want) and -n 7 is the number of distorted states for each magentostriction mode used in step 2.
 
 It will derive and print the calculated spin-dependent magnetostriction coefficients in the terminal. If you want to print it in a file (for example, "results.out"), then you can type
 
@@ -193,24 +219,38 @@ python3 maelas.py -r -i POSCAR0 -k 40
 qsub vasp_jsub_rlx
 
 
-Step 2: Generate VASP inputs for calculation of magnetostriction coefficients
+
+Step 2: Test MAE
+
+python3 maelas.py -m -i POSCAR_rlx -k 70 –s1 1 0 0 –s2 0 0 1 
+
+./vasp_mae
+
+./vasp_mae_cp_oszicar
+
+
+
+Step 3: Generate VASP inputs for calculation of magnetostriction coefficients
 
 python3 maelas.py -g -i POSCAR_rlx -k 70 -n 7 -s 0.1
 
 
-Step 3: Run VASP calculations
+
+Step 4: Run VASP calculations
 
 ./vasp_maelas
 
 ./vasp_cp_oszicar
 
 
-Step 4: Derivation of spin-dependent magnetostriction coefficients
+
+Step 5a: Derivation of anisotropic magnetostriction coefficients
 
 python3 maelas.py -d -i POSCAR_rlx -n 7
 
 
-Step 4: Derivation of spin-dependent magnetostriction coefficients and magnetoelastic constants
+
+Step 5b: Derivation of anisotropic magnetostriction coefficients and magnetoelastic constants
 
 python3 maelas.py -d -i POSCAR_rlx -n 7 -b -e ELADAT  
 
@@ -278,6 +318,12 @@ optional arguments:
                   
   -r              Generation of required VASP files for the cell relaxation
   
+  -m 	          Generation of required VASP files to test MAE
+
+  -s1 s1x s1y s1z     First spin direction to calculate MAE
+
+  -s2 s2x s2y s2z     Second spin direction to calculate MAE 
+  
   -b              Calculation of the magnetoelastic constants from the
                   calculated magnetostriction coefficients and provided
                   elastic tensor. For this option the tag -d must be included
@@ -299,7 +345,7 @@ optional arguments:
   -f VASP_FOLD    Folder where you will run VASP calculations (default:
                   /scratch)
                   
-  -m MPI          Command for mpi run of VASP (default: mpiexec.hydra)
+  -mp MPI          Command for mpi run of VASP (default: mpiexec.hydra)
   
   -a P_ID         Project id for running jobs in HPC facilities (default:
                   OPEN-X-X)
@@ -327,11 +373,7 @@ Current version supports the following crystal systems:
 
 Cubic (I) (space groups 207-230)
 
-Cubic (II) (space groups 195-206)
-
 Hexagonal (I) (space groups 177-194)
-
-Hexagonal (II) point group 6/m (space groups 175-176)
 
 Trigonal (I) (space groups 149-167)
 
@@ -340,6 +382,7 @@ Tetragonal (I) (space groups 89-142)
 Orthorhombic (space groups 16-74)
 
 
-In the future, if the theoretical expressions of magnetostriction are derived for the remain crystal systems, then we will try to implement them in the new versions of the code.
+The crystal systems not supported by MAELAS might be included in the new versions of the code.
+
 
 
