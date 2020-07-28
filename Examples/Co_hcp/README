@@ -43,7 +43,7 @@ OSZICAR_A_B_C and maelas.py. Next, we type
 
 python3 maelas.py -d -i POSCAR_Co_hcp_rlx -n 7 > output.dat
 
-It should generate the files: dE_A.png, ene_A_C.dat, fit_ene_A_C.png (A=1,2,3,4, C=1,2) and output.dat. 
+It should generate the files: dE_A.png, ene_A_C.dat, fit_ene_A_C.png (A=1,2,3,4, C=1,2) and output.dat.
 In the file output.dat you can find the calculated magnetostriction coefficients.
 
 Similarly, in folder Step5b_derivation_magnetoelastic_constants you can see an example about
