@@ -1,0 +1,19 @@
+    __  ______    ________    ___   _____
+   /  |/  /   |  / ____/ /   /   | / ___/
+  / /|_/ / /| | / __/ / /   / /| | \__ \ 
+ / /  / / ___ |/ /___/ /___/ ___ |___/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/  
+                                         
+
+MAELAS code v1.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+--------------------------------------------------------------------------------------------------------
+Generation of VASP files to test MAE
+--------------------------------------------------------------------------------------------------------
+Space group number = 194
+Space group symbol = P6_3/mmc
+Number of atoms = 2
+First spin direction = 1.0 0.0 0.0
+Second spin direction = 0.0 0.0 1.0
