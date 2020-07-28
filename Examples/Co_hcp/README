@@ -25,7 +25,6 @@ It should generate the following files: POSCAR_0_0, INCAR_std,
 INCAR_0_C (C=1,2), KPOINTS, vasp_mae_0, vasp_mae_jsub, vasp_mae, vasp_mae_cp_oszicar 
 and output.dat. 
 
-
 In folder Step3_generation_VASP_input_files you can find an example about the
 generation of VASP input files to calculate the magnetostriction coefficients.
 We copy the relaxed POSCAR (called POSCAR_Co_hcp_rlx) and maelas.py in this folder.
