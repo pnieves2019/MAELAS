@@ -15,8 +15,8 @@ python3 maelas.py -r -i POSCAR_Co_hcp -k 50 > output.dat
 
 It should generate the files: POSCAR, KPOINTS,INCAR, vasp_jsub_rlx and output.dat.
 
-In folder Step2_test_MAE you can find an example about the test of Magnetoscrystalline
-Anisotorpy Energy (MAE). We copy the relaxed POSCAR (called POSCAR_Co_hcp_rlx) and maelas.py
+In folder Step2_test_MAE you can find an example about the test of Magnetocrystalline
+Anisotropy Energy (MAE). We copy the relaxed POSCAR (called POSCAR_Co_hcp_rlx) and maelas.py
 in this folder. Then we type:
 
 python3 maelas.py -m -i POSCAR_Co_hcp_rlx -k 70 -s1 1 0 0 -s2 0 0 1 > output.dat
