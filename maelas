@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import math 
 import argparse
 import numpy as np 
@@ -37,6 +39,7 @@ parser.add_argument('-b', dest='delas', action='store_true', default=False, help
 parser.add_argument('-e', dest='elas', type=str, nargs=1, default=['ELADAT'], help='File with the elastic tensor data in the same format and units (GPa) as it is written by ELAS code (file ELADAT). You can check this format in the Examples folder')
 parser.add_argument('-sp', dest='sympre', type=float, nargs=1, default=['0.01'], help='Tolerance for symmetry finding (default: 0.01)')
 parser.add_argument('-sa', dest='symang', type=float, nargs=1, default=['5.0'], help='Angle tolerance for symmetry finding (default: 5.0)')
+parser.add_argument('-sg', dest='sg0', type=int, nargs=1, default=['0'], help='Space group number 1-230. If it is equal to 0, then it will be determined by a symmetry analysis (default: 0)')
 parser.add_argument('-c', dest='core', type=int, nargs=1, default=['24'], help='Number of cores for the VASP calculation (default: 24)')
 parser.add_argument('-t', dest='time', type=int, nargs=1, default=['48'], help='Number of maximum CPU hours for the VASP calculation (default: 48)')
 parser.add_argument('-f', dest='vasp_fold', type=str, nargs=1, default=['/scratch'], help='Folder where you will run VASP calculations (default: /scratch)')
@@ -94,15 +97,30 @@ if args.gen == True:
 
     print("Species =", structure2.species)
     
+    if int(args.sg0[0]) == 0:
+
+        sg = aa.get_space_group_number()
+        print("Space group number =", sg)
     
-    sg=aa.get_space_group_number()
-    print("Space group number =", sg)
+        spg = aa.get_space_group_symbol()
+        print("Space group symbol =", str(spg))
     
-    spg = aa.get_space_group_symbol()
-    print("Space group symbol =", str(spg))
+        pg = aa.get_point_group_symbol()
     
-    pg = aa.get_point_group_symbol()
-    
+    elif int(args.sg0[0]) > 0:
+        
+        sg = int(args.sg0[0])
+        print("Space group number (set by user)=", sg)
+        
+        spg = 'set by user'
+        
+        pg = 'set by user'
+        
+    else:
+        print("Space group number must be in the range 1-230")
+        exit
+        
+        
     if sg <= 15:
         print("Current version does not calculate magnetostriction for monoclinic and triclinic systems (space group < 16)")
         exit()
@@ -535,12 +553,30 @@ if args.der == True:
     sym1 = float(args.sympre[0])
     sym2 = float(args.symang[0])
     aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
-    sg = aa.get_space_group_number()
-    print("Space group number =", sg)
-    spg = aa.get_space_group_symbol()
-    print("Space group symbol =", str(spg))
     
-    pg = aa.get_point_group_symbol()
+    if int(args.sg0[0]) == 0:
+
+        sg = aa.get_space_group_number()
+        print("Space group number =", sg)
+    
+        spg = aa.get_space_group_symbol()
+        print("Space group symbol =", str(spg))
+    
+        pg = aa.get_point_group_symbol()
+    
+    elif int(args.sg0[0]) > 0:
+        
+        sg = int(args.sg0[0])
+        print("Space group number (set by user)=", sg)
+        
+        spg = 'set by user'
+        
+        pg = 'set by user'
+        
+    else:
+        print("Space group number must be in the range 1-230")
+        exit
+    
     
     if sg <= 15:
         print("Current version does not calculate magnetostriction for monoclinic and triclinic systems (space group < 16)")

@@ -1,13 +1,13 @@
 
 MAELAS code v1.0
 
-Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. K?dzielawa, R.F. Zhang and D. Legut
 
 -------------------------
 WHAT IS MAELAS CODE?
 -------------------------
 
-MAELAS code is a software to calculate spin-dependent magnetostriction coefficients and magnetoelastic constants up to second order. It generates required input files for VASP code to perform Density Functional Theory calculations, and it deduces the value of magnetostriction coefficients from the calculated energies given by VASP. If the elastic tensor is provided, then it can also calculate the magnetoelastic constants.
+MAELAS code is a software to calculate anisotropic magnetostriction coefficients and magnetoelastic constants up to second order. It generates required input files for VASP code to perform Density Functional Theory calculations, and it deduces the value of magnetostriction coefficients from the calculated energies given by VASP. If the elastic tensor is provided, then it can also calculate the magnetoelastic constants.
 
 MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.
 
@@ -16,47 +16,39 @@ MAELAS can also be used with other DFT codes instead of VASP, after file convers
 INSTALLATION
 ------------------
 
-MAELAS code is just one python3 file "maelas.py", so it only requires to have Python3 and imported python libraries. For example, in Ubuntu Linux machine you can check the installed version of python3 by opening a terminal and typing
+The MAELAS code requires to have Python3(>=3.6). For example, in Ubuntu Linux machine you can check the installed version of python3 by opening a terminal and typing
 
 python3 --version
 
-In case you need to install it in your machine, you can type
+In case you need to install python3 in your machine, you can type
 
 sudo apt-get update
 
-sudo apt-get install python3.8
+sudo apt-get install python3
 
-In HPC facilities you may need to load the Python3 module. For example, in Centos 7 Linux you can check all installed Python modules by typing
+Note that in some HPC clusters you might need to load the Python module (ml Python). 
 
-ml avail Python
+The MAELAS code can be easily installed with pip3 as
 
-and load the last version of Python3 using command ml
+pip3 install maelas
 
-ml Python/3.8.2-GCC-8.3.0-2.32-base
+This procedure will also install all required dependecies automatically 
 
-Additionally, MAELAS makes use of the following python libraries: pymatgen, scikit-learn, pyfiglet, argparse, numpy, matplotlib, scipy, math, os and stat. In case you need to install them, you can do it using pip3 as:
+pymatgen(>=2020.4.29)
+scikit-learn(>=0.23.1)
+pyfiglet(>=0.8.post0)
+argparse(>=1.4.0)
+numpy(>=1.18.4)
+matplotlib(>=3.2.1)
+scipy(>=1.4.1)
 
-pip3 install pymatgen
+The executable file "maelas" is installed in the folder /home/user_name/.local/bin/ where "user_name" is the name of your user name folder. This folder should be added to the PATH by adding the following line in the file /home/user_name/.bashrc  
 
-pip3 install scikit-learn
+export PATH=/home/user_name/.local/bin/:$PATH
 
-pip3 install pyfiglet
+Then you should close the terminal and open the terminal again.
 
-pip3 install argparse
-
-pip3 install numpy
-
-pip3 install matplotlib
-
-pip3 install scipy
-
-pip3 install math
-
-pip3 install os
-
-pip3 install stat
-
-In case you need to install pip3 in Ubuntu Linux
+If you need to install pip3 in Ubuntu Linux, then type
 
 sudo apt-get update
 
@@ -67,30 +59,30 @@ sudo apt-get install python3-pip
 HOW TO USE MAELAS CODE
 ----------------------------------
 
-Running MAELAS code consists in the following four steps.
+Running MAELAS code consists in the following five steps.
 
 
 --------------------------------------------------------
 Step 1: Cell relaxation
 --------------------------------------------------------
 
-If your initial POSCAR is not relaxed and you want to perform a cell relaxation before calculating the magentostriction coefficients, then you can use MAELAS code to generate INCAR and KPOINTS files to relax the structure with VASP. To do so, in the terminal you should copy your initial POSCAR and maelas.py files in the same folder where you want to generate the input files for VASP, and after going to this folder then type
+If your initial POSCAR is not relaxed and you want to perform a cell relaxation before calculating the magentostriction coefficients, then you can use MAELAS code to generate INCAR and KPOINTS files to relax the structure with VASP. To do so, in the terminal you should copy your initial POSCAR in the same folder where you want to generate the input files for VASP, and after going to this folder then type
 
-python3 maelas.py -r -i POSCAR0 -k 40
+maelas -r -i POSCAR0 -k 40
 
-where tag -r indicates that you want to generate VASP files for cell relaxation, -i POSCAR0 is the input non-relaxed POSCAR file (you can name it whatever you want) and -k 40 is the length parameter that determines a regular mesh of k-points. It will generate 4 files: POSCAR, INCAR, KPOINTS and vasp_jsub_rlx. Here, one still needs to copy manually the POTCAR file in this folder in order to have all required files for VASP run. The generated file vasp_jsub_rlx is a script to submit jobs in HPC facilities, one can specify some settings in this script by adding more tags in the command line. For instance,
+where tag -r indicates that you want to generate VASP files for cell relaxation, -i POSCAR0 is the input non-relaxed POSCAR file (you can name it whatever you want) and -k 40 is the length parameter that determines a regular mesh of k-points. It will generate 4 files: POSCAR, INCAR, KPOINTS and vasp_jsub_rlx. Here, one still needs to copy manually the POTCAR file in this folder in order to have all required files for VASP run. The generated file vasp_jsub_rlx is a script to submit jobs in HPC facilities, one can specify some settings in this script by adding more tags in the command line. Note that the user might need to modify vasp_jsub_rlx depending on the cluster or local computer queuing system. For instance,
 
-python3 maelas.py -r -i POSCAR0 -k 40 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_rlx
+maelas -r -i POSCAR0 -k 40 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_rlx
 
-where -t 48 indicates that the number of maximum CPU hours for the VASP calculation is 48 hours, -c 24 means that the number of cores for the VASP calculation is 24, -q qprod set to production queue the type of queue in HPC facilities, -a OPEN-00-00 is the project identification number for running jobs in HPC facilities and -f /scratch/example_rlx is the folder where you want to run VASP calculations. All these data are included in the vasp_jsub_rlx file, so one can submit this VASP job inmediately in HPC facilities by typing
+where -t 48 indicates that the number of maximum CPU hours for the VASP calculation is 48 hours, -c 24 means that the number of cores for the VASP calculation is 24, -q qprod set to production queue the type of queue in HPC facilities, -a OPEN-00-00 is the project identification number for running jobs in HPC facilities and -f /scratch/example_rlx is the folder where you want to run VASP calculations. All these data are included in the generated vasp_jsub_rlx file, so one can submit this VASP job immediately in HPC facilities by typing
 
 qsub vasp_jsub_rlx
 
 This procedure might be helpful for high-throughput routines. More options can be added in vasp_jsub_rlx file through the terminal command line, to see them just type
 
-python3 maelas.py -h
+maelas -h
 
-Note that generated INCAR and KPOINTS files contain standard setting for cell relaxation. The user is free to change this setting either directly on the generated files or in the maelas.py.
+Note that generated INCAR and KPOINTS files contain standard setting for cell relaxation. The user might need to change these files in order to include more advanced settings.
 
 In case your structure is already relaxed or you do not want to perform a cell relaxation, then you can skip this step and move to step 2.
 
@@ -99,11 +91,11 @@ In case your structure is already relaxed or you do not want to perform a cell r
 Step 2: Test MAE
 --------------------------------------------------------
 
-It is recommended to verify the Magnetocrystalline Anisotropy Energy (MAE) before the calculation of magentostriction coefficients. In order to test MAE, copy the relaxed POSCAR, POTCAR and maelas.py files in the same folder where you want to generate the input files for VASP jobs. In the terminal, after going to this folder then type
+It is recommended to verify the Magnetocrystalline Anisotropy Energy (MAE) before the calculation of magentostriction coefficients. In order to test MAE, copy the relaxed POSCAR, POTCAR in the same folder where you want to generate the input files for VASP jobs. In the terminal, after going to this folder then type
 
-python3 maelas.py -m -i POSCAR_rlx -k 70 –s1 1 0 0 –s2 0 0 1
+maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1
 
-where -m indicates that you want to generate input VASP files for the calculation of MAE, -i POSCAR_rlx is the initial relaxed POSCAR file (you can name it whatever you want), -k 70 is the length parameter that determines a regular mesh of k-points, -s1 1 0 0 is the first spin direction to calculate MAE: s1x s1y s1z and –s2 0 0 1 is the second spin direction to calculate MAE: s2x s2y s2z . It will generate the following files:
+where -m indicates that you want to generate input VASP files for the calculation of MAE, -i POSCAR_rlx is the initial relaxed POSCAR file (you can name it whatever you want), -k 70 is the length parameter that determines a regular mesh of k-points, -s1 1 0 0 is the first spin direction to calculate MAE: s1x s1y s1z, while -s2 0 0 1 is the second spin direction to calculate MAE: s2x s2y s2z. It will generate the following files:
 
 POSCAR_0_0 (it is the same POSCAR as )
 INCAR_0_C (non-collinear calculation where C=1,2 is the spin orientation case)
@@ -112,24 +104,24 @@ KPOINTS (file for the kpoint generation of VASP)
 vasp_mae, vasp_mae_jsub and vasp_mae_0 (interconnected bash scripts to run VASP calculations automatically)
 vasp_mae_cp_oszicar (bash script to get the calculated OSZICAR_0_0_C files after VASP calculation is finished)
 
-The generated files vasp_mae, vasp_mae_jsub and vasp_mae_0 are interconnected scripts to submit jobs in HPC facilities. One needs only to execute the file vasp_mae in order to run all VASP jobs automatically. You can specify some job settings in these scripts by adding more tags in the command line. For instance,
+The generated files vasp_mae, vasp_mae_jsub and vasp_mae_0 are interconnected scripts to submit jobs in HPC facilities. One needs only to execute the file vasp_mae in order to run all VASP jobs automatically. Note that the user might need to modify vasp_mae_jsub depending on the cluster or local computer queuing system. You can specify some job settings in these scripts by adding more tags in the command line. For instance,
 
-python3 maelas.py -m -i POSCAR_rlx -k 70 –s1 1 0 0 –s2 0 0 1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
+maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
 
 where -t 48 indicates that the number of maximum CPU hours for the VASP calculation is 48 hours,-c 24 means that the number of cores for the VASP calculation is 24, -q qprod set to production queuethe type of queue in HPC facilities, -a OPEN-00-00 is the project identification number for running jobs in HPC facilities and -f /scratch/example_mag is the folder where you want to run VASP calculations. This procedure might be helpful for high-throughput routines. More options can be added in these script files through the terminal command line, to see them just type 
 
-python3 maelas.py –h
+maelas -h
 
 
 ----------------------------------------------------------------------------------------------------
 Step 3: Generation of VASP files for the calculation of anisotropic magnetostriction coefficients
 ----------------------------------------------------------------------------------------------------
 
-Copy the relaxed POSCAR, POTCAR and maelas.py files in the same folder where you want to generate the input files for VASP run. In the terminal, after going to this folder then type
+Copy the relaxed POSCAR and POTCAR in the same folder where you want to generate the input files for VASP run. In the terminal, after going to this folder then type
 
-python3 maelas.py -g -i POSCAR_rlx -k 70 -n 7 -s 0.01
+maelas -g -i POSCAR_rlx -k 70 -n 7 -s 0.01
 
-where -g indicates that you want to generate input VASP files for the calculation of anisotropic magnetostriction coefficients, -i POSCAR_rlx is the initial relaxed POSCAR file (you can name it whatever you want), -k 40 is the length parameter that determines a regular mesh of k-points, -n 7 means that it will generate 7 distorted states for each magentostriction mode and -s 0.01 is the maximum strain applied for distorting the structure. It will generate the following files:
+where -g indicates that you want to generate input VASP files for the calculation of anisotropic magnetostriction coefficients, -i POSCAR_rlx is the initial relaxed POSCAR file (you can name it whatever you want), -k 40 is the length parameter that determines a regular mesh of k-points, -n 7 means that it will generate 7 distorted states for each magentostriction mode and -s 0.01 is the maximum value of the parameter epsilon for the strain tensor to generate the distorted POSCAR files. It will generate the following files:
 
 
 POSCAR_A_B (volume-conserving distorted cell where A=magnetostriction mode, B=1,...,n distorted cell for each magentostriction mode)
@@ -145,15 +137,15 @@ vasp_maelas, vasp_jsub and vasp_0 (interconnected bash scripts to run VASP calcu
 vasp_cp_oszicar (bash script to get calculated OSZICAR_A_B_C files after VASP calculation finish)
 
 
-The generated files vasp_maelas, vasp_jsub and vasp_0 are interconnected scripts to submit jobs in HPC facilities, one can specify some job settings in these scripts by adding more tags in the command line. For instance,
+The generated files vasp_maelas, vasp_jsub and vasp_0 are interconnected scripts to submit jobs in HPC facilities, one can specify some job settings in these scripts by adding more tags in the command line. Note that the user might need to modify vasp_jsub depending on the cluster or local computer queuing system. For instance,
 
-python3 maelas.py -g -i POSCAR_rlx -k 70 -n 7 -s 0.1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
+maelas -g -i POSCAR_rlx -k 70 -n 7 -s 0.1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
 
-where -t 48 indicates that the number of maximum CPU hours for the VASP calculation is 48 hours, -c 24 means that the number of cores for the VASP calculation is 24, -q qprod set to production queue the type of queue in HPC facilities, -a OPEN-00-00 is the project identification number for running jobs in HPC facilities and -f /scratch/example_mag is the folder where you want to run VASP calculations.This procedure might be helpful for high-throughput routines. More options can be added in these script files through the terminal command line, to see them just type
+where -t 48 indicates that the number of maximum CPU hours for the VASP calculation is 48 hours, -c 24 means that the number of cores for the VASP calculation is 24, -q qprod set to production queue the type of queue in HPC facilities, -a OPEN-00-00 is the project identification number for running jobs in HPC facilities and -f /scratch/example_mag is the folder where you want to run VASP calculations. This procedure might be helpful for high-throughput routines. More options can be added in these script files through the terminal command line, to see them just type
 
-python3 maelas.py -h
+maelas -h
 
-Note that generated INCAR_std, INCAR_A_C and KPOINTS files contain standard setting for collinear and non-collinear calculations. The user is free to change this setting either directly on the generated files or in the maelas.py.
+Note that generated INCAR_std, INCAR_A_C and KPOINTS files contain standard setting for collinear and non-collinear calculations. The user can modify these files in order to add more advanced settings.
 
 
 -----------------------------
@@ -164,9 +156,9 @@ For each generated POSCAR_A_B one should run first a collinear calculation using
 
 ./vasp_maelas
 
-This will launch independent jobs for each POSCAR_A_B. Each job will run 3 VASP calculations: a collinear one to generate WAVECAR and CHGCAR files, and two non-collinear for INCAR_A_1 and INCAR_A_2. The jobs will be executed in subfolders P_A_B inside the folder indicated by tag -f in the step 2.
+Note that the user might need to modify vasp_jsub depending on the cluster or local computer queuing system. This will launch independent jobs for each POSCAR_A_B. Each job will run 3 VASP calculations: a collinear one to generate WAVECAR and CHGCAR files, and two non-collinear for INCAR_A_1 and INCAR_A_2. The jobs will be executed in subfolders P_A_B inside the folder indicated by tag -f in the step 3.
 
-Once all jobs are finished, then one can easily get calculated non-collinear OSZICAR files (needed in step 4), by running the bash script
+Once all jobs are finished, then one can easily get calculated non-collinear OSZICAR files (needed in step 5), by running the bash script
 
 ./vasp_cp_oszicar
 
@@ -178,32 +170,29 @@ Step 5: Derivation of anisotropic magnetostriction coefficients from the energy 
 ---------------------------------------------------------------------------------------------------------------
 
 Finally, to derive the anisotropic magnetostriction coefficients one needs to have in the same folder the following files:
-    
 
-maelas.py
+POSCAR_rlx (the relaxed POSCAR file used as input in step 3)
 
-POSCAR_rlx (the relaxed POSCAR file used as input in step 2)
+POSCAR_A_B (distorted POSCAR generated in step 3)
 
-POSCAR_A_B (distorted POSCAR generated in step 2)
-
-OSZICAR_A_B_C (non-collinear OSZICAR files calculated in step 3 for each POSCAR_A_B and INCAR_A_C)
+OSZICAR_A_B_C (non-collinear OSZICAR files calculated in step 4 for each POSCAR_A_B and INCAR_A_C)
 
 
 Next, in the terminal go to this folder a type
 
-python3 maelas.py -d -i POSCAR_rlx -n 7
+maelas -d -i POSCAR_rlx -n 7
 
-where -d indicates that you want to derive the anisotropic magnetostriction coefficients from the calculated OSZICAR files, -i POSCAR_rlx is the relaxed POSCAR file used as input in step 2 (you can name it whatever you want) and -n 7 is the number of distorted states for each magentostriction mode used in step 2.
+where -d indicates that you want to derive the anisotropic magnetostriction coefficients from the calculated OSZICAR files, -i POSCAR_rlx is the relaxed POSCAR file used as input in step 3 (you can name it whatever you want) and -n 7 is the number of distorted states for each magentostriction mode used in step 3.
 
 It will derive and print the calculated spin-dependent magnetostriction coefficients in the terminal. If you want to print it in a file (for example, "results.out"), then you can type
 
-python3 maelas.py -d -i POSCAR_rlx -n 7 > results.out
+maelas -d -i POSCAR_rlx -n 7 > results.out
 
 Additionally, the energy values extracted from OSZICAR_A_B_C files are shown in generated files ene_A_C.dat and fit_ene_A_C.png. The energy difference between the two spin configurations for each magnetostriction mode are shown in Fig. dE_A.png.
 
 If the elastic tensor is provided as input, then MAELAS can calculate the magnetoelastic constants. To do so, one needs to add tags -b and -e with the name of the file containing the elastic tensor with the same format and units (GPa) as it is written by AELAS code (file ELADAT). You can check this format in the Examples folder. Hence, you could type
 
-python3 maelas.py -d -i POSCAR_rlx -n 7 -b -e ELADAT
+maelas -d -i POSCAR_rlx -n 7 -b -e ELADAT
 
 where ELADAT is the name of the file (it could be whatever name you want) with the elastic tensor data.
 
@@ -214,7 +203,7 @@ Summary: In a nutshell
 
 Step 1: Cell relaxation
     
-python3 maelas.py -r -i POSCAR0 -k 40
+maelas -r -i POSCAR0 -k 40
 
 qsub vasp_jsub_rlx
 
@@ -222,7 +211,7 @@ qsub vasp_jsub_rlx
 
 Step 2: Test MAE
 
-python3 maelas.py -m -i POSCAR_rlx -k 70 –s1 1 0 0 –s2 0 0 1 
+maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1 
 
 ./vasp_mae
 
@@ -232,7 +221,7 @@ python3 maelas.py -m -i POSCAR_rlx -k 70 –s1 1 0 0 –s2 0 0 1
 
 Step 3: Generate VASP inputs for calculation of magnetostriction coefficients
 
-python3 maelas.py -g -i POSCAR_rlx -k 70 -n 7 -s 0.1
+maelas -g -i POSCAR_rlx -k 70 -n 7 -s 0.1
 
 
 
@@ -246,13 +235,13 @@ Step 4: Run VASP calculations
 
 Step 5a: Derivation of anisotropic magnetostriction coefficients
 
-python3 maelas.py -d -i POSCAR_rlx -n 7
+maelas -d -i POSCAR_rlx -n 7
 
 
 
 Step 5b: Derivation of anisotropic magnetostriction coefficients and magnetoelastic constants
 
-python3 maelas.py -d -i POSCAR_rlx -n 7 -b -e ELADAT  
+maelas -d -i POSCAR_rlx -n 7 -b -e ELADAT  
 
 
 -------------------------------------------------------
@@ -261,7 +250,7 @@ Full list of arguments in MAELAS code
 
 User can see all possible optional arguments typing
 
-python3 maelas.py -h
+maelas -h
 
 Doing so, it will print the following text in the terminal:
 
@@ -281,8 +270,8 @@ optional arguments:
   -n NDIST        Number of distorted states for each magnetostriction mode
                   (default: 7)
                   
-  -s STRAIN       Maximum strain to generate the distorted POSCAR files
-                  (default: 0.01)
+  -s STRAIN     Maximum value of the parameter epsilon for the strain tensor to generate the distorted POSCAR files (default: 0.01)
+
                   
   -k KP           VASP automatic k-point mesh generation to create the KPOINTS
                   file (default: 60)
@@ -336,7 +325,9 @@ optional arguments:
   -sp SYMPRE      Tolerance for symmetry finding (default: 0.01)
   
   -sa SYMANG      Angle tolerance for symmetry finding (default: 5.0)
-                  
+
+  -sg SG0 	  Space group number 1-230. If it is equal to 0, then it will be determined by a symmetry analysis (default: 0)
+             
   -c CORE         Number of cores for the VASP calculation (default: 24)
   
   -t TIME         Number of maximum CPU hours for the VASP calculation
