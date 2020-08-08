@@ -1,0 +1,48 @@
+Job Id: 10121832.isrv5
+    Job_Name = job_rlx
+    resources_used.cpupercent = 953
+    resources_used.cput = 00:53:27
+    resources_used.mem = 1653392kb
+    resources_used.ncpus = 24
+    resources_used.vmem = 14333620kb
+    resources_used.walltime = 00:02:16
+    job_state = F
+    queue = qexp
+    server = isrv5
+    Account_Name = QEXP
+    Checkpoint = u
+    ctime = Fri Aug  7 16:22:13 2020
+    exec_host = r21u18n591/0*24
+    exec_vnode = (r21u18n591:ncpus=24)
+    Hold_Types = n
+    Join_Path = oe
+    Keep_Files = n
+    Mail_Points = a
+    mtime = Fri Aug  7 16:24:47 2020
+    Priority = 0
+    qtime = Fri Aug  7 16:22:13 2020
+    Rerunable = True
+    Resource_List.fairshare = 0
+    Resource_List.mpiprocs = 24
+    Resource_List.ncpus = 24
+    Resource_List.nice = 15
+    Resource_List.nodect = 1
+    Resource_List.place = free
+    Resource_List.select = 1:ncpus=24:mpiprocs=24:ompthreads=1
+    Resource_List.walltime = 01:00:00
+    stime = Fri Aug  7 16:22:27 2020
+    session_id = 13297
+    Shell_Path_List = /bin/bash
+    jobdir = /home/nie0061
+    substate = 92
+    comment = Job run at Fri Aug 07 at 16:22 on (r21u18n591:ncpus=24) and finis
+	hed
+    etime = Fri Aug  7 16:22:13 2020
+    run_count = 1
+    eligible_time = 00:00:00
+    Stageout_status = 1
+    Exit_status = 0
+    Submit_arguments = vasp_jsub_rlx
+    history_timestamp = 1596810287
+    project = _pbs_project_default
+

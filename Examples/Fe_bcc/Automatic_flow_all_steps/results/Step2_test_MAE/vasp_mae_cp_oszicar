@@ -1,0 +1,11 @@
+#!/bin/bash
+path_files=/scratch/work/project/open-17-14/nie0061/maelas/example_Fe_qprod_k60/step2
+
+for i in {0..0}
+do
+for j in {0..0}
+do
+cp ${path_files}/P_${i}_$j/ncl_1/OSZICAR ./OSZICAR_${i}_${j}_1
+cp ${path_files}/P_${i}_$j/ncl_2/OSZICAR ./OSZICAR_${i}_${j}_2
+done
+done

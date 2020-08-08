@@ -1,0 +1,50 @@
+Job Id: 10121845.isrv5
+    Job_Name = job_0_0
+    resources_used.cpupercent = 2402
+    resources_used.cput = 21:47:17
+    resources_used.mem = 20233336kb
+    resources_used.ncpus = 24
+    resources_used.vmem = 32834492kb
+    resources_used.walltime = 00:54:36
+    job_state = F
+    queue = qprod
+    server = isrv5
+    Account_Name = OPEN-19-14
+    Checkpoint = u
+    ctime = Fri Aug  7 16:25:05 2020
+    exec_host = r34u30n935/0*24
+    exec_vnode = (r34u30n935:ncpus=24)
+    Hold_Types = n
+    Join_Path = oe
+    Keep_Files = n
+    Mail_Points = a
+    mtime = Fri Aug  7 17:25:03 2020
+    Priority = 0
+    qtime = Fri Aug  7 16:25:05 2020
+    Rerunable = True
+    Resource_List.fairshare = 985976
+    Resource_List.mpiprocs = 24
+    Resource_List.ncpus = 24
+    Resource_List.nice = 15
+    Resource_List.nodect = 1
+    Resource_List.place = free
+    Resource_List.select = 1:ncpus=24:mpiprocs=24:ompthreads=1
+    Resource_List.walltime = 48:00:00
+    stime = Fri Aug  7 16:30:21 2020
+    session_id = 27199
+    Shell_Path_List = /bin/bash
+    jobdir = /home/nie0061
+    substate = 92
+    comment = Job run at Fri Aug 07 at 16:30 on (r34u30n935:ncpus=24) and finis
+	hed
+    etime = Fri Aug  7 16:25:05 2020
+    run_count = 1
+    eligible_time = 00:02:10
+    Stageout_status = 1
+    Exit_status = 0
+    Submit_arguments = vasp_mae_jsub
+    estimated.exec_vnode = (r1i7n14:ncpus=24)
+    estimated.start_time = Fri Aug  7 16:33:36 2020
+    history_timestamp = 1596813903
+    project = _pbs_project_default
+

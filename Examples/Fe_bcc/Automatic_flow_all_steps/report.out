@@ -1,0 +1,28 @@
+running step1 ...
+pid_number=10121832.isrv5
+job_state = Q
+running step2 ...
+pid_number=10121845.isrv5
+job_state = Q
+Test MAE:
+Total energy of spin direction 1 is in file OSZICAR_0_0_1
+Total energy of spin direction 2 is in file OSZICAR_0_0_2
+running step3 ...
+running step4 ...
+pid_number_1_1=10122038.isrv5
+pid_number_1_2=10122039.isrv5
+pid_number_1_3=10122040.isrv5
+pid_number_1_4=10122041.isrv5
+pid_number_1_5=10122042.isrv5
+pid_number_1_6=10122043.isrv5
+pid_number_1_7=10122044.isrv5
+pid_number_2_1=10122045.isrv5
+pid_number_2_2=10122046.isrv5
+pid_number_2_3=10122047.isrv5
+pid_number_2_4=10122048.isrv5
+pid_number_2_5=10122049.isrv5
+pid_number_2_6=10122050.isrv5
+pid_number_2_7=10122051.isrv5
+running step5a ...
+running step5b ...
+program finished

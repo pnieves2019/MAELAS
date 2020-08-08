@@ -1,0 +1,19 @@
+#!/bin/bash
+mpiexec.hydra -np 24 vasp_std > vasp.out
+fold1=ncl_1
+fold2=ncl_2
+cp WAVECAR ./${fold1}/
+cp CHGCAR  ./${fold1}/
+nbands=`grep "NBANDS" OUTCAR | awk '{printf"%d",$15}'`
+nbands=`echo "2*$nbands" | bc -l | awk '{printf"%d",$1}'`
+cd ./${fold1}
+sed -i "s/nbands/$nbands/" INCAR
+mpiexec.hydra -np 24 vasp_ncl > vasp.out
+cd ..
+cp WAVECAR ./${fold2}/
+cp CHGCAR  ./${fold2}/
+nbands=`grep "NBANDS" OUTCAR | awk '{printf"%d",$15}'`
+nbands=`echo "2*$nbands" | bc -l | awk '{printf"%d",$1}'`
+cd ./${fold2}
+sed -i "s/nbands/$nbands/" INCAR
+mpiexec.hydra -np 24 vasp_ncl > vasp.out

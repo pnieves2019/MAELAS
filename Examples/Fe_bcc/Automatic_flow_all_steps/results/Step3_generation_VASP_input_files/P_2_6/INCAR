@@ -1,0 +1,22 @@
+ISTART = 0
+LORBIT = 11
+ISYM = -1
+PREC  = Accurate
+EDIFF  = 1.e-09
+NELM   = 100
+NELMIN = 4
+# LDAU = .TRUE.
+# LDAUL =
+# LDAUU =
+# LDAUJ = 
+# LDAUTYPE = 2
+ADDGRID = TRUE
+ISMEAR = -5
+# SIGMA  = 0.10
+ISPIN  = 2
+LMAXMIX = 4 ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6
+GGA_COMPAT = FALSE
+LREAL = FALSE
+LCHARG = TRUE
+LWAVE = TRUE
+MAGMOM = 2*5
