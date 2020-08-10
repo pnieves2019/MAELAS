@@ -1,3 +1,4 @@
+![GitHub Logo](logo.png)
 
 MAELAS code v1.0
 
