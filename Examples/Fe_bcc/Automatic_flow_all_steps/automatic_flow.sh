@@ -48,7 +48,7 @@ jobstate=`grep "job_state = " job_summary | awk '{print $3}'`
 
 echo job_state = $jobstate
 
-while [ $jobstate != "F" ]
+while [ "${jobstate}" != "F" ]
  do
    rm job_summary
    qstat -f ${line} -x > job_summary
