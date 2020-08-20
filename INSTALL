@@ -1,0 +1,12 @@
+You need python3 and pip3 for this
+
+To install run:
+python3 setup.py install
+
+With optional flags:
+--user                  :  Install in PYTHONUSERBASE directory (default $HOME/.local)
+                        :  Recomended to run :
+                        :  $ PYTHONUSERBASE=${MYDESTINATION} python3 setup.py install --user
+--install_reqs          :  Installing requirements
+--pipoptions  "OPTIONS" :  Extra options for pip3
+--verbose               :  Verbose installation
