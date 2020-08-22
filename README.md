@@ -29,9 +29,9 @@ sudo apt-get install python3
 
 Note that in some HPC clusters you might need to load the Python module (ml Python). 
 
-The MAELAS code can be easily installed with pip3 as
+To install MAELAS code, download and extract the .zip file, go to the folder that contains the file ```setup.py``` and type
 ```bash
-pip3 install maelas
+python3 setup.py install --user
 ```
 
 This procedure will also install all required dependecies automatically 
@@ -44,11 +44,13 @@ argparse(>=1.4.0)
 numpy(>=1.18.4)
 matplotlib(>=3.2.1)
 scipy(>=1.4.1)
+setuptools(>=40.8.0)
 ```
 
-The executable file "maelas" is installed in the folder ```/home/$USER/.local/bin/``` where ```$USER``` is the name of your user name folder. This folder should be added to the ```PATH``` variable by adding the following line in the file ```/home/user_name/.bashrc```  
+More available options for the installation can be found in the file ```INSTALL```.
+By default, the executable file "maelas" is installed in the folder ```/home/$USER/.local/bin/``` where ```$USER``` is the name of your user name folder. This folder should be included to the ```PATH``` variable by adding the following line in the file ```/home/$USER/.bashrc```  
 ```bash
-export PATH=/home/user_name/.local/bin/:$PATH
+export PATH=/home/$USER/.local/bin/:$PATH
 ```
 Then you should close the terminal and open the terminal again.
 
