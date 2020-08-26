@@ -75,7 +75,7 @@ If your initial ```POSCAR``` is not relaxed and you want to perform a cell relax
 ```bash
 maelas -r -i POSCAR0 -k 40
 ```
-where tag ```-r``` indicates that you want to generate VASP files for cell relaxation, ```-i POSCAR0``` is the input non-relaxed ```POSCAR``` file (you can name it whatever you want) and ```-k 40``` is the length parameter that determines a regular mesh of k-points. It will generate 4 files: ```POSCAR```, ```INCAR```, ```KPOINTS```, and ```vasp_jsub_rlx```. Here, one still needs to copy manually the ```POTCAR``` file in this folder in order to have all required files for VASP run. The generated file ```vasp_jsub_rlx``` is a script to submit jobs in HPC facilities, one can specify some settings in this script by adding more tags in the command line. Note that the user might need to modify ```vasp_jsub_rlx``` depending on the cluster or local computer queuing system. For instance,
+where tag ```-r``` indicates that you want to generate VASP files for cell relaxation, ```-i POSCAR0``` is the input non-relaxed ```POSCAR``` file (you can name it whatever you want) and ```-k 40``` is the length parameter that determines a regular mesh of k-points. It will generate 4 files: ```POSCAR```, ```INCAR```, ```KPOINTS```, and ```vasp_jsub_rlx```. Here, one still needs to copy manually the ```POTCAR``` file in this folder in order to have all required files for VASP run. The generated file ```vasp_jsub_rlx``` is a script to submit jobs in HPC facilities, one can specify some settings in this script by adding more tags in the command line. Note that the user might need to modify ```vasp_jsub_rlx``` (it is in PBS Pro format) depending on the cluster or local computer batch scheduling. For instance,
 ```bash
 maelas -r -i POSCAR0 -k 40 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_rlx
 ```
@@ -107,7 +107,7 @@ where ```-m``` indicates that you want to generate input VASP files for the calc
 * ```vasp_mae```, ```vasp_mae_jsub```, and ```vasp_mae_0``` (interconnected bash scripts to run VASP calculations automatically)
 * ```vasp_mae_cp_oszicar``` (bash script to get the calculated ```OSZICAR_0_0_C``` files after VASP calculation is finished)
 
-The generated files vasp_mae, vasp_mae_jsub and vasp_mae_0 are interconnected scripts to submit jobs in HPC facilities. One needs only to execute the file vasp_mae in order to run all VASP jobs automatically. Note that the user might need to modify ```vasp_mae_jsub``` depending on the cluster or local computer queuing system. You can specify some job settings in these scripts by adding more tags in the command line. For instance,
+The generated files vasp_mae, vasp_mae_jsub and vasp_mae_0 are interconnected scripts to submit jobs in HPC facilities. One needs only to execute the file vasp_mae in order to run all VASP jobs automatically. Note that the user might need to modify ```vasp_mae_jsub``` (it is in PBS Pro format) depending on the cluster or local computer batch scheduling. You can specify some job settings in these scripts by adding more tags in the command line. For instance,
 ```bash
 maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
 ```
@@ -135,7 +135,7 @@ where ```-g``` indicates that you want to generate input VASP files for the calc
 * ```vasp_maelas```, ```vasp_jsub```, and ```vasp_0``` (interconnected bash scripts to run VASP calculations automatically)
 * ```vasp_cp_oszicar``` (bash script to get calculated ```OSZICAR_A_B_C``` files after VASP calculation finish)
 
-The generated files ```vasp_maelas```, ```vasp_jsub``` and ```vasp_0``` are interconnected scripts to submit jobs in HPC facilities, one can specify some job settings in these scripts by adding more tags in the command line. Note that the user might need to modify ```vasp_jsub``` depending on the cluster or local computer queuing system. For instance,
+The generated files ```vasp_maelas```, ```vasp_jsub``` and ```vasp_0``` are interconnected scripts to submit jobs in HPC facilities, one can specify some job settings in these scripts by adding more tags in the command line. Note that the user might need to modify ```vasp_jsub``` (it is in PBS Pro format) depending on the cluster or local computer batch scheduling. For instance,
 ```bash
 maelas -g -i POSCAR_rlx -k 70 -n 7 -s 0.1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
 ```
