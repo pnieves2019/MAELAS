@@ -765,9 +765,9 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         #lambda_epsilon_2
 
             latt_par = structure2b.lattice.matrix
-            
+
             const = (1/(1-(strain1*0.5)**2))**(1/3)
-            
+
             a11 = const
             a12 = 0.0
             a13 = const*strain1*0.5*(latt_par[2][2]/latt_par[0][0])
@@ -1552,13 +1552,13 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         print("X minimum = -b/(2*a) =", l2)
         print("")
 
-        
+
         aa0 = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
         structure1 = aa0.get_conventional_standard_structure(international_monoclinic=True)
 
         bb0 = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
-        structure2 = bb0.apply_transformation(structure1) 
-        
+        structure2 = bb0.apply_transformation(structure1)
+
         if 177 <= sg <= 194:
             # Convention: lattice vector a1 along x-axis
             angle = -math.pi*(60.0/180.0)
@@ -1566,16 +1566,16 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
             structure2b = dd.apply_transformation(structure2)
         else:
             structure2b = structure2
-        
-        
+
+
         latt_par = structure2b.lattice.matrix
-            
+
         latt_a = latt_par[0][0]
         latt_c = latt_par[2][2]
-        
-        
+
+
         eta_par = (2.0*latt_a*latt_c)/(latt_a**2+latt_c**2)
-        
+
         lambda_epsilon_2 = 2.0*((l1-l2)/(l1+l2))*(1.0/eta_par)
 
 
@@ -2102,9 +2102,9 @@ elif 149 <= sg <= 167:
         #lambda_gamma_2
 
             latt_par = structure2b.lattice.matrix
-            
+
             const = (1/(1-(strain1*0.5)**2))**(1/3)
-            
+
             a11 = const
             a12 = 0.0
             a13 = const*strain1*0.5*(latt_par[2][2]/latt_par[0][0])
@@ -2114,7 +2114,7 @@ elif 149 <= sg <= 167:
             a31 = const*strain1*0.5*(latt_par[0][0]/latt_par[2][2])
             a32 = 0.0
             a33 = const
-            
+
 
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
             structure6 = cc.apply_transformation(structure2b)
@@ -2893,28 +2893,28 @@ elif 149 <= sg <= 167:
         print("X minimum = -b/(2*a) =", l2)
         print("")
 
-        
+
         aa0 = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
         structure1 = aa0.get_conventional_standard_structure(international_monoclinic=True)
 
         bb0 = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
-        structure2 = bb0.apply_transformation(structure1) 
-        
+        structure2 = bb0.apply_transformation(structure1)
+
         # Convention: lattice vector a1 along x-axis
         angle = -math.pi*(60.0/180.0)
         dd = DeformStructureTransformation(deformation=((math.cos(angle), math.sin(angle), 0), (-math.sin(angle), math.cos(angle), 0), (0, 0, 1)))
         structure2b = dd.apply_transformation(structure2)
-        
-        
+
+
         latt_par = structure2b.lattice.matrix
-            
+
         latt_a = latt_par[0][0]
         latt_c = latt_par[2][2]
-        
-        
+
+
         eta_par = (latt_a*latt_c)/(latt_a**2+latt_c**2)
-        
-        
+
+
         lambda_gamma_2 = 2.0*((l1 -l2)/(l1+l2))*(1.0/eta_par)
 
 
@@ -3065,8 +3065,8 @@ elif 149 <= sg <= 167:
         print("")
 
         eta_par = (latt_a*latt_c)/(2.0*(latt_a**2+latt_c**2))
-        
-        
+
+
         lambda_1_2 = 2.0*((l1 -l2)/(l1+l2))*(1.0/eta_par)
 
 
@@ -3215,7 +3215,7 @@ elif 149 <= sg <= 167:
         print("")
 
         eta_par = (latt_a*latt_c)/(latt_a**2+latt_c**2)
-        
+
         lambda_2_1 = 2.0*((l1 -l2)/(l1+l2))*(1.0/eta_par)
 
 
@@ -3402,17 +3402,7 @@ elif 16 <= sg <= 74:
         # AELAS and IEEE lattice convention: c<a<b
 
 
-        latt0 = structure2.lattice.matrix
-        coordsnew = np.zeros((len(structure2.species), 3))
 
-        for i in range(len(structure2.species)):
-            coordsnew[i][0] = float(structure2.frac_coords[i][1])
-            coordsnew[i][1] = float(structure2.frac_coords[i][2])
-            coordsnew[i][2] = float(structure2.frac_coords[i][0])
-
-
-        lattice = Lattice.from_parameters(a=latt0[1][1], b=latt0[2][2], c=latt0[0][0], alpha=90, beta=90, gamma=90)
-        structure2b = Structure(lattice, structure2.species, coordsnew)
 
 
         for i in range(int(args.ndist[0])):
@@ -3432,7 +3422,7 @@ elif 16 <= sg <= 74:
             a2 = 1/math.sqrt(a1)
             a3 = a2
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
-            structure3 = dd.apply_transformation(structure2b)
+            structure3 = dd.apply_transformation(structure2)
             pos_name3 = "POSCAR_1_" + str(i+1)
 
             structure33 = Poscar(structure3)
@@ -3445,7 +3435,7 @@ elif 16 <= sg <= 74:
             a2 = 1/math.sqrt(a1)
             a3 = a2
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
-            structure4 = dd.apply_transformation(structure2b)
+            structure4 = dd.apply_transformation(structure2)
             pos_name4 = "POSCAR_2_" + str(i+1)
 
             structure44 = Poscar(structure4)
@@ -3457,7 +3447,7 @@ elif 16 <= sg <= 74:
             a1 = 1/math.sqrt(a2)
             a3 = a1
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
-            structure5 = dd.apply_transformation(structure2b)
+            structure5 = dd.apply_transformation(structure2)
             pos_name5 = "POSCAR_3_" + str(i+1)
 
             structure55 = Poscar(structure5)
@@ -3469,7 +3459,7 @@ elif 16 <= sg <= 74:
             a1 = 1/math.sqrt(a2)
             a3 = a1
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
-            structure6 = dd.apply_transformation(structure2b)
+            structure6 = dd.apply_transformation(structure2)
             pos_name6 = "POSCAR_4_" + str(i+1)
 
             structure66 = Poscar(structure6)
@@ -3482,7 +3472,7 @@ elif 16 <= sg <= 74:
             a1 = 1/math.sqrt(a3)
             a2 = a1
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
-            structure7 = dd.apply_transformation(structure2b)
+            structure7 = dd.apply_transformation(structure2)
             pos_name7 = "POSCAR_5_" + str(i+1)
 
             structure77 = Poscar(structure7)
@@ -3494,7 +3484,7 @@ elif 16 <= sg <= 74:
             a1 = 1/math.sqrt(a3)
             a2 = a1
             dd = DeformStructureTransformation(deformation=((a1, 0, 0), (0, a2, 0), (0, 0, a3)))
-            structure8 = dd.apply_transformation(structure2b)
+            structure8 = dd.apply_transformation(structure2)
             pos_name8 = "POSCAR_6_" + str(i+1)
 
             structure88 = Poscar(structure8)
@@ -3502,10 +3492,10 @@ elif 16 <= sg <= 74:
 
         #lambda_7
 
-            latt_par = structure2b.lattice.matrix
-            
+            latt_par = structure2.lattice.matrix
+
             const = (1/(1-(strain1*0.5)**2))**(1/3)
-            
+
             a11 = const
             a12 = const*strain1*0.5*(latt_par[1][1]/latt_par[0][0])
             a13 = 0.0
@@ -3514,19 +3504,19 @@ elif 16 <= sg <= 74:
             a23 = 0.0
             a31 = 0.0
             a32 = 0.0
-            a33 = const 
-            
+            a33 = const
+
 
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
-            structure9 = cc.apply_transformation(structure2b)
+            structure9 = cc.apply_transformation(structure2)
             pos_name9 = "POSCAR_7_" + str(i+1)
 
             structure99 = Poscar(structure9)
             structure99.write_file(filename = pos_name9,significant_figures=16)
 
         #lambda_8
-                 
-            
+
+
             const = (1/(1-(strain1*0.5)**2))**(1/3)
 
             a11 = const
@@ -3540,7 +3530,7 @@ elif 16 <= sg <= 74:
             a33 = const
 
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
-            structure10 = cc.apply_transformation(structure2b)
+            structure10 = cc.apply_transformation(structure2)
             pos_name10 = "POSCAR_8_" + str(i+1)
 
             structure1010 = Poscar(structure10)
@@ -3562,7 +3552,7 @@ elif 16 <= sg <= 74:
             a33 = const
 
             cc = DeformStructureTransformation(deformation=((a11, a12, a13), (a21, a22, a23), (a31, a32, a33)))
-            structure11 = cc.apply_transformation(structure2b)
+            structure11 = cc.apply_transformation(structure2)
             pos_name11 = "POSCAR_9_" + str(i+1)
 
             structure1111 = Poscar(structure11)
@@ -3896,27 +3886,17 @@ elif 16 <= sg <= 74:
 
         bb0 = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
         structure2 = bb0.apply_transformation(structure1)
-           
-        
-        latt0 = structure2.lattice.matrix
-        coordsnew = np.zeros((len(structure2.species), 3))
-
-        for i in range(len(structure2.species)):
-            coordsnew[i][0] = float(structure2.frac_coords[i][1])
-            coordsnew[i][1] = float(structure2.frac_coords[i][2])
-            coordsnew[i][2] = float(structure2.frac_coords[i][0])
 
 
-        lattice = Lattice.from_parameters(a=latt0[1][1], b=latt0[2][2], c=latt0[0][0], alpha=90, beta=90, gamma=90)
-        structure2b = Structure(lattice, structure2.species, coordsnew)
-        
-        latt_par = structure2b.lattice.matrix
-        
+
+
+        latt_par = structure2.lattice.matrix
+
         latt_a = latt_par[0][0]
         latt_b = latt_par[1][1]
         latt_c = latt_par[2][2]
-        
-        
+
+
         for i in range(1,10):
 
 
@@ -4084,57 +4064,57 @@ elif 16 <= sg <= 74:
 
 
             if i == 7:
-                
+
                 lmb_1 = lambda_ortho[0]
-                
+
                 lmb_2 = lambda_ortho[1]
-                
+
                 lmb_3 = lambda_ortho[2]
-                
+
                 lmb_4 = lambda_ortho[3]
-                
+
                 lmb_7_1 = ((latt_a**2+latt_b**2)*(l1 -l2))/(latt_a*latt_b*(l1+l2))
-                
+
                 lmb_7_2 =((latt_a-latt_b)*(latt_a*(lmb_1+lmb_2)-latt_b*(lmb_3+lmb_4)))/(4*latt_a*latt_b)
-                
+
                 lmb_7 = lmb_7_1 - lmb_7_2
-                
+
                 lambda_ortho += [lmb_7]
-            
+
             elif i == 8:
-                
+
                 lmb_1 = lambda_ortho[0]
-                
+
                 lmb_5 = lambda_ortho[4]
-                
+
                 lmb_8_1 = ((latt_a**2+latt_c**2)*(l1 -l2))/(latt_a*latt_c*(l1+l2))
-                
+
                 lmb_8_2 =((latt_a-latt_c)*(latt_a*lmb_1-latt_c*lmb_5))/(4*latt_a*latt_c)
-                
+
                 lmb_8 = lmb_8_1 - lmb_8_2
-                
+
                 lambda_ortho += [lmb_8]
-                   
-                
+
+
             elif i == 9:
-                
+
                 lmb_4 = lambda_ortho[3]
-                
+
                 lmb_6 = lambda_ortho[5]
-                
+
                 lmb_9_1 = ((latt_b**2+latt_c**2)*(l1 -l2))/(latt_b*latt_c*(l1+l2))
-                
+
                 lmb_9_2 =((latt_b-latt_c)*(latt_b*lmb_4-latt_c*lmb_6))/(4*latt_b*latt_c)
-                
+
                 lmb_9 = lmb_9_1 - lmb_9_2
-                
+
                 lambda_ortho += [lmb_9]
-                
-                
-                
+
+
+
             else:
-                
-                lambda_ortho += [2.0*((l1 -l2)/(l1+l2))] 
+
+                lambda_ortho += [2.0*((l1 -l2)/(l1+l2))]
 
 
         print(" ")
@@ -4149,8 +4129,8 @@ elif 16 <= sg <= 74:
 
             print("\u03BB",i+1," =", lambda_ortho[i]*1e6,u'x 10\u207B\u2076')
             print(" ")
-            
-        
+
+
 
         if args.delas == True:
 
