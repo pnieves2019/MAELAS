@@ -54,7 +54,7 @@ class Relaxation:
                     #print('Material contains a f-element =', str(structure2.species[i]))
                     self.lmax = 6
 
-        self.inc_rlx_list = ['ISTART = 0\n', 'NSW = 40\n', 'IBRION = 1\n', 'ISIF = 3\n', 'EDIFFG = -0.001\n', '# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n', 'LCHARG = FALSE\n', 'LWAVE = FALSE\n', 'PREC  = Normal\n', 'EDIFF  = 1.e-06\n', 'NELM   = 100\n', 'NELMIN = 4\n', 'ISMEAR = 1\n', 'SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', self.lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n']
+        self.inc_rlx_list = ['ISTART = 0\n', 'NSW = 40\n', 'ENCUT = 520\n','IBRION = 1\n', 'ISIF = 3\n', 'EDIFFG = -0.001\n', '# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n', 'LCHARG = FALSE\n', 'LWAVE = FALSE\n', 'PREC  = Normal\n', 'EDIFF  = 1.e-06\n', 'NELM   = 100\n', 'NELMIN = 4\n', 'ISMEAR = 1\n', 'SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', self.lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n']
         path_inc_rlx = 'INCAR'
         inc_rlx = open(path_inc_rlx,'w')
         for entry in self.inc_rlx_list:
