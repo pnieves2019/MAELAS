@@ -5,7 +5,7 @@ EXAMPLE: Fe bcc (automatic flow)
 
 In this folder there is a procedure to run all steps in an automatic way using the bash script called "automatic_flow.sh".
 
-The POSCAR and POTCAR files are the only inputs that we need to calculate the anisotropic magnetostriction coefficients. 
+The POSCAR and POTCAR files are the only inputs that we need to calculate the anisotropic magnetostrictive coefficients. 
 Here, we also include the file ELADAT that contains the elastic tensor that will be used to calculate the magnetoelastic constants in the last step. 
 The POSCAR (called POSCAR_Fe_bcc) and ELADAT files should be in the same folder as the bash script automatic_flow.sh.
 The POTCAR is copied from a folder containing VASP potentials which is set in the beginning of the script.

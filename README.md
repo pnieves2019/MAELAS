@@ -8,7 +8,7 @@ Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. L
 WHAT IS MAELAS CODE?
 -------------------------
 
-MAELAS code is a software to calculate anisotropic magnetostriction coefficients and magnetoelastic constants up to second order. It generates required input files for VASP code to perform Density Functional Theory calculations, and it deduces the value of magnetostriction coefficients from the calculated energies given by VASP. If the elastic tensor is provided, then it can also calculate the magnetoelastic constants.
+MAELAS code is a software to calculate anisotropic magnetostrictive coefficients and magnetoelastic constants up to second order. It generates required input files for VASP code to perform Density Functional Theory calculations, and it deduces the value of magnetostrictive coefficients from the calculated energies given by VASP. If the elastic tensor is provided, then it can also calculate the magnetoelastic constants.
 
 MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.
 
@@ -118,7 +118,7 @@ maelas -h
 ```
 
 ----------------------------------------------------------------------------------------------------
-Step 3: Generation of VASP files for the calculation of anisotropic magnetostriction coefficients
+Step 3: Generation of VASP files for the calculation of anisotropic magnetostrictive coefficients
 ----------------------------------------------------------------------------------------------------
 
 Copy the relaxed ```POSCAR``` and ```POTCAR``` in the same folder where you want to generate the input files for VASP run. In the terminal, after going to this folder then type
@@ -126,7 +126,7 @@ Copy the relaxed ```POSCAR``` and ```POTCAR``` in the same folder where you want
 maelas -g -i POSCAR_rlx -k 70 -n 7 -s 0.01
 ```
 
-where ```-g``` indicates that you want to generate input VASP files for the calculation of anisotropic magnetostriction coefficients, ```-i POSCAR_rlx``` is the initial relaxed POSCAR file (you can name it whatever you want), ```-k 40``` is the length parameter that determines a regular mesh of k-points, ```-n 7``` means that it will generate 7 distorted states for each magentostriction mode and ```-s 0.01``` is the maximum value of the parameter epsilon for the strain tensor to generate the distorted POSCAR files. It will generate the following files:
+where ```-g``` indicates that you want to generate input VASP files for the calculation of anisotropic magnetostrictive coefficients, ```-i POSCAR_rlx``` is the initial relaxed POSCAR file (you can name it whatever you want), ```-k 40``` is the length parameter that determines a regular mesh of k-points, ```-n 7``` means that it will generate 7 distorted states for each magentostriction mode and ```-s 0.01``` is the maximum value of the parameter epsilon for the strain tensor to generate the distorted POSCAR files. It will generate the following files:
 
 * ```POSCAR_A_B``` (volume-conserving distorted cell where ```A```=magnetostriction mode, ```B```=1,...,n distorted cell for each magentostriction mode)
 * ```INCAR_A_C``` (non-collinear calculation where ```A```=magnetostriction mode, ```C```=1,2 is the spin orientation case)
@@ -163,10 +163,10 @@ Once all jobs are finished, then one can easily get calculated non-collinear ```
 it will copy these ```OSZICAR``` files and name them as ```OSZICAR_A_B_C``` (```C```=1,2) in the same folder where this script is executed.
 
 ---------------------------------------------------------------------------------------------------------------
-Step 5: Derivation of anisotropic magnetostriction coefficients from the energy written in the OSZICAR files
+Step 5: Derivation of anisotropic magnetostrictive coefficients from the energy written in the OSZICAR files
 ---------------------------------------------------------------------------------------------------------------
 
-Finally, to derive the anisotropic magnetostriction coefficients one needs to have in the same folder the following files:
+Finally, to derive the anisotropic magnetostrictive coefficients one needs to have in the same folder the following files:
 
 * ```POSCAR_rlx``` (the relaxed ```POSCAR``` file used as input in step 3)
 * ```POSCAR_A_B``` (distorted ```POSCAR``` generated in step 3)
@@ -176,9 +176,9 @@ Next, in the terminal go to this folder a type
 ```bash
 maelas -d -i POSCAR_rlx -n 7
 ```
-where ```-d``` indicates that you want to derive the anisotropic magnetostriction coefficients from the calculated ```OSZICAR``` files, ```-i POSCAR_rlx``` is the relaxed ```POSCAR``` file used as input in step 3 (you can name it whatever you want) and ```-n 7``` is the number of distorted states for each magentostriction mode used in step 3.
+where ```-d``` indicates that you want to derive the anisotropic magnetostrictive coefficients from the calculated ```OSZICAR``` files, ```-i POSCAR_rlx``` is the relaxed ```POSCAR``` file used as input in step 3 (you can name it whatever you want) and ```-n 7``` is the number of distorted states for each magentostriction mode used in step 3.
 
-It will derive and print the calculated spin-dependent magnetostriction coefficients in the terminal. If you want to print it in a file (for example, ```results.out```), then you can type
+It will derive and print the calculated spin-dependent magnetostrictive coefficients in the terminal. If you want to print it in a file (for example, ```results.out```), then you can type
 ```bash
 maelas -d -i POSCAR_rlx -n 7 > results.out
 ```
@@ -207,7 +207,7 @@ maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1
 ./vasp_mae
 ./vasp_mae_cp_oszicar
 ```
-Step 3: Generate VASP inputs for calculation of magnetostriction coefficients
+Step 3: Generate VASP inputs for calculation of magnetostrictive coefficients
 ```bash
 maelas -g -i POSCAR_rlx -k 70 -n 7 -s 0.1
 ```
@@ -217,11 +217,11 @@ Step 4: Run VASP calculations
 ./vasp_maelas
 ./vasp_cp_oszicar
 ```
-Step 5a: Derivation of anisotropic magnetostriction coefficients
+Step 5a: Derivation of anisotropic magnetostrictive coefficients
 ```bash
 maelas -d -i POSCAR_rlx -n 7
 ```
-Step 5b: Derivation of anisotropic magnetostriction coefficients and magnetoelastic constants
+Step 5b: Derivation of anisotropic magnetostrictive coefficients and magnetoelastic constants
 ```bash
 maelas -d -i POSCAR_rlx -n 7 -b -e ELADAT  
 ```
@@ -259,7 +259,7 @@ optional arguments:
                   file (default: 60)
                   
   -g              Generation of required VASP files for the calculation of
-                  magnetostriction coefficients. Notation of the generated
+                  magnetostrictive coefficients. Notation of the generated
                   output files: POSCAR_A_B (volume-conserving distorted cell
                   where A=magnetostriction mode, B=distorted cell), INCAR_A_C
                   (non-collinear calculation where A=magnetostriction mode,
@@ -273,7 +273,7 @@ optional arguments:
                   vasp_0) and to get calculated OSZICAR_A_B_C files
                   (vasp_cp_oszicar)
                   
-  -d              Derivation of magnetostriction coefficients from the energy
+  -d              Derivation of magnetostrictive coefficients from the energy
                   written in the OSZICAR files. WARNING!: OSZICAR files must
                   be in the same folder where you run MAELAS using the
                   notation OSZICAR_A_B_C obtained for POSCAR_A_B and
@@ -281,7 +281,7 @@ optional arguments:
                   this folder too (jointly with the initial non-distorted
                   POSCAR which should be specified using tag -i). Specify the
                   number of distorted states to be considered in the
-                  calculation of magnetostriction coefficients using tag -n.
+                  calculation of magnetostrictive coefficients using tag -n.
                   Energy values extracted from OSZICAR_A_B_C files are shown
                   in files ene_A_C.dat and fit_ene_A_C.png. The energy
                   difference between the two spin configurations for each
@@ -296,7 +296,7 @@ optional arguments:
   -s2 s2x s2y s2z     Second spin direction to calculate MAE 
   
   -b              Calculation of the magnetoelastic constants from the
-                  calculated magnetostriction coefficients and provided
+                  calculated magnetostrictive coefficients and provided
                   elastic tensor. For this option the tag -d must be included
                   as well as tag -e with the elastic tensor file
                   
