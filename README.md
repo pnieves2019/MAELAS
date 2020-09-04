@@ -355,3 +355,13 @@ Orthorhombic (space groups 16-74)
 
 
 The crystal systems not supported by MAELAS might be included in the new versions of the code.
+
+
+--------------------------------------------------------------------
+Manuscript
+--------------------------------------------------------------------
+
+P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut, 
+“MAELAS: MAgneto-ELAStic properties calculation via computational high-throughput approach”, 2020, arXiv:2009.01638
+
+Submitted to Computer Physics Communications
