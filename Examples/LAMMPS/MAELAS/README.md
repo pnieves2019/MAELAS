@@ -20,6 +20,7 @@ To run this example make a new folder
 and copy all files in folders ```./src/``` and in ```./BCC_Fe/input_files/``` into the folder ```./BCC_Fe/output_files_test```, that is
 
 ```cp ./src/* ./BCC_Fe/output_files_test/```
+
 ```cp ./BCC_Fe/input_files/* ./BCC_Fe/output_files_test/```
 
 Next, go to the folder ```./BCC_Fe/output_files_test```
