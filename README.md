@@ -365,7 +365,7 @@ Visualization tool
 
 We have also developed an online visualization tool called MAELASviewer that is available at 
 
-'''[https://maelasviewer.herokuapp.com](https://maelasviewer.herokuapp.com)'''
+```[https://maelasviewer.herokuapp.com](https://maelasviewer.herokuapp.com)```
 
 This interactive applet shows the magnetostriction for the supported crystal systems of MAELAS. Users can simulate the Joule and Wiedemann effects.
 
