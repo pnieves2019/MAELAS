@@ -12,7 +12,7 @@ In this example we show an interface between ```LAMMPS``` and ```AELAS``` to cal
 In the file ```workflow_lmp_aelas.pdf``` you can see a diagram of the workflow of this interface.
 As you can see, it makes use of the program ```ATOMSK``` in order to convert some files, you can download it here 
 
-```[https://atomsk.univ-lille.fr](https://atomsk.univ-lille.fr)```
+[https://atomsk.univ-lille.fr](https://atomsk.univ-lille.fr)
 
 To illustrate this example we apply it to BCC Fe. The folder ```./src``` contains the three general source files ```gen_pos.sh```, ```run_lmp.sh``` and ```OSZICAR```.
 To run this example make a new folder
