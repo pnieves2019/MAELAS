@@ -331,11 +331,13 @@ optional arguments:
 ```           
                
 ---------------------------------------------------------------------------------
-Using MAELAS with other DFT codes instead of VASP
+Using MAELAS with other codes instead of VASP
 ---------------------------------------------------------------------------------
 
 MAELAS has been designed to read and write files for VASP code automatically. However, it is possible to use MAELAS with other DFT codes instead of VASP, after file conversion to VASP format files. Although, this process might require some extra work for the user. Namely, converting initial and distorted ```POSCAR``` files into the other DFT code format, reading the spin direction of each state from ```INCAR_A_C``` files (variable SAXIS) and write the calculated energies in a ```OSZICAR```-like file (called ```OSZICAR_A_B_C```) on the penultimate line and third column with same format as in VASP (this is the place where MAELAS reads the energy value of each ```OSZICAR_A_B_C``` file). See the Manual for more details. 
 
+
+In the folder Examples/LAMMPS we provide an example of an interface between MAELAS and program LAMMPS (classical spin-molecular dynamics).
 
 --------------------------------------------------------------------------
 Crystal systems supported by MAELAS v1.0
@@ -355,6 +357,17 @@ Orthorhombic (space groups 16-74)
 
 
 The crystal systems not supported by MAELAS might be included in the new versions of the code.
+
+
+---------------------------------------------------------------------
+Visualization tool
+---------------------------------------------------------------------
+
+We have also developed an online visualization tool called MAELASviewer that is available at 
+
+'''[https://maelasviewer.herokuapp.com](https://maelasviewer.herokuapp.com)'''
+
+This interactive applet shows the magnetostriction for the supported crystal systems of MAELAS. Users can simulate the Joule and Wiedemann effects.
 
 
 --------------------------------------------------------------------

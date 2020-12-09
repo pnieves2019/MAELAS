@@ -1,0 +1,7 @@
+# meam data from vax files fcc,bcc,dia    11/4/92 new bcc 12/28/95 
+# elt        lat     z       ielement     atwt 
+# alpha      b0      b1      b2           b3    alat    esub    asub 
+# t0         t1              t2           t3            rozero  ibar 
+'Fe' 'bcc' 8 26 55.845000 
+5.030000 3.670000 1.000000 1.000000 1.000000 2.851000 4.290000 0.570000 
+1.000000 2.900000 1.000000 -8.700000 1.000000 -5.000000

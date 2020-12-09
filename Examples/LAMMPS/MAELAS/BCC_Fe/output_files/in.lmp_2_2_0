@@ -1,0 +1,40 @@
+clear
+units         metal
+atom_style     spin
+
+dimension     3
+boundary    p p p 
+
+# necessary for the serial algorithm (sametag)
+atom_modify     map array
+
+read_data POSCAR_2_9.lmp
+
+# setting mass, mag. moments, and interactions for bcc iron
+
+mass        1 55.845
+set         group all spin 2.2 2.837230701111 -.014203886640 -2.851434764857
+
+pair_style     hybrid/overlay meam/c spin/exchange 4.5 spin/neel 2.6
+pair_coeff     * * meam/c library.Fe2015.meam Fe Fe2015.meam Fe
+pair_coeff     * * spin/exchange exchange 4.5 0.025498 0.281 1.999 offset yes
+pair_coeff      * * spin/neel neel 2.6 0.000392288 0.824465 2.46945 0.000061488 1.02474 2.46945
+
+neighbor     0.1 bin
+neigh_modify     every 10 check yes delay 20
+
+# compute and output options
+
+
+fix          1 all nve/spin lattice no
+
+thermo_style custom etotal
+thermo       1
+
+variable        etotal0   equal etotal
+
+run	0
+
+print	"energy ${etotal0}" file energy_2_9_2.dat 
+
+
