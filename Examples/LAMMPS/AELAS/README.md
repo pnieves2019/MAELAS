@@ -5,9 +5,9 @@ INTERFACE BETWEEN LAMMPS AND AELAS
 
 In this example we show an interface between ```LAMMPS``` and ```AELAS``` to calculate the elastic constants. The programs ```LAMMPS``` and ```AELAS``` can be downloaded here
 
-```[https://lammps.sandia.gov](https://lammps.sandia.gov)```
+[https://lammps.sandia.gov](https://lammps.sandia.gov)
 
-```[https://sites.google.com/site/zrfbuaa/softwares/aelas](https://sites.google.com/site/zrfbuaa/softwares/aelas)```
+[https://sites.google.com/site/zrfbuaa/softwares/aelas](https://sites.google.com/site/zrfbuaa/softwares/aelas)
 
 In the file ```workflow_lmp_aelas.pdf``` you can see a diagram of the workflow of this interface.
 As you can see, it makes use of the program ```ATOMSK``` in order to convert some files, you can download it here 
