@@ -4,6 +4,11 @@ MAELAS code v1.0
 
 Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut
 
+-----------------------
+WARNING!!: This program has been released recently and is still a beta version. Currently, the corresponding manuscript is under review for publication.
+Important changes and corrections are being made to the pre-printed manuscript (arXiv) and the software, especially in relation to some deformation modes for hexagonal, trigonal, tetragonal and orthorhombic crystal symmetries. Updates will be announced here soon. We apologize for any inconvenience.
+-----------------------
+
 -------------------------
 WHAT IS MAELAS CODE?
 -------------------------
@@ -27,14 +32,14 @@ sudo apt-get update
 sudo apt-get install python3
 ```
 
-Note that in some HPC clusters you might need to load the Python module (ml Python). 
+Note that in some HPC clusters you might need to load the Python module (ml Python).
 
 To install MAELAS code, download and extract the .zip file, go to the folder that contains the file ```setup.py``` and type
 ```bash
 python3 setup.py install --user
 ```
 
-This procedure will also install all required dependecies automatically 
+This procedure will also install all required dependecies automatically
 
 ```bash
 pymatgen(>=2020.4.29)
@@ -112,7 +117,7 @@ The generated files vasp_mae, vasp_mae_jsub and vasp_mae_0 are interconnected sc
 maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
 ```
 
-where ```-t 48``` indicates that the number of maximum CPU hours for the VASP calculation is 48 hours,```-c 24``` means that the number of cores for the VASP calculation is 24, ```-q qprod``` set to production queuethe type of queue in HPC facilities, ```-a OPEN-00-00``` is the project identification number for running jobs in HPC facilities and ```-f /scratch/example_mag``` is the folder where you want to run VASP calculations. This procedure might be helpful for high-throughput routines. More options can be added in these script files through the terminal command line, to see them just type 
+where ```-t 48``` indicates that the number of maximum CPU hours for the VASP calculation is 48 hours,```-c 24``` means that the number of cores for the VASP calculation is 24, ```-q qprod``` set to production queuethe type of queue in HPC facilities, ```-a OPEN-00-00``` is the project identification number for running jobs in HPC facilities and ```-f /scratch/example_mag``` is the folder where you want to run VASP calculations. This procedure might be helpful for high-throughput routines. More options can be added in these script files through the terminal command line, to see them just type
 ```bash
 maelas -h
 ```
@@ -203,7 +208,7 @@ qsub vasp_jsub_rlx
 
 Step 2: Test MAE
 ```bash
-maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1 
+maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1
 ./vasp_mae
 ./vasp_mae_cp_oszicar
 ```
@@ -245,19 +250,19 @@ MAELAS code v1.0
 optional arguments:
 
   -h, --help      Show this help message and exit
-  
+
   -i POS          Name of the initial non-distorted POSCAR file (default:
                   POSCAR)
-                  
+
   -n NDIST        Number of distorted states for each magnetostriction mode
                   (default: 7)
-                  
+
   -s STRAIN     Maximum value of the parameter epsilon for the strain tensor to generate the distorted POSCAR files (default: 0.01)
 
-                  
+
   -k KP           VASP automatic k-point mesh generation to create the KPOINTS
                   file (default: 60)
-                  
+
   -g              Generation of required VASP files for the calculation of
                   magnetostrictive coefficients. Notation of the generated
                   output files: POSCAR_A_B (volume-conserving distorted cell
@@ -272,7 +277,7 @@ optional arguments:
                   run VASP calculations easily (vasp_maelas, vasp_jsub,
                   vasp_0) and to get calculated OSZICAR_A_B_C files
                   (vasp_cp_oszicar)
-                  
+
   -d              Derivation of magnetostrictive coefficients from the energy
                   written in the OSZICAR files. WARNING!: OSZICAR files must
                   be in the same folder where you run MAELAS using the
@@ -286,55 +291,55 @@ optional arguments:
                   in files ene_A_C.dat and fit_ene_A_C.png. The energy
                   difference between the two spin configurations for each
                   magnetostriction mode are shown in Figs. dE_A.png
-                  
+
   -r              Generation of required VASP files for the cell relaxation
-  
+
   -m 	          Generation of required VASP files to test MAE
 
   -s1 s1x s1y s1z     First spin direction to calculate MAE
 
-  -s2 s2x s2y s2z     Second spin direction to calculate MAE 
-  
+  -s2 s2x s2y s2z     Second spin direction to calculate MAE
+
   -b              Calculation of the magnetoelastic constants from the
                   calculated magnetostrictive coefficients and provided
                   elastic tensor. For this option the tag -d must be included
                   as well as tag -e with the elastic tensor file
-                  
+
   -e ELAS         File with the elastic tensor data in the same format and
                   units (GPa) as it is written by ELAS code (file ELADAT). You
                   can check this format in the Examples folder
-         
+
   -sp SYMPRE      Tolerance for symmetry finding (default: 0.01)
-  
+
   -sa SYMANG      Angle tolerance for symmetry finding (default: 5.0)
 
   -sg SG0 	  Space group number 1-230. If it is equal to 0, then it will be determined by a symmetry analysis (default: 0)
-             
+
   -c CORE         Number of cores for the VASP calculation (default: 24)
-  
+
   -t TIME         Number of maximum CPU hours for the VASP calculation
                   (default: 48)
-                  
+
   -f VASP_FOLD    Folder where you will run VASP calculations (default:
                   /scratch)
-                  
+
   -mp MPI          Command for mpi run of VASP (default: mpiexec.hydra)
-  
+
   -a P_ID         Project id for running jobs in HPC facilities (default:
                   OPEN-X-X)
-                  
+
   -l LOAD_MODULE  Module of VASP that should be loaded (default:
                   VASP/5.4.4-intel-2017c-mkl=cluster)
-                  
+
   -q QUEUE        Type of queue to be used for VASP calculations in HPC
                   facilities (default: qprod)
 ```           
-               
+
 ---------------------------------------------------------------------------------
 Using MAELAS with other codes instead of VASP
 ---------------------------------------------------------------------------------
 
-MAELAS has been designed to read and write files for VASP code automatically. However, it is possible to use MAELAS with other DFT codes instead of VASP, after file conversion to VASP format files. Although, this process might require some extra work for the user. Namely, converting initial and distorted ```POSCAR``` files into the other DFT code format, reading the spin direction of each state from ```INCAR_A_C``` files (variable SAXIS) and write the calculated energies in a ```OSZICAR```-like file (called ```OSZICAR_A_B_C```) on the penultimate line and third column with same format as in VASP (this is the place where MAELAS reads the energy value of each ```OSZICAR_A_B_C``` file). See the Manual for more details. 
+MAELAS has been designed to read and write files for VASP code automatically. However, it is possible to use MAELAS with other DFT codes instead of VASP, after file conversion to VASP format files. Although, this process might require some extra work for the user. Namely, converting initial and distorted ```POSCAR``` files into the other DFT code format, reading the spin direction of each state from ```INCAR_A_C``` files (variable SAXIS) and write the calculated energies in a ```OSZICAR```-like file (called ```OSZICAR_A_B_C```) on the penultimate line and third column with same format as in VASP (this is the place where MAELAS reads the energy value of each ```OSZICAR_A_B_C``` file). See the Manual for more details.
 
 
 In the folder Examples/LAMMPS we provide an example of an interface between MAELAS and program LAMMPS (classical spin-molecular dynamics).
@@ -363,7 +368,7 @@ The crystal systems not supported by MAELAS might be included in the new version
 Visualization tool
 ---------------------------------------------------------------------
 
-We have also developed an online visualization tool called MAELASviewer that is available at 
+We have also developed an online visualization tool called MAELASviewer that is available at
 
 [https://maelasviewer.herokuapp.com](https://maelasviewer.herokuapp.com)
 
@@ -374,7 +379,7 @@ This interactive applet shows the magnetostriction for the supported crystal sys
 Manuscript
 --------------------------------------------------------------------
 
-P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut, 
+P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 “MAELAS: MAgneto-ELAStic properties calculation via computational high-throughput approach”, 2020, arXiv:2009.01638
 
 Submitted to Computer Physics Communications
