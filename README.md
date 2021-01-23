@@ -4,11 +4,6 @@ MAELAS code v1.0
 
 Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut
 
------------------------
-WARNING!!: This program has been released recently and is still a beta version. Currently, the corresponding manuscript is under review for publication.
-Important changes and corrections are being made to the pre-printed manuscript (arXiv) and the software, especially in relation to some deformation modes for hexagonal, trigonal, tetragonal and orthorhombic crystal symmetries. Updates will be announced here soon. We apologize for any inconvenience.
------------------------
-
 -------------------------
 WHAT IS MAELAS CODE?
 -------------------------
