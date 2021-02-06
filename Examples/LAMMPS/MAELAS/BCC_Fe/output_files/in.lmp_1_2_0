@@ -18,7 +18,7 @@ set         group all spin 2.2 1.0 0.0 0.0
 pair_style     hybrid/overlay meam/c spin/exchange 4.5 spin/neel 2.6
 pair_coeff     * * meam/c library.Fe2015.meam Fe Fe2015.meam Fe
 pair_coeff     * * spin/exchange exchange 4.5 0.025498 0.281 1.999 offset yes
-pair_coeff      * * spin/neel neel 2.6 0.000392288 0.824465 2.46945 0.000061488 1.02474 2.46945
+pair_coeff      * * spin/neel neel 2.6 0.000392747 0.824409 2.4690386 0.0000285189 1.05331 2.4690386
 
 neighbor     0.1 bin
 neigh_modify     every 10 check yes delay 20

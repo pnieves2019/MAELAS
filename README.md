@@ -10,7 +10,7 @@ WHAT IS MAELAS CODE?
 
 MAELAS code is a software to calculate anisotropic magnetostrictive coefficients and magnetoelastic constants up to second order. It generates required input files for VASP code to perform Density Functional Theory calculations, and it deduces the value of magnetostrictive coefficients from the calculated energies given by VASP. If the elastic tensor is provided, then it can also calculate the magnetoelastic constants.
 
-MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.
+MAELAS can also be used with other codes instead of VASP, after file conversion to VASP format files.
 
 
 ------------------

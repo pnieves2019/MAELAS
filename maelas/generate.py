@@ -31,7 +31,7 @@ class VASP:
         print('---------------------------------------------------------------------------------------------')
         print("Name of the initial POSCAR file: ", self.args.pos[0])
         print("Number of distorted states for each magnetostriction mode = ", self.args.ndist[0])
-        print("Maximum epsilon = ", self.args.strain[0])
+        print("Maximum strain = ", self.args.strain[0])
     
         structure0 = Structure.from_file(self.args.pos[0])
         self.symmetry.number_of_species = len(structure0.species)
@@ -245,6 +245,8 @@ class VASP:
         vasp_0.write(' -np ')
         vasp_0.write(str(self.args.core[0]))
         vasp_0.write(' vasp_ncl > vasp.out\n')
+        vasp_0.write('rm WAVECAR\n')
+        vasp_0.write('rm CHGCAR\n')
         vasp_0.write('cd ..\n')
         vasp_0.write('cp WAVECAR ./${fold2}/\n')
         vasp_0.write('cp CHGCAR  ./${fold2}/\n')
@@ -256,6 +258,8 @@ class VASP:
         vasp_0.write(' -np ')
         vasp_0.write(str(self.args.core[0]))
         vasp_0.write(' vasp_ncl > vasp.out\n')
+        vasp_0.write('rm WAVECAR\n')
+        vasp_0.write('rm CHGCAR\n')
       
         vasp_0.close() 
        

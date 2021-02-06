@@ -15,7 +15,3 @@ nohup ./automatic_flow.sh > report.out &
 ```
 In the file report.out and folder ./results you can find the generated outputs (we manually removed POTCAR files after all jobs finished).
 
-Note that in this example we used a small k-mesh (-k 60) in order to just check this script quickly.
-Hence, the calculated MAE and magnetostriction coefficients are not reliable.
-Much higher number of k-points are required to obtain reliable and well-converged results. 
-For instance, in our tests for Fe-bcc we set -k 180. 

@@ -89,6 +89,7 @@ if args.der == True:
     sym1 = float(args.sympre[0])
     sym2 = float(args.symang[0])
     aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
+    nat = len(structure0.species)
 
     if int(args.sg0[0]) == 0:
 
@@ -154,7 +155,7 @@ if 230 >= sg >= 207:
 
             strain1 = - float(args.strain[0])+2*(float(args.strain[0])/(float(args.ndist[0])-1))*i
 
-            print("epsilon", strain1)
+            print("strain", strain1)
 
 
         #Generation POSCAR file
@@ -302,13 +303,13 @@ if 230 >= sg >= 207:
 
 
         print("")
-        print("Fit of quadratic function f(x)=a*x\u00B2+b*x+c to energy vs distortion data")
+        print("Fit of quadratic function f(x)=A*x\u00B2+B*x+C to energy vs cell length")
         print("")
         print("-------------------------")
         print("Calculation of \u03BB001:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [0,0,1] direction')
+        print('Unit cell length along [0,0,1] direction')
         print("")
 
         f = open('ene_1_1.dat','r')
@@ -327,7 +328,7 @@ if 230 >= sg >= 207:
         params = curve_fit(K, x, y)
 
         print("Fitting parameters for spin parallel to 001 (data from file ene_1_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -339,7 +340,7 @@ if 230 >= sg >= 207:
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -349,7 +350,7 @@ if 230 >= sg >= 207:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [0,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [0,0,1] direction (Å)')
         plt.title('Calculation of \u03BB\u2080\u2080\u2081 (spin = [0,0,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -372,7 +373,7 @@ if 230 >= sg >= 207:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 100 (data from file ene_1_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -384,9 +385,13 @@ if 230 >= sg >= 207:
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
+        nn = int(args.ndist[0])+1
+        if nn % 2 == 0:
+            lli = int((nn-2)/2)
+            mae001 = y[lli]
 
         lambda001 = 2.0*(2.0/3.0)*((l1 -l2)/(l1+l2))
 
@@ -397,7 +402,7 @@ if 230 >= sg >= 207:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [0,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [0,0,1] direction (Å)')
         plt.title('Calculation of \u03BB\u2080\u2080\u2081 (spin = [1,0,0]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -441,7 +446,7 @@ if 230 >= sg >= 207:
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -460,7 +465,7 @@ if 230 >= sg >= 207:
         print("Calculation of \u03BB111:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,1,1] direction')
+        print('Unit cell length along [1,1,1] direction')
         print("")
 
         f = open('ene_2_1.dat','r')
@@ -478,7 +483,7 @@ if 230 >= sg >= 207:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 111 (data from file ene_2_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -490,8 +495,12 @@ if 230 >= sg >= 207:
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
+        
+        if nn % 2 == 0:
+            lli = int((nn-2)/2)
+            mae111 = y[lli]
 
 
         plt.plot(x, y, 'bo', label='data in ene_2_1.dat')
@@ -500,7 +509,7 @@ if 230 >= sg >= 207:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,1,1] direction (Å)')
+        plt.xlabel('Unit cell length along [1,1,1] direction (Å)')
         plt.title('Calculation of \u03BB\u2081\u2081\u2081 (spin = [1,1,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -525,7 +534,7 @@ if 230 >= sg >= 207:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 10-1 (data from file ene_2_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -537,8 +546,12 @@ if 230 >= sg >= 207:
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
+        
+        if nn % 2 == 0:
+            lli = int((nn-2)/2)
+            mae101 = y[lli]
 
         lambda111 = 2.0*(2.0/3.0)*((l1 -l2)/(l1+l2))
 
@@ -549,7 +562,7 @@ if 230 >= sg >= 207:
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [1,1,1] direction (Å)')
+        plt.xlabel('Unit cell length along [1,1,1] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB\u2081\u2081\u2081 (spin = [1,0,-1]) ')
@@ -594,7 +607,7 @@ if 230 >= sg >= 207:
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -622,6 +635,29 @@ if 230 >= sg >= 207:
         print("\u03BB111 =", lambda111*1e6,u'x 10\u207B\u2076')
         print(" ")
         print("(Polycrystal) \u03BBs =", lambda_s*1e6,u'x 10\u207B\u2076')
+        
+        
+        if nn % 2 == 0:         
+            print("----------------------------------------------")
+            print("Magnetocrystalline anisotropy energy:")
+            print("----------------------------------------------")
+            print(" ")
+            print("These energies correspond to the central points in the data files ene_1_1.dat, ene_2_1.dat, and ene_2_2.dat:")
+            print(" ")
+            print("E(0,0,1) = ",mae001," eV")
+            print(" ")
+            print("E(1,1,1) = ",mae111," eV")
+            print(" ")
+            print("E(1,0,-1) = ",mae101," eV")
+            print(" ")
+            print("E(1,1,1) - E(0,0,1) = ",(mae111 - mae001)*1e6,u'x 10\u207B\u2076 eV')
+            print(" ")
+            print("[E(1,1,1) - E(0,0,1)]/Natom = ",((mae111 - mae001)/nat)*1e6,u'x 10\u207B\u2076 eV/atom')
+            print(" ")
+            print("E(1,0,-1) - E(0,0,1) = ",(mae101 - mae001)*1e6,u'x 10\u207B\u2076 eV')
+            print(" ")
+            print("[E(1,0,-1) - E(0,0,1)]/Natom = ",((mae101 - mae001)/nat)*1e6,u'x 10\u207B\u2076 eV/atom')
+            print(" ")
 
 
         if args.delas == True:
@@ -659,7 +695,7 @@ if 230 >= sg >= 207:
             print(" ")
             print("c44 =", str(c44), 'GPa')
             print(" ")
-            print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by ELAS code (see Example folder)")
+            print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by AELAS code (see Example folder)")
             print(" ")
             print(" ")
             print("Magnetoelastic constants:")
@@ -716,7 +752,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
             strain1 = - float(args.strain[0])+2*(float(args.strain[0])/(float(args.ndist[0])-1))*i
 
-            print("epsilon", strain1)
+            print("strain", strain1)
 
 
         #Generation POSCAR file
@@ -1014,14 +1050,14 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
 
         print("")
-        print("Fit of quadratic function f(x)=a*x\u00B2+b*x+c to energy vs distortion data")
+        print("Fit of quadratic function f(x)=A*x\u00B2+B*x+C to energy vs cell length")
 
         print(" ")
         print("-------------------------")
         print('Calculation of \u03BB 1\u03B1,2:')
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,0,0] direction')
+        print('Unit cell length along [1,0,0] direction')
         print("")
 
         f = open('ene_1_1.dat','r')
@@ -1041,7 +1077,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
 
         print("Fitting parameters for spin parallel to 111 (data from file ene_1_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -1053,7 +1089,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -1063,7 +1099,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,0] direction (Å)')
+        plt.xlabel('Unit cell length along [1,0,0] direction (Å)')
         plt.title('Calculation of \u03BB 1\u03B1,2 (spin = [1,1,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -1086,7 +1122,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 110 (data from file ene_1_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
         print("")
@@ -1097,7 +1133,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
         lambda_alpha_1_2 = 2.0*3.0*((l1 -l2)/(l1+l2))
@@ -1109,7 +1145,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,0] direction (Å)')
+        plt.xlabel('Unit cell length along [1,0,0] direction (Å)')
         plt.title('Calculation of \u03BB 1\u03B1,2 (spin = [1,1,0]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -1153,7 +1189,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -1171,7 +1207,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         print("Calculation of \u03BB 2\u03B1,2:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [0,0,1] direction')
+        print('Unit cell length along [0,0,1] direction')
         print("")
 
 
@@ -1191,7 +1227,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         params = curve_fit(K, x, y)
 
         print("Fitting parameters for spin parallel to 001 (data from file ene_2_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
         print("")
@@ -1202,8 +1238,13 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
+        
+        nn = int(args.ndist[0])+1
+        if nn % 2 == 0:
+            lli = int((nn-2)/2)
+            mae001 = y[lli]
 
 
         plt.plot(x, y, 'bo', label='data in ene_2_1.dat')
@@ -1212,7 +1253,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [0,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [0,0,1] direction (Å)')
         plt.title('Calculation of \u03BB 2\u03B1,2 (spin = [0,0,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -1237,7 +1278,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 100 (data from file ene_2_2.dat)::")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
         print("")
@@ -1248,8 +1289,12 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
+        
+        if nn % 2 == 0:
+            lli = int((nn-2)/2)
+            mae100 = y[lli]
 
         lambda_alpha_2_2 = 2.0*((l1 -l2)/(l1+l2))
 
@@ -1258,7 +1303,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [0,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [0,0,1] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB 2\u03B1,2 (spin = [1,0,0]) ')
@@ -1302,7 +1347,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -1321,7 +1366,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         print("Calculation of \u03BB \u03B3,2:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,0,0] direction')
+        print('Unit cell length along [1,0,0] direction')
         print("")
 
 
@@ -1341,7 +1386,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         params = curve_fit(K, x, y)
 
         print("Fitting parameters for spin parallel to 100 (data from file ene_3_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
         print("")
@@ -1352,7 +1397,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -1362,7 +1407,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,0] direction (Å)')
+        plt.xlabel('Unit cell length along [1,0,0] direction (Å)')
         plt.title('Calculation of \u03BB \u03B3,2 (spin = [1,0,0]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -1387,7 +1432,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 010 (data from file ene_3_2.dat:")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
         print("")
@@ -1398,7 +1443,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
         lambda_gamma_2 = 2.0*((l1 -l2)/(l1+l2))
@@ -1408,7 +1453,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [1,0,0] direction (Å)')
+        plt.xlabel('Unit cell length along [1,0,0] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB \u03B3,2 (spin = [0,1,0]) ')
@@ -1453,7 +1498,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -1473,7 +1518,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         print("Calculation of \u03BB \u03B5,2:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,0,1] direction')
+        print('Unit cell length along [a,0,c] direction')
         print("")
 
 
@@ -1492,7 +1537,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 101 (data from file ene_4_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
         print("")
@@ -1503,7 +1548,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -1513,7 +1558,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [a,0,c] direction (Å)')
         plt.title('Calculation of \u03BB \u03B5,2 (spin = [1,0,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -1538,7 +1583,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to -101 (data from file ene_4_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
         print("")
@@ -1549,7 +1594,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
         
@@ -1585,7 +1630,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [1,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [a,0,c] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB \u03B5,2 (spin = [-1,0,1]) ')
@@ -1601,7 +1646,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
         fig = 'dE_4.png'
         spin1 = '1,0,1'
         spin2 = '-1,0,1'
-        dist = '1,0,1'
+        dist = 'a,0,c'
         tit = "Calculation of \u03BB \u03B5,2  "
         f1 = open('ene_4_1.dat','r')
         f2 = open('ene_4_2.dat','r')
@@ -1630,7 +1675,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -1651,7 +1696,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
             print("Calculation of \u03BB \u03B4,2:")
             print("-------------------------")
             print(" ")
-            print('Lattice distorsion along [1,1,0] direction')
+            print('Unit cell length along [1,1,0] direction')
             print("")
 
             f = open('ene_5_1.dat','r')
@@ -1669,7 +1714,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
             params = curve_fit(K, x, y)
             print("Fitting parameters for spin parallel to 110 (data from file ene_5_1.dat):")
-            print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+            print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
             r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
             print("R-squared =", r_squared)
             print("")
@@ -1680,7 +1725,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
             l1 = -params[0][1] / (2.0 * params[0][0])
 
-            print("X minimum = -b/(2*a) =", l1)
+            print("X minimum = -B/(2*A) =", l1)
             print("")
 
             plt.plot(x, y, 'bo', label='data in ene_5_1.dat')
@@ -1689,7 +1734,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
             plt.plot(t, K(t, *popt), 'r--', label='fit')
             plt.ylabel('Energy (eV)')
             plt.legend()
-            plt.xlabel('Lattice distorsion along [1,1,0] direction (Å)')
+            plt.xlabel('Unit cell length along [1,1,0] direction (Å)')
             plt.title('Calculation of \u03BB \u03B4,2 (spin = [1,1,0]) ')
             plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
             plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -1714,7 +1759,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
             params = curve_fit(K, x, y)
             print("Fitting parameters for spin parallel to -110 (data from file ene_5_2.dat):")
-            print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+            print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
             r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
             print("R-squared =", r_squared)
             print("")
@@ -1725,7 +1770,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
             l2 = -params[0][1] / (2.0 * params[0][0])
 
-            print("X minimum = -b/(2*a) =", l2)
+            print("X minimum = -B/(2*A) =", l2)
             print("")
 
             lambda_delta = 2.0*((l1 -l2)/(l1+l2))
@@ -1735,7 +1780,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
             popt, pcov = curve_fit(K, x, y)
             t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
             plt.plot(t, K(t, *popt), 'r--', label='fit')
-            plt.xlabel('Lattice distorsion along [1,1,0] direction (Å)')
+            plt.xlabel('Unit cell length along [1,1,0] direction (Å)')
             plt.ylabel('Energy (eV)')
             plt.legend()
             plt.title('Calculation of \u03BB \u03B4,2 (spin = [-1,1,0])')
@@ -1779,7 +1824,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
 
             ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
             plt.ylabel(ylabel)
-            label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+            label = "Unit cell length along [" + str(dist) + "] direction (Å)"
             plt.xlabel(label)
             plt.title(tit)
             plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -1828,13 +1873,19 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
             print(" ")
             print("Using the convention in reference R.R. Birss, Advances in Physics 8, 252 (1959):")
             print(" ")
-            print("Q2 =", (-lambda_alpha_1_2-0.5*lambda_gamma_2)*1e6,u'x 10\u207B\u2076')
+        
+            q2 = (-lambda_alpha_1_2-0.5*lambda_gamma_2)*1e6
+            q4 = (lambda_alpha_1_2+0.5*lambda_gamma_2-lambda_alpha_2_2)*1e6
+            q6 = 2*lambda_epsilon_2*1e6
+            q8 = lambda_gamma_2*1e6
+        
+            print("Q2 =", q2,u'x 10\u207B\u2076')
             print(" ")
-            print("Q4 =", (lambda_alpha_1_2+0.5*lambda_gamma_2-lambda_alpha_2_2)*1e6,u'x 10\u207B\u2076')
+            print("Q4 =", q4,u'x 10\u207B\u2076')
             print(" ")
-            print("Q6 =", 2*lambda_epsilon_2*1e6,u'x 10\u207B\u2076')
+            print("Q6 =", q6,u'x 10\u207B\u2076')
             print(" ")
-            print("Q8 =", lambda_gamma_2*1e6,u'x 10\u207B\u2076')
+            print("Q8 =", q8,u'x 10\u207B\u2076')
 
             print(" ")
             print("...............")
@@ -1848,6 +1899,46 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
             print("\u03BB \u03B3 =", lambda_gamma_2*1e6,u'x 10\u207B\u2076')
             print(" ")
             print("\u03BB \u03B5 =", lambda_epsilon_2*1e6,u'x 10\u207B\u2076')
+        
+            print(" ")
+            print(" ")
+            print("/////////////////////")
+            print("Polycrystal:")
+            print("/////////////////////")
+            print(" ")
+            print("Using the convention in reference R.R. Birss, Advances in Physics 8, 252 (1959):")
+            print(" ")
+            print("Hexagonal crystal with easy axis: ")
+            print(" ")
+            print("\u03BE =", (2.0/3.0)*q2+(4.0/15.0)*q4-(1.0/15.0)*q6+(1.0/15.0)*q8,u'x 10\u207B\u2076')
+            print(" ")
+            print("\u03B7 =", -(2.0/15.0)*q4+(1.0/15.0)*q6+(7.0/15.0)*q8,u'x 10\u207B\u2076')
+            print(" ")
+            print("......................... ")
+            print(" ")
+            print("Hexagonal crystal with easy plane: ")
+            print(" ")
+            print("\u03BE =", -(1.0/3.0)*q2-(1.0/15.0)*q4-(1.0/15.0)*q6-(4.0/15.0)*q8,u'x 10\u207B\u2076')
+            print(" ")
+            print("\u03B7 =", -(2.0/15.0)*q4+(1.0/15.0)*q6+(7.0/15.0)*q8,u'x 10\u207B\u2076')
+            print(" ")
+            
+            
+            if nn % 2 == 0:         
+                print("----------------------------------------------")
+                print("Magnetocrystalline anisotropy energy:")
+                print("----------------------------------------------")
+                print(" ")
+                print("These energies correspond to the central points in the data files ene_2_1.dat and ene_2_2.dat:")
+                print(" ")
+                print("E(0,0,1) = ",mae001," eV")
+                print(" ")
+                print("E(1,0,0) = ",mae100," eV")
+                print(" ")
+                print("E(1,0,0) - E(0,0,1) = ",(mae100 - mae001)*1e6,u'x 10\u207B\u2076 eV')
+                print(" ")
+                print("[E(1,0,0) - E(0,0,1)]/Natom = ",((mae100 - mae001)/nat)*1e6,u'x 10\u207B\u2076 eV/atom')
+                print(" ")
 
             if args.delas == True:
 
@@ -1897,7 +1988,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
                 print(" ")
                 print("c44 =", str(c44), 'GPa')
                 print(" ")
-                print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by ELAS code (see Example folder)")
+                print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by AELAS code (see Example folder)")
                 print(" ")
                 print(" ")
                 print("Magnetoelastic constants:")
@@ -1999,7 +2090,7 @@ elif (177 <= sg <= 194) or (89 <= sg <= 142):
                 print(" ")
                 print("c66 =", str(c66), 'GPa')
                 print(" ")
-                print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by ELAS code (see Example folder)")
+                print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by AELAS code (see Example folder)")
                 print(" ")
                 print(" ")
                 print("Magnetoelastic constants:")
@@ -2055,7 +2146,7 @@ elif 149 <= sg <= 167:
 
             strain1 = - float(args.strain[0])+2*(float(args.strain[0])/(float(args.ndist[0])-1))*i
 
-            print("epsilon", strain1)
+            print("strain", strain1)
 
 
         #Generation POSCAR file
@@ -2361,13 +2452,13 @@ elif 149 <= sg <= 167:
 
 
         print("")
-        print("Fit of quadratic function f(x)=a*x\u00B2+b*x+c to energy vs distortion data")
+        print("Fit of quadratic function f(x)=A*x\u00B2+B*x+C to energy vs cell length")
         print("")
         print("-------------------------")
         print("Calculation of \u03BB \u03B11,2:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,0,0] direction')
+        print('Unit cell length along [1,0,0] direction')
         print("")
 
         f = open('ene_1_1.dat','r')
@@ -2386,7 +2477,7 @@ elif 149 <= sg <= 167:
         params = curve_fit(K, x, y)
 
         print("Fitting parameters for spin parallel to 001 (data from file ene_1_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -2398,7 +2489,7 @@ elif 149 <= sg <= 167:
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -2408,7 +2499,7 @@ elif 149 <= sg <= 167:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,0] direction (Å)')
+        plt.xlabel('Unit cell length along [1,0,0] direction (Å)')
         plt.title('Calculation of \u03BB \u03B11,2 (spin = [0,0,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -2431,7 +2522,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 110 (data from file ene_1_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -2443,7 +2534,7 @@ elif 149 <= sg <= 167:
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
 
@@ -2456,7 +2547,7 @@ elif 149 <= sg <= 167:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [0,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [0,0,1] direction (Å)')
         plt.title('Calculation of \u03BB \u03B11,2 (spin = [1,1,0]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -2499,7 +2590,7 @@ elif 149 <= sg <= 167:
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -2515,7 +2606,7 @@ elif 149 <= sg <= 167:
         print("Calculation of \u03BB \u03B12,2:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [0,0,1] direction')
+        print('Unit cell length along [0,0,1] direction')
         print("")
 
         f = open('ene_2_1.dat','r')
@@ -2533,7 +2624,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 001 (data from file ene_2_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -2545,8 +2636,13 @@ elif 149 <= sg <= 167:
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
+        
+        nn = int(args.ndist[0])+1
+        if nn % 2 == 0:
+            lli = int((nn-2)/2)
+            mae001 = y[lli]
 
 
         plt.plot(x, y, 'bo', label='data in ene_2_1.dat')
@@ -2555,7 +2651,7 @@ elif 149 <= sg <= 167:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [0,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [0,0,1] direction (Å)')
         plt.title('Calculation of \u03BB \u03B12,2 (spin = [0,0,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -2580,7 +2676,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 100 (data from file ene_2_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -2592,8 +2688,12 @@ elif 149 <= sg <= 167:
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
+        
+        if nn % 2 == 0:
+            lli = int((nn-2)/2)
+            mae100 = y[lli]
 
         lambda_alpha_2_2 = 2.0*((l1 -l2)/(l1+l2))
 
@@ -2602,7 +2702,7 @@ elif 149 <= sg <= 167:
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [0,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [0,0,1] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB \u03B12,2 (spin = [1,0,0]) ')
@@ -2647,7 +2747,7 @@ elif 149 <= sg <= 167:
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -2663,7 +2763,7 @@ elif 149 <= sg <= 167:
         print("Calculation of \u03BB \u02631:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,0,0] direction')
+        print('Unit cell length along [1,0,0] direction')
         print("")
 
         f = open('ene_3_1.dat','r')
@@ -2681,7 +2781,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 100 (data from file ene_3_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -2693,7 +2793,7 @@ elif 149 <= sg <= 167:
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -2703,7 +2803,7 @@ elif 149 <= sg <= 167:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,0] direction (Å)')
+        plt.xlabel('Unit cell length along [1,0,0] direction (Å)')
         plt.title('Calculation of \u03BB \u02631 (spin = [1,0,0]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -2728,7 +2828,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 010 (data from file ene_3_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -2740,7 +2840,7 @@ elif 149 <= sg <= 167:
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
         lambda_gamma_1 = 2.0*((l1 -l2)/(l1+l2))
@@ -2750,7 +2850,7 @@ elif 149 <= sg <= 167:
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [1,0,0] direction (Å)')
+        plt.xlabel('Unit cell length along [1,0,0] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB \u02631 (spin = [0,1,0]) ')
@@ -2794,7 +2894,7 @@ elif 149 <= sg <= 167:
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -2813,7 +2913,7 @@ elif 149 <= sg <= 167:
         print("Calculation of \u03BB \u02632:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,0,1] direction')
+        print('Unit cell length along [a,0,c] direction')
         print("")
 
         f = open('ene_4_1.dat','r')
@@ -2831,7 +2931,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 101 (data from file ene_4_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -2843,7 +2943,7 @@ elif 149 <= sg <= 167:
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -2853,7 +2953,7 @@ elif 149 <= sg <= 167:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [a,0,c] direction (Å)')
         plt.title('Calculation of \u03BB \u02632 (spin = [1,0,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -2878,7 +2978,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 10-1 (data from file ene_4_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -2890,7 +2990,7 @@ elif 149 <= sg <= 167:
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
         
@@ -2922,7 +3022,7 @@ elif 149 <= sg <= 167:
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [1,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [a,0,c] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB \u02632 (spin = [1,0,-1]) ')
@@ -2937,7 +3037,7 @@ elif 149 <= sg <= 167:
         fig = 'dE_4.png'
         spin1 = '1,0,1'
         spin2 = '1,0,-1'
-        dist = '1,0,1'
+        dist = 'a,0,c'
         tit = "Calculation of \u03BB \u02632  "
         f1 = open('ene_4_1.dat','r')
         f2 = open('ene_4_2.dat','r')
@@ -2966,7 +3066,7 @@ elif 149 <= sg <= 167:
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -2984,7 +3084,7 @@ elif 149 <= sg <= 167:
         print("Calculation of \u03BB 12:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,0,1] direction')
+        print('Unit cell length along [a,0,c] direction')
         print("")
 
         f = open('ene_5_1.dat','r')
@@ -3002,7 +3102,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 011 (data from file ene_5_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -3014,7 +3114,7 @@ elif 149 <= sg <= 167:
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -3024,7 +3124,7 @@ elif 149 <= sg <= 167:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [a,0,c] direction (Å)')
         plt.title('Calculation of \u03BB 12 (spin = [0,1,1]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -3049,7 +3149,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 01-1 (data from file ene_5_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -3061,7 +3161,7 @@ elif 149 <= sg <= 167:
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
         eta_par = (latt_a*latt_c)/(2.0*(latt_a**2+latt_c**2))
@@ -3074,7 +3174,7 @@ elif 149 <= sg <= 167:
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [1,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [a,0,c] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB 12 (spin = [0,1,-1]) ')
@@ -3090,7 +3190,7 @@ elif 149 <= sg <= 167:
         fig = 'dE_5.png'
         spin1 = '0,1,1'
         spin2 = '0,1,-1'
-        dist = '1,0,1'
+        dist = 'a,0,c'
         tit = "Calculation of \u03BB 12  "
         f1 = open('ene_5_1.dat','r')
         f2 = open('ene_5_2.dat','r')
@@ -3119,7 +3219,7 @@ elif 149 <= sg <= 167:
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -3134,7 +3234,7 @@ elif 149 <= sg <= 167:
         print("Calculation of \u03BB 21:")
         print("-------------------------")
         print(" ")
-        print('Lattice distorsion along [1,0,1] direction')
+        print('Unit cell length along [a,0,c] direction')
         print("")
 
         f = open('ene_6_1.dat','r')
@@ -3152,7 +3252,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 110 (data from file ene_6_1.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -3164,7 +3264,7 @@ elif 149 <= sg <= 167:
 
         l1 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l1)
+        print("X minimum = -B/(2*A) =", l1)
         print("")
 
 
@@ -3174,7 +3274,7 @@ elif 149 <= sg <= 167:
         plt.plot(t, K(t, *popt), 'r--', label='fit')
         plt.ylabel('Energy (eV)')
         plt.legend()
-        plt.xlabel('Lattice distorsion along [1,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [a,0,c] direction (Å)')
         plt.title('Calculation of \u03BB 21 (spin = [1,1,0]) ')
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
         plt.ticklabel_format(axis='both', style='plain', useOffset=False, useMathText=True)
@@ -3199,7 +3299,7 @@ elif 149 <= sg <= 167:
 
         params = curve_fit(K, x, y)
         print("Fitting parameters for spin parallel to 1-10 (data from file ene_6_2.dat):")
-        print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+        print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
         r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
         print("R-squared =", r_squared)
@@ -3211,7 +3311,7 @@ elif 149 <= sg <= 167:
 
         l2 = -params[0][1] / (2.0 * params[0][0])
 
-        print("X minimum = -b/(2*a) =", l2)
+        print("X minimum = -B/(2*A) =", l2)
         print("")
 
         eta_par = (latt_a*latt_c)/(latt_a**2+latt_c**2)
@@ -3223,7 +3323,7 @@ elif 149 <= sg <= 167:
         popt, pcov = curve_fit(K, x, y)
         t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
         plt.plot(t, K(t, *popt), 'r--', label='fit')
-        plt.xlabel('Lattice distorsion along [1,0,1] direction (Å)')
+        plt.xlabel('Unit cell length along [a,0,c] direction (Å)')
         plt.ylabel('Energy (eV)')
         plt.legend()
         plt.title('Calculation of \u03BB 21 (spin = [1,-1,0]) ')
@@ -3239,7 +3339,7 @@ elif 149 <= sg <= 167:
         fig = 'dE_6.png'
         spin1 = '1,1,0'
         spin2 = '1,-1,0'
-        dist = '1,0,1'
+        dist = 'a,0,c'
         tit = "Calculation of \u03BB 21 "
         f1 = open('ene_6_1.dat','r')
         f2 = open('ene_6_2.dat','r')
@@ -3268,7 +3368,7 @@ elif 149 <= sg <= 167:
 
         ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
         plt.ylabel(ylabel)
-        label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+        label = "Unit cell length along [" + str(dist) + "] direction (Å)"
         plt.xlabel(label)
         plt.title(tit)
         plt.tight_layout(pad=6, h_pad=None, w_pad=None, rect=None)
@@ -3296,6 +3396,23 @@ elif 149 <= sg <= 167:
         print("\u03BB 12 =", lambda_1_2*1e6,u'x 10\u207B\u2076')
         print(" ")
         print("\u03BB 21 =", lambda_2_1*1e6,u'x 10\u207B\u2076')
+        print(" ")
+        
+        
+        if nn % 2 == 0:         
+                print("----------------------------------------------")
+                print("Magnetocrystalline anisotropy energy:")
+                print("----------------------------------------------")
+                print(" ")
+                print("These energies correspond to the central points in the data files ene_2_1.dat and ene_2_2.dat:")
+                print(" ")
+                print("E(0,0,1) = ",mae001," eV")
+                print(" ")
+                print("E(1,0,0) = ",mae100," eV")
+                print(" ")
+                print("E(1,0,0) - E(0,0,1) = ",(mae100 - mae001)*1e6,u'x 10\u207B\u2076 eV')
+                print(" ")
+                print("[E(1,0,0) - E(0,0,1)]/Natom = ",((mae100 - mae001)/nat)*1e6,u'x 10\u207B\u2076 eV/atom')
 
 
         if args.delas == True:
@@ -3357,7 +3474,7 @@ elif 149 <= sg <= 167:
                 print(" ")
                 print("c66 =", str(c66), 'GPa')
                 print(" ")
-                print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by ELAS code (see Example folder)")
+                print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by AELAS code (see Example folder)")
                 print(" ")
                 print(" ")
                 print("Magnetoelastic constants:")
@@ -3433,7 +3550,7 @@ elif 16 <= sg <= 74:
 
             strain1 = - float(args.strain[0])+2*(float(args.strain[0])/(float(args.ndist[0])-1))*i
 
-            print("epsilon", strain1)
+            print("strain", strain1)
 
 
         #Generation POSCAR file
@@ -3892,14 +4009,16 @@ elif 16 <= sg <= 74:
 
 
         print("")
-        print("Fit of quadratic function f(x)=a*x\u00B2+b*x+c to energy vs distortion data")
+        print("Fit of quadratic function f(x)=A*x\u00B2+B*x+C to energy vs cell length")
 
 
         lambda_ortho = []
 
 
         list_spin = ['1,0,0','0,0,1','0,1,0','0,0,1','1,0,0','0,0,1','0,1,0','0,0,1','1,0,0','0,0,1','0,1,0','0,0,1','1,1,0','0,0,1','1,0,1','0,0,1','0,1,1','0,0,1']
-        list_dist = ['1,0,0','1,0,0','0,1,0','0,1,0','0,0,1','0,0,1','1,1,0','1,0,1','0,1,1']
+        list_dist = ['1,0,0','1,0,0','0,1,0','0,1,0','0,0,1','0,0,1','a,b,0','a,0,c','0,b,c']
+
+        nn = int(args.ndist[0])+1
 
         # AELAS and IEEE lattice convention: c<a<b
 
@@ -3962,7 +4081,7 @@ elif 16 <= sg <= 74:
             print("Calculation of \u03BB", i,":")
             print("-------------------------")
             print(" ")
-            print('Lattice distorsion along [', dist ,'] direction')
+            print('Unit cell length along [', dist ,'] direction')
             print("")
 
 
@@ -3984,7 +4103,7 @@ elif 16 <= sg <= 74:
 
 
             print('Fitting parameters for spin parallel to [', spin1 ,'] data from file ',ene_dat1,')')
-            print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+            print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
             r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
             print("R-squared =", r_squared)
@@ -3996,8 +4115,17 @@ elif 16 <= sg <= 74:
 
             l1 = -params[0][1] / (2.0 * params[0][0])
 
-            print("X minimum = -b/(2*a) =", l1)
+            print("X minimum = -B/(2*A) =", l1)
             print("")
+            
+            if i == 1:
+                if nn % 2 == 0:
+                    lli = int((nn-2)/2)
+                    mae100 = y[lli]
+            elif i == 2:
+                if nn % 2 == 0:
+                    lli = int((nn-2)/2)
+                    mae010 = y[lli]
 
 
             plt.plot(x, y, 'bo', label=ene_dat1 )
@@ -4006,7 +4134,7 @@ elif 16 <= sg <= 74:
             plt.plot(t, K(t, *popt), 'r--', label='fit')
             plt.ylabel('Energy (eV)')
             plt.legend()
-            label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+            label = "Unit cell length along [" + str(dist) + "] direction (Å)"
             tit = 'Calculation of \u03BB' + str(i) + ', spin = [' + str(spin1) + '] '
             plt.xlabel(label)
             plt.title(tit)
@@ -4036,7 +4164,7 @@ elif 16 <= sg <= 74:
             params = curve_fit(K, x, y)
 
             print('Fitting parameters for spin parallel to [', spin2 ,'] data from file ',ene_dat2,')')
-            print("a =", params[0][0], ", b =", params[0][1], ", c =", params[0][2])
+            print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
 
             r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
             print("R-squared =", r_squared)
@@ -4048,8 +4176,13 @@ elif 16 <= sg <= 74:
 
             l2 = -params[0][1] / (2.0 * params[0][0])
 
-            print("X minimum = -b/(2*a) =", l2)
+            print("X minimum = -B/(2*A) =", l2)
             print("")
+            
+            if i == 1:
+                if nn % 2 == 0:
+                    lli = int((nn-2)/2)
+                    mae001 = y[lli]
 
 
             plt.plot(x, y, 'bo', label=ene_dat2 )
@@ -4058,7 +4191,7 @@ elif 16 <= sg <= 74:
             plt.plot(t, K(t, *popt), 'r--', label='fit')
             plt.ylabel('Energy (eV)')
             plt.legend()
-            label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+            label = "Unit cell length along [" + str(dist) + "] direction (Å)"
             tit = "Calculation of \u03BB" + str(i) + ", spin = [" + str(spin2) + "] "
             plt.xlabel(label)
             plt.title(tit)
@@ -4098,7 +4231,7 @@ elif 16 <= sg <= 74:
 
             ylabel ='E[' + str(spin2) + '] - E['+ str(spin1) + '] (\u03BCeV)'
             plt.ylabel(ylabel)
-            label = "Lattice distorsion along [" + str(dist) + "] direction (Å)"
+            label = "Unit cell length along [" + str(dist) + "] direction (Å)"
             tit = "Calculation of \u03BB" + str(i)
             plt.xlabel(label)
             plt.title(tit)
@@ -4179,6 +4312,28 @@ elif 16 <= sg <= 74:
             print(" ")
             
         
+        if nn % 2 == 0:         
+            print("----------------------------------------------")
+            print("Magnetocrystalline anisotropy energy:")
+            print("----------------------------------------------")
+            print(" ")
+            print("These energies correspond to the central points in the data files ene_1_1.dat, ene_2_1.dat, and ene_1_2.dat:")
+            print(" ")
+            print("E(1,0,0) = ",mae100," eV")
+            print(" ")
+            print("E(0,1,0) = ",mae010," eV")
+            print(" ")
+            print("E(0,0,1) = ",mae001," eV")
+            print(" ")
+            print("E(1,0,0) - E(0,0,1) = ",(mae100 - mae001)*1e6,u'x 10\u207B\u2076 eV')
+            print(" ")
+            print("[E(1,0,0) - E(0,0,1)]/Natom = ",((mae100 - mae001)/nat)*1e6,u'x 10\u207B\u2076 eV/atom')
+            print(" ")
+            print("E(0,1,0) - E(0,0,1) = ",(mae010 - mae001)*1e6,u'x 10\u207B\u2076 eV')
+            print(" ")
+            print("[E(0,1,0) - E(0,0,1)]/Natom = ",((mae010 - mae001)/nat)*1e6,u'x 10\u207B\u2076 eV/atom')
+            print(" ")
+        
 
         if args.delas == True:
 
@@ -4252,7 +4407,7 @@ elif 16 <= sg <= 74:
                 print(" ")
                 print("c66 =", str(c66), 'GPa')
                 print(" ")
-                print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by ELAS code (see Example folder)")
+                print("Warning: If these elastic constants are not the same as in the input elastic tensor file", str(args.elas[0]),", then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by AELAS code (see Example folder)")
                 print(" ")
                 print(" ")
                 print("Magnetoelastic constants:")

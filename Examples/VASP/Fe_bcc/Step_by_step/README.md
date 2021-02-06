@@ -3,10 +3,6 @@ EXAMPLE: Fe bcc (step by step)
 -------------------------------------
 
 In this folder you can find an example on how to use MAELAS code performing each step manually.
-Here, we used a small k-mesh (-k 60) in order to show a quick example.
-Therefore, the Magnetoscrystalline Anisotorpy Energy (MAE) and calculated magnetostrictive coefficients are not reliable.
-Much higher number of k-points are required to obtain reliable and well-converged results. 
-For instance, in our tests for Fe-bcc we set -k 180. 
 
 ------------------------
 Step1: cell relaxation

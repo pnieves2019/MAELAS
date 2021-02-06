@@ -9,6 +9,8 @@ nbands=`echo "2*$nbands" | bc -l | awk '{printf"%d",$1}'`
 cd ./${fold1}
 sed -i "s/nbands/$nbands/" INCAR
 mpiexec.hydra -np 24 vasp_ncl > vasp.out
+rm WAVECAR
+rm CHGCAR
 cd ..
 cp WAVECAR ./${fold2}/
 cp CHGCAR  ./${fold2}/
@@ -17,3 +19,5 @@ nbands=`echo "2*$nbands" | bc -l | awk '{printf"%d",$1}'`
 cd ./${fold2}
 sed -i "s/nbands/$nbands/" INCAR
 mpiexec.hydra -np 24 vasp_ncl > vasp.out
+rm WAVECAR
+rm CHGCAR

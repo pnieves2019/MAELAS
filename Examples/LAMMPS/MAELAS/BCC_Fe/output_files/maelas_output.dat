@@ -1,51 +1,51 @@
 1
 new spin direction for trigonal deformation: mx, my, mz
-2.823026873838 2.837159563299 2.851434467830
+2.822562364005 2.836692728027 2.850965283719
 1
 mx, my, mz
-2.865745463121 .014310815958 -2.851434467830
+2.865273924234 .014308461211 -2.850965283719
 2
 new spin direction for trigonal deformation: mx, my, mz
-2.830124344375 2.840747222819 2.851450147857
+2.829658666700 2.840279797221 2.850980961167
 2
 mx, my, mz
-2.862173310841 .010723087446 -2.851450147857
+2.861702359727 .010721323035 -2.850980961167
 3
 new spin direction for trigonal deformation: mx, my, mz
-2.837230734101 2.844328232988 2.851461330574
+2.836763887118 2.843860218160 2.850992142043
 3
 mx, my, mz
-2.858603394812 .007142041891 -2.851461330574
+2.858133031103 .007140866717 -2.850992142043
 4
 new spin direction for trigonal deformation: mx, my, mz
-2.844346040236 2.847902582468 2.851468029967
+2.843878022478 2.847433979505 2.850998840334
 4
 mx, my, mz
-2.855035712146 .003567679390 -2.851468029967
+2.854565935476 .003567092353 -2.850998840334
 6
 new spin direction for trigonal deformation: mx, my, mz
-2.858603390608 2.855031254405 2.851468034608
+2.858133026900 2.854561478468 2.850998844974
 6
 mx, my, mz
-2.847907035568 -.003560996260 -2.851468034608
+2.847438431873 -.003560410322 -2.850998844974
 7
 new spin direction for trigonal deformation: mx, my, mz
-2.865745429275 2.858585554585 2.851461367702
+2.865273890393 2.858115193812 2.850992179165
 7
 mx, my, mz
-2.844346036086 -.007115309409 -2.851461367702
+2.843878018328 -.007114138633 -2.850992179165
 8
 new spin direction for trigonal deformation: mx, my, mz
-2.872896373213 2.862133149521 2.851450273166
+2.872423657692 2.861662205016 2.850981086455
 8
 mx, my, mz
-2.840787258829 -.010662939504 -2.851450273166
+2.840319826644 -.010661184990 -2.850981086455
 9
 new spin direction for trigonal deformation: mx, my, mz
-2.880056219637 2.865674028274 2.851434764857
+2.879582326011 2.865202501141 2.850965580697
 9
 mx, my, mz
-2.837230701111 -.014203886640 -2.851434764857
+2.836763854134 -.014201549488 -2.850965580697
     __  ______    ________    ___   _____
    /  |/  /   |  / ____/ /   /   | / ___/
   / /|_/ / /| | / __/ / /   / /| | \__ \ 
@@ -66,44 +66,44 @@ Cubic (I) system
 Point group = m-3m
 Number of anisotropic magnestostriction coefficients = 2
 
-Fit of quadratic function f(x)=a*x²+b*x+c to energy vs distortion data
+Fit of quadratic function f(x)=A*x²+B*x+C to energy vs distortion data
 
 -------------------------
 Calculation of λ001:
 -------------------------
  
-Lattice distorsion along [0,0,1] direction
+Unit cell length along [0,0,1] direction
 
 Fitting parameters for spin parallel to 001 (data from file ene_1_1.dat):
-a = 1.2894780669806933 , b = -7.3542619335094255 , c = 1.9058664413062059
-R-squared = 0.9998979978907457
+A = 1.2909001122852293 , B = -7.361160841454509 , C = 1.9139731147756638
+R-squared = 0.999898098834865
 
-X minimum = -b/(2*a) = 2.851642894062322
+X minimum = -B/(2*A) = 2.851173677730703
 
 Fitting parameters for spin parallel to 100 (data from file ene_1_2.dat):
-a = 1.2894796349344908 , b = -7.353985416056434 , c = 1.9050652109736794
-R-squared = 0.9998978135737215
+A = 1.2909042366192087 , B = -7.360898435062307 , C = 1.9131914700190211
+R-squared = 0.9998979142165334
 
-X minimum = -b/(2*a) = 2.851532206024346
+X minimum = -B/(2*A) = 2.8510629318019762
 
  
 -------------------------
 Calculation of λ111:
 -------------------------
  
-Lattice distorsion along [1,1,1] direction
+Unit cell length along [1,1,1] direction
 
 Fitting parameters for spin parallel to 111 (data from file ene_2_1.dat):
-a = 1.0327071090297828 , b = -10.200739471214378 , c = 16.60988790809814
-R-squared = 0.9999654313843485
+A = 1.0338160665200316 , B = -10.210021943973345 , C = 16.628680443801642
+R-squared = 0.9999654188689078
 
-X minimum = -b/(2*a) = 4.938834729625258
+X minimum = -B/(2*A) = 4.938026344638702
 
 Fitting parameters for spin parallel to 10-1 (data from file ene_2_2.dat):
-a = 1.0327323037816594 , b = -10.201457831308467 , c = 16.61282058050395
-R-squared = 0.9999654455146896
+A = 1.0338420518787856 , B = -10.210743092691281 , C = 16.631607226918646
+R-squared = 0.9999654338319603
 
-X minimum = -b/(2*a) = 4.939062036673379
+X minimum = -B/(2*A) = 4.938250999819291
 
  
 ----------------------------------------------
@@ -113,11 +113,31 @@ Anisotropic magnetostriction coefficients:
  
 Using the convention in reference J.R. Cullen et al., in Materials, Science and Technology (VCH Publishings, 1994), pp.529-565:
  
-λ001 = 25.877524018524824 x 10⁻⁶
+λ001 = 25.89531940069036 x 10⁻⁶
  
-λ111 = -30.682246568443766 x 10⁻⁶
+λ111 = -30.329265809204387 x 10⁻⁶
  
-(Polycrystal) λs = -8.058338333656328 x 10⁻⁶
+(Polycrystal) λs = -7.839431725246485 x 10⁻⁶
+----------------------------------------------
+Magnetocrystalline anisotropy energy:
+----------------------------------------------
+ 
+These energies correspond to the central points in the data files ene_1_1.dat, ene_2_1.dat, and ene_2_2.dat:
+ 
+E(0,0,1) =  -8.58000087250228  eV
+ 
+E(1,1,1) =  -8.5799982209609  eV
+ 
+E(1,0,-1) =  -8.57999888384624  eV
+ 
+E(1,1,1) - E(0,0,1) =  2.6515413811267763 x 10⁻⁶ eV
+ 
+[E(1,1,1) - E(0,0,1)]/Natom =  1.3257706905633881 x 10⁻⁶ eV/atom
+ 
+E(1,0,-1) - E(0,0,1) =  1.988656039841885 x 10⁻⁶ eV
+ 
+[E(1,0,-1) - E(0,0,1)]/Natom =  0.9943280199209426 x 10⁻⁶ eV/atom
+ 
  
  
 ----------------------------------------------
@@ -132,12 +152,12 @@ c12 = 133.85 GPa
  
 c44 = 116.09 GPa
  
-Warning: If these elastic constants are not the same as in the input elastic tensor file ELADAT , then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by ELAS code (see Example folder)
+Warning: If these elastic constants are not the same as in the input elastic tensor file ELADAT , then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by AELAS code (see Example folder)
  
  
 Magnetoelastic constants:
  
-b1 = -0.003716659387160628 GPa
+b1 = -0.003719215248924153 GPa
  
-b2 = 0.01068570601239191 GPa
+b2 = 0.010562773403371611 GPa
  

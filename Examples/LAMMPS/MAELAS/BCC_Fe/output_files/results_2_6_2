@@ -1,11 +1,11 @@
 LAMMPS (18 Sep 2020)
 Reading data file ...
-  triclinic box = (0.0000000 0.0000000 0.0000000) to (2.8514725 2.8514703 2.8514680) with tilt (0.0035654517 0.0035654517 0.0035609963)
+  triclinic box = (0.0000000 0.0000000 0.0000000) to (2.8510033 2.8510011 2.8509988) with tilt (0.003564865 0.003564865 0.0035604103)
   1 by 1 by 1 MPI processor grid
 WARNING: Atom style in data file differs from currently defined atom style (../read_data.cpp:515)
   reading atoms ...
   2 atoms
-  read_data CPU = 0.001 seconds
+  read_data CPU = 0.002 seconds
 Setting atom values ...
   2 settings made for spin
 Neighbor list info ...
@@ -41,7 +41,7 @@ Setting up Verlet run ...
   Time step     : 0.001
 Per MPI rank memory allocation (min/avg/max) = 10.88 | 10.88 | 10.88 Mbytes
 TotEng 
-  -8.5799576 
+  -8.5799605 
 Loop time of 2.86102e-06 on 1 procs for 0 steps with 2 atoms
 
 0.0% CPU use with 1 MPI tasks x no OpenMP threads
@@ -69,7 +69,7 @@ Total # of neighbors = 52
 Ave neighs/atom = 26.000000
 Neighbor list builds = 0
 Dangerous builds = 0
-energy -8.57995756525968
+energy -8.579960507203
 
 Please see the log.cite file for references relevant to this simulation
 
