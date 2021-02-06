@@ -13,7 +13,7 @@ class MAELAS_Options:
                             help='Number of distorted states for each magnetostriction mode (default: 7)')
         self.parser.add_argument('-s', dest='strain', type=float, nargs=1,
                             default=['0.01'],
-                            help='Maximum value of the parameter epsilon for the strain tensor to generate the distorted POSCAR files (default: 0.01)')
+                            help='Maximum value of the parameter s for the deformation gradient Fij(s) to generate the distorted POSCAR files (default: 0.01)')
         self.parser.add_argument('-k', dest='kp', type=int, nargs=1,
                             default=['60'],
                             help='VASP automatic k-point mesh generation to create the KPOINTS file (default: 60)')

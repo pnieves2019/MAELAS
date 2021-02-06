@@ -19,8 +19,8 @@ optional arguments:
                         (default: POSCAR)
   -n NDIST              Number of distorted states for each magnetostriction
                         mode (default: 7)
-  -s STRAIN             Maximum value of the parameter epsilon for the strain
-                        tensor to generate the distorted POSCAR files
+  -s STRAIN             Maximum value of the parameter s for the deformation gradient Fij(s)
+                        to generate the distorted POSCAR files
                         (default: 0.01)
   -k KP                 VASP automatic k-point mesh generation to create the
                         KPOINTS file (default: 60)

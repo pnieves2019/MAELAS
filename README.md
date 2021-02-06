@@ -10,7 +10,7 @@ WHAT IS MAELAS CODE?
 
 MAELAS code is a software to calculate anisotropic magnetostrictive coefficients and magnetoelastic constants up to second order. It generates required input files for VASP code to perform Density Functional Theory calculations, and it deduces the value of magnetostrictive coefficients from the calculated energies given by VASP. If the elastic tensor is provided, then it can also calculate the magnetoelastic constants.
 
-MAELAS can also be used with other codes instead of VASP, after file conversion to VASP format files.
+MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.
 
 
 ------------------
@@ -126,7 +126,7 @@ Copy the relaxed ```POSCAR``` and ```POTCAR``` in the same folder where you want
 maelas -g -i POSCAR_rlx -k 70 -n 7 -s 0.01
 ```
 
-where ```-g``` indicates that you want to generate input VASP files for the calculation of anisotropic magnetostrictive coefficients, ```-i POSCAR_rlx``` is the initial relaxed POSCAR file (you can name it whatever you want), ```-k 40``` is the length parameter that determines a regular mesh of k-points, ```-n 7``` means that it will generate 7 distorted states for each magentostriction mode and ```-s 0.01``` is the maximum value of the parameter epsilon for the strain tensor to generate the distorted POSCAR files. It will generate the following files:
+where ```-g``` indicates that you want to generate input VASP files for the calculation of anisotropic magnetostrictive coefficients, ```-i POSCAR_rlx``` is the initial relaxed POSCAR file (you can name it whatever you want), ```-k 40``` is the length parameter that determines a regular mesh of k-points, ```-n 7``` means that it will generate 7 distorted states for each magentostriction mode and ```-s 0.01``` is the maximum value of the parameter s for the deformation gradient Fij(s) to generate the distorted POSCAR files. It will generate the following files:
 
 * ```POSCAR_A_B``` (volume-conserving distorted cell where ```A```=magnetostriction mode, ```B```=1,...,n distorted cell for each magentostriction mode)
 * ```INCAR_A_C``` (non-collinear calculation where ```A```=magnetostriction mode, ```C```=1,2 is the spin orientation case)
@@ -252,7 +252,7 @@ optional arguments:
   -n NDIST        Number of distorted states for each magnetostriction mode
                   (default: 7)
 
-  -s STRAIN     Maximum value of the parameter epsilon for the strain tensor to generate the distorted POSCAR files (default: 0.01)
+  -s STRAIN       Maximum value of the parameter s for the deformation gradient Fij(s) to generate the distorted POSCAR files (default: 0.01)
 
 
   -k KP           VASP automatic k-point mesh generation to create the KPOINTS
