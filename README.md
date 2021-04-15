@@ -374,7 +374,12 @@ This interactive applet shows the magnetostriction for the supported crystal sys
 Manuscript
 --------------------------------------------------------------------
 
+Published version:
+P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
+“MAELAS: MAgneto-ELAStic properties calculation via computational high-throughput approach”, Comput. Phys. Commun. 264, 107964 (2021).
+[https://doi.org/10.1016/j.cpc.2021.107964](https://doi.org/10.1016/j.cpc.2021.107964)
+
+Preprint version:
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 “MAELAS: MAgneto-ELAStic properties calculation via computational high-throughput approach”, 2020, arXiv:2009.01638
-
-Submitted to Computer Physics Communications
+[https://arxiv.org/abs/2009.01638](https://arxiv.org/abs/2009.01638)
