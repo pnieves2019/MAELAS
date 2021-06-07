@@ -189,7 +189,7 @@ magnetoelastic constants. ```-i POSCAR_rlx``` is the initial relaxed POSCAR file
 
 The generated files ```vasp_maelas```, ```vasp_jsub``` and ```vasp_0``` are interconnected scripts to submit jobs in HPC facilities, one can specify some job settings in these scripts by adding more tags in the command line. Note that the user might need to modify ```vasp_jsub``` (it is in PBS Pro format) depending on the cluster or local computer batch scheduling. For instance,
 ```bash
-maelas -g -i POSCAR_rlx -k 70 -n 7 -s 0.1 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
+maelas -g -mode 1 -i POSCAR_rlx -k 70 -n 7 -s 0.01 -t 48 -c 24 -q qprod -a OPEN-00-00 -f /scratch/example_mag
 ```
 where ```-t 48``` indicates that the number of maximum CPU hours for the VASP calculation is 48 hours, ```-c 24``` means that the number of cores for the VASP calculation is 24, ```-q qprod``` set to production queue the type of queue in HPC facilities, ```-a OPEN-00-00``` is the project identification number for running jobs in HPC facilities and ```-f /scratch/example_mag``` is the folder where you want to run VASP calculations. This procedure might be helpful for high-throughput routines. More options can be added in these script files through the terminal command line, to see them just type
 ```bash
