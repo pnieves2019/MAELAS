@@ -19,8 +19,10 @@ The method implemented in version 1.0 (based on the quadratic fitting of the ene
 in version 2.0, and it can be executed using tag ```-mode 1```.
 The new method ```-mode 2``` is more accurate than ```-mode 1```, especially for non-cubic crystals.
 
-- We fixed some issues related to the trigonal (I) symmetry in version 1.0: 
+- We fixed some issues related to the trigonal (I) symmetry in version 1.0:
+ 
 -- The deformation gradient and measuring length direction for &lambda;<sub>12</sub> in trigonal (I) symmetry has been changed.
+
 -- We also corrected the theoretical relations between &lambda;<sup>&gamma;,1</sup>, &lambda;<sup>&gamma;,2</sup> and &lambda;<sub>21</sub>  with the magnetoelastic and
 elastic constants in trigonal (I) symmetry.
 
@@ -42,7 +44,7 @@ It generates required input files for VASP code to perform Density Functional Th
 ```-mode 1``` = the value of magnetostrictive coefficients from the calculated energies given by VASP. If the elastic tensor is provided,
 then it can also calculate the magnetoelastic constants.
 
-```-mode 2``` = the value of magnetelastic constants from the calculated energies given by VASP. If the elastic tensor is provided,
+```-mode 2``` = the value of magnetolastic constants from the calculated energies given by VASP. If the elastic tensor is provided,
 then it can also calculate the magnetostrictive coefficients.
 
 MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.
