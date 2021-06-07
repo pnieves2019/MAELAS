@@ -21,9 +21,9 @@ The new method ```-mode 2``` is more accurate than ```-mode 1```, especially for
 
 - We fixed some issues related to the trigonal (I) symmetry in version 1.0:
  
--- The deformation gradient and measuring length direction for &lambda;<sub>12</sub> in trigonal (I) symmetry has been changed.
+	- The deformation gradient and measuring length direction for &lambda;<sub>12</sub> in trigonal (I) symmetry has been changed.
 
--- We also corrected the theoretical relations between &lambda;<sup>&gamma;,1</sup>, &lambda;<sup>&gamma;,2</sup> and &lambda;<sub>21</sub>  with the magnetoelastic and
+	- We also corrected the theoretical relations between &lambda;<sup>&gamma;,1</sup>, &lambda;<sup>&gamma;,2</sup> and &lambda;<sub>21</sub>  with the magnetoelastic and
 elastic constants in trigonal (I) symmetry.
 
 More details about these updates can be found in the Manual, as well as in the preprint version of the manuscript for version 2.0
