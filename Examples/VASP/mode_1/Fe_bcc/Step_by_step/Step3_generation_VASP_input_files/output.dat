@@ -1,0 +1,33 @@
+    __  ______    ________    ___   _____         ___    ____ 
+   /  |/  /   |  / ____/ /   /   | / ___/   _   _|__ \  / __ \
+  / /|_/ / /| | / __/ / /   / /| | \__ \   | | / /_/ / / / / /
+ / /  / / ___ |/ /___/ /___/ ___ |___/ /   | |/ / __/_/ /_/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/    |___/____(_)____/  
+                                                              
+
+MAELAS code v2.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+---------------------------------------------------------------------------------------------
+Generation of VASP files for the calculation of anisotropic magnetostriction coefficients:
+---------------------------------------------------------------------------------------------
+Name of the initial POSCAR file:  POSCAR_Fe_bcc_rlx
+Number of distorted states for each magnetostriction mode =  7
+Maximum strain =  0.01
+Number of atoms (original POSCAR)= 2
+Number of atoms (after conventional cell transformation)= 2
+Species = [Element Fe, Element Fe]
+Space group number = 229
+Space group symbol = Im-3m
+Mode= 1 , direct calculation of the magnetostrictive coefficients
+Cubic (I) system
+Point group = m-3m
+Number of anisotropic magnetostriction coefficients = 2
+strain -0.01
+strain -0.006666666666666666
+strain -0.003333333333333333
+strain 0.0
+strain 0.003333333333333334
+strain 0.006666666666666666
+strain 0.01

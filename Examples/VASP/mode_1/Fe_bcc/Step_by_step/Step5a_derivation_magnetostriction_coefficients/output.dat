@@ -1,0 +1,93 @@
+    __  ______    ________    ___   _____         ___    ____ 
+   /  |/  /   |  / ____/ /   /   | / ___/   _   _|__ \  / __ \
+  / /|_/ / /| | / __/ / /   / /| | \__ \   | | / /_/ / / / / /
+ / /  / / ___ |/ /___/ /___/ ___ |___/ /   | |/ / __/_/ /_/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/    |___/____(_)____/  
+                                                              
+
+MAELAS code v2.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+--------------------------------------------------------------------------------------------------------
+Derivation of anisotropic magnetostrictive coefficients from the energy written in the OSZICAR files:
+--------------------------------------------------------------------------------------------------------
+Space group number = 229
+Space group symbol = Im-3m
+Mode= 1 , direct calculation of the magnetostrictive coefficients
+Cubic (I) system
+Point group = m-3m
+Number of anisotropic magnetostriction coefficients = 2
+
+Fit of quadratic function f(x)=A*x²+B*x+C to energy vs cell length
+
+-------------------------
+Calculation of λ001:
+-------------------------
+ 
+Unit cell length along [0,0,1] direction
+
+Fitting parameters for spin parallel to 001 (data from file ene_1_1.dat):
+A = 2.463335850047891 , B = -13.855298302216442 , C = 2.9556546259972913
+R-squared = 0.989664857821788
+
+X minimum = -B/(2*A) = 2.8123039539953663
+
+Fitting parameters for spin parallel to 100 (data from file ene_1_2.dat):
+A = 2.464238687977135 , B = -13.859707100635546 , C = 2.9609130999607625
+R-squared = 0.989658861501345
+
+X minimum = -B/(2*A) = 2.8121681491846107
+
+ 
+-------------------------
+Calculation of λ111:
+-------------------------
+ 
+Unit cell length along [1,1,1] direction
+
+Fitting parameters for spin parallel to 111 (data from file ene_2_1.dat):
+A = 1.0595647626332816 , B = -10.32038495035896 , C = 8.603750717473627
+R-squared = 0.9951829586721676
+
+X minimum = -B/(2*A) = 4.870105780372612
+
+Fitting parameters for spin parallel to 10-1 (data from file ene_2_2.dat):
+A = 1.0608759780529828 , B = -10.333001200892966 , C = 8.634093585938695
+R-squared = 0.9952890669627826
+
+X minimum = -B/(2*A) = 4.870032602612532
+
+ 
+----------------------------------------------
+Anisotropic magnetostriction coefficients:
+----------------------------------------------
+ 
+ 
+Using the convention in reference J.R. Cullen et al., in Materials, Science and Technology (VCH Publishings, 1994), pp.529-565:
+ 
+λ001 = 32.19379129022242 x 10⁻⁶
+ 
+λ111 = 10.017347078449419 x 10⁻⁶
+ 
+(Polycrystal) λs = 18.88792476315862 x 10⁻⁶
+----------------------------------------------
+Magnetocrystalline anisotropy energy:
+----------------------------------------------
+ 
+These energies correspond to the central points in the data files ene_1_1.dat, ene_2_1.dat, and ene_2_2.dat:
+ 
+E(0,0,1) =  -16.5270151465  eV
+ 
+E(1,1,1) =  -16.5270140603  eV
+ 
+E(1,0,-1) =  -16.5270129255  eV
+ 
+E(1,1,1) - E(0,0,1) =  1.0861999975020353 x 10⁻⁶ eV
+ 
+[E(1,1,1) - E(0,0,1)]/Natom =  0.5430999987510177 x 10⁻⁶ eV/atom
+ 
+E(1,0,-1) - E(0,0,1) =  2.2209999990252527 x 10⁻⁶ eV
+ 
+[E(1,0,-1) - E(0,0,1)]/Natom =  1.1104999995126263 x 10⁻⁶ eV/atom
+ 
