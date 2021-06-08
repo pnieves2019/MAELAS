@@ -31,7 +31,7 @@ More details about these updates can be found in the Manual, as well as in the p
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 “MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, 2021, arXiv:
 
-[]()
+[https://arxiv.org/abs/2106.03624](https://arxiv.org/abs/2106.03624)
 
 
 -------------------------
@@ -541,5 +541,5 @@ Preprint version 2.0:
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 “MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, 2021, arXiv:
 
-[]()
+[https://arxiv.org/abs/2106.03624](https://arxiv.org/abs/2106.03624)
 
