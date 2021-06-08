@@ -29,7 +29,7 @@ elastic constants in trigonal (I) symmetry.
 More details about these updates can be found in the Manual, as well as in the preprint version of the manuscript for version 2.0
 
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
-“MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, 2021, arXiv:
+“MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, 2021, arXiv:2106.03624
 
 [https://arxiv.org/abs/2106.03624](https://arxiv.org/abs/2106.03624)
 
@@ -539,7 +539,7 @@ P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 Preprint version 2.0:
 
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
-“MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, 2021, arXiv:
+“MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, 2021, arXiv:2106.03624
 
 [https://arxiv.org/abs/2106.03624](https://arxiv.org/abs/2106.03624)
 
