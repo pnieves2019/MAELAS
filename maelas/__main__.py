@@ -2486,6 +2486,22 @@ elif (177 <= sg <= 194 and int(args.mode[0])==1) or (89 <= sg <= 142 and int(arg
             print("\u03BB4 =", -lambda_alpha_2_2*1e6,u'x 10\u207B\u2076')
             print(" ")
             print("\u03BB5 =", (-lambda_alpha_1_2-0.5*lambda_gamma_2)*1e6,u'x 10\u207B\u2076')
+            
+            
+            if nn % 2 == 0:         
+                print("----------------------------------------------")
+                print("Magnetocrystalline anisotropy energy:")
+                print("----------------------------------------------")
+                print(" ")
+                print("These energies correspond to the central points in the data files ene_2_1.dat and ene_2_2.dat:")
+                print(" ")
+                print("E(0,0,1) = ",mae001," eV")
+                print(" ")
+                print("E(1,0,0) = ",mae100," eV")
+                print(" ")
+                print("E(1,0,0) - E(0,0,1) = ",(mae100 - mae001)*1e6,u'x 10\u207B\u2076 eV')
+                print(" ")
+                print("[E(1,0,0) - E(0,0,1)]/Natom = ",((mae100 - mae001)/nat)*1e6,u'x 10\u207B\u2076 eV/atom')
 
 
             if args.delas == True:
@@ -3566,6 +3582,22 @@ elif (177 <= sg <= 194 and int(args.mode[0])==2) or (89 <= sg <= 142 and int(arg
             print("b'3 =", (bp3/vol)*1.602176565e-19*1e30*1e-6 ,u' MPa')
             print(" ")
             
+            
+            
+            if nn % 2 == 0:         
+                print("----------------------------------------------")
+                print("Magnetocrystalline anisotropy energy:")
+                print("----------------------------------------------")
+                print(" ")
+                print("These energies correspond to the central points in the data files ene_1_1.dat and ene_3_1.dat:")
+                print(" ")
+                print("E(0,0,1) = ",mae001," eV")
+                print(" ")
+                print("E(1,0,0) = ",mae100," eV")
+                print(" ")
+                print("E(1,0,0) - E(0,0,1) = ",(mae100 - mae001)*1e6,u'x 10\u207B\u2076 eV')
+                print(" ")
+                print("[E(1,0,0) - E(0,0,1)]/Natom = ",((mae100 - mae001)/nat)*1e6,u'x 10\u207B\u2076 eV/atom')
             
             
             
