@@ -36,7 +36,7 @@ print(f.renderText('MAELAS v2.0'))
 args  = parser.MAELAS_Options()()
 
 
-print("MAELAS code v2.0")
+print("MAELAS version 2.0.1")
 print(" ")
 print("Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut ")
 print(" ")
@@ -2359,7 +2359,7 @@ elif (177 <= sg <= 194 and int(args.mode[0])==1) or (89 <= sg <= 142 and int(arg
             print(" ")
             print("Using the convention in reference R.R. Birss, Advances in Physics 8, 252 (1959):")
             print(" ")
-            print("Hexagonal crystal with easy axis: ")
+            print("Hexagonal crystal with easy axis (reference demagnetized state with equal domains along all easy directions): ")
             print(" ")
             print("\u03BE =", (2.0/3.0)*q2+(4.0/15.0)*q4-(1.0/15.0)*q6+(1.0/15.0)*q8,u'x 10\u207B\u2076')
             print(" ")
@@ -2367,7 +2367,7 @@ elif (177 <= sg <= 194 and int(args.mode[0])==1) or (89 <= sg <= 142 and int(arg
             print(" ")
             print("......................... ")
             print(" ")
-            print("Hexagonal crystal with easy plane: ")
+            print("Hexagonal crystal with easy plane (reference demagnetized state with equal domains along all easy directions): ")
             print(" ")
             print("\u03BE =", -(1.0/3.0)*q2-(1.0/15.0)*q4-(1.0/15.0)*q6-(4.0/15.0)*q8,u'x 10\u207B\u2076')
             print(" ")
@@ -2486,6 +2486,28 @@ elif (177 <= sg <= 194 and int(args.mode[0])==1) or (89 <= sg <= 142 and int(arg
             print("\u03BB4 =", -lambda_alpha_2_2*1e6,u'x 10\u207B\u2076')
             print(" ")
             print("\u03BB5 =", (-lambda_alpha_1_2-0.5*lambda_gamma_2)*1e6,u'x 10\u207B\u2076')
+            
+            print(" ")
+            print(" ")
+            print("/////////////////////")
+            print("Polycrystal:")
+            print("/////////////////////")
+            print(" ")
+            print(" ")
+            print("Tetragonal crystal with easy axis (reference demagnetized state with equal domains along all easy directions): ")
+            print(" ")
+            print("\u03BE =", 1e6*((4.0/15.0)*lambda_alpha_1_2+(1.0/15.0)*lambda_alpha_2_2-(2.0/15.0)*lambda_epsilon_2-(1.0/15.0)*lambda_gamma_2-(1.0/15.0)*lambda_delta-(1.0/3.0)*(2.0*lambda_alpha_1_2+lambda_alpha_2_2)),u'x 10\u207B\u2076')
+            print(" ")
+            print("\u03B7 =", 1e6*(-(2.0/15.0)*lambda_alpha_1_2+(2.0/15.0)*lambda_alpha_2_2+(2.0/5.0)*lambda_epsilon_2+(1.0/5.0)*lambda_gamma_2+(1.0/5.0)*lambda_delta),u'x 10\u207B\u2076')
+            print(" ")
+            print("......................... ")
+            print(" ")
+            print("Tetragonal crystal with easy plane (reference demagnetized state with equal domains along all easy directions): ")
+            print(" ")
+            print("\u03BE =", 1e6*((4.0/15.0)*lambda_alpha_1_2+(1.0/15.0)*lambda_alpha_2_2-(2.0/15.0)*lambda_epsilon_2-(1.0/15.0)*lambda_gamma_2-(1.0/15.0)*lambda_delta),u'x 10\u207B\u2076')
+            print(" ")
+            print("\u03B7 =", 1e6*(-(2.0/15.0)*lambda_alpha_1_2+(2.0/15.0)*lambda_alpha_2_2+(2.0/5.0)*lambda_epsilon_2+(1.0/5.0)*lambda_gamma_2+(1.0/5.0)*lambda_delta),u'x 10\u207B\u2076')
+            print(" ")
             
             
             if nn % 2 == 0:         
@@ -3516,7 +3538,7 @@ elif (177 <= sg <= 194 and int(args.mode[0])==2) or (89 <= sg <= 142 and int(arg
                 print(" ")
                 print("Using the convention in reference R.R. Birss, Advances in Physics 8, 252 (1959):")
                 print(" ")
-                print("Hexagonal crystal with easy axis: ")
+                print("Hexagonal crystal with easy axis (reference demagnetized state with equal domains along all easy directions): ")
                 print(" ")
                 print("\u03BE =", (2.0/3.0)*q2+(4.0/15.0)*q4-(1.0/15.0)*q6+(1.0/15.0)*q8,u'x 10\u207B\u2076')
                 print(" ")
@@ -3524,7 +3546,7 @@ elif (177 <= sg <= 194 and int(args.mode[0])==2) or (89 <= sg <= 142 and int(arg
                 print(" ")
                 print("......................... ")
                 print(" ")
-                print("Hexagonal crystal with easy plane: ")
+                print("Hexagonal crystal with easy plane (reference demagnetized state with equal domains along all easy directions): ")
                 print(" ")
                 print("\u03BE =", -(1.0/3.0)*q2-(1.0/15.0)*q4-(1.0/15.0)*q6-(4.0/15.0)*q8,u'x 10\u207B\u2076')
                 print(" ")
@@ -3610,7 +3632,7 @@ elif (177 <= sg <= 194 and int(args.mode[0])==2) or (89 <= sg <= 142 and int(arg
                 print(" ")
                 print(" ")
                 print("----------------------------------------------")
-                print("Calculation of magnetoelastic constants:")
+                print("Calculation of magnetostrictive coefficients:")
                 print("----------------------------------------------")
                 print(" ")
                 print("Reading the elastic tensor file =", str(args.elas[0]))
@@ -3700,16 +3722,29 @@ elif (177 <= sg <= 194 and int(args.mode[0])==2) or (89 <= sg <= 142 and int(arg
                 print("\u03BB4 =", -lambda_alpha_2_2*1e6,u'x 10\u207B\u2076')
                 print(" ")
                 print("\u03BB5 =", (-lambda_alpha_1_2-0.5*lambda_gamma_2)*1e6,u'x 10\u207B\u2076')
-
-
-
-
-
-
-
-
-
-
+                
+                
+                print(" ")
+                print(" ")
+                print("/////////////////////")
+                print("Polycrystal:")
+                print("/////////////////////")
+                print(" ")
+                print(" ")
+                print("Tetragonal crystal with easy axis (reference demagnetized state with equal domains along all easy directions): ")
+                print(" ")
+                print("\u03BE =", 1e6*((4.0/15.0)*lambda_alpha_1_2+(1.0/15.0)*lambda_alpha_2_2-(2.0/15.0)*lambda_epsilon_2-(1.0/15.0)*lambda_gamma_2-(1.0/15.0)*lambda_delta-(1.0/3.0)*(2.0*lambda_alpha_1_2+lambda_alpha_2_2)),u'x 10\u207B\u2076')
+                print(" ")
+                print("\u03B7 =", 1e6*(-(2.0/15.0)*lambda_alpha_1_2+(2.0/15.0)*lambda_alpha_2_2+(2.0/5.0)*lambda_epsilon_2+(1.0/5.0)*lambda_gamma_2+(1.0/5.0)*lambda_delta),u'x 10\u207B\u2076')
+                print(" ")
+                print("......................... ")
+                print(" ")
+                print("Tetragonal crystal with easy plane (reference demagnetized state with equal domains along all easy directions): ")
+                print(" ")
+                print("\u03BE =", 1e6*((4.0/15.0)*lambda_alpha_1_2+(1.0/15.0)*lambda_alpha_2_2-(2.0/15.0)*lambda_epsilon_2-(1.0/15.0)*lambda_gamma_2-(1.0/15.0)*lambda_delta),u'x 10\u207B\u2076')
+                print(" ")
+                print("\u03B7 =", 1e6*(-(2.0/15.0)*lambda_alpha_1_2+(2.0/15.0)*lambda_alpha_2_2+(2.0/5.0)*lambda_epsilon_2+(1.0/5.0)*lambda_gamma_2+(1.0/5.0)*lambda_delta),u'x 10\u207B\u2076')
+                print(" ")
 
 
 
@@ -5018,6 +5053,30 @@ elif 149 <= sg <= 167 and int(args.mode[0])==1:
         print("\u03BB 21 =", lambda_2_1*1e6,u'x 10\u207B\u2076')
         print(" ")
         
+        print(" ")
+        print(" ")
+        print("/////////////////////")
+        print("Polycrystal:")
+        print("/////////////////////")
+        print(" ")
+        print(" ")
+        print("Trigonal crystal with easy axis (reference demagnetized state with equal domains along all easy directions): ")
+        print(" ")
+        print("\u03BE =", 1e6*((4.0/15.0)*lambda_alpha_1_2+(1.0/15.0)*lambda_alpha_2_2-(2.0/15.0)*lambda_gamma_1-(1.0/15.0)*lambda_gamma_2-(1.0/3.0)*(2.0*lambda_alpha_1_2+lambda_alpha_2_2)),u'x 10\u207B\u2076')
+        print(" ")
+        print("\u03B7 =", 1e6*(-(2.0/15.0)*lambda_alpha_1_2+(2.0/15.0)*lambda_alpha_2_2+(2.0/5.0)*lambda_gamma_1+(1.0/5.0)*lambda_gamma_2),u'x 10\u207B\u2076')
+        print(" ")
+        print("......................... ")
+        print(" ")
+        print("Trigonal crystal with easy plane (reference demagnetized state with equal domains along all easy directions): ")
+        print(" ")
+        print("\u03BE =", 1e6*((4.0/15.0)*lambda_alpha_1_2+(1.0/15.0)*lambda_alpha_2_2-(2.0/15.0)*lambda_gamma_1-(1.0/15.0)*lambda_gamma_2),u'x 10\u207B\u2076')
+        print(" ")
+        print("\u03B7 =", 1e6*(-(2.0/15.0)*lambda_alpha_1_2+(2.0/15.0)*lambda_alpha_2_2+(2.0/5.0)*lambda_gamma_1+(1.0/5.0)*lambda_gamma_2),u'x 10\u207B\u2076')
+        print(" ")
+        print(" ") 
+        
+        
         
         if nn % 2 == 0:         
                 print("----------------------------------------------")
@@ -6062,7 +6121,7 @@ elif 149 <= sg <= 167 and int(args.mode[0])==2:
                 print(" ")
                 print(" ")
                 print("----------------------------------------------")
-                print("Calculation of magnetoelastic constants:")
+                print("Calculation of magnetostrictive coefficients:")
                 print("----------------------------------------------")
                 print(" ")
                 print("Reading the elastic tensor file =", str(args.elas[0]))
@@ -6151,16 +6210,30 @@ elif 149 <= sg <= 167 and int(args.mode[0])==2:
                 print(" ")
                 print("\u03BB 21 =", lambda_2_1*1e6,u'x 10\u207B\u2076')
                 print(" ")
+                print(" ")
+                print(" ")
+                print("/////////////////////")
+                print("Polycrystal:")
+                print("/////////////////////")
+                print(" ")
+                print(" ")
+                print("Trigonal crystal with easy axis (reference demagnetized state with equal domains along all easy directions): ")
+                print(" ")
+                print("\u03BE =", 1e6*((4.0/15.0)*lambda_alpha_1_2+(1.0/15.0)*lambda_alpha_2_2-(2.0/15.0)*lambda_gamma_1-(1.0/15.0)*lambda_gamma_2-(1.0/3.0)*(2.0*lambda_alpha_1_2+lambda_alpha_2_2)),u'x 10\u207B\u2076')
+                print(" ")
+                print("\u03B7 =", 1e6*(-(2.0/15.0)*lambda_alpha_1_2+(2.0/15.0)*lambda_alpha_2_2+(2.0/5.0)*lambda_gamma_1+(1.0/5.0)*lambda_gamma_2),u'x 10\u207B\u2076')
+                print(" ")
+                print("......................... ")
+                print(" ")
+                print("Trigonal crystal with easy plane (reference demagnetized state with equal domains along all easy directions): ")
+                print(" ")
+                print("\u03BE =", 1e6*((4.0/15.0)*lambda_alpha_1_2+(1.0/15.0)*lambda_alpha_2_2-(2.0/15.0)*lambda_gamma_1-(1.0/15.0)*lambda_gamma_2),u'x 10\u207B\u2076')
+                print(" ")
+                print("\u03B7 =", 1e6*(-(2.0/15.0)*lambda_alpha_1_2+(2.0/15.0)*lambda_alpha_2_2+(2.0/5.0)*lambda_gamma_1+(1.0/5.0)*lambda_gamma_2),u'x 10\u207B\u2076')
+                print(" ")
+                print(" ") 
 
-                print("The equation of the magnetoelastic energy can be found in the User Manual")
-
-
-
-
-  
-                
-                
-
+          
 
 #################################################################
 
@@ -6972,6 +7045,41 @@ elif 16 <= sg <= 74 and int(args.mode[0])==1:
 
             print("\u03BB",i+1," =", lambda_ortho[i]*1e6,u'x 10\u207B\u2076')
             print(" ")
+            
+        
+        
+        print(" ")
+        print(" ")
+        print("/////////////////////")
+        print("Polycrystal:")
+        print("/////////////////////")
+        print(" ")
+        print(" ")
+        print("Orthorhombic crystal with easy axis along lattice vector c (reference demagnetized state with equal domains along all easy directions): ")
+        print(" ")
+        print("\u03BE =", 1e6*((2.0/15.0)*(lambda_ortho[0]+lambda_ortho[3]-lambda_ortho[6]-lambda_ortho[7]-lambda_ortho[8])+(1.0/6.0)*(lambda_ortho[1]+lambda_ortho[2]+lambda_ortho[4]+lambda_ortho[5])),u'x 10\u207B\u2076')
+        print(" ")
+        print("\u03B7 =", 1e6*(-(1.0/15.0)*lambda_ortho[0]-(1.0/15.0)*lambda_ortho[3]-(1.0/6.0)*(lambda_ortho[1]+lambda_ortho[2]+lambda_ortho[4]+lambda_ortho[5])+(2.0/5.0)*(lambda_ortho[6]+lambda_ortho[7]+lambda_ortho[8])),u'x 10\u207B\u2076')
+        print(" ")
+        print("......................... ")
+        print(" ")
+        print("Orthorhombic crystal with easy axis along lattice vector a (reference demagnetized state with equal domains along all easy directions): ")
+        print(" ")
+        print("\u03BE =", 1e6*((2.0/15.0)*(-(3.0/2.0)*lambda_ortho[0]+lambda_ortho[3]-lambda_ortho[6]-lambda_ortho[7]-lambda_ortho[8])+(1.0/6.0)*(lambda_ortho[1]-lambda_ortho[2]-lambda_ortho[4]+lambda_ortho[5])),u'x 10\u207B\u2076')
+        print(" ")
+        print("\u03B7 =", 1e6*(-(1.0/15.0)*lambda_ortho[0]-(1.0/15.0)*lambda_ortho[3]-(1.0/6.0)*(lambda_ortho[1]+lambda_ortho[2]+lambda_ortho[4]+lambda_ortho[5])+(2.0/5.0)*(lambda_ortho[6]+lambda_ortho[7]+lambda_ortho[8])),u'x 10\u207B\u2076')
+        print(" ")
+        print("......................... ")
+        print(" ")
+        print("Orthorhombic crystal with easy axis along lattice vector b (reference demagnetized state with equal domains along all easy directions): ")
+        print(" ")
+        print("\u03BE =", 1e6*((2.0/15.0)*(lambda_ortho[0]-(3.0/2.0)*lambda_ortho[3]-lambda_ortho[6]-lambda_ortho[7]-lambda_ortho[8])-(1.0/6.0)*(lambda_ortho[1]-lambda_ortho[2]-lambda_ortho[4]+lambda_ortho[5])),u'x 10\u207B\u2076')
+        print(" ")
+        print("\u03B7 =", 1e6*(-(1.0/15.0)*lambda_ortho[0]-(1.0/15.0)*lambda_ortho[3]-(1.0/6.0)*(lambda_ortho[1]+lambda_ortho[2]+lambda_ortho[4]+lambda_ortho[5])+(2.0/5.0)*(lambda_ortho[6]+lambda_ortho[7]+lambda_ortho[8])),u'x 10\u207B\u2076')
+        print(" ")
+        print(" ")
+        print(" ")
+        
             
         
         if nn % 2 == 0:         
@@ -7852,6 +7960,38 @@ elif 16 <= sg <= 74 and int(args.mode[0])==2:
                 print("\u03BB9 =", lambda_ortho9*1e6,u'x 10\u207B\u2076')
                 print(" ")
                 print("The used convention can be found in the User Manual")
+                print(" ")
+                
+                print(" ")
+                print(" ")
+                print("/////////////////////")
+                print("Polycrystal:")
+                print("/////////////////////")
+                print(" ")
+                print(" ")
+                print("Orthorhombic crystal with easy axis along lattice vector c (reference demagnetized state with equal domains along all easy directions): ")
+                print(" ")
+                print("\u03BE =", 1e6*((2.0/15.0)*(lambda_ortho1+lambda_ortho4-lambda_ortho7-lambda_ortho8-lambda_ortho9)+(1.0/6.0)*(lambda_ortho2+lambda_ortho3+lambda_ortho5+lambda_ortho6)),u'x 10\u207B\u2076')
+                print(" ")
+                print("\u03B7 =", 1e6*(-(1.0/15.0)*lambda_ortho1-(1.0/15.0)*lambda_ortho4-(1.0/6.0)*(lambda_ortho2+lambda_ortho3+lambda_ortho5+lambda_ortho6)+(2.0/5.0)*(lambda_ortho7+lambda_ortho8+lambda_ortho9)),u'x 10\u207B\u2076')
+                print(" ")
+                print("......................... ")
+                print(" ")
+                print("Orthorhombic crystal with easy axis along lattice vector a (reference demagnetized state with equal domains along all easy directions): ")
+                print(" ")
+                print("\u03BE =", 1e6*((2.0/15.0)*(-(3.0/2.0)*lambda_ortho1+lambda_ortho4-lambda_ortho7-lambda_ortho8-lambda_ortho9)+(1.0/6.0)*(lambda_ortho2-lambda_ortho3-lambda_ortho5+lambda_ortho6)),u'x 10\u207B\u2076')
+                print(" ")
+                print("\u03B7 =", 1e6*(-(1.0/15.0)*lambda_ortho1-(1.0/15.0)*lambda_ortho4-(1.0/6.0)*(lambda_ortho2+lambda_ortho3+lambda_ortho5+lambda_ortho6)+(2.0/5.0)*(lambda_ortho7+lambda_ortho8+lambda_ortho9)),u'x 10\u207B\u2076')
+                print(" ")
+                print("......................... ")
+                print(" ")
+                print("Orthorhombic crystal with easy axis along lattice vector b (reference demagnetized state with equal domains along all easy directions): ")
+                print(" ")
+                print("\u03BE =", 1e6*((2.0/15.0)*(lambda_ortho1-(3.0/2.0)*lambda_ortho4-lambda_ortho7-lambda_ortho8-lambda_ortho9)-(1.0/6.0)*(lambda_ortho2-lambda_ortho3-lambda_ortho5+lambda_ortho6)),u'x 10\u207B\u2076')
+                print(" ")
+                print("\u03B7 =", 1e6*(-(1.0/15.0)*lambda_ortho1-(1.0/15.0)*lambda_ortho4-(1.0/6.0)*(lambda_ortho2+lambda_ortho3+lambda_ortho5+lambda_ortho6)+(2.0/5.0)*(lambda_ortho7+lambda_ortho8+lambda_ortho9)),u'x 10\u207B\u2076')
+                print(" ")
+                print(" ")
                 print(" ")
 
 

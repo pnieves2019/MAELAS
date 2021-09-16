@@ -6,10 +6,10 @@ Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. L
 
 
 ------------------
-NEW VERSION v2.0 
+NEW VERSION v2.0
 ------------------
 
-Date: June 7, 2021
+Date: June 7, 2021 (version 2.0.0)
 
 The main new features of version 2.0 are:
 
@@ -25,6 +25,12 @@ The new method ```-mode 2``` is more accurate than ```-mode 1```, especially for
 
 	- We also corrected the theoretical relations between &lambda;<sup>&gamma;,1</sup>, &lambda;<sup>&gamma;,2</sup> and &lambda;<sub>21</sub>  with the magnetoelastic and
 elastic constants in trigonal (I) symmetry.
+
+
+Date: September 15, 2021 (version 2.0.1)
+
+We included the calculation of saturation magnetostriction for polycrystals with tetragonal, trigonal and orthorhombic symmetries. 
+
 
 More details about these updates can be found in the Manual, as well as in the preprint version of the manuscript for version 2.0
 

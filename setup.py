@@ -10,7 +10,7 @@ executables_maelas = ['maelas/bin/maelas']
 
 requirements_maelas = []
 
-VERSION='2.0.0'
+VERSION='2.0.1'
 
 if __name__ == '__main__':
     myself=environ['PWD']
@@ -62,7 +62,7 @@ if __name__ == '__main__':
           url="https://github.com/pnieves2019/MAELAS",   # project home page, if any
           project_urls={
               "Documentation": "https://github.com/pnieves2019/MAELAS/Manual.pdf",
-              "Source Code": "https://github.com/pnieves2019/MAELAS/maelas.py",
+              "Source Code": "https://github.com/pnieves2019/MAELAS/maelas",
               "Examples": "https://github.com/pnieves2019/MAELAS/Examples",
           },
           classifiers=[
