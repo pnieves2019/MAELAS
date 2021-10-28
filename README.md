@@ -32,12 +32,12 @@ Date: September 15, 2021 (version 2.0.1)
 We included the calculation of saturation magnetostriction for polycrystals with tetragonal, trigonal and orthorhombic symmetries. 
 
 
-More details about these updates can be found in the Manual, as well as in the preprint version of the manuscript for version 2.0
+More details about these updates can be found in the Manual, as well as in the publication of version 2.0
 
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
-“MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, 2021, arXiv:2106.03624
+“MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, Computer Physics Communications 271 (2022) 108197
 
-[https://arxiv.org/abs/2106.03624](https://arxiv.org/abs/2106.03624)
+[https://doi.org/10.1016/j.cpc.2021.108197](https://doi.org/10.1016/j.cpc.2021.108197)
 
 
 -------------------------
@@ -541,6 +541,15 @@ P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 “MAELAS: MAgneto-ELAStic properties calculation via computational high-throughput approach”, 2020, arXiv:2009.01638
 
 [https://arxiv.org/abs/2009.01638](https://arxiv.org/abs/2009.01638)
+
+
+Published version 2.0:
+
+P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
+“MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, Computer Physics Communications 271 (2022) 108197
+
+[https://doi.org/10.1016/j.cpc.2021.108197](https://doi.org/10.1016/j.cpc.2021.108197)
+
 
 Preprint version 2.0:
 
