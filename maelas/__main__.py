@@ -108,7 +108,7 @@ if args.der == True:
 
         pg = aa.get_point_group_symbol()
 
-    elif int(args.sg0[0]) > 0:
+    elif 0 < int(args.sg0[0]) <= 230:
 
         sg = int(args.sg0[0])
         print("Space group number (set by user)=", sg)

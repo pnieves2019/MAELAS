@@ -57,8 +57,8 @@ class VASP:
             print("Space group symbol =", str(self.symmetry.point_group))
             self.symmetry.point_group = aa.get_point_group_symbol()
         
-        elif int(self.args.sg0[0]) > 0:
-            self.symmetry.space_group = int(self.args.self.symmetry.space_group0[0])
+        elif 0 < int(self.args.sg0[0]) <= 230:
+            self.symmetry.space_group = int(self.args.sg0[0])
             print("Space group number (set by user)=", self.symmetry.space_group)
             self.symmetry.point_group = 'set by user'
             
