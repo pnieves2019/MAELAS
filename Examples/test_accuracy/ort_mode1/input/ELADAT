@@ -1,0 +1,33 @@
+ Elastic tensor: 
+ 
+   76.00   45.00   48.00    0.00    0.00    0.00
+   45.00  102.00   55.00    0.00    0.00    0.00
+   48.00   55.00  141.00    0.00    0.00    0.00
+    0.00    0.00    0.00   40.00    0.00    0.00
+    0.00    0.00    0.00    0.00   27.00    0.00
+    0.00    0.00    0.00    0.00    0.00   39.00
+ 
+ Compliance tensor: 
+ 
+  0.019688 -0.006493 -0.004139  0.000000  0.000000  0.000000
+ -0.006493  0.014538 -0.003447  0.000000  0.000000  0.000000
+ -0.004139 -0.003447  0.009832  0.000000  0.000000  0.000000
+  0.000000  0.000000  0.000000  0.025275  0.000000  0.000000
+  0.000000  0.000000  0.000000  0.000000  0.037074  0.000000
+  0.000000  0.000000  0.000000  0.000000  0.000000  0.025728
+ 
+ Young's, shear and bulk moduli and Poisson ratio
+ 
+   Voigt approximate:    84.10   32.48   68.18   0.294
+   Reuss approximate:    78.09   30.19   62.89   0.293
+   Hill approximate :    81.09   31.34   65.53   0.294
+ 
+ Pugh ratio (G/K):   0.4782
+ Cauchy pressure (Pc=C12-C44):     5.55
+ 
+ Elastic Anisotropy Index
+ 
+   Chung-Buessem Anisotropy Index (Ac=(Gv-Gr)/(Gv+Gr)):   0.0365
+   Universal Elastic Anisotropy Index (Au=5*Gv/Gr+Kv/Kr-6):   0.4633
+ 
+ Elastic Stability Conditions:  Stable

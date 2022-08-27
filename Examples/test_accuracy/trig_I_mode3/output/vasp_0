@@ -1,0 +1,2 @@
+#!/bin/bash
+mpiexec.hydra -np 24 vasp_std > vasp.out

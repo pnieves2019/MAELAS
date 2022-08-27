@@ -1,0 +1,5 @@
+
+python3 hex.py
+maelas -g -s 0.01 -mode 1
+maelas -d -mode 1 -b > output_maelas.dat
+

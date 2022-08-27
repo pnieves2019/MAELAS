@@ -1,0 +1,252 @@
+    __  ______    ________    ___   _____         _____  ____ 
+   /  |/  /   |  / ____/ /   /   | / ___/   _   _|__  / / __ \
+  / /|_/ / /| | / __/ / /   / /| | \__ \   | | / //_ < / / / /
+ / /  / / ___ |/ /___/ /___/ ___ |___/ /   | |/ /__/ // /_/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/    |___/____(_)____/  
+                                                              
+
+MAELAS version 3.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+--------------------------------------------------------------------------------------------------------
+Derivation of anisotropic magnetostrictive coefficients from the energy written in the OSZICAR files (mode=1):
+--------------------------------------------------------------------------------------------------------
+Space group number = 123
+Space group symbol = P4/mmm
+Mode= 1 , direct calculation of the anisotropic magnetostrictive coefficients
+Tetragonal (I) system
+Point group = 4/mmm
+Number of anisotropic magnestostriction coefficients = 5
+
+Fit of quadratic function f(x)=A*x²+B*x+C to energy vs cell length
+ 
+-------------------------
+Calculation of λ 1α,2:
+-------------------------
+ 
+Unit cell length along [1,0,0] direction
+
+Fitting parameters for spin parallel to 111 (data from file ene_1_1.dat):
+A = 3.959867067509764 , B = -21.36267644329409 , C = 28.811822241330457
+R-squared = 0.9999927271918668
+
+X minimum = -B/(2*A) = 2.6973981801778524
+
+Fitting parameters for spin parallel to 110 (data from file ene_1_2.dat):
+A = 3.9599182447695163 , B = -21.363087557199815 , C = 28.81255880869208
+R-squared = 0.9999927273195892
+
+X minimum = -B/(2*A) = 2.697415228889812
+
+ 
+-------------------------
+Calculation of λ 2α,2:
+-------------------------
+ 
+Unit cell length along [0,0,1] direction
+
+Fitting parameters for spin parallel to 001 (data from file ene_2_1.dat):
+A = 1.1688043972579554 , B = -8.788413801741545 , C = 16.520346973921537
+R-squared = 0.9999932926865285
+
+X minimum = -B/(2*A) = 3.759574237725057
+
+Fitting parameters for spin parallel to 100 (data from file ene_2_2.dat)::
+A = 1.1688262326104697 , B = -8.787996717030527 , C = 16.518470420891045
+R-squared = 0.9999932893267031
+
+X minimum = -B/(2*A) = 3.759325583155041
+
+ 
+-------------------------
+Calculation of λ γ,2:
+-------------------------
+ 
+Unit cell length along [1,0,0] direction
+
+Fitting parameters for spin parallel to 100 (data from file ene_3_1.dat):
+A = 3.9599530919830372 , B = -21.36365054851257 , C = 28.81382385373585
+R-squared = 0.9999927282998229
+
+X minimum = -B/(2*A) = 2.6974625774940977
+
+Fitting parameters for spin parallel to 010 (data from file ene_3_2.dat:
+A = 3.959882870140482 , B = -21.362521720615867 , C = 28.811289926442115
+R-squared = 0.9999927268769232
+
+X minimum = -B/(2*A) = 2.6973678794516975
+
+ 
+-------------------------
+Calculation of λ ε,2:
+-------------------------
+ 
+Unit cell length along [a,0,c] direction
+
+Fitting parameters for spin parallel to 101 (data from file ene_4_1.dat):
+A = 1.7949949049962934 , B = -16.610957311597176 , C = 38.429621986343754
+R-squared = 0.9999909769547595
+
+X minimum = -B/(2*A) = 4.627020741218058
+
+Fitting parameters for spin parallel to -101 (data from file ene_4_2.dat):
+A = 1.7949429289111347 , B = -16.610040107531084 , C = 38.42649088511589
+R-squared = 0.999990977680474
+
+X minimum = -B/(2*A) = 4.626899228937385
+
+ 
+-------------------------
+Calculation of λ δ,2:
+-------------------------
+ 
+Unit cell length along [1,1,0] direction
+
+Fitting parameters for spin parallel to 110 (data from file ene_5_1.dat):
+A = 0.8682484560954327 , B = -6.624476242418134 , C = 12.635693452410187
+R-squared = 0.9999968294079105
+
+X minimum = -B/(2*A) = 3.814850574113783
+
+Fitting parameters for spin parallel to -110 (data from file ene_5_2.dat):
+A = 0.8681868981728637 , B = -6.62329950101882 , C = 12.632100378888486
+R-squared = 0.9999968298591219
+
+X minimum = -B/(2*A) = 3.8144433617679763
+
+ 
+----------------------------------------------
+Anisotropic magnetostriction coefficients:
+----------------------------------------------
+ 
+ 
+Using the convention in reference J.R. Cullen et al., in Materials, Science and Technology (VCH Publishings, 1994), pp.529-565:
+ 
+λ 1α,2 = -18.961225162140195 x 10⁻⁶
+ 
+λ 2α,2 = 66.14121106534128 x 10⁻⁶
+ 
+λ γ,2 = 35.106957727733686 x 10⁻⁶
+ 
+λ ε,2 = 27.722255248520277 x 10⁻⁶
+ 
+λ δ,2 = 106.74968069891214 x 10⁻⁶
+ 
+...............
+ 
+Using the convention in reference W.P. Mason, Phys. Rev. 96, 302 (1954):
+ 
+λ1 = 36.51470402600704 x 10⁻⁶
+ 
+λ2 = 6.454500864426576 x 10⁻⁶
+ 
+λ3 = 72.33606551159626 x 10⁻⁶
+ 
+λ4 = -66.14121106534128 x 10⁻⁶
+ 
+λ5 = 1.4077462982733513 x 10⁻⁶
+ 
+...............
+ 
+Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
+ 
+ 
+λ 1α,2 = 18.812507160707266 x 10⁻⁶
+ 
+λ 2α,2 = 56.734957484987646 x 10⁻⁶
+ 
+λ γ,2 = 35.106957727733686 x 10⁻⁶
+ 
+λ ε,2 = 27.722255248520277 x 10⁻⁶
+ 
+λ δ,2 = 106.74968069891214 x 10⁻⁶
+ 
+ 
+Warning!: The results calculated with -mode 1 can have significant errors, especially for non-cubic crystal symmetries. We strongly recommned to verify these results through -mode 2.
+ 
+ 
+ 
+/////////////////////
+Polycrystal (uniform stress approximation):
+/////////////////////
+ 
+ 
+Tetragonal crystal with easy axis (reference demagnetized state with equal domains along all easy directions): 
+ 
+ξ = -23.206576147480693 x 10⁻⁶
+ 
+η = 50.80722128173481 x 10⁻⁶
+ 
+......................... 
+ 
+Tetragonal crystal with easy plane (reference demagnetized state with equal domains along all easy directions): 
+ 
+ξ = -13.800322567127058 x 10⁻⁶
+ 
+η = 50.80722128173481 x 10⁻⁶
+ 
+----------------------------------------------
+Magnetocrystalline anisotropy energy:
+----------------------------------------------
+ 
+These energies correspond to the central points in the data files ene_2_1.dat and ene_2_2.dat:
+ 
+E(0,0,1) =  0.0  eV
+ 
+E(1,0,0) =  0.0  eV
+ 
+E(1,0,0) - E(0,0,1) =  0.0 x 10⁻⁶ eV
+ 
+[E(1,0,0) - E(0,0,1)]/Natom =  0.0 x 10⁻⁶ eV/atom
+ 
+ 
+----------------------------------------------
+Calculation of magnetoelastic constants:
+----------------------------------------------
+ 
+Reading the elastic tensor file = ELADAT
+ 
+c11 = 324.0 GPa
+ 
+c12 = 67.0 GPa
+ 
+c13 = 133.0 GPa
+ 
+c33 = 264.0 GPa
+ 
+c44 = 101.0 GPa
+ 
+c66 = 37.0 GPa
+ 
+Warning: If these elastic constants are not the same as in the input elastic tensor file ELADAT , then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by AELAS code (see Example folder)
+ 
+ 
+Magnetoelastic constants:
+ 
+Using the convention in reference J.R. Cullen et al., in Materials, Science and Technology (VCH Publishings, 1994), pp.529-565:
+ 
+b21 = -0.0013829420332935752 GPa
+ 
+b22 = -0.012417593828120809 GPa
+ 
+b3 = -0.009022488136027558 GPa
+ 
+b'3 = -0.007899476371719498 GPa
+ 
+b4 = -0.005599895560201096 GPa
+ 
+The equation of the magnetoelastic energy can be found in the User Manual
+ 
+Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
+ 
+b 1α,2 = -0.00715756012089603 GPa
+ 
+b 2α,2 = -0.007356434529884823 GPa
+ 
+b γ,2 = -0.009022488136027558 GPa
+ 
+b δ,2 = -0.007899476371719498 GPa
+ 
+b ε,2 = -0.005599895560201096 GPa
+ 

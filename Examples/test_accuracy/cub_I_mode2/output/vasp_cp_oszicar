@@ -1,0 +1,11 @@
+#!/bin/bash
+path_files=/scratch
+
+for i in {1..2}
+do
+for j in {1..7}
+do
+cp ${path_files}/P_${i}_$j/ncl_1/OSZICAR ./OSZICAR_${i}_${j}_1
+cp ${path_files}/P_${i}_$j/ncl_2/OSZICAR ./OSZICAR_${i}_${j}_2
+done
+done

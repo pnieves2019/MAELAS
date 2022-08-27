@@ -1,0 +1,6 @@
+
+
+python3 ort.py
+maelas -g -s 0.01 -n 7 -mode 1
+maelas -d -mode 1 -s 0.01 -n 7 -b > output_maelas.dat
+

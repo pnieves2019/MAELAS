@@ -1,0 +1,131 @@
+LAMMPS (27 Oct 2021)
+clear
+units         metal
+atom_style     spin
+
+dimension     3
+boundary    p p p
+
+# necessary for the serial algorithm (sametag)
+atom_modify     map array
+
+
+variable 	a0 	equal 	(1015/1000.0)*2.8665
+lattice 	bcc 	${a0}
+lattice 	bcc 	2.9094975
+Lattice spacing in x,y,z = 2.9094975 2.9094975 2.9094975
+variable	vol	equal	${a0}*${a0}*${a0}
+variable	vol	equal	2.9094975*${a0}*${a0}
+variable	vol	equal	2.9094975*2.9094975*${a0}
+variable	vol	equal	2.9094975*2.9094975*2.9094975
+
+region 		box block 0.0 30.0 0.0 30.0 0.0 30.0
+create_box 	1 box
+Created orthogonal box = (0.0000000 0.0000000 0.0000000) to (87.284925 87.284925 87.284925)
+  1 by 1 by 1 MPI processor grid
+create_atoms 	1 box
+Created 54000 atoms
+  using lattice units in orthogonal box = (0.0000000 0.0000000 0.0000000) to (87.284925 87.284925 87.284925)
+  create_atoms CPU = 0.013 seconds
+
+# setting mass, mag. moments, and interactions for bcc iron
+
+mass        1 55.845
+#set         group all spin 2.2 0.0 0.0 1.0
+set		group all spin/random 31 2.2
+Setting atom values ...
+  54000 settings made for spin/random
+
+pair_style 	hybrid/overlay eam/alloy spin/exchange 3.5
+pair_coeff 	* * eam/alloy Fe_Mishin2006.eam.alloy Fe
+pair_coeff 	* * spin/exchange exchange 3.4 0.02726 0.2171 1.841 offset yes
+
+neighbor     0.1 bin
+neigh_modify     every 10 check yes delay 20
+
+
+# compute and output options
+
+
+fix          1 all nve/spin lattice no
+
+thermo_style custom etotal
+thermo       1
+
+variable        etotal0   equal etotal
+
+run	0
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Your simulation uses code contributions which should be cited:
+
+- fix nve/spin command:
+
+@article{tranchida2018massively,
+title={Massively parallel symplectic algorithm for coupled magnetic spin dynamics and molecular dynamics},
+author={Tranchida, J and Plimpton, SJ and Thibaudeau, P and Thompson, AP},
+journal={Journal of Computational Physics},
+volume={372},
+pages={406-425},
+year={2018},
+publisher={Elsevier}
+doi={10.1016/j.jcp.2018.06.042}
+}
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+WARNING: No fixes with time integration, atoms won't move (../verlet.cpp:60)
+Neighbor list info ...
+  update every 10 steps, delay 20 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.773367
+  ghost atom cutoff = 5.773367
+  binsize = 2.8866835, bins = 31 31 31
+  2 neighbor lists, perpetual/occasional/extra = 2 0 0
+  (1) pair eam/alloy, perpetual, half/full from (2)
+      attributes: half, newton on
+      pair build: halffull/newton
+      stencil: none
+      bin: none
+  (2) pair spin/exchange, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 43.72 | 43.72 | 43.72 Mbytes
+TotEng 
+  -224745.98 
+Loop time of 2.9e-06 on 1 procs for 0 steps with 54000 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.9e-06    |            |       |100.00
+
+Nlocal:        54000.0 ave       54000 max       54000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:        21241.0 ave       21241 max       21241 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    1.56600e+06 ave   1.566e+06 max   1.566e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  3.13200e+06 ave   3.132e+06 max   3.132e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 3132000
+Ave neighs/atom = 58.000000
+Neighbor list builds = 0
+Dangerous builds = 0
+
+print	"${vol} ${etotal0}" file energy_1015.dat
+24.6294075435027 -224745.97894273
+
+
+Total wall time: 0:00:00

@@ -1,0 +1,56 @@
+    __  ______    ________    ___   _____         _____  ____ 
+   /  |/  /   |  / ____/ /   /   | / ___/   _   _|__  / / __ \
+  / /|_/ / /| | / __/ / /   / /| | \__ \   | | / //_ < / / / /
+ / /  / / ___ |/ /___/ /___/ ___ |___/ /   | |/ /__/ // /_/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/    |___/____(_)____/  
+                                                              
+
+MAELAS version 3.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+--------------------------------------------------------------------------------------------------------
+Derivation of isotropic magnetoelastic constants from the energy written in the OSZICAR files (mode=3):
+--------------------------------------------------------------------------------------------------------
+Space group number = 229
+Space group symbol = Im-3m
+Mode= 3 , direct calculation of the isotropic magnetoelastic constants (b)
+Cubic (I) system
+Number of isotropic magnetoelastic constants = 1
+Point group = m-3m
+strain -0.01
+strain -0.006666666666666666
+strain -0.003333333333333333
+strain 0.0
+strain 0.003333333333333334
+strain 0.006666666666666666
+strain 0.01
+
+Fit of quadractic function f(x)=A*x^2+B*x+C to energy vs strain
+
+-------------------------
+Calculation of bα,2:
+-------------------------
+ 
+Deformation x-direction (εxx),  y-direction (εyy) and  z-direction (εzz) , spin1=[0,0,1]
+
+Fitting parameters:
+A = 99.14186887307768 , B = -0.042219989674400105 , C = -16.5409003431454
+R-squared = 0.9995476476265616
+
+ 
+----------------------------------------------
+Isotropic magnetoelastic constant:
+----------------------------------------------
+ 
+ 
+Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
+ 
+b α,2 = -0.042219989674400105  eV
+ 
+b α,2 = -0.021109994837200052  eV/atom
+ 
+b α,2 = -0.0018608134830822882  eV/A^3
+ 
+b α,2 = -298.1351754430466  MPa
+ 

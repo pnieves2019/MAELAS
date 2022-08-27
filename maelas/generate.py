@@ -25,10 +25,7 @@ class VASP:
         self.args = args
 
     def poscar(self):
-        """  Generation of VASP files for the calculation of anisotropic magnetostriction coefficients:  """
-        print('---------------------------------------------------------------------------------------------')
-        print("Generation of VASP files for the calculation of anisotropic magnetostriction coefficients:")
-        print('---------------------------------------------------------------------------------------------')
+        """  Generation of VASP files:  """
         print("Name of the initial POSCAR file: ", self.args.pos[0])
         print("Number of distorted states for each magnetostriction mode = ", self.args.ndist[0])
         print("Maximum strain = ", self.args.strain[0])
@@ -41,14 +38,20 @@ class VASP:
         sym2 = float(self.args.symang[0])
     
         aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
-        structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
-    
-        bb = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
-        self.symmetry.structure = bb.apply_transformation(structure1)
-    
-        self.symmetry.number_of_species = len(self.symmetry.structure.species)
-        print("Number of atoms (after conventional cell transformation)= {}".format(self.symmetry.number_of_species))
-        print("Species =", self.symmetry.structure.species)
+        
+        if self.args.noconv == False:
+          structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
+          bb = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
+          self.symmetry.structure = bb.apply_transformation(structure1)
+          self.symmetry.number_of_species = len(self.symmetry.structure.species)
+          print("Number of atoms (after conventional cell transformation)= {}".format(self.symmetry.number_of_species))
+          print("Species =", self.symmetry.structure.species)
+        
+        if self.args.noconv == True:
+          self.symmetry.structure = structure0
+          self.symmetry.number_of_species = len(self.symmetry.structure.species)
+          print("Flag -nc was used, so it did not apply a conventional cell transformation")
+          print("Species =", self.symmetry.structure.species)
         
         if int(self.args.sg0[0]) == 0:
             self.symmetry.space_group = aa.get_space_group_number()
@@ -102,7 +105,13 @@ class VASP:
                     #print('Material contains a f-element =', str(self.symmetry.structure.species[i]))
                     self.lmax = 6 
 
-        self.inc_std_list = ['ISTART = 0\n', 'LORBIT = 11\n', 'ISYM = -1\n', 'ENCUT = 520\n','PREC  = Accurate\n', 'EDIFF  = 1.e-09\n', 'NELM   = 100\n', 'NELMIN = 4\n','# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n', 'ADDGRID = TRUE\n', 'ISMEAR = -5\n', '# SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', self.lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n', 'GGA_COMPAT = FALSE\n', 'LREAL = FALSE\n', 'LCHARG = TRUE\n', 'LWAVE = TRUE\n']
+        if int(self.args.mode[0])!=3:
+          self.inc_std_list = ['ISTART = 0\n', 'LORBIT = 11\n', 'ISYM = -1\n', 'ENCUT = 520\n', 'PREC  = Accurate\n', 'EDIFF  = 1.e-09\n', 'NELM   = 100\n', 'NELMIN = 4\n','# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n', 'ADDGRID = TRUE\n', 'ISMEAR = -5\n', '# SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', self.lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n', 'GGA_COMPAT = FALSE\n', 'LREAL = FALSE\n', 'LCHARG = TRUE\n', 'LWAVE = TRUE\n']
+          
+        if int(self.args.mode[0])==3:
+          self.inc_std_list = ['ISTART = 0\n', 'LORBIT = 11\n', '# ISYM = -1\n', 'ENCUT = 520\n', 'PREC  = Accurate\n', 'EDIFF  = 1.e-07\n', 'NELM   = 100\n', 'NELMIN = 4\n','# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n', 'ADDGRID = TRUE\n', 'ISMEAR = -5\n', '# SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', self.lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n', 'GGA_COMPAT = FALSE\n', 'LREAL = FALSE\n', 'LCHARG = FALSE\n', 'LWAVE = FALSE\n']
+        
+        
         
         path_inc_std = 'INCAR_std'
         inc_std = open(path_inc_std,'w')
@@ -111,11 +120,13 @@ class VASP:
         mom_std = 'MAGMOM = ' + str(self.symmetry.number_of_species) + '*5'
         inc_std.write(mom_std)
         inc_std.close()
+        
+        if int(self.args.mode[0])!=3:
     
-        self.inc_ncl_list = ['LORBIT = 11\n', 'ISYM = -1\n', 'ENCUT = 520\n','PREC  = Accurate\n', 'EDIFF  = 1.e-09\n', 'NELM   = 100\n', 'NELMIN = 4\n','# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n' ,'ADDGRID = TRUE\n', 'ISMEAR = -5\n', '# SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', self.lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n', 'GGA_COMPAT = FALSE\n', 'LREAL = FALSE\n', 'ICHARG = 11\n', 'LCHARG = TRUE\n', 'LWAVE = TRUE\n', 'LORBMOM = TRUE\n', 'LSORBIT = TRUE\n', 'NBANDS = nbands ! 2 * number of bands of collinear run\n' ,'MAGMOM = ']
-        for i in range(self.symmetry.number_of_species):
-            self.inc_ncl_list += ['0 0 4 ']
-        self.inc_ncl_list += ['\n']
+          self.inc_ncl_list = ['LORBIT = 11\n', 'ISYM = -1\n', 'ENCUT = 520\n','PREC  = Accurate\n', 'EDIFF  = 1.e-09\n', 'NELM   = 100\n', 'NELMIN = 4\n','# LDAU = .TRUE.\n', '# LDAUL =\n', '# LDAUU =\n', '# LDAUJ = \n', '# LDAUTYPE = 2\n' ,'ADDGRID = TRUE\n', 'ISMEAR = -5\n', '# SIGMA  = 0.10\n', 'ISPIN  = 2\n', 'LMAXMIX = ', self.lmax, ' ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6\n', 'GGA_COMPAT = FALSE\n', 'LREAL = FALSE\n', 'ICHARG = 11\n', 'LCHARG = TRUE\n', 'LWAVE = TRUE\n', 'LORBMOM = TRUE\n', 'LSORBIT = TRUE\n', 'NBANDS = nbands ! 2 * number of bands of collinear run\n' ,'MAGMOM = ']
+          for i in range(self.symmetry.number_of_species):
+              self.inc_ncl_list += ['0 0 4 ']
+          self.inc_ncl_list += ['\n']
     
     def kpoints(self):
     #Generation KPOINTS file
@@ -132,14 +143,24 @@ class VASP:
        # bash script: vasp_maelas
         if 230 >= self.symmetry.space_group >= 207:
             nmag = 2
+            if int(self.args.mode[0])==3:
+              nmag = 1
         elif 177 <= self.symmetry.space_group <= 194:
-            nmag = 4   
+            nmag = 4
+            if int(self.args.mode[0])==3:
+              nmag = 2  
         elif 149 <= self.symmetry.space_group <= 167:
-            nmag = 6    
+            nmag = 6
+            if int(self.args.mode[0])==3:
+              nmag = 2    
         elif 89 <= self.symmetry.space_group <= 142:
-            nmag = 5       
+            nmag = 5
+            if int(self.args.mode[0])==3:
+              nmag = 2    
         elif 16 <= self.symmetry.space_group <= 74:
-            nmag = 9    
+            nmag = 9
+            if int(self.args.mode[0])==3:
+              nmag = 3   
             
         path_vasp_mag = 'vasp_maelas'   
         vasp_mag = open(path_vasp_mag,'w')
@@ -155,8 +176,9 @@ class VASP:
         vasp_mag.write('}\n')
         vasp_mag.write('do\n')
         vasp_mag.write('mkdir P_${i}_${j}\n')
-        vasp_mag.write('mkdir P_${i}_${j}/ncl_1\n')
-        vasp_mag.write('mkdir P_${i}_${j}/ncl_2\n')
+        if int(self.args.mode[0])!=3 :
+          vasp_mag.write('mkdir P_${i}_${j}/ncl_1\n')
+          vasp_mag.write('mkdir P_${i}_${j}/ncl_2\n')
         vasp_mag.write('cp POSCAR_${i}_${j} ./P_${i}_${j}/POSCAR\n')
         vasp_mag.write('cp KPOINTS ./P_${i}_${j}\n')
         vasp_mag.write('cp POTCAR ./P_${i}_${j}\n')
@@ -164,14 +186,15 @@ class VASP:
         vasp_mag.write('cp vasp_jsub ./P_${i}_${j}/\n')
         vasp_mag.write('sed -i "s/AA/$i/"  ./P_${i}_${j}/vasp_jsub\n')
         vasp_mag.write('sed -i "s/BB/$j/"  ./P_${i}_${j}/vasp_jsub\n')
-        vasp_mag.write('cp POSCAR_${i}_${j} ./P_${i}_${j}/ncl_1/POSCAR\n')
-        vasp_mag.write('cp KPOINTS ./P_${i}_${j}/ncl_1\n')
-        vasp_mag.write('cp POTCAR ./P_${i}_${j}/ncl_1\n')
-        vasp_mag.write('cp INCAR_${i}_1 ./P_${i}_${j}/ncl_1/INCAR\n')
-        vasp_mag.write('cp POSCAR_${i}_${j} ./P_${i}_${j}/ncl_2/POSCAR\n')
-        vasp_mag.write('cp KPOINTS ./P_${i}_${j}/ncl_2\n')
-        vasp_mag.write('cp POTCAR ./P_${i}_${j}/ncl_2\n')
-        vasp_mag.write('cp INCAR_${i}_2 ./P_${i}_${j}/ncl_2/INCAR\n')
+        if int(self.args.mode[0])!=3 :
+          vasp_mag.write('cp POSCAR_${i}_${j} ./P_${i}_${j}/ncl_1/POSCAR\n')
+          vasp_mag.write('cp KPOINTS ./P_${i}_${j}/ncl_1\n')
+          vasp_mag.write('cp POTCAR ./P_${i}_${j}/ncl_1\n')
+          vasp_mag.write('cp INCAR_${i}_1 ./P_${i}_${j}/ncl_1/INCAR\n')
+          vasp_mag.write('cp POSCAR_${i}_${j} ./P_${i}_${j}/ncl_2/POSCAR\n')
+          vasp_mag.write('cp KPOINTS ./P_${i}_${j}/ncl_2\n')
+          vasp_mag.write('cp POTCAR ./P_${i}_${j}/ncl_2\n')
+          vasp_mag.write('cp INCAR_${i}_2 ./P_${i}_${j}/ncl_2/INCAR\n')
         vasp_mag.write('cp vasp_0 ./P_${i}_${j}/\n')
         vasp_mag.write('cd ./P_${i}_${j}/\n')
         vasp_mag.write('qsub vasp_jsub\n')
@@ -233,33 +256,34 @@ class VASP:
         vasp_0.write(' -np ')
         vasp_0.write(str(self.args.core[0]))
         vasp_0.write(' vasp_std > vasp.out\n')
-        vasp_0.write('fold1=ncl_1\n')
-        vasp_0.write('fold2=ncl_2\n')
-        vasp_0.write('cp WAVECAR ./${fold1}/\n')
-        vasp_0.write('cp CHGCAR  ./${fold1}/\n')
-        vasp_0.write("nbands=`grep \"NBANDS\" OUTCAR | awk '{printf\"%d\",$15}'`\n")
-        vasp_0.write("nbands=`echo \"2*$nbands\" | bc -l | awk '{printf\"%d\",$1}'`\n")
-        vasp_0.write('cd ./${fold1}\n')
-        vasp_0.write('sed -i "s/nbands/$nbands/" INCAR\n')
-        vasp_0.write(str(self.args.mpi[0]))
-        vasp_0.write(' -np ')
-        vasp_0.write(str(self.args.core[0]))
-        vasp_0.write(' vasp_ncl > vasp.out\n')
-        vasp_0.write('rm WAVECAR\n')
-        vasp_0.write('rm CHGCAR\n')
-        vasp_0.write('cd ..\n')
-        vasp_0.write('cp WAVECAR ./${fold2}/\n')
-        vasp_0.write('cp CHGCAR  ./${fold2}/\n')
-        vasp_0.write("nbands=`grep \"NBANDS\" OUTCAR | awk '{printf\"%d\",$15}'`\n")
-        vasp_0.write("nbands=`echo \"2*$nbands\" | bc -l | awk '{printf\"%d\",$1}'`\n")
-        vasp_0.write('cd ./${fold2}\n') 
-        vasp_0.write('sed -i "s/nbands/$nbands/" INCAR\n')
-        vasp_0.write(str(self.args.mpi[0]))
-        vasp_0.write(' -np ')
-        vasp_0.write(str(self.args.core[0]))
-        vasp_0.write(' vasp_ncl > vasp.out\n')
-        vasp_0.write('rm WAVECAR\n')
-        vasp_0.write('rm CHGCAR\n')
+        if int(self.args.mode[0])!=3 :
+          vasp_0.write('fold1=ncl_1\n')
+          vasp_0.write('fold2=ncl_2\n')
+          vasp_0.write('cp WAVECAR ./${fold1}/\n')
+          vasp_0.write('cp CHGCAR  ./${fold1}/\n')
+          vasp_0.write("nbands=`grep \"NBANDS\" OUTCAR | awk '{printf\"%d\",$15}'`\n")
+          vasp_0.write("nbands=`echo \"2*$nbands\" | bc -l | awk '{printf\"%d\",$1}'`\n")
+          vasp_0.write('cd ./${fold1}\n')
+          vasp_0.write('sed -i "s/nbands/$nbands/" INCAR\n')
+          vasp_0.write(str(self.args.mpi[0]))
+          vasp_0.write(' -np ')
+          vasp_0.write(str(self.args.core[0]))
+          vasp_0.write(' vasp_ncl > vasp.out\n')
+          vasp_0.write('rm WAVECAR\n')
+          vasp_0.write('rm CHGCAR\n')
+          vasp_0.write('cd ..\n')
+          vasp_0.write('cp WAVECAR ./${fold2}/\n')
+          vasp_0.write('cp CHGCAR  ./${fold2}/\n')
+          vasp_0.write("nbands=`grep \"NBANDS\" OUTCAR | awk '{printf\"%d\",$15}'`\n")
+          vasp_0.write("nbands=`echo \"2*$nbands\" | bc -l | awk '{printf\"%d\",$1}'`\n")
+          vasp_0.write('cd ./${fold2}\n') 
+          vasp_0.write('sed -i "s/nbands/$nbands/" INCAR\n')
+          vasp_0.write(str(self.args.mpi[0]))
+          vasp_0.write(' -np ')
+          vasp_0.write(str(self.args.core[0]))
+          vasp_0.write(' vasp_ncl > vasp.out\n')
+          vasp_0.write('rm WAVECAR\n')
+          vasp_0.write('rm CHGCAR\n')
       
         vasp_0.close() 
        
@@ -281,8 +305,11 @@ class VASP:
         vasp_osz.write(str(self.args.ndist[0]))
         vasp_osz.write('}\n')
         vasp_osz.write('do\n')
-        vasp_osz.write('cp ${path_files}/P_${i}_$j/ncl_1/OSZICAR ./OSZICAR_${i}_${j}_1\n')
-        vasp_osz.write('cp ${path_files}/P_${i}_$j/ncl_2/OSZICAR ./OSZICAR_${i}_${j}_2\n')
+        if int(self.args.mode[0])!=3 :
+          vasp_osz.write('cp ${path_files}/P_${i}_$j/ncl_1/OSZICAR ./OSZICAR_${i}_${j}_1\n')
+          vasp_osz.write('cp ${path_files}/P_${i}_$j/ncl_2/OSZICAR ./OSZICAR_${i}_${j}_2\n')
+        if int(self.args.mode[0])==3 :
+          vasp_osz.write('cp ${path_files}/P_${i}_$j/OSZICAR ./OSZICAR_${i}_${j}_1\n')
         vasp_osz.write('done\n')
         vasp_osz.write('done\n')
     

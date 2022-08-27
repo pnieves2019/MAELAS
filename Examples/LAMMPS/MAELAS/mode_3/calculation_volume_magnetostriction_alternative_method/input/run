@@ -1,0 +1,58 @@
+#!/bin/bash
+
+inputlmpferro=in.ferro    # input file name for LAMMPS ferromagnetic
+
+inputlmppara=in.para    # input file name for LAMMPS paramagnetic
+
+exelmp=lmp_serial  # name of the executable file for LAMMPS
+
+
+p1=985
+p2=990
+p3=995
+p4=1000
+p5=1005
+p6=1010
+p7=1015
+
+for i in ${p1} ${p2} ${p3} ${p4} ${p5} ${p6} ${p7}
+
+do
+
+  cp ${inputlmpferro} in.lmp_0
+
+
+  sed -i "s/AA/$i/"  ./in.lmp_0
+
+  ${exelmp} < in.lmp_0 > results_ferro_${i}
+
+done
+
+
+cat energy_${p1}.dat energy_${p2}.dat energy_${p3}.dat energy_${p4}.dat energy_${p5}.dat energy_${p6}.dat energy_${p7}.dat > ene_vs_vol_ferro.dat
+
+
+rm ./energy_*
+
+
+for i in ${p1} ${p2} ${p3} ${p4} ${p5} ${p6} ${p7}
+
+do
+
+  cp ${inputlmppara} in.lmp_0
+
+
+  sed -i "s/AA/$i/"  ./in.lmp_0
+
+  ${exelmp} < in.lmp_0 > results_para_${i}
+
+done
+
+cat energy_${p1}.dat energy_${p2}.dat energy_${p3}.dat energy_${p4}.dat energy_${p5}.dat energy_${p6}.dat energy_${p7}.dat > ene_vs_vol_para.dat
+
+
+rm ./energy_*
+
+
+python3 eos.py > output.dat
+ 

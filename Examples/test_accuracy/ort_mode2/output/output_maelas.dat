@@ -1,0 +1,283 @@
+    __  ______    ________    ___   _____         _____  ____ 
+   /  |/  /   |  / ____/ /   /   | / ___/   _   _|__  / / __ \
+  / /|_/ / /| | / __/ / /   / /| | \__ \   | | / //_ < / / / /
+ / /  / / ___ |/ /___/ /___/ ___ |___/ /   | |/ /__/ // /_/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/    |___/____(_)____/  
+                                                              
+
+MAELAS version 3.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+--------------------------------------------------------------------------------------------------------
+Derivation of anisotropic magnetoelastic constants from the energy written in the OSZICAR files (mode=2):
+--------------------------------------------------------------------------------------------------------
+Space group number = 63
+Space group symbol = Cmcm
+Mode= 2 , direct calculation of the anisotropic magnetoelastic constants
+Orthorhombic system
+Point group = mmm
+Number of anisotropic magnetoelastic constants = 9
+
+Fit of linear function f(x)=A*x+B to energy vs strain
+Fitting parameters for the calculation of b 1  :
+A = 0.04398413673910714 , B = -1.9063158756560543e-21
+R-squared = 1.0
+
+Fitting parameters for the calculation of b 2  :
+A = -0.034901565579642864 , B = 9.488901392049041e-14
+R-squared = 1.0
+
+Fitting parameters for the calculation of b 3  :
+A = 0.06194517633546431 , B = -3.5635816443311837e-13
+R-squared = 1.0
+
+Fitting parameters for the calculation of b 4  :
+A = -0.035003616941035695 , B = -2.8727360672920102e-22
+R-squared = 1.0
+
+Fitting parameters for the calculation of b 5  :
+A = -0.04326977721000002 , B = 6.599799154825258e-22
+R-squared = 1.0
+
+Fitting parameters for the calculation of b 6  :
+A = 0.0565364541845357 , B = 8.062352321814808e-22
+R-squared = 1.0
+
+Fitting parameters for the calculation of b 7  :
+A = 0.03612618191582147 , B = 6.427877712149522e-22
+R-squared = 1.0
+
+Fitting parameters for the calculation of b 8  :
+A = -0.023063607663642845 , B = -7.231054233989761e-22
+R-squared = 1.0
+
+Fitting parameters for the calculation of b 9  :
+A = 0.03949387683996431 , B = -4.1075152636297263e-13
+R-squared = 1.0
+
+ 
+----------------------------------------------
+Anisotropic magnetoelastic constants:
+----------------------------------------------
+ 
+Using the convention in reference P.Nieves et al., Comput. Phys. Commun., 264, 107964  (2021):
+ 
+b 1  = 0.04398413673910714  eV
+ 
+b 2  = -0.034901565579642864  eV
+ 
+b 3  = 0.06194517633546431  eV
+ 
+b 4  = -0.035003616941035695  eV
+ 
+b 5  = -0.04326977721000002  eV
+ 
+b 6  = 0.0565364541845357  eV
+ 
+b 7  = 0.03612618191582147  eV
+ 
+b 8  = -0.023063607663642845  eV
+ 
+b 9  = 0.03949387683996431  eV
+ 
+........... 
+b 1  = 0.005498017092388392  eV/atom
+ 
+b 2  = -0.004362695697455358  eV/atom
+ 
+b 3  = 0.007743147041933038  eV/atom
+ 
+b 4  = -0.004375452117629462  eV/atom
+ 
+b 5  = -0.0054087221512500025  eV/atom
+ 
+b 6  = 0.007067056773066962  eV/atom
+ 
+b 7  = 0.0045157727394776834  eV/atom
+ 
+b 8  = -0.0028829509579553557  eV/atom
+ 
+b 9  = 0.004936734604995539  eV/atom
+ 
+........... 
+b 1  = 0.00026900903789904004  eV/A^3
+ 
+b 2  = -0.00021345960779996814  eV/A^3
+ 
+b 3  = 0.0003788595962978971  eV/A^3
+ 
+b 4  = -0.00021408375870026679  eV/A^3
+ 
+b 5  = -0.0002646399816008803  eV/A^3
+ 
+b 6  = 0.00034577959859975277  eV/A^3
+ 
+b 7  = 0.0002209494186002776  eV/A^3
+ 
+b 8  = -0.00014105810339938105  eV/A^3
+ 
+b 9  = 0.00024154639829899836  eV/A^3
+ 
+........... 
+b 1  = 43.09999762950388  MPa
+ 
+b 2  = -34.199998119120025  MPa
+ 
+b 3  = 60.69999666138516  MPa
+ 
+b 4  = -34.29999811366823  MPa
+ 
+b 5  = -42.39999766829616  MPa
+ 
+b 6  = 55.39999695316307  MPa
+ 
+b 7  = 35.39999805317399  MPa
+ 
+b 8  = -22.599998756983513  MPa
+ 
+b 9  = 38.6999978714811  MPa
+ 
+ 
+Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
+ 
+b1α,2 = -11.384418550834896  MPa
+ 
+b2α,2 = 1.5499999147278247  MPa
+ 
+b3α,2 = 7.144344690110472  MPa
+ 
+b1α,2' = 30.414495966645315  MPa
+ 
+b2α,2' = -106.20357617655098  MPa
+ 
+b3α,2' = -8.849999513214748  MPa
+ 
+bβ,2 = 35.39999805317399  MPa
+ 
+bγ,2 = 38.6999978714811  MPa
+ 
+bδ,2 = -22.599998756983513  MPa
+ 
+----------------------------------------------
+Magnetocrystalline anisotropy energy:
+----------------------------------------------
+ 
+These energies correspond to the central points in the data files ene_1_1.dat, ene_2_1.dat, and ene_1_2.dat:
+ 
+E(1,0,0) =  0.0  eV
+ 
+E(0,1,0) =  0.0  eV
+ 
+E(0,0,1) =  0.0  eV
+ 
+E(1,0,0) - E(0,0,1) =  0.0 x 10⁻⁶ eV
+ 
+[E(1,0,0) - E(0,0,1)]/Natom =  0.0 x 10⁻⁶ eV/atom
+ 
+E(0,1,0) - E(0,0,1) =  0.0 x 10⁻⁶ eV
+ 
+[E(0,1,0) - E(0,0,1)]/Natom =  0.0 x 10⁻⁶ eV/atom
+ 
+ 
+ 
+----------------------------------------------
+Calculation of anisotropic magnetostrictive coefficients:
+----------------------------------------------
+ 
+Reading the elastic tensor file = ELADAT
+ 
+c11 = 76.0 GPa
+ 
+c12 = 45.0 GPa
+ 
+c13 = 48.0 GPa
+ 
+c23 = 55.0 GPa
+ 
+c22 = 102.0 GPa
+ 
+c33 = 141.0 GPa
+ 
+c44 = 40.0 GPa
+ 
+c55 = 27.0 GPa
+ 
+c66 = 39.0 GPa
+ 
+Warning: If these elastic constants are not the same as in the input elastic tensor file ELADAT , then check that the format of the elastic tensor is exactly the same as in the standard output file ELADAT generated by AELAS code (see Example folder)
+ 
+ 
+Anisotropic magnetostrictive coefficients:
+ 
+Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
+ 
+λ1 = -632.9614146228943 x 10⁻⁶
+ 
+λ2 = 681.5786967080488 x 10⁻⁶
+ 
+λ3 = -752.4502386047174 x 10⁻⁶
+ 
+λ4 = 471.78396540881124 x 10⁻⁶
+ 
+λ5 = 809.6943878968408 x 10⁻⁶
+ 
+λ6 = -808.9637765435037 x 10⁻⁶
+ 
+λ7 = -284.9353122211109 x 10⁻⁶
+ 
+λ8 = 253.442491068334 x 10⁻⁶
+ 
+λ9 = -326.16993948043006 x 10⁻⁶
+ 
+Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
+ 
+λ 1α,2 = 77.10612658580487 x 10⁻⁶
+ 
+λ 2α,2 = -38.91836896957092 x 10⁻⁶
+ 
+λ 3α,2 = -54.88059254684344 x 10⁻⁶
+ 
+λ 1α,2' = -920.1161509041276 x 10⁻⁶
+ 
+λ 2α,2' = 2888.045322112581 x 10⁻⁶
+ 
+λ 3α,2' = -45.152953658707226 x 10⁻⁶
+ 
+λ β,2 = -453.84612888684603 x 10⁻⁶
+ 
+λ γ,2 = -483.7499733935138 x 10⁻⁶
+ 
+λ δ,2 = 418.5184954996948 x 10⁻⁶
+ 
+ 
+ 
+/////////////////////
+Polycrystal (uniform stress approximation):
+/////////////////////
+ 
+ 
+Orthorhombic crystal with easy axis along lattice vector c (reference demagnetized state with equal domains along all easy directions): 
+ 
+ξ = 14.507886431994596 x 10⁻⁶
+ 
+η = -120.62978588178866 x 10⁻⁶
+ 
+......................... 
+ 
+Orthorhombic crystal with easy axis along lattice vector a (reference demagnetized state with equal domains along all easy directions): 
+ 
+ξ = 206.41364154225155 x 10⁻⁶
+ 
+η = -120.62978588178866 x 10⁻⁶
+ 
+......................... 
+ 
+Orthorhombic crystal with easy axis along lattice vector b (reference demagnetized state with equal domains along all easy directions): 
+ 
+ξ = -100.29174209245751 x 10⁻⁶
+ 
+η = -120.62978588178866 x 10⁻⁶
+ 
+ 
+ 
