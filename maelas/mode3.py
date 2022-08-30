@@ -34,7 +34,6 @@ class run:
     
         aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
         
-        sg = aa.get_space_group_number()
         
         if self.args.noconv == False:
           structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
@@ -44,6 +43,15 @@ class run:
         
         if self.args.noconv == True:
           structure2 = structure0
+          
+        
+        if int(self.args.sg0[0]) == 0:
+            sg = aa.get_space_group_number()
+        elif 0 < int(self.args.sg0[0]) <= 230:
+            sg = int(self.args.sg0[0])   
+        else:
+            print("Space group number must be in the range 1-230")
+            exit(-1)
           
           
         for i in range(int(self.args.ndist[0])):
@@ -201,8 +209,18 @@ class run:
         aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
         
         
-        sg = aa.get_space_group_number()
-        pg = aa.get_point_group_symbol()
+        if int(self.args.sg0[0]) == 0:
+            sg = aa.get_space_group_number()
+            pg = aa.get_point_group_symbol()
+        elif 0 < int(self.args.sg0[0]) <= 230:
+            sg = int(self.args.sg0[0])
+            pg = 'set by user'  
+        else:
+            print("Space group number must be in the range 1-230")
+            exit(-1)
+        
+        
+        
         
         if 230 >= sg >= 207:
           print("Cubic (I) system")
@@ -714,6 +732,12 @@ class run:
               print(" ")
               print("\u03BB 2\u03B1,0 =", (-lambdaalpha10+lambdaalpha20)*1e6,u'x 10\u207B\u2076')
               print(" ")
+              print("...............")
+              print(" ")
+              print("Using the convention in reference E.R. Callen et al., Phys. Rev. 139, A455 (1965):")
+              print(" ")
+              print("\u03BB 21\u03B1 =", (-0.5*lambdaalpha10+0.5*lambdaalpha20)*1e6,u'x 10\u207B\u2076')
+              
             elif 89 <= sg <= 142:
               print("Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):")
               print(" ")

@@ -130,13 +130,19 @@ sudo apt-get install python3-pip
 HOW TO USE MAELAS CODE
 ----------------------------------
 
+![GitHub workflow_2](workflow_2.png)
+
+
+MAELAS can automatically calculate the quantities shown in the following table:
+
+
+![GitHub workflow_1](table_1.png)
+
+
 Running MAELAS code consists in the following five steps.
 
 
 ![GitHub workflow_1](workflow_1.png)
-
-
-![GitHub workflow_2](workflow_2.png)
 
 
 --------------------------------------------------------
@@ -544,6 +550,9 @@ Orthorhombic (space groups 16-74)
 
 
 The crystal systems not supported by MAELAS might be included in the new versions of the code.
+
+
+![GitHub workflow_1](table_2.png)
 
 
 ---------------------------------------------------------------------

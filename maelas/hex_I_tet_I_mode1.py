@@ -33,8 +33,6 @@ class run:
     
         aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
         
-        sg = aa.get_space_group_number()
-        
         if self.args.noconv == False:
           structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
           bb = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
@@ -43,6 +41,15 @@ class run:
         
         if self.args.noconv == True:
           structure2 = structure0
+          
+        
+        if int(self.args.sg0[0]) == 0:
+            sg = aa.get_space_group_number()
+        elif 0 < int(self.args.sg0[0]) <= 230:
+            sg = int(self.args.sg0[0])   
+        else:
+            print("Space group number must be in the range 1-230")
+            exit(-1)
 
         if 177 <= sg <= 194:
             # Convention: lattice vector a1 along x-axis
@@ -302,7 +309,13 @@ class run:
         aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
         
         
-        sg = aa.get_space_group_number()
+        if int(self.args.sg0[0]) == 0:
+            sg = aa.get_space_group_number()
+        elif 0 < int(self.args.sg0[0]) <= 230:
+            sg = int(self.args.sg0[0])   
+        else:
+            print("Space group number must be in the range 1-230")
+            exit(-1)
         
         
         if (89 <= sg <= 142):
