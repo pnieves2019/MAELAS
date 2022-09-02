@@ -15,7 +15,7 @@ Date: August 24, 2022 (version 3.0.0)
 The main new features of version 3.0 are:
 
 - New methodology to calculate the isotropic magnetoelastic constants through
-a quadratic fitting of the energy versus strain. This new method can be executed by adding tag ```-mode 3``` in the command line. If the elastic tensor is provided, then it also calculates the isotropic magnetostrictive coefficients and spontaneous volume magnetostriction.
+a cubic fitting of the energy versus strain. This new method can be executed by adding tag ```-mode 3``` in the command line. If the elastic tensor is provided, then it also calculates the isotropic magnetostrictive coefficients and spontaneous volume magnetostriction.
 
 - The results are also printed using the universal notation proposed by E. du Tremolet de Lacheisserie [E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993)] which is valid for any crystal symmetry.
 
@@ -78,6 +78,8 @@ then it can also calculate the isotropic magnetostrictive coefficients (&lambda;
 
 MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.
 
+![GitHub workflow_2](workflow_2.png)
+
 
 ------------------
 INSTALLATION
@@ -127,17 +129,18 @@ sudo apt-get install python3-pip
 ```
 
 ----------------------------------
-HOW TO USE MAELAS CODE
+CALCULATED QUANTITIES BY MAELAS
 ----------------------------------
-
-![GitHub workflow_2](workflow_2.png)
-
 
 MAELAS can automatically calculate the quantities shown in the following table:
 
 
 ![GitHub workflow_1](table_1.png)
 
+
+----------------------------------
+HOW TO USE MAELAS CODE
+----------------------------------
 
 Running MAELAS code consists in the following five steps.
 

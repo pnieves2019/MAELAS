@@ -40,7 +40,7 @@ strain 0.003333333333333334
 strain 0.006666666666666666
 strain 0.01
 
-Fit of quadractic function f(x)=A*x^2+B*x+C to energy vs strain
+Fit of cubic function f(x)=A*x^3+B*x^2+C*x+D to energy vs strain
 
 -------------------------
 Calculation of b_1α,0:
@@ -49,7 +49,7 @@ Calculation of b_1α,0:
 Deformation εxx=s,εyy=s,εzz=s:
 
 Fitting parameters:
-A = 313.80793619158464 , B = 0.3061540840320001 , C = -1.2076384578876714e-21
+A = -0.00017108271515972107 , B = 313.8079361328 , C = 0.30615409403253563 , D = -8.077976333668377e-27
 R-squared = 1.0
 
 
@@ -60,7 +60,7 @@ Calculation of b_2α,0:
 Deformation εxx=-s/2,εyy=-s/2,εzz=s
 
 Fitting parameters:
-A = 53.57696478506659 , B = -0.1443224193359093 , C = -3.1642935960580907e-13
+A = -7.66664044105081e-06 , B = 53.576964660324805 , C = -0.14432241861386655 , D = 3.0504428976769373e-12
 R-squared = 1.0
 
 
@@ -71,7 +71,7 @@ Calculation of b_3α,0:
 Deformation εxx=s,εyy=-s
 
 Fitting parameters:
-A = 44.90259889109776 , B = -0.5832721131441372 , C = 6.369554889256704e-12
+A = 5.4826404991800424e-05 , B = 44.90259892051744 , C = -0.5832721174449934 , D = 5.877694740664965e-12
 R-squared = 1.0
 
  
@@ -82,29 +82,29 @@ Isotropic magnetoelastic constant:
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
  
-b_1α,0 = 0.3061540840320001  eV
+b_1α,0 = 0.30615409403253563  eV
  
-b_2α,0 = -0.20410272277933997  eV
+b_2α,0 = -0.2041027217582173  eV
  
-b_3α,0 = 0.7143595291990166  eV
+b_3α,0 = 0.7143595344664682  eV
  
-b_1α,0 = 0.038269260504000015  eV/atom
+b_1α,0 = 0.038269261754066954  eV/atom
  
-b_2α,0 = -0.025512840347417496  eV/atom
+b_2α,0 = -0.025512840219777164  eV/atom
  
-b_3α,0 = 0.08929494114987707  eV/atom
+b_3α,0 = 0.08929494180830852  eV/atom
  
-b_1α,0 = 0.0018724526999999967  eV/A^3
+b_1α,0 = 0.0018724527611637398  eV/A^3
  
-b_2α,0 = -0.0012483018005586368  eV/A^3
+b_2α,0 = -0.0012483017943134029  eV/A^3
  
-b_3α,0 = 0.0043690562987218386  eV/A^3
+b_3α,0 = 0.0043690563309378184  eV/A^3
  
-b_1α,0 = 299.999983501097  MPa
+b_1α,0 = 299.9999933006086  MPa
  
-b_2α,0 = -199.99998909023518  MPa
+b_2α,0 = -199.99998808963844  MPa
  
-b_3α,0 = 699.9999612977768  MPa
+b_3α,0 = 699.9999664593458  MPa
  
  
  
@@ -139,15 +139,15 @@ Isotropic Magnetostrictive coefficients:
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
  
-λ 1α,0 = -3273.7410921283863 x 10⁻⁶
+λ 1α,0 = -3273.741151013022 x 10⁻⁶
  
-λ 2α,0 = 3537.8374749815234 x 10⁻⁶
+λ 2α,0 = 3537.8374860565414 x 10⁻⁶
  
-λ 3α,0 = -7064.887238210385 x 10⁻⁶
+λ 3α,0 = -7064.887293965321 x 10⁻⁶
  
  ------------------------------ 
  
 Spontaneous volume magnetostriction:
  
-ω_s = -2094.4619338012117 x 10⁻⁶
+ω_s = -2094.4619889941746 x 10⁻⁶
  

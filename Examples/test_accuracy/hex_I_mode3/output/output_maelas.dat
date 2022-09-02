@@ -33,7 +33,7 @@ strain 0.003333333333333334
 strain 0.006666666666666666
 strain 0.01
 
-Fit of quadractic function f(x)=A*x^2+B*x+C to energy vs strain
+Fit of cubic function f(x)=A*x^3+B*x^2+C*x+D to energy vs strain
 
 -------------------------
 Calculation of b_11:
@@ -42,7 +42,7 @@ Calculation of b_11:
 Deformation x-direction (εxx) and y-direction (εyy) , spin1=[0,0,1]
 
 Fitting parameters:
-A = 61.285628461168265 , B = 0.5193697329300001 , C = -1.3080235702972653e-20
+A = 5.405877990638519e-05 , B = 61.28562854433642 , C = 0.5193697271096219 , D = -6.4660964377217495e-12
 R-squared = 1.0
 
 
@@ -53,7 +53,7 @@ Calculation of b_12:
 Deformation z-direction (εzz), spin1=[0,0,1]
 
 Fitting parameters:
-A = 23.24179560806698 , B = -0.6492121661625 , C = -1.814818835084214e-20
+A = -7.600781639083287e-07 , B = 23.241795533776198 , C = -0.649212166103383 , D = 1.1753822510175463e-21
 R-squared = 1.0
 
  
@@ -64,27 +64,27 @@ Isotropic magnetoelastic constant:
  
 Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
-b_11 = 0.25968486646500005  eV
+b_11 = 0.25968486355481096  eV
  
-b_12 = -0.6492121661625  eV
+b_12 = -0.649212166103383  eV
  
-b_11 = 0.12984243323250003  eV/atom
+b_11 = 0.12984243177740548  eV/atom
  
-b_12 = -0.32460608308125  eV/atom
+b_12 = -0.3246060830516915  eV/atom
  
-b_11 = 0.012483018000002  eV/A^3
+b_11 = 0.012483017860109587  eV/A^3
  
-b_12 = -0.031207545000004992  eV/A^3
+b_12 = -0.031207544997163245  eV/A^3
  
-b_11 = 1999.9998900076373  MPa
+b_11 = 1999.9998675944028  MPa
  
-b_12 = -4999.999725019093  MPa
+b_12 = -4999.999724563795  MPa
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
  
-b 1α,0 = -999.9999450038177  MPa
+b 1α,0 = -999.9999893749888  MPa
  
-b 2α,0 = -9899.494392177248  MPa
+b 2α,0 = -9899.494359836255  MPa
  
  
  
@@ -111,24 +111,24 @@ Isotropic Magnetostrictive coefficients:
  
 Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
-λα 1,0 = 1360.3323606557192 x 10⁻⁶
+λα 1,0 = 1360.3323066685068 x 10⁻⁶
  
-λα 2,0 = 18760.404496207208 x 10⁻⁶
+λα 2,0 = 18760.404463504914 x 10⁻⁶
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
  
-λ 1α,0 = 21481.06921751865 x 10⁻⁶
+λ 1α,0 = 21481.069076841926 x 10⁻⁶
  
-λ 2α,0 = 17400.07213555149 x 10⁻⁶
+λ 2α,0 = 17400.072156836406 x 10⁻⁶
  
 ...............
  
 Using the convention in reference E.R. Callen et al., Phys. Rev. 139, A455 (1965):
  
-λ 21α = 8700.036067775745 x 10⁻⁶
+λ 21α = 8700.036078418203 x 10⁻⁶
  ------------------------------ 
  
 Spontaneous volume magnetostriction:
  
-ω_s = 21481.06921751865 x 10⁻⁶
+ω_s = 21481.069076841926 x 10⁻⁶
  

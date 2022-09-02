@@ -280,8 +280,12 @@ class run:
        # fitting and plot
 
 
-        def K(x,a,b,c):
-            return a*x**2+b*x+c
+       # def K(x,a,b,c):
+       #     return a*x**2+b*x+c
+            
+       # fit to cubic function
+        def K(x,a,b,c,d):
+            return a*x**3+b*x**2+c*x+d
             
 
         #Cubic I
@@ -289,7 +293,7 @@ class run:
         if 230 >= sg >= 207:
 
           print("")
-          print("Fit of quadractic function f(x)=A*x^2+B*x+C to energy vs strain")
+          print("Fit of cubic function f(x)=A*x^3+B*x^2+C*x+D to energy vs strain")
           print("")
           print("-------------------------")
           print("Calculation of b\u03B1,2:")
@@ -311,13 +315,12 @@ class run:
           x = np.array(x)
           y = np.array(y)
         
-
           params = curve_fit(K, x, y)
 
           print("Fitting parameters:")
-          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
+          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2], ", D =", params[0][3])
 
-          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
+          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2],params[0][3]))
           print("R-squared =", r_squared)
           print("")
 
@@ -325,7 +328,7 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_1_1.png")
             print("")
 
-          balpha2 = params[0][1]
+          balpha2 = params[0][2]
 
 
 
@@ -336,7 +339,7 @@ class run:
 
           plt.plot(x, y, 'o', label='data in fit_ene_1_1.dat')
           t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
-          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2]), 'r-', label='fit')
+          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2],params[0][3]), 'r-', label='fit')
           plt.legend()
           ax = plt.gca()
           ax.xaxis.set_major_locator(plt.MaxNLocator(5))
@@ -439,7 +442,7 @@ class run:
 
 
           print("")
-          print("Fit of quadractic function f(x)=A*x^2+B*x+C to energy vs strain")
+          print("Fit of cubic function f(x)=A*x^3+B*x^2+C*x+D to energy vs strain")
           print("")
           print("-------------------------")
           print("Calculation of b_11:")
@@ -465,9 +468,9 @@ class run:
           params = curve_fit(K, x, y)
 
           print("Fitting parameters:")
-          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
+          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2], ", D =", params[0][3])
 
-          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
+          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2],params[0][3]))
           print("R-squared =", r_squared)
           print("")
 
@@ -475,7 +478,7 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_1_1.png")
             print("")
 
-          b11 = (1.0/2.0)*params[0][1]
+          b11 = (1.0/2.0)*params[0][2]
 
 
 
@@ -486,7 +489,7 @@ class run:
 
           plt.plot(x, y, 'o', label='data in ene_1_1.dat')
           t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
-          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2]), 'r-', label='fit')
+          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2],params[0][3]), 'r-', label='fit')
           plt.legend()
           ax = plt.gca()
           ax.xaxis.set_major_locator(plt.MaxNLocator(5))
@@ -527,9 +530,9 @@ class run:
           params = curve_fit(K, x, y)
 
           print("Fitting parameters:")
-          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
+          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2], ", D =", params[0][3])
 
-          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
+          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2],params[0][3]))
           print("R-squared =", r_squared)
           print("")
 
@@ -537,7 +540,7 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_2_1.png")
             print("")
 
-          b12 = params[0][1]
+          b12 = params[0][2]
 
 
 
@@ -548,7 +551,7 @@ class run:
 
           plt.plot(x, y, 'o', label='data in ene_2_1.dat')
           t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
-          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2]), 'r-', label='fit')
+          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2],params[0][3]), 'r-', label='fit')
           plt.legend()
           ax = plt.gca()
           ax.xaxis.set_major_locator(plt.MaxNLocator(5))
@@ -761,7 +764,7 @@ class run:
 
 
           print("")
-          print("Fit of quadractic function f(x)=A*x^2+B*x+C to energy vs strain")
+          print("Fit of cubic function f(x)=A*x^3+B*x^2+C*x+D to energy vs strain")
           print("")
           print("-------------------------")
           print("Calculation of b_1\u03B1,0:")
@@ -787,9 +790,9 @@ class run:
           params = curve_fit(K, x, y)
 
           print("Fitting parameters:")
-          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
+          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2], ", D =", params[0][3])
 
-          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
+          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2],params[0][3]))
           print("R-squared =", r_squared)
           print("")
 
@@ -797,7 +800,7 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_1_1.png")
             print("")
 
-          b01 = params[0][1]
+          b01 = params[0][2]
 
 
 
@@ -808,7 +811,7 @@ class run:
 
           plt.plot(x, y, 'o', label='data in ene_1_1.dat')
           t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
-          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2]), 'r-', label='fit')
+          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2],params[0][3]), 'r-', label='fit')
           plt.legend()
           ax = plt.gca()
           ax.xaxis.set_major_locator(plt.MaxNLocator(5))
@@ -849,9 +852,9 @@ class run:
           params = curve_fit(K, x, y)
 
           print("Fitting parameters:")
-          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
+          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2], ", D =", params[0][3])
 
-          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
+          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2],params[0][3]))
           print("R-squared =", r_squared)
           print("")
 
@@ -859,7 +862,7 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_2_1.png")
             print("")
 
-          b02 = math.sqrt(2)*params[0][1]
+          b02 = math.sqrt(2)*params[0][2]
 
 
 
@@ -870,7 +873,7 @@ class run:
 
           plt.plot(x, y, 'o', label='data in ene_2_1.dat')
           t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
-          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2]), 'r-', label='fit')
+          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2],params[0][3]), 'r-', label='fit')
           plt.legend()
           ax = plt.gca()
           ax.xaxis.set_major_locator(plt.MaxNLocator(5))
@@ -911,9 +914,9 @@ class run:
           params = curve_fit(K, x, y)
 
           print("Fitting parameters:")
-          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2])
+          print("A =", params[0][0], ", B =", params[0][1], ", C =", params[0][2], ", D =", params[0][3])
 
-          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2]))
+          r_squared = r2_score(y, K(x,params[0][0],params[0][1],params[0][2],params[0][3]))
           print("R-squared =", r_squared)
           print("")
 
@@ -921,7 +924,7 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_3_1.png")
             print("")
 
-          b03 = -math.sqrt(3.0/2.0)*params[0][1]
+          b03 = -math.sqrt(3.0/2.0)*params[0][2]
 
 
 
@@ -932,7 +935,7 @@ class run:
 
           plt.plot(x, y, 'o', label='data in ene_3_1.dat')
           t = np.arange(min(x)-0.05*(max(x)-min(x)), max(x)+0.05*(max(x)-min(x)), 0.0001)
-          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2]), 'r-', label='fit')
+          plt.plot(t, K(t, params[0][0],params[0][1],params[0][2],params[0][3]), 'r-', label='fit')
           plt.legend()
           ax = plt.gca()
           ax.xaxis.set_major_locator(plt.MaxNLocator(5))

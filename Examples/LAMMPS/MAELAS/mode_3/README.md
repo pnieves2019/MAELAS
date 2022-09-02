@@ -13,12 +13,12 @@ In this folder you can find two ways to compute volume magnetostriction (w_s) in
 This will generate a file called ```output.dat```, where you can find the calculated volume magnetostriction. In this example we obtain:
  
 ```bash
-w_s=-0.009810
+w_s=-0.0101021
 ```  
 
 Note that to get consistent results with the second method one needs consider the following two things:
 
-	- This calculation is very sensitive to the lattice parameter used the initial POSCAR file (INPOS.lmp). Here, one needs to use the lattice parameter that corresponds to the equilibrium ferromagnetic state (a0=2.8664962944 A, v_FM=23.55342963513 A^3), which is found in the second method by fitting the energy vs volume to the Murnaghan equation of state (EOS) including the offset in the exchange energy (the offset should be included to find the equilibrium volume due to a patological behaviour of classical spin-lattice model where the pressure is not zero at the minimum energy without offset).
+	- This calculation is very sensitive to the lattice parameter used the initial POSCAR file (INPOS.lmp). Here, one needs to use the lattice parameter that corresponds to the equilibrium ferromagnetic state (a0=2.8664962944 A, v_FM=23.55342963513 A^3), which is found in the second method by fitting the energy vs volume to the Murnaghan equation of state (EOS) including the offset in the exchange energy (the offset should be included to find the equilibrium volume due to a pathological behaviour of classical spin-lattice model where the pressure is not zero at the minimum energy without offset).
 
 	- However, to compute w_s the offset in the exchange energy must not be included because it sets the exchange energy to zero for any deformation at the ferromagentic state, which modifies the strain dependence of the isotropic magnetoelastic energy artificially.
 

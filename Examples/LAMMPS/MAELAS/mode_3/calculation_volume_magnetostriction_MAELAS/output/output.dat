@@ -26,7 +26,7 @@ strain 0.003333333333333334
 strain 0.006666666666666666
 strain 0.01
 
-Fit of quadractic function f(x)=A*x^2+B*x+C to energy vs strain
+Fit of cubic function f(x)=A*x^3+B*x^2+C*x+D to energy vs strain
 
 -------------------------
 Calculation of bα,2:
@@ -35,8 +35,8 @@ Calculation of bα,2:
 Deformation x-direction (εxx),  y-direction (εyy) and  z-direction (εzz) , spin1=[0,0,1]
 
 Fitting parameters:
-A = 117.73468627217166 , B = 0.7723614976924646 , C = -8.782334207663185
-R-squared = 0.9999216692335062
+A = -294.9557552526339 , B = 117.73468919366165 , C = 0.7953025317674389 , D = -8.782334207790617
+R-squared = 0.9999999325044266
 
  
 ----------------------------------------------
@@ -46,13 +46,13 @@ Isotropic magnetoelastic constant:
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
  
-b α,2 = 0.7723614976924646  eV
+b α,2 = 0.7953025317674389  eV
  
-b α,2 = 0.3861807488462323  eV/atom
+b α,2 = 0.39765126588371946  eV/atom
  
-b α,2 = 0.03279189116910109  eV/A^3
+b α,2 = 0.03376589090230987  eV/A^3
  
-b α,2 = 5253.839955316423  MPa
+b α,2 = 5409.891910002758  MPa
  
  
  
@@ -75,15 +75,15 @@ Isotropic Magnetostrictive coefficient:
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
  
-λα,2 = -9810.725939864848 x 10⁻⁶
+λα,2 = -10102.12860397886 x 10⁻⁶
  
 Using the convention in reference J.R. Cullen et al., in Materials, Science and Technology (VCH Publishings, 1994), pp.529-565:
  
-λα = -3270.241979954949 x 10⁻⁶
+λα = -3367.376201326286 x 10⁻⁶
  
  ------------------------------ 
  
 Spontaneous volume magnetostriction:
  
-ω_s = -9810.725939864848 x 10⁻⁶
+ω_s = -10102.12860397886 x 10⁻⁶
  

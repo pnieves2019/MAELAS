@@ -13,8 +13,6 @@ for j in {1..7}
 
 do
 
-cp POS_${i}_${j}.vasp POSCAR_${i}_${j}
-
 atomsk POSCAR_${i}_${j} -alignx lmp -ow
 
 rm POSCAR_${i}_${j}
