@@ -69,12 +69,12 @@ MAELAS code is a software to calculate anisotropic magnetostrictive coefficients
 It generates required input files for VASP code to perform Density Functional Theory calculations, and it deduces:
     
 ```-mode 1``` = the value of ansitropic magnetostrictive coefficients (&lambda;<sup>ani</sup>) and anisotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>ani</sup>) from the calculated energies given by VASP. If the elastic tensor is provided,
-then it can also calculate the anisotropic magnetoelastic constants (b;<sup>ani</sup>). It requires spin-polarized calculations with spin-orbit coupling (SOC).
+then it can also calculate the anisotropic magnetoelastic constants (b<sup>ani</sup>). It requires spin-polarized calculations with spin-orbit coupling (SOC).
 
-```-mode 2``` = the value of anisotropic magnetolastic constants (b;<sup>ani</sup>) from the calculated energies given by VASP. If the elastic tensor is provided,
+```-mode 2``` = the value of anisotropic magnetolastic constants (b<sup>ani</sup>) from the calculated energies given by VASP. If the elastic tensor is provided,
 then it can also calculate the anisotropic magnetostrictive coefficients (&lambda;<sup>ani</sup>) and anisotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>ani</sup>). It requires spin-polarized calculations with SOC.
 
-```-mode 3``` = the value of isotropic magnetolastic constants (b;<sup>iso</sup>) from the calculated energies given by VASP. If the elastic tensor is provided,
+```-mode 3``` = the value of isotropic magnetolastic constants (b<sup>iso</sup>) from the calculated energies given by VASP. If the elastic tensor is provided,
 then it can also calculate the isotropic magnetostrictive coefficients (&lambda;<sup>iso</sup>) and isotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>iso</sup>). It requires spin-polarized calculations without SOC (exchange magnetostriction).
 
 
