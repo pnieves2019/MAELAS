@@ -429,9 +429,9 @@ class run:
             print(" ")
             print(" ------------------------------ ")
             print(" ")
-            print("Spontaneous volume magnetostriction:")
+            print("Spontaneous volume magnetostriction (isotropic contribution):")
             print(" ")
-            print("\u03C9_s =", lambdaalpha2*1e6,u'x 10\u207B\u2076')
+            print("\u03C9_s^iso =", lambdaalpha2*1e6,u'x 10\u207B\u2076')
             print(" ")
 
 
@@ -751,9 +751,9 @@ class run:
               
             print(" ------------------------------ ")
             print(" ")
-            print("Spontaneous volume magnetostriction:")
+            print("Spontaneous volume magnetostriction (isotropic contribution):")
             print(" ")
-            print("\u03C9_s =", (2*lambdaalpha10+lambdaalpha20)*1e6,u'x 10\u207B\u2076')
+            print("\u03C9_s^iso =", (2*lambdaalpha10+lambdaalpha20)*1e6,u'x 10\u207B\u2076')
             print(" ")
 
 
@@ -1075,9 +1075,9 @@ class run:
             print(" ")
             print(" ------------------------------ ")
             print(" ")
-            print("Spontaneous volume magnetostriction:")
+            print("Spontaneous volume magnetostriction (isotropic contribution):")
             print(" ")
-            print("\u03C9_s =", (lmb1a0+(1.0/3.0)*lmb2a0)*1e6,u'x 10\u207B\u2076')
+            print("\u03C9_s^iso =", lmb1a0*1e6,u'x 10\u207B\u2076')
             print(" ")
 
 

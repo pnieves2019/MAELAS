@@ -147,6 +147,16 @@ Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Th
  
 λ ε,2 = -44.67212869073754 x 10⁻⁶
  
+----------------------------------------------
+ 
+Spontaneous volume magnetostriction (anisotropic contribution):
+ 
+Cubic crystal at ferromagnetic state with equal domains along all equivalent easy directions: 
+ 
+ω_s^ani = 0.0
+ 
+----------------------------------------------
+ 
 Polycrystal (uniform stress approximation):
  
 λs = -7.456153636257075 x 10⁻⁶

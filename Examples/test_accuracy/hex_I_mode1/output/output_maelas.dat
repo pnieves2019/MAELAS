@@ -161,6 +161,21 @@ Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Th
 λ ζ = -285.9931718006633 x 10⁻⁶
  
  
+ 
+/////////////////////
+Spontaneous volume magnetostriction (anisotropic contribution):
+/////////////////////
+ 
+Hexagonal crystal with easy axis (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = 50.404347587359624 x 10⁻⁶
+ 
+......................... 
+ 
+Hexagonal crystal with easy plane (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = -25.202173793679812 x 10⁻⁶
+ 
 /////////////////////
 Polycrystal (uniform stress approximation):
 /////////////////////

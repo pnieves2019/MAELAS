@@ -15,7 +15,9 @@ Date: August 24, 2022 (version 3.0.0)
 The main new features of version 3.0 are:
 
 - New methodology to calculate the isotropic magnetoelastic constants through
-a cubic fitting of the energy versus strain. This new method can be executed by adding tag ```-mode 3``` in the command line. If the elastic tensor is provided, then it also calculates the isotropic magnetostrictive coefficients and spontaneous volume magnetostriction.
+a cubic fitting of the energy versus strain. This new method can be executed by adding tag ```-mode 3``` in the command line. If the elastic tensor is provided, then it also calculates the isotropic magnetostrictive coefficients.
+
+- The isotropic and anisotropic contributions to spontaneous volume magnetostriction are also calculated.
 
 - The results are also printed using the universal notation proposed by E. du Tremolet de Lacheisserie [E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993)] which is valid for any crystal symmetry.
 

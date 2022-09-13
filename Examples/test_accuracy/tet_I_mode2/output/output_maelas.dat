@@ -326,6 +326,20 @@ Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Th
  
  
 /////////////////////
+Spontaneous volume magnetostriction (anisotropic contribution):
+/////////////////////
+ 
+Tetragonal crystal with easy axis (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = 24.84842988596152 x 10⁻⁶
+ 
+......................... 
+ 
+Tetragonal crystal with easy plane (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = -12.42421494298076 x 10⁻⁶
+ 
+/////////////////////
 Polycrystal (uniform stress approximation):
 /////////////////////
  

@@ -210,6 +210,19 @@ Using the convention in reference J.R. Cullen et al., in Materials, Science and 
 λ 21 = 266.579071776786 x 10⁻⁶
  
  
+/////////////////////
+Spontaneous volume magnetostriction (anisotropic contribution):
+/////////////////////
+ 
+Trigonal crystal with easy axis (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = -44.525684347291126 x 10⁻⁶
+ 
+......................... 
+ 
+Trigonal crystal with easy plane (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = 22.262842173645563 x 10⁻⁶
  
 /////////////////////
 Polycrystal (uniform stress approximation):

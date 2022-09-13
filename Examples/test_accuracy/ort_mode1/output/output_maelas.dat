@@ -238,6 +238,25 @@ Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Th
  
 Warning!: The results calculated with -mode 1 can have significant errors, especially for non-cubic crystal symmetries. We strongly recommned to verify these results through -mode 2.
  
+/////////////////////
+Spontaneous volume magnetostriction (anisotropic contribution):
+/////////////////////
+ 
+Orthorhombic crystal with easy axis along lattice vector c (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = -0.19603603455530896 x 10⁻⁶
+ 
+......................... 
+ 
+Orthorhombic crystal with easy axis along lattice vector a (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = -331.843231609772 x 10⁻⁶
+ 
+......................... 
+ 
+Orthorhombic crystal with easy axis along lattice vector b (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = 332.03926764432725 x 10⁻⁶
  
 /////////////////////
 Polycrystal (uniform stress approximation):

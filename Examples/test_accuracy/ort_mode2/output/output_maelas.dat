@@ -251,6 +251,26 @@ Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Th
 λ δ,2 = 418.5184954996948 x 10⁻⁶
  
  
+/////////////////////
+Spontaneous volume magnetostriction (anisotropic contribution):
+/////////////////////
+ 
+Orthorhombic crystal with easy axis along lattice vector c (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = 77.10612658580487 x 10⁻⁶
+ 
+......................... 
+ 
+Orthorhombic crystal with easy axis along lattice vector a (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = -498.6111387449663 x 10⁻⁶
+ 
+......................... 
+ 
+Orthorhombic crystal with easy axis along lattice vector b (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = 421.5050121591614 x 10⁻⁶
+ 
  
 /////////////////////
 Polycrystal (uniform stress approximation):

@@ -168,6 +168,20 @@ Warning!: The results calculated with -mode 1 can have significant errors, espec
  
  
 /////////////////////
+Spontaneous volume magnetostriction (anisotropic contribution):
+/////////////////////
+ 
+Tetragonal crystal with easy axis (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = 18.812507160707266 x 10⁻⁶
+ 
+......................... 
+ 
+Tetragonal crystal with easy plane (ferromagnetic state with equal domains along all equivalent easy directions): 
+ 
+ω_s^ani = -9.406253580353633 x 10⁻⁶
+ 
+/////////////////////
 Polycrystal (uniform stress approximation):
 /////////////////////
  
