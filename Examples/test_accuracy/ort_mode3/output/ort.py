@@ -61,7 +61,7 @@ lmb3a0 = (-b3a0*ca12**2+b2a0*ca12*ca13+b3a0*ca11*ca22-b1a0*ca13*ca22-b2a0*ca11*c
 
 
 
-w_s = lmb1a0+(1.0/3.0)*lmb2a0
+w_s = lmb1a0
 
 ndist = 7
 strain = 0.01
@@ -232,26 +232,26 @@ for i in range(int(ndist)):
 lmb_name = "output_exact.dat"
     
 dat = open(lmb_name,'w')
-dat.write("lmb_alpha10 = ")
+dat.write("lmb_1alpha0 = ")
 dat.write(repr(lmb1a0))
 dat.write('\n')
-dat.write("lmb_alpha20= ")
+dat.write("lmb_2alpha0= ")
 dat.write(repr(lmb2a0))
 dat.write('\n')
-dat.write("lmb_alpha30= ")
+dat.write("lmb_3alpha0= ")
 dat.write(repr(lmb3a0))
 dat.write('\n')
 
 
-dat.write("b01 = ")
+dat.write("b_1alpha0 = ")
 dat.write(repr(b01*1e-6))
 dat.write(" MPa")
 dat.write('\n')
-dat.write("b02= ")
+dat.write("b_2alpha0= ")
 dat.write(repr(b02*1e-6))
 dat.write(" MPa")
 dat.write('\n')
-dat.write("b03= ")
+dat.write("b_3alpha0= ")
 dat.write(repr(b03*1e-6))
 dat.write(" MPa")
 dat.write('\n')
