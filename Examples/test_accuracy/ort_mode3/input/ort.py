@@ -191,8 +191,8 @@ for i in range(int(ndist)):
 ############ b03
     
     
-    fyy = 1.0 + strain1
-    fxx = 1.0 - strain1
+    fxx = 1.0 + strain1
+    fyy = 1.0 - strain1
     fzz = 1.0
     fxy=0.0
     fxz = fxy

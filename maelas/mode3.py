@@ -924,7 +924,7 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_3_1.png")
             print("")
 
-          b03 = -math.sqrt(3.0/2.0)*params[0][2]
+          b03 = math.sqrt(3.0/2.0)*params[0][2]
 
 
 
