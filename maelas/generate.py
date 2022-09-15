@@ -86,6 +86,35 @@ class VASP:
             exit(-1)
         return self.symmetry
     
+    
+    def poscar2(self):
+ 
+    
+        structure0 = Structure.from_file(self.args.pos[0])
+        self.symmetry.number_of_species = len(structure0.species)
+    
+        sym1 = float(self.args.sympre[0])
+        sym2 = float(self.args.symang[0])
+    
+        aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
+        
+        if self.args.noconv == False:
+          structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
+          bb = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
+          self.symmetry.structure = bb.apply_transformation(structure1)
+          self.symmetry.number_of_species = len(self.symmetry.structure.species)
+
+        
+        if self.args.noconv == True:
+          self.symmetry.structure = structure0
+          self.symmetry.number_of_species = len(self.symmetry.structure.species)
+
+
+        return self.symmetry
+    
+    
+    
+    
     # ___ _   _  ____    _    ____      
     #|_ _| \ | |/ ___|  / \  |  _ \ ___ 
     # | ||  \| | |     / _ \ | |_) / __|

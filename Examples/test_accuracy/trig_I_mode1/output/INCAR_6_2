@@ -1,1 +1,27 @@
+LORBIT = 11
+ISYM = -1
+ENCUT = 520
+PREC  = Accurate
+EDIFF  = 1.e-09
+NELM   = 100
+NELMIN = 4
+# LDAU = .TRUE.
+# LDAUL =
+# LDAUU =
+# LDAUJ = 
+# LDAUTYPE = 2
+ADDGRID = TRUE
+ISMEAR = -5
+# SIGMA  = 0.10
+ISPIN  = 2
+LMAXMIX = 4 ! for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6
+GGA_COMPAT = FALSE
+LREAL = FALSE
+ICHARG = 11
+LCHARG = TRUE
+LWAVE = TRUE
+LORBMOM = TRUE
+LSORBIT = TRUE
+NBANDS = nbands ! 2 * number of bands of collinear run
+MAGMOM = 0 0 4 0 0 4 0 0 4 0 0 4 0 0 4 0 0 4 
 SAXIS = 1.0 -1.0 0
