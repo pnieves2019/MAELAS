@@ -1,0 +1,5 @@
+
+python3 cubic.py
+maelas -g -s 0.01 -mode 3 -ani
+maelas -d -s 0.01 -mode 3 -ani -b > output_maelas.dat
+

@@ -30,7 +30,7 @@ class run:
         structure0 = Structure.from_file(self.args.pos[0])
         generator.poscar2()
         generator.incar()
-
+    
         sym1 = float(self.args.sympre[0])
         sym2 = float(self.args.symang[0])
     
@@ -691,6 +691,38 @@ class run:
         print("b\u03B4,2 =", (bd2/vol)*1.602176565e-19*1e30*1e-6 ,u' MPa')
         print(" ")
                       
+        
+        bani1 = (b1a2/vol)*1.602176565e-19*1e30*1e-6
+        bani2 = (b2a2/vol)*1.602176565e-19*1e30*1e-6
+        bani3 = (b3a2/vol)*1.602176565e-19*1e30*1e-6
+        bani4 = (b1a2p/vol)*1.602176565e-19*1e30*1e-6
+        bani5 = (b2a2p/vol)*1.602176565e-19*1e30*1e-6
+        bani6 = (b3a2p/vol)*1.602176565e-19*1e30*1e-6
+        bani7 = (bb2/vol)*1.602176565e-19*1e30*1e-6
+        bani8 = (bg2/vol)*1.602176565e-19*1e30*1e-6
+        bani9 = (bd2/vol)*1.602176565e-19*1e30*1e-6
+        
+        path_inc_std = 'MAGANI'
+        inc_std = open(path_inc_std,'w')
+        inc_std.write(str(bani1))
+        inc_std.write('\n')
+        inc_std.write(str(bani2))
+        inc_std.write('\n')
+        inc_std.write(str(bani3))
+        inc_std.write('\n')
+        inc_std.write(str(bani4))
+        inc_std.write('\n')
+        inc_std.write(str(bani5))
+        inc_std.write('\n')
+        inc_std.write(str(bani6))
+        inc_std.write('\n')
+        inc_std.write(str(bani7))
+        inc_std.write('\n')
+        inc_std.write(str(bani8))
+        inc_std.write('\n')
+        inc_std.write(str(bani9))
+        inc_std.close()
+        
             
         
         if nn % 2 == 0:         

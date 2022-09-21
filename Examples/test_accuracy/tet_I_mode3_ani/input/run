@@ -1,0 +1,5 @@
+
+python3 tet.py
+maelas -g -s 0.01 -n 7 -mode 3 -ani
+maelas -d -mode 3 -s 0.01 -n 7 -b -ani > output_maelas.dat
+

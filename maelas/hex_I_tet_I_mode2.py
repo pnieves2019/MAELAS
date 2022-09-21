@@ -29,7 +29,7 @@ class run:
         structure0 = Structure.from_file(self.args.pos[0])
         generator.poscar2()
         generator.incar()
-
+    
         sym1 = float(self.args.sympre[0])
         sym2 = float(self.args.symang[0])
     
@@ -861,7 +861,21 @@ class run:
             print("b \u03B6,2 =", (b4/vol)*1.602176565e-19*1e30*1e-6,u' MPa')
             print(" ")
             
-     
+            bani1 = (b21/vol)*1.602176565e-19*1e30*1e-6
+            bani2 = (b22/vol)*1.602176565e-19*1e30*1e-6
+            bani3 = (b3/vol)*1.602176565e-19*1e30*1e-6
+            bani4 = (b4/vol)*1.602176565e-19*1e30*1e-6
+        
+            path_inc_std = 'MAGANI'
+            inc_std = open(path_inc_std,'w')
+            inc_std.write(str(bani1))
+            inc_std.write('\n')
+            inc_std.write(str(bani2))
+            inc_std.write('\n')
+            inc_std.write(str(bani3))
+            inc_std.write('\n')
+            inc_std.write(str(bani4))
+            inc_std.close()
             
             if nn % 2 == 0:         
                 print("----------------------------------------------")
@@ -1146,7 +1160,24 @@ class run:
             print("b \u03B5,2 =", (b4/vol)*1.602176565e-19*1e30*1e-6,u' MPa')
             print(" ")
             
-            
+            bani1 = (b21/vol)*1.602176565e-19*1e30*1e-6
+            bani2 = (b22/vol)*1.602176565e-19*1e30*1e-6
+            bani3 = (b3/vol)*1.602176565e-19*1e30*1e-6
+            bani4 = (b4/vol)*1.602176565e-19*1e30*1e-6
+            bani5 = (bp3/vol)*1.602176565e-19*1e30*1e-6
+        
+            path_inc_std = 'MAGANI'
+            inc_std = open(path_inc_std,'w')
+            inc_std.write(str(bani1))
+            inc_std.write('\n')
+            inc_std.write(str(bani2))
+            inc_std.write('\n')
+            inc_std.write(str(bani3))
+            inc_std.write('\n')
+            inc_std.write(str(bani4))
+            inc_std.write('\n')
+            inc_std.write(str(bani5))
+            inc_std.close()
             
             
             if nn % 2 == 0:         

@@ -30,7 +30,7 @@ Mode 3 does not require to evaluate MAE since it does not include SOC
 
 
 -------------------------------------------
-Step3: generation VASP input files (-mode 3)
+Step3: generation VASP input files (-mode 3) including only isotropic magnetic interactions
 -------------------------------------------
 
 In folder Step3_generation_VASP_input_files you can find an example about the
@@ -40,8 +40,17 @@ Then we type:
 ```bash
 maelas -g -mode 3 -i POSCAR_Fe_bcc_rlx -k 60 -s 0.01 -n 7 > output.dat
 ```
-It should generate the following files: POSCAR_A_B (A=1,2, B=1,..,7), INCAR_std, KPOINTS, vasp_0, vasp_jsub, vasp_maelas, vasp_cp_oszicar and output.dat.  
+It should generate the following files: POSCAR_A_B (A=1, B=1,..,7), INCAR_std, KPOINTS, vasp_0, vasp_jsub, vasp_maelas, vasp_cp_oszicar and output.dat. By default, -mode 3 assumes spin-polarized calculations without SOC (only isotropic magnetic interactions), so that these generated files are suitable for this kind of calculation.
 
+-------------------------------------------
+Step3: generation VASP input files (-mode 3) including anisotropic magnetic interactions
+-------------------------------------------
+
+In case you want also to include anisotropic magnetic interactions in the calcualtion of the isotropic magnetoelastic constants (-mode 3), then you need to add the flag -ani
+```bash
+maelas -g -mode 3 -ani -i POSCAR_Fe_bcc_rlx -k 60 -s 0.01 -n 7 > output.dat
+```
+Now, it should generate the following files: POSCAR_A_B (A=1, B=1,..,7), INCAR_std, INCAR_A_C (C=1), KPOINTS, vasp_0, vasp_jsub, vasp_maelas, vasp_cp_oszicar and output.dat. These generated files are suitable for spin-polarized calculations with SOC. In folder Step3_generation_VASP_input_files_ani you can find this example.
 
 ----------------------------------
 Step4: run VASP calculations
@@ -55,7 +64,7 @@ As in the previous steps, the user might need to modify vasp_jsub depending on t
 
 
 ----------------------------------------------------------
-Step5a: derivation isotropic magnetoelastic constants (-mode 3)
+Step5a: derivation isotropic magnetoelastic constants (-mode 3) including only isotropic magnetic interactions
 ----------------------------------------------------------
 
 In the folder Step5a_derivation_magnetoelastic_constants we show an example on how 
@@ -75,7 +84,7 @@ In the file output.dat you can find the calculated isotropic magnetoelastic cons
 
 
 -----------------------------------------------------------
-Step5b: derivation istropic magnetostrictive coefficients (-mode 3)
+Step5b: derivation istropic magnetostrictive coefficients (-mode 3) including only isotropic magnetic interactions
 -----------------------------------------------------------
 
 Similarly, in folder Step5b_derivation_magnetostrictive_coefficients you can see an example about
@@ -90,3 +99,39 @@ maelas -d -mode 3 -i POSCAR_Fe_bcc_rlx -n 7 -s 0.01 -b -e ELADAT > output.dat
 It should generate the files: fit_ene_A_C.png, ene_A_C.dat and output.dat.
 In the file output.dat you can find the calculated isotropic magnetostrictive coefficients, isotropic 
 magnetoelastic constants and spontaneous volume magnetostriction.
+
+
+----------------------------------------------------------
+Step5a: derivation isotropic magnetoelastic constants (-mode 3) including anisotropic magnetic interactions
+----------------------------------------------------------
+
+In the folder Step5a_derivation_magnetoelastic_constants_ani we show an example on how 
+to calculate the isotropic magnetoelastic constants from the energies written in the OSZICAR files from Step4 including anisotropic magnetic interactions. Firstly, we copy the files vasp_cp_oszicar, POSCAR_Fe_bcc_rlx and POSCAR_A_B (A=1,2, B=1,..,7) from folder Step3_generation_VASP_input_files_ani into folder Step5a_derivation_magnetostriction_coefficients_ani. Next, we generate the required OSZICAR_A_B_C files by writing the following command
+```bash
+./vasp_cp_oszicar
+```
+Warning!! Now we also need to copy the file called MAGANI generated in step 5 of -mode 2 (-d) which contains the data of the anisotropic magnetoelastic constants. Finally, we derive the magnetoelastic constants running MAELAS with flag -ani 
+```bash
+maelas -d -mode 3 -ani -i POSCAR_Fe_bcc_rlx -n 7 -s 0.01 > output.dat
+```
+It should generate the files: fit_ene_A_C.png, ene_A_C.dat and output.dat. 
+In the file output.dat you can find the calculated isotropic magnetoelastic constants within the method -mode 3.
+
+
+-----------------------------------------------------------
+Step5b: derivation istropic magnetostrictive coefficients (-mode 3) including anisotropic magnetic interactions
+-----------------------------------------------------------
+
+Similarly, in folder Step5b_derivation_magnetostrictive_coefficients_ani you can see an example about
+the calculation of isotropic magnetostrictive coefficients including anisotropic magnetic interactions. 
+Firstly, we copy the files vasp_cp_oszicar, POSCAR_Fe_bcc_rlx and POSCAR_A_B (A=1,2, B=1,..,7) from
+folder Step3_generation_VASP_input_files_ani into folder Step5b_derivation_magnetostrictive_coefficients_ani.
+Here, you also need to paste the file that contains the elastic tensor with the same format and units (GPa) 
+as generated by AELAS code. We called this file "ELADAT" as in the AELAS code. Warning!! Now we also need to copy the file called MAGANI generated in step 5 of -mode 2 (-d) which contains the data of the anisotropic magnetoelastic constants. Finally, we run MAELAS with flag -ani 
+```bash
+maelas -d -mode 3 -ani -i POSCAR_Fe_bcc_rlx -n 7 -s 0.01 -b -e ELADAT > output.dat
+```
+It should generate the files: fit_ene_A_C.png, ene_A_C.dat and output.dat.
+In the file output.dat you can find the calculated isotropic magnetostrictive coefficients, isotropic 
+magnetoelastic constants and spontaneous volume magnetostriction.
+

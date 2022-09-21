@@ -1,20 +1,20 @@
-    __  ______    ________    ___   _____         ___    ____ 
-   /  |/  /   |  / ____/ /   /   | / ___/   _   _|__ \  / __ \
-  / /|_/ / /| | / __/ / /   / /| | \__ \   | | / /_/ / / / / /
- / /  / / ___ |/ /___/ /___/ ___ |___/ /   | |/ / __/_/ /_/ / 
+    __  ______    ________    ___   _____         _____  ____ 
+   /  |/  /   |  / ____/ /   /   | / ___/   _   _|__  / / __ \
+  / /|_/ / /| | / __/ / /   / /| | \__ \   | | / //_ < / / / /
+ / /  / / ___ |/ /___/ /___/ ___ |___/ /   | |/ /__/ // /_/ / 
 /_/  /_/_/  |_/_____/_____/_/  |_/____/    |___/____(_)____/  
                                                               
 
-MAELAS code v2.0
+MAELAS version 3.0
  
 Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
  
 --------------------------------------------------------------------------------------------------------
-Derivation of anisotropic magnetoelastic constants from the energy written in the OSZICAR files:
+Derivation of anisotropic magnetoelastic constants from the energy written in the OSZICAR files (mode=2):
 --------------------------------------------------------------------------------------------------------
 Space group number = 229
 Space group symbol = Im-3m
-Mode= 2 , direct calculation of the magnetoelastic cosntants (b)
+Mode= 2 , direct calculation of the magnetoelastic constants (b)
 Cubic (I) system
 Point group = m-3m
 Number of anisotropic magnetoelastic constants = 2
@@ -59,7 +59,7 @@ Fitting parameters:
 A = -0.00036856178558726803 , B = -1.1090001721805394e-07
 R-squared = 0.9358070728022361
 
-WARNING!! R-squared is lower than 0.98. Check figure fit_ene_1_1.png
+WARNING!! R-squared is lower than 0.98. Check figure dE_1.png
 
 
 Fit of linear function f(x)=A*x+B to energy vs strain
@@ -80,7 +80,7 @@ Anisotropic magnetoelastic constants:
 ----------------------------------------------
  
  
-Using the convention in reference J.R. Cullen et al., in Materials, Science and Technology (VCH Publishings, 1994), pp.529-565:
+Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
 b1 = -0.0007371235711745361  eV
  
@@ -97,6 +97,12 @@ b2 = -3.144307808199065e-05  eV/A^3
 b1 = -5.2378375700992645  MPa
  
 b2 = -5.037736283443056  MPa
+ 
+Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
+ 
+b γ,2 = -5.2378375700992645  MPa
+ 
+b ε,2 = -5.037736283443056  MPa
  
 ----------------------------------------------
 Magnetocrystalline anisotropy energy:
@@ -131,8 +137,28 @@ Warning: If these elastic constants are not the same as in the input elastic ten
  
 Magnetostrictive coefficients:
  
+Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
+ 
 λ001 = 35.74461780529747 x 10⁻⁶
  
 λ111 = 17.30645602199683 x 10⁻⁶
  
-(Polycrystal) λs = 24.681720735317086 x 10⁻⁶
+Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
+ 
+λ γ,2 = 53.61692670794621 x 10⁻⁶
+ 
+λ ε,2 = 25.959684032995245 x 10⁻⁶
+ 
+----------------------------------------------
+ 
+Spontaneous volume magnetostriction (anisotropic contribution):
+ 
+Cubic crystal at ferromagnetic state with equal domains along all equivalent easy directions: 
+ 
+ω_s^ani = 0.0
+ 
+----------------------------------------------
+ 
+Polycrystal (uniform stress approximation):
+ 
+λs = 24.681720735317086 x 10⁻⁶

@@ -75,7 +75,7 @@ then it can also calculate the anisotropic magnetoelastic constants (b<sup>ani</
 then it can also calculate the anisotropic magnetostrictive coefficients (&lambda;<sup>ani</sup>) and anisotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>ani</sup>). It requires spin-polarized calculations with SOC.
 
 ```-mode 3``` = the value of isotropic magnetolastic constants (b<sup>iso</sup>) from the calculated energies given by VASP. If the elastic tensor is provided,
-then it can also calculate the isotropic magnetostrictive coefficients (&lambda;<sup>iso</sup>) and isotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>iso</sup>). It requires spin-polarized calculations without SOC (exchange magnetostriction).
+then it can also calculate the isotropic magnetostrictive coefficients (&lambda;<sup>iso</sup>) and isotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>iso</sup>). It requires spin-polarized calculations without SOC (including only isotropic magnetic interactions) or spin-polarized calculations with SOC (including anisotropic magnetic interactions).
 
 
 MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.
@@ -243,6 +243,13 @@ maelas -h
 ```
 Note that generated ```INCAR_std```, ```INCAR_A_C```, and ```KPOINTS``` files contain standard setting for collinear and non-collinear calculations. The user can modify these files in order to add more advanced settings.
 
+By default, -mode 3 assumes spin-polarized calculations without SOC (including only isotropic magnetic interactions), so that these generated files are suitable for this kind of calculation. In case you want also to include anisotropic magnetic interactions in the calculation of the isotropic magnetoelastic constants (-mode 3), then you need to add the flag -ani
+```bash
+maelas -g -mode 3 -ani -i POSCAR_rlx -k 70 -n 7 -s 0.01 
+```
+Now, it should generate the following files: POSCAR_A_B (A=1, B=1,..,7), INCAR_std, INCAR_A_C (C=1), KPOINTS, vasp_0, vasp_jsub, vasp_maelas, vasp_cp_oszicar and output.dat. These generated files are suitable for spin-polarized calculations with SOC. 
+
+
 
 -----------------------------
 Step 4: Run VASP calculations
@@ -302,7 +309,12 @@ In ```-mode 1```, the energy values extracted from ```OSZICAR_A_B_C``` files are
 In ```-mode 2```, the energy values extracted from ```OSZICAR_A_B_C``` files are shown in generated files ```ene_A_C.dat```.
 The energy difference between the two spin configurations and linear fitting for each magnetoelastic constant are shown in Fig. dE_A.png.
 
-In ```-mode 3```, the energy values extracted from OSZICAR_A_B_C files are shown in generated files ene_A_C.dat and fit_ene_A_C.png.
+In ```-mode 3```, the energy values extracted from OSZICAR_A_B_C files are shown in generated files ene_A_C.dat and fit_ene_A_C.png. In case you want also to include anisotropic magnetic interactions in the calculation of the isotropic magnetoelastic constants (-mode 3), then you need to add the flag –ani
+```bash
+maelas -d -mode 3 -ani -i POSCAR_rlx -n 7 -s 0.01
+```
+Note that here you also need to copy the file called MAGANI generated in step 5 of -mode 2 which contains the data of the anisotropic magnetoelastic constants.
+
 
 
 If the elastic tensor is provided as input, then MAELAS can also calculate the anisotropic magnetoelastic constants ```-mode 1```, anisotropic magnetostrictive coefficients ```-mode 2``` or isotropic magnetostrictive coefficients ```-mode 3```. To do so, one needs to add tags -b and -e with the name of the file
@@ -320,6 +332,11 @@ or
 
 ```bash
 maelas -d -mode 3 -i POSCAR_rlx -n 7 -s 0.01 -b -e ELADAT
+```
+or
+
+```bash
+maelas -d -mode 3 -ani -i POSCAR_rlx -n 7 -s 0.01 -b -e ELADAT
 ```
 
 where ```ELADAT``` is the name of the file (it could be whatever name you want) with the elastic tensor data.
@@ -439,6 +456,47 @@ Step 5b: Derivation of isotropic magnetoelastic constants and isotropic magnetos
 maelas -d -mode 3 -i POSCAR_rlx -n 7 -s 0.01 -b -e ELADAT  
 ```
 
+----------------------------------------------------------------------
+Summary: In a nutshell (-mode 3 including anisotropic magnetic interactions)
+----------------------------------------------------------------------
+
+Step 1: Cell relaxation
+```bash
+maelas -r -i POSCAR0 -k 40
+qsub vasp_jsub_rlx
+```
+
+Step 2: Test MAE (it does not require in this mode since SOC is not used)
+```bash
+maelas -m -i POSCAR_rlx -k 70 -s1 1 0 0 -s2 0 0 1
+./vasp_mae
+./vasp_mae_cp_oszicar
+```
+
+Step 3: Generate VASP inputs for calculation of isotropic magnetoelastic constants
+```bash
+maelas -g -mode 3 -ani -i POSCAR_rlx -k 70 -n 7 -s 0.01
+```
+
+Step 4: Run VASP calculations
+```bash
+./vasp_maelas
+./vasp_cp_oszicar
+```
+
+Step 5a: Derivation of isotropic magnetoelastic constants (it requires file MAGANI generated in -mode 2)
+
+```bash
+maelas -d -mode 3 -ani -i POSCAR_rlx -n 7 -s 0.01
+```
+
+Step 5b: Derivation of isotropic magnetoelastic constants and isotropic magnetostrictive coefficients (it requires file MAGANI generated in -mode 2)
+
+```bash
+maelas -d -mode 3 -ani -i POSCAR_rlx -n 7 -s 0.01 -b -e ELADAT  
+```
+
+
 -------------------------------------------------------
 Full list of arguments in MAELAS v3.0 
 -------------------------------------------------------
@@ -517,6 +575,7 @@ optional arguments:
                         by a symmetry analysis (default: 0)
   -nc                   If this flag is used, then it does not apply a conventional transformation
                         to the provided POSCAR (keep original size), useful for supercells and quasi-random structures
+  -ani                  It includes anisotropic magnetic interactions in -mode 3. It requires the file MAGANI created in 				-mode 2 that contains the values of the calculated anisotropic magnetoelastic constants.
   -c CORE               Number of cores for the VASP calculation (default: 24)
   -t TIME               Number of maximum CPU hours for the VASP calculation (default: 48)
   -f VASP_FOLD          Folder where you will run VASP calculations (default: /scratch)

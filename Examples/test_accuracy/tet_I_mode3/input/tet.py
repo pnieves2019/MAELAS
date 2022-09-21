@@ -15,8 +15,8 @@ c13=133.0*10**9
 c33=264.0*10**9
 c44=101*10**9
 c66=37*10**9
-b11=2.0*10**9
-b12=-5.0*10**9
+b11=20.0*10**6
+b12=-50.0*10**6
 b21=0*(-2.4)*10**6
 b22=0*(-15.2)*10**6
 b3=0*(-7.9)*10**6
@@ -50,7 +50,7 @@ def elas0(eexx,eexy,eexz,eeyy,eeyz,eezz,cc11,cc12,cc13,cc33,cc44,cc66):
 
 def em0(eexx,eexy,eexz,eeyy,eeyz,eezz,bb11,bb12,bb21,bb22,bb3,bb4,bbp3,aax,aay,aaz):
     
-    ene0 = bb11*(eexx+eeyy)+bb12*eezz+bb21*(aaz**2.0-(1.0/3.0))*(eexx+eeyy) 
+    ene0 = bb11*(eexx+eeyy)+bb12*eezz
     ene0 = ene0 + bb21*(aaz**2.0-(1.0/3.0))*(eexx+eeyy) + bb22*(aaz**2.0-(1.0/3.0))*eezz + bb3*(0.5*(aax**2.0-aay**2.0)*(eexx-eeyy))+2.0*bbp3*aax*aay*eexy
     ene0 = ene0 + 2.0*bb4*(aax*aaz*eexz+aay*aaz*eeyz)
     

@@ -30,7 +30,7 @@ class run:
         structure0 = Structure.from_file(self.args.pos[0])
         generator.poscar2()
         generator.incar()
-
+    
         sym1 = float(self.args.sympre[0])
         sym2 = float(self.args.symang[0])
     

@@ -28,6 +28,8 @@ class run:
         
         generator = generate.VASP(self.args)
         structure0 = Structure.from_file(self.args.pos[0])
+        generator.poscar2()
+        generator.incar()
     
         sym1 = float(self.args.sympre[0])
         sym2 = float(self.args.symang[0])
@@ -79,6 +81,8 @@ class run:
               structure33 = Poscar(structure3)
               structure33.write_file(filename = pos_name,significant_figures=16)
               
+              
+              
         #Generation POSCAR file Hexagonal I, Trigonal I or Tetragonal I:
         
             elif (177 <= sg <= 194) or (149 <= sg <= 167) or (89 <= sg <= 142):
@@ -117,6 +121,8 @@ class run:
               structure44 = Poscar(structure4)
               structure44.write_file(filename = pos_name,significant_figures=16)
 
+              
+              
 
 
         #Generation POSCAR file Orthorhombic:
@@ -192,7 +198,96 @@ class run:
               structure55.write_file(filename = pos_name,significant_figures=16)
 
 
+
+              
+              
+
+        # generation INCAR files
         
+        if self.args.ani == True:
+        
+          print("Anisotropic magnetic interactions are included")
+        
+          if 230 >= sg >= 207:
+
+          # INCAR_1_1 m=(0,0,1)
+              
+              path_inc_ncl_1_1 = 'INCAR_1_1'
+              inc_ncl_1_1 = open(path_inc_ncl_1_1,'w')
+              inc_ncl_list_1_1 = generator.inc_ncl_list[:]
+              inc_ncl_list_1_1 += ['SAXIS = 0.0 0 1.0\n']
+
+              for j in range(len(inc_ncl_list_1_1)):
+                inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+
+              inc_ncl_1_1.close()
+              
+          elif (177 <= sg <= 194) or (149 <= sg <= 167) or (89 <= sg <= 142):
+        
+              # INCAR_1_1 m=(0,0,1)
+              
+              path_inc_ncl_1_1 = 'INCAR_1_1'
+              inc_ncl_1_1 = open(path_inc_ncl_1_1,'w')
+              inc_ncl_list_1_1 = generator.inc_ncl_list[:]
+              inc_ncl_list_1_1 += ['SAXIS = 0.0 0 1.0\n']
+
+              for j in range(len(inc_ncl_list_1_1)):
+                inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+
+              inc_ncl_1_1.close()
+              
+              
+              # INCAR_2_1 m=0,0,1
+
+              path_inc_ncl_2_1 = 'INCAR_2_1'
+              inc_ncl_2_1 = open(path_inc_ncl_2_1,'w')
+              inc_ncl_list_2_1 = generator.inc_ncl_list[:]
+              inc_ncl_list_2_1 += ['SAXIS = 0.0 0.0 1.0\n']
+
+              for j in range(len(inc_ncl_list_2_1)):
+                inc_ncl_2_1.write(str(inc_ncl_list_2_1[j]))
+
+              inc_ncl_2_1.close()
+
+          elif 16 <= sg <= 74:
+        
+              # INCAR_1_1 m=(0,0,1)
+              
+              path_inc_ncl_1_1 = 'INCAR_1_1'
+              inc_ncl_1_1 = open(path_inc_ncl_1_1,'w')
+              inc_ncl_list_1_1 = generator.inc_ncl_list[:]
+              inc_ncl_list_1_1 += ['SAXIS = 0.0 0.0 1.0\n']
+
+              for j in range(len(inc_ncl_list_1_1)):
+                inc_ncl_1_1.write(str(inc_ncl_list_1_1[j]))
+
+              inc_ncl_1_1.close()
+              
+              
+              # INCAR_2_1 m=0,0,1
+
+              path_inc_ncl_2_1 = 'INCAR_2_1'
+              inc_ncl_2_1 = open(path_inc_ncl_2_1,'w')
+              inc_ncl_list_2_1 = generator.inc_ncl_list[:]
+              inc_ncl_list_2_1 += ['SAXIS = 0.0 0.0 1.0\n']
+
+              for j in range(len(inc_ncl_list_2_1)):
+                inc_ncl_2_1.write(str(inc_ncl_list_2_1[j]))
+
+              inc_ncl_2_1.close()
+              
+              
+              # INCAR_3_1 m=0,0,1
+
+              path_inc_ncl_3_1 = 'INCAR_3_1'
+              inc_ncl_3_1 = open(path_inc_ncl_3_1,'w')
+              inc_ncl_list_3_1 = generator.inc_ncl_list[:]
+              inc_ncl_list_3_1 += ['SAXIS = 0.0 0.0 1.0\n']
+
+              for j in range(len(inc_ncl_list_3_1)):
+                inc_ncl_3_1.write(str(inc_ncl_list_3_1[j]))
+
+              inc_ncl_3_1.close()
         
 
  # Derivation of magnetostriction coefficients:       
@@ -277,6 +372,25 @@ class run:
                 dat.close()
 
 
+       # Read anisotropic magnetoelastic constants from MAGANI file (created with -mode 2)
+       
+        if self.args.ani == True:
+          print("Anisotropic magnetic interactions are included")
+          print("Reading MAGANI file ... ")
+          f = open('MAGANI','r')
+          l = f.readlines()
+          f.close
+
+          x = []
+
+          for i in l:
+            x.append(float(i.split()[0]))
+
+          bani = np.array(x)  # MPa
+          
+          bani = (bani*vol)/(1.602176565e-19*1e30*1e-6) # eV
+       
+       
        # fitting and plot
 
 
@@ -328,9 +442,13 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_1_1.png")
             print("")
 
-          balpha2 = params[0][2]
+          
 
-
+          if self.args.ani == False :
+            balpha2 = params[0][2]
+          
+          elif self.args.ani == True :
+            balpha2 = params[0][2]
 
         #make figure dE_1.png
 
@@ -477,8 +595,13 @@ class run:
           if r_squared < 0.98:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_1_1.png")
             print("")
-
-          b11 = (1.0/2.0)*params[0][2]
+          
+          
+          if self.args.ani == False :
+            b11 = (1.0/2.0)*params[0][2]
+          
+          elif self.args.ani == True :
+            b11 = (1.0/2.0)*(params[0][2]-(4.0/3.0)*bani[0])
 
 
 
@@ -540,8 +663,12 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_2_1.png")
             print("")
 
-          b12 = params[0][2]
 
+          if self.args.ani == False :
+            b12 = params[0][2]
+          
+          elif self.args.ani == True :
+            b12 = params[0][2]-(2.0/3.0)*bani[1]
 
 
         #make figure dE_2.png
@@ -800,8 +927,14 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_1_1.png")
             print("")
 
-          b01 = params[0][2]
+          
 
+
+          if self.args.ani == False :
+            b01 = params[0][2]
+          
+          elif self.args.ani == True :
+            b01 = params[0][2]-math.sqrt(2)*bani[0]
 
 
         #make figure dE_1.png
@@ -862,7 +995,13 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_2_1.png")
             print("")
 
-          b02 = math.sqrt(2)*params[0][2]
+          
+          
+          if self.args.ani == False :
+            b02 = math.sqrt(2)*params[0][2]
+          
+          elif self.args.ani == True :
+            b02 = math.sqrt(2)*(params[0][2]-bani[1])
 
 
 
@@ -924,8 +1063,13 @@ class run:
             print("WARNING!! R-squared is lower than 0.98. Check figure fit_ene_3_1.png")
             print("")
 
-          b03 = math.sqrt(3.0/2.0)*params[0][2]
 
+          if self.args.ani == False :
+            b03 = math.sqrt(3.0/2.0)*params[0][2]
+          
+          elif self.args.ani == True :
+            b03 = math.sqrt(3.0/2.0)*(params[0][2]-math.sqrt(2.0/3.0)*bani[2])
+          
 
 
         #make figure dE_3.png

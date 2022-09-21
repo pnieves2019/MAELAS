@@ -20,18 +20,20 @@ c55=27.0*10**9
 c66=39.0*10**9
 
 
-b01=0.3*10**9
-b02=-0.2*10**9
-b03=0.7*10**9
-b1=0*10**6
-b2=0*10**6
-b3=0*10**6
-b4=0*10**6
-b5=0*10**6
-b6=0*10**6
-b7=0*10**6
-b8=0*10**6
-b9=0*10**6
+b1a0=30.0*10**6  #Pa
+b2a0=-20.0*10**6
+b3a0=70.0*10**6
+
+b1a2 = 0*(-11.384418550834896)*10**6
+b2a2 = 0*(1.5499999147278247)*10**6
+b3a2 = 0*(7.144344690110472)*10**6
+b1a2p = 0*(30.414495966645315)*10**6
+b2a2p = 0*(-106.20357617655098)*10**6
+b3a2p = 0*(-8.849999513214748)*10**6
+bb2 = 0*(35.39999805317399)*10**6
+bd2 = 0*(38.6999978714811)*10**6
+bg2 = 0*(-22.599998756983513)*10**6
+
 
 
 a=4.0686275541928172 
@@ -40,10 +42,6 @@ c=3.8956767252497921
 v0=(a*b*c)*((10.0**(-10.0))**3.0)
 
 # Tremolet convention of isotropic magentoelastic constants
-
-b1a0 = b01  #GPa
-b2a0 = b02  #GPa
-b3a0 = b03  #GPa
 
 
 ca11 = (1.0/3.0)*(c11+2.0*c12+2.0*c13+c22+2.0*c23+c33)
@@ -77,14 +75,17 @@ def elas0(eexx,eexy,eexz,eeyy,eeyz,eezz,cc11,cc12,cc13,cc22,cc23,cc33,cc44,cc55,
 
 # Tremolet convention for the isotropic magnetoelastic energy
 
-def em0(eexx,eexy,eexz,eeyy,eeyz,eezz,bb01,bb02,bb03,bb1,bb2,bb3,bb4,bb5,bb6,bb7,bb8,bb9,aax,aay,aaz):
+def em0(exx,exy,exz,eyy,eyz,ezz,b1a0,b2a0,b3a0,b1a2,b2a2,b3a2,b1a2p,b2a2p,b3a2p,bb2,bd2,bg2,ax,ay,az):
     
 #    ene0 = bb01*eexx + bb02*eeyy + bb03*eezz
 #    ene0 = ene0 + bb1*aax**2.0*eexx + bb2*aay**2.0*eexx + bb3*aax**2.0*eeyy + bb4*aay**2.0*eeyy
 #    ene0 = ene0 + bb5*aax**2.0*eezz + bb6*aay**2.0*eezz
 #    ene0 = ene0 + 2.0*bb7*aax*aay*eexy + 2.0*bb8*aax*aaz*eexz + 2.0*bb9*aay*aaz*eeyz
 
-    ene0 = (1/3)*bb01*(eexx+eeyy+eezz)+(math.sqrt(2)/3)*bb02*(eezz-0.5*(eexx+eeyy))+(1/math.sqrt(6))*bb03*(eexx-eeyy)
+    ene0 = (1/3)*b1a0*(exx+eyy+ezz)+(math.sqrt(2)/3)*b2a0*(ezz-0.5*(exx+eyy))+(1/math.sqrt(6))*b3a0*(exx-eyy)
+    ene0 = ene0 + ((math.sqrt(2)/3)*b1a2*(exx + eyy + ezz) + (2/3)*b2a2*(ezz - (1/2)*(exx + eyy)) + (1/math.sqrt(6))*b3a2*(exx - eyy))*(az**2 - (1/2)*(ax**2 + ay**2)) 
+    ene0 = ene0 + ((1/math.sqrt(6))*b1a2p*(exx + eyy + ezz) + (1/math.sqrt(3))*b2a2p*(ezz - (1/2)*(exx + eyy)) + (1/2)*b3a2p*(exx - eyy))*(ax**2 - ay**2)
+    ene0 = ene0 + 2.0*bb2*ax*ay*exy + 2.0*bd2*ax*az*exz + 2.0*bg2*ay*az*eyz
 
     return ene0
 
@@ -122,12 +123,12 @@ for i in range(int(ndist)):
     eyz=0.5*(fyz+fzy)
     ezz=fzz-1.0
     
-    ax=1.0
+    ax=0.0
     ay=0.0
-    az=0.0
+    az=1.0
     
     elas = elas0(exx,exy,exz,eyy,eyz,ezz,c11,c12,c13,c22,c23,c33,c44,c55,c66)
-    em = em0(exx,exy,exz,eyy,eyz,ezz,b01,b02,b03,b1,b2,b3,b4,b5,b6,b7,b8,b9,ax,ay,az)
+    em = em0(exx,exy,exz,eyy,eyz,ezz,b1a0,b2a0,b3a0,b1a2,b2a2,b3a2,b1a2p,b2a2p,b3a2p,bb2,bd2,bg2,ax,ay,az)
     
     etot=v0*(elas+em)*6241509000000000000.0
     
@@ -168,11 +169,11 @@ for i in range(int(ndist)):
     ezz=fzz-1.0
     
     ax=0.0
-    ay=1.0
-    az=0.0
+    ay=0.0
+    az=1.0
     
     elas = elas0(exx,exy,exz,eyy,eyz,ezz,c11,c12,c13,c22,c23,c33,c44,c55,c66)
-    em = em0(exx,exy,exz,eyy,eyz,ezz,b01,b02,b03,b1,b2,b3,b4,b5,b6,b7,b8,b9,ax,ay,az)
+    em = em0(exx,exy,exz,eyy,eyz,ezz,b1a0,b2a0,b3a0,b1a2,b2a2,b3a2,b1a2p,b2a2p,b3a2p,bb2,bd2,bg2,ax,ay,az)
     
     etot=v0*(elas+em)*6241509000000000000.0
     
@@ -208,12 +209,12 @@ for i in range(int(ndist)):
     eyz=0.5*(fyz+fzy)
     ezz=fzz-1.0
     
-    ax=1.0
+    ax=0.0
     ay=0.0
-    az=0.0
+    az=1.0
     
     elas = elas0(exx,exy,exz,eyy,eyz,ezz,c11,c12,c13,c22,c23,c33,c44,c55,c66)
-    em = em0(exx,exy,exz,eyy,eyz,ezz,b01,b02,b03,b1,b2,b3,b4,b5,b6,b7,b8,b9,ax,ay,az)
+    em = em0(exx,exy,exz,eyy,eyz,ezz,b1a0,b2a0,b3a0,b1a2,b2a2,b3a2,b1a2p,b2a2p,b3a2p,bb2,bd2,bg2,ax,ay,az)
     
     etot=v0*(elas+em)*6241509000000000000.0
     
@@ -244,15 +245,15 @@ dat.write('\n')
 
 
 dat.write("b_1alpha0 = ")
-dat.write(repr(b01*1e-6))
+dat.write(repr(b1a0*1e-6))
 dat.write(" MPa")
 dat.write('\n')
 dat.write("b_2alpha0= ")
-dat.write(repr(b02*1e-6))
+dat.write(repr(b2a0*1e-6))
 dat.write(" MPa")
 dat.write('\n')
 dat.write("b_3alpha0= ")
-dat.write(repr(b03*1e-6))
+dat.write(repr(b3a0*1e-6))
 dat.write(" MPa")
 dat.write('\n')
 dat.write("w_s= ")

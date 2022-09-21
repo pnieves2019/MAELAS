@@ -42,7 +42,7 @@ Calculation of b_11:
 Deformation x-direction (εxx) and y-direction (εyy) , spin1=[0,0,1]
 
 Fitting parameters:
-A = -2.963236577871285e-05 , B = 238.1466635649823 , C = 1.609099080327296 , D = 3.0251052883965906e-12
+A = 1.3387152102237122e-05 , B = 238.1466635141962 , C = 0.01609098973756202 , D = 5.3875773772129295e-21
 R-squared = 1.0
 
 
@@ -53,7 +53,7 @@ Calculation of b_12:
 Deformation z-direction (εzz), spin1=[0,0,1]
 
 Fitting parameters:
-A = -8.3124133451115e-05 , B = 87.29362486854322 , C = -2.011373840969039 , D = 5.492841475216438e-12
+A = -7.094000475937889e-07 , B = 87.29362481761954 , C = -0.020113738796212855 , D = 1.0516631099235763e-11
 R-squared = 1.0
 
  
@@ -64,27 +64,27 @@ Isotropic magnetoelastic constant:
  
 Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
-b_11 = 0.804549540163648  eV
+b_11 = 0.00804549486878101  eV
  
-b_12 = -2.011373840969039  eV
+b_12 = -0.020113738796212855  eV
  
-b_11 = 0.13409159002727467  eV/atom
+b_11 = 0.0013409158114635015  eV/atom
  
-b_12 = -0.3352289734948399  eV/atom
+b_12 = -0.003352289799368809  eV/atom
  
-b_11 = 0.012483017061246512  eV/A^3
+b_11 = 0.00012483016234492706  eV/A^3
  
-b_12 = -0.03120754250664837  eV/A^3
+b_12 = -0.00031207543106358677  eV/A^3
  
-b_11 = 1999.999739602433  MPa
+b_11 = 19.999996071418757  MPa
  
-b_12 = -4999.999325539338  MPa
+b_12 = -49.99999421623518  MPa
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
  
-b 1α,0 = -999.9998463344712  MPa
+b 1α,0 = -10.000002073397651  MPa
  
-b 2α,0 = -9899.493614522478  MPa
+b 2α,0 = -98.99493563078514  MPa
  
  
  
@@ -115,13 +115,13 @@ Isotropic Magnetostrictive coefficients:
  
 Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
-λα 1,0 = 916.2716167489241 x 10⁻⁶
+λα 1,0 = 9.1627129958766 x 10⁻⁶
  
-λα 2,0 = 15761.676964358096 x 10⁻⁶
+λα 2,0 = 157.61677062066633 x 10⁻⁶
  
  ------------------------------ 
  
 Spontaneous volume magnetostriction (isotropic contribution):
  
-ω_s^iso = 17594.220197855942 x 10⁻⁶
+ω_s^iso = 175.94219661241954 x 10⁻⁶
  

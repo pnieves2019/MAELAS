@@ -35,7 +35,7 @@ Calculation of bα,2:
 Deformation x-direction (εxx),  y-direction (εyy) and  z-direction (εzz) , spin1=[0,0,1]
 
 Fitting parameters:
-A = -2.9552003327892975e-05 , B = 110.05431195145913 , C = -0.14136712944290927 , D = 1.9080161432812642e-12
+A = -3.5292222515526106e-05 , B = 110.05431215787152 , C = -0.0007068329140951671 , D = -2.8543826715870707e-12
 R-squared = 1.0
 
  
@@ -46,13 +46,13 @@ Isotropic magnetoelastic constant:
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
  
-b α,2 = -0.14136712944290927  eV
+b α,2 = -0.0007068329140951671  eV
  
-b α,2 = -0.07068356472145464  eV/atom
+b α,2 = -0.00035341645704758354  eV/atom
  
-b α,2 = -0.006241508895603525  eV/A^3
+b α,2 = -3.120742380789448e-05  eV/A^3
  
-b α,2 = -999.9999282775  MPa
+b α,2 = -4.99998030790316  MPa
  
  
  
@@ -75,15 +75,15 @@ Isotropic Magnetostrictive coefficient:
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
  
-λα,2 = 1926.7821354094415 x 10⁻⁶
+λα,2 = 9.633873425632295 x 10⁻⁶
  
 Using the convention in reference J.R. Cullen et al., in Materials, Science and Technology (VCH Publishings, 1994), pp.529-565:
  
-λα = 642.260711803147 x 10⁻⁶
+λα = 3.2112911418774317 x 10⁻⁶
  
  ------------------------------ 
  
 Spontaneous volume magnetostriction (isotropic contribution):
  
-ω_s^iso = 1926.7821354094415 x 10⁻⁶
+ω_s^iso = 9.633873425632295 x 10⁻⁶
  

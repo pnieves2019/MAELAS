@@ -25,6 +25,8 @@ strain 0.0
 strain 0.003333333333333334
 strain 0.006666666666666666
 strain 0.01
+Anisotropic magnetic interactions are included
+Reading MAGANI file ... 
 
 Fit of cubic function f(x)=A*x^3+B*x^2+C*x+D to energy vs strain
 
@@ -83,7 +85,7 @@ Using the convention in reference J.R. Cullen et al., in Materials, Science and 
  
  ------------------------------ 
  
-Spontaneous volume magnetostriction:
+Spontaneous volume magnetostriction (isotropic contribution):
  
-ω_s = 141.7372793496954 x 10⁻⁶
+ω_s^iso = 141.7372793496954 x 10⁻⁶
  

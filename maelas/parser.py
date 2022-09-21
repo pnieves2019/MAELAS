@@ -55,6 +55,9 @@ class MAELAS_Options:
         self.parser.add_argument('-nc', dest='noconv', action='store_true',
                             default=False,
                             help='If this flag is used, then it does not apply a conventional transformation to the provided POSCAR')
+        self.parser.add_argument('-ani', dest='ani', action='store_true',
+                            default=False,
+                            help='It includes anisotropic magnetic interactions in -mode 3. It requires the file MAGANI created in -mode 2 that contains the values of the calculated anisotropic magnetoelastic constants.')
         self.parser.add_argument('-c', dest='core', type=int, nargs=1,
                             default=['24'],
                             help='Number of cores for the VASP calculation (default: 24)')
