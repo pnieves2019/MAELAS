@@ -194,7 +194,7 @@ class run:
               structure5 = dd.apply_transformation(structure2b)
               pos_name = "POSCAR_3_" + str(i+1)
 
-              structure55 = Poscar(structure4)
+              structure55 = Poscar(structure5)
               structure55.write_file(filename = pos_name,significant_figures=16)
 
 
