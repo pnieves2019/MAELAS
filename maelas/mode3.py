@@ -719,14 +719,15 @@ class run:
           print(" ")
           print("b_12 =", (b12/vol)*1.602176565e-19*1e30*1e-6 ,u' MPa')
           print(" ")
-          print("Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):")
-          b1a0 = 2.0*b11+b12
-          b2a0 = -math.sqrt(2)*(b11-b12)
-          print(" ")
-          print("b 1\u03B1,0 =", (b1a0/vol)*1.602176565e-19*1e30*1e-6 ,u' MPa')
-          print(" ")
-          print("b 2\u03B1,0 =", (b2a0/vol)*1.602176565e-19*1e30*1e-6 ,u' MPa')
-          print(" ")
+          if (177 <= sg <= 194) or (89 <= sg <= 142):
+            print("Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):")
+            b1a0 = 2.0*b11+b12
+            b2a0 = -math.sqrt(2)*(b11-b12)
+            print(" ")
+            print("b 1\u03B1,0 =", (b1a0/vol)*1.602176565e-19*1e30*1e-6 ,u' MPa')
+            print(" ")
+            print("b 2\u03B1,0 =", (b2a0/vol)*1.602176565e-19*1e30*1e-6 ,u' MPa')
+            print(" ")
 
 
           if self.args.delas == True:
