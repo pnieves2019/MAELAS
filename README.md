@@ -10,7 +10,7 @@ UPDATE HISTORY FOR MAELAS
 ------------------
 
 
-Date: August 24, 2022 (version 3.0.0)
+Date: October 4, 2022 (version 3.0.0)
 
 The main new features of version 3.0 are:
 
@@ -21,7 +21,12 @@ a cubic fitting of the energy versus strain. This new method can be executed by 
 
 - The results are also printed using the universal notation proposed by E. du Tremolet de Lacheisserie [E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993)] which is valid for any crystal symmetry.
 
-More details about these updates can be found in the Manual, as well as in the preprint of version 3.0 (available soon)
+More details about these updates can be found in the Manual, as well as in the preprint of version 3.0 
+
+P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
+“Automated calculations of exchange magnetostriction”, 2022, arXiv:2210.00791
+
+[https://arxiv.org/abs/2210.00791](https://arxiv.org/abs/2210.00791)
 
 
 Date: September 15, 2021 (version 2.0.1)
@@ -59,6 +64,13 @@ Date: September 3, 2020 (version 1.0.0)
 
 Implementation of the method based on the length optimization of the unit cell
 proposed by Wu and Freeman [R. Wu, A. J. Freeman, Journal of Applied Physics 79, 6209–6212 (1996)] to calculate the anisotropic magnetostrictive coefficients. This method can be executed by adding tag ```-mode 1``` in the command line. If the elastic tensor is provided, then it also calculates the anisotropic magnetoelastic constants.
+
+Published version 1.0:
+
+P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
+“MAELAS: MAgneto-ELAStic properties calculation via computational high-throughput approach”, Comput. Phys. Commun. 264, 107964 (2021).
+
+[https://doi.org/10.1016/j.cpc.2021.107964](https://doi.org/10.1016/j.cpc.2021.107964)
 
 
 -------------------------
@@ -641,13 +653,6 @@ P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 
 [https://doi.org/10.1016/j.cpc.2021.107964](https://doi.org/10.1016/j.cpc.2021.107964)
 
-Preprint version 1.0:
-
-P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
-“MAELAS: MAgneto-ELAStic properties calculation via computational high-throughput approach”, 2020, arXiv:2009.01638
-
-[https://arxiv.org/abs/2009.01638](https://arxiv.org/abs/2009.01638)
-
 
 Published version 2.0:
 
@@ -657,15 +662,10 @@ P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 [https://doi.org/10.1016/j.cpc.2021.108197](https://doi.org/10.1016/j.cpc.2021.108197)
 
 
-Preprint version 2.0:
-
-P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
-“MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, 2021, arXiv:2106.03624
-
-[https://arxiv.org/abs/2106.03624](https://arxiv.org/abs/2106.03624)
-
-
 Preprint version 3.0:
 
-Available soon ...
+P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
+“Automated calculations of exchange magnetostriction”, 2022, arXiv:2210.00791
+
+[https://arxiv.org/abs/2210.00791](https://arxiv.org/abs/2210.00791)
 
