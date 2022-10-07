@@ -1,4 +1,4 @@
-from pymatgen import Structure
+from pymatgen.core import Structure
 from pymatgen.io.vasp import Poscar
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 

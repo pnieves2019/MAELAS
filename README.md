@@ -113,7 +113,7 @@ Note that in some HPC clusters you might need to load the Python module (ml Pyth
 
 To install MAELAS code, download and extract the .zip file, go to the folder that contains the file ```setup.py``` and type
 ```bash
-python3 setup.py install --user
+python3 setup.py install --user --install_reqs
 ```
 
 This procedure will also install all required dependecies automatically

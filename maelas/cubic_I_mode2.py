@@ -10,7 +10,7 @@ import stat
 import maelas.parser   as parser
 import maelas.generate as generate
 
-from pymatgen import Lattice, Structure
+from pymatgen.core import Lattice, Structure
 from pymatgen.transformations.standard_transformations import ConventionalCellTransformation,DeformStructureTransformation
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 from pymatgen.io.vasp import Poscar

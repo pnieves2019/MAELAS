@@ -19,7 +19,7 @@ import maelas.ort_mode2 as ort_mode2
 import maelas.mode3 as mode3
 from   maelas.data import SymmetryData
 
-from pymatgen import Lattice, Structure
+from pymatgen.core import Lattice, Structure
 from pymatgen.transformations.standard_transformations import ConventionalCellTransformation,DeformStructureTransformation
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 from pymatgen.io.vasp import Poscar
