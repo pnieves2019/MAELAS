@@ -12,12 +12,6 @@ while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
     pip3 -V
     exit
     ;;
-  --prefix )
-    shift; PREFIX=$1
-    ;;
-  --tests )
-    shift; TESTS=1
-    ;;
   --pipoptions )
     shift; PIPOPT=$1
     ;;
@@ -29,8 +23,5 @@ while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
 esac; shift; done
 if [[ "$1" == '--' ]]; then shift; fi
 
-if [ -z "$PREFIX" ]; then
-  sudo pip3 $verbose install -r requirements.txt ${PIPOPT}
-else
-  pip3 $verbose install -r requirements.txt --user ${PIPOPT}
-fi 
+pip3 $verbose install -r requirements.txt --user ${PIPOPT}
+

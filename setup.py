@@ -61,9 +61,9 @@ if __name__ == '__main__':
           keywords="Magnetostriction, Magnetoelasticity, High-throughput computation, First-principles calculation",
           url="https://github.com/pnieves2019/MAELAS",   # project home page, if any
           project_urls={
-              "Documentation": "https://github.com/pnieves2019/MAELAS/Manual.pdf",
-              "Source Code": "https://github.com/pnieves2019/MAELAS/maelas",
-              "Examples": "https://github.com/pnieves2019/MAELAS/Examples",
+              "Documentation": "https://github.com/pnieves2019/MAELAS/blob/master/Manual_v3.pdf",
+              "Source Code": "https://github.com/pnieves2019/MAELAS/tree/master/maelas",
+              "Examples": "https://github.com/pnieves2019/MAELAS/tree/master/Examples",
           },
           classifiers=[
               "License :: OSI Approved :: BSD License"
