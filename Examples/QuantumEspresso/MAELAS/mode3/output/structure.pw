@@ -1,0 +1,42 @@
+&CONTROL
+  title = '# Fe2'
+  pseudo_dir = '/home/nie0061/qe/pseudo/'
+  calculation = 'scf'
+/
+ 
+&SYSTEM
+  nat= 2
+  ntyp= 1
+  ibrav= 0
+  ecutwfc= 20.0
+  starting_magnetization(1)=0,
+  starting_magnetization(2)=0,
+  starting_magnetization(3)=5,
+/
+ 
+&ELECTRONS
+  electron_maxstep=200
+  mixing_beta = 0.7
+  conv_thr =  1.0d-5
+/
+ 
+&IONS
+/
+ 
+&CELL
+/
+ 
+ATOMIC_SPECIES
+Fe  55.845  Fe.pbesol-spn-kjpaw_psl.1.0.0.UPF
+ 
+CELL_PARAMETERS angstrom
+      2.73172789659        0.00000000       -0.00000000
+     -0.00000000        2.73172789659       -0.00000000
+      0.00000000       -0.00000000        2.73172789659
+ 
+ATOMIC_POSITIONS crystal
+Fe        0.00000000        0.00000000        0.00000000
+Fe        1.36586394829       1.36586394829       1.36586394829
+ 
+K_POINTS automatic
+6 6 6  0 0 0

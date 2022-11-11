@@ -1,0 +1,106 @@
+  ___________________________________________________
+ |              ___________                          |
+ |     o---o    A T O M S K                          |
+ |    o---o|    Version b0.11.2                      |
+ |    |   |o    (C) 2010 Pierre Hirel                |
+ |    o---o     https://atomsk.univ-lille.fr         |
+ |___________________________________________________|
+ >>> Opening the input file: structure.pw
+ ..> Input file was read successfully (2 atoms).
+ >>> Converting to fractional coordinates...
+ ..> Coordinates were reduced.
+ >>> Writing output file(s) (2 atoms):
+ ..> Successfully wrote POSCAR file: POSCAR
+ \o/ Program terminated successfully!
+     Total time: 0.007 s.; CPU time: 0.003 s.
+  ___________________________________________________
+ |              ___________                          |
+ |     o---o    A T O M S K                          |
+ |    o---o|    Version b0.11.2                      |
+ |    |   |o    (C) 2010 Pierre Hirel                |
+ |    o---o     https://atomsk.univ-lille.fr         |
+ |___________________________________________________|
+ >>> Opening the input file: POSCAR_1_1
+ ..> Input file was read successfully (2 atoms).
+ >>> Writing output file(s) (2 atoms):
+ ..> Successfully wrote PW file: POSCAR_1_1.pw
+ \o/ Program terminated successfully!
+     Total time: 0.004 s.; CPU time: 0.002 s.
+  ___________________________________________________
+ |              ___________                          |
+ |     o---o    A T O M S K                          |
+ |    o---o|    Version b0.11.2                      |
+ |    |   |o    (C) 2010 Pierre Hirel                |
+ |    o---o     https://atomsk.univ-lille.fr         |
+ |___________________________________________________|
+ >>> Opening the input file: POSCAR_1_2
+ ..> Input file was read successfully (2 atoms).
+ >>> Writing output file(s) (2 atoms):
+ ..> Successfully wrote PW file: POSCAR_1_2.pw
+ \o/ Program terminated successfully!
+     Total time: 0.004 s.; CPU time: 0.002 s.
+  ___________________________________________________
+ |              ___________                          |
+ |     o---o    A T O M S K                          |
+ |    o---o|    Version b0.11.2                      |
+ |    |   |o    (C) 2010 Pierre Hirel                |
+ |    o---o     https://atomsk.univ-lille.fr         |
+ |___________________________________________________|
+ >>> Opening the input file: POSCAR_1_3
+ ..> Input file was read successfully (2 atoms).
+ >>> Writing output file(s) (2 atoms):
+ ..> Successfully wrote PW file: POSCAR_1_3.pw
+ \o/ Program terminated successfully!
+     Total time: 0.004 s.; CPU time: 0.002 s.
+  ___________________________________________________
+ |              ___________                          |
+ |     o---o    A T O M S K                          |
+ |    o---o|    Version b0.11.2                      |
+ |    |   |o    (C) 2010 Pierre Hirel                |
+ |    o---o     https://atomsk.univ-lille.fr         |
+ |___________________________________________________|
+ >>> Opening the input file: POSCAR_1_4
+ ..> Input file was read successfully (2 atoms).
+ >>> Writing output file(s) (2 atoms):
+ ..> Successfully wrote PW file: POSCAR_1_4.pw
+ \o/ Program terminated successfully!
+     Total time: 0.004 s.; CPU time: 0.001 s.
+  ___________________________________________________
+ |              ___________                          |
+ |     o---o    A T O M S K                          |
+ |    o---o|    Version b0.11.2                      |
+ |    |   |o    (C) 2010 Pierre Hirel                |
+ |    o---o     https://atomsk.univ-lille.fr         |
+ |___________________________________________________|
+ >>> Opening the input file: POSCAR_1_5
+ ..> Input file was read successfully (2 atoms).
+ >>> Writing output file(s) (2 atoms):
+ ..> Successfully wrote PW file: POSCAR_1_5.pw
+ \o/ Program terminated successfully!
+     Total time: 0.004 s.; CPU time: 0.001 s.
+  ___________________________________________________
+ |              ___________                          |
+ |     o---o    A T O M S K                          |
+ |    o---o|    Version b0.11.2                      |
+ |    |   |o    (C) 2010 Pierre Hirel                |
+ |    o---o     https://atomsk.univ-lille.fr         |
+ |___________________________________________________|
+ >>> Opening the input file: POSCAR_1_6
+ ..> Input file was read successfully (2 atoms).
+ >>> Writing output file(s) (2 atoms):
+ ..> Successfully wrote PW file: POSCAR_1_6.pw
+ \o/ Program terminated successfully!
+     Total time: 0.003 s.; CPU time: 0.001 s.
+  ___________________________________________________
+ |              ___________                          |
+ |     o---o    A T O M S K                          |
+ |    o---o|    Version b0.11.2                      |
+ |    |   |o    (C) 2010 Pierre Hirel                |
+ |    o---o     https://atomsk.univ-lille.fr         |
+ |___________________________________________________|
+ >>> Opening the input file: POSCAR_1_7
+ ..> Input file was read successfully (2 atoms).
+ >>> Writing output file(s) (2 atoms):
+ ..> Successfully wrote PW file: POSCAR_1_7.pw
+ \o/ Program terminated successfully!
+     Total time: 0.003 s.; CPU time: 0.001 s.
