@@ -37,10 +37,10 @@ do
 atomsk POSCAR_${j}_${i} pw  #conversion between QuantumEspresso and VASP format
 sed -i "/ATOMIC_POSITIONS/ c\ATOMIC_POSITIONS angstrom" POSCAR_${j}_${i}.pw
 sed -i "/2 2 2  0 0 0/ c\10 10 10  0 0 0" POSCAR_${j}_${i}.pw    # k-points
-sed -i "/pseudo_dir/ c\ pseudo_dir = '/home/qe/pseudo/'" POSCAR_${j}_${i}.pw   # pseudopotential directory
+sed -i "/pseudo_dir/ c\ pseudo_dir = '/home/$USER/qe/pseudo/'" POSCAR_${j}_${i}.pw   # pseudopotential directory
 sed -i "/conv_thr/ c\conv_thr =  1.0d-6\n electron_maxstep=300" POSCAR_${j}_${i}.pw   # convergence tolerance in scf and max number scf steps 
 sed -i "/Fe  55.845/ c\Fe  55.845  Fe.pbesol-spn-kjpaw_psl.1.0.0.UPF" POSCAR_${j}_${i}.pw #pseudopotential
-sed -i "/&SYSTEM/ c\&SYSTEM \n starting_magnetization(1)=0 \n starting_magnetization(2)=0 \n starting_magnetization(3)=5" POSCAR_${j}_${i}.pw  #initial magnetization
+sed -i "/&SYSTEM/ c\&SYSTEM \n nspin = 2\n starting_magnetization(1)=0.7\n occupations='smearing'\n smearing='gauss'\n degauss=0.02" POSCAR_${j}_${i}.pw  # spin-polarized calculation, starting magnetization, smearing
 sed -i "/ecutwfc/ c\ ecutwfc = 60.0\n ecutrho = 480.0" POSCAR_${j}_${i}.pw   # cutoff
 
 

@@ -35,8 +35,8 @@ Calculation of bα,2:
 Deformation x-direction (εxx),  y-direction (εyy) and  z-direction (εzz) , spin1=[0,0,1]
 
 Fitting parameters:
-A = 1.0 , B = 169.3339690164879 , C = -0.09627077379220923 , D = -8894.555162669008
-R-squared = 0.9991300623947018
+A = 1.0 , B = 136.15894844326579 , C = -0.05263706233283862 , D = -8895.579118930875
+R-squared = 0.9995305752312078
 
  
 ----------------------------------------------
@@ -46,11 +46,11 @@ Isotropic magnetoelastic constant:
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
  
-b α,2 = -0.09627077379220923  eV
+b α,2 = -0.05263706233283862  eV
  
-b α,2 = -0.048135386896104616  eV/atom
+b α,2 = -0.02631853116641931  eV/atom
  
-b α,2 = -0.004722610710591083  eV/A^3
+b α,2 = -0.0024235736736787318  eV/A^3
  
-b α,2 = -756.645620612703  MPa
+b α,2 = -388.2992943519022  MPa
  

@@ -5,9 +5,11 @@
 /
  
 &SYSTEM 
- starting_magnetization(1)=0 
- starting_magnetization(2)=0 
- starting_magnetization(3)=5
+ nspin = 2
+ starting_magnetization(1)=0.7
+ occupations='smearing'
+ smearing='gauss'
+ degauss=0.02
   nat= 2
   ntyp= 1
   ibrav= 0
@@ -31,13 +33,13 @@ ATOMIC_SPECIES
 Fe  55.845  Fe.pbesol-spn-kjpaw_psl.1.0.0.UPF
  
 CELL_PARAMETERS angstrom
-      2.74993942        0.00000000        0.00000000
-     -0.00000000        2.74993942        0.00000000
-      0.00000000        0.00000000        2.74993942
+      2.80864917        0.00000000        0.00000000
+     -0.00000000        2.80864917        0.00000000
+      0.00000000        0.00000000        2.80864917
  
 ATOMIC_POSITIONS angstrom
 Fe        0.00000000        0.00000000        0.00000000
-Fe        1.37496971        1.37496971        1.37496971
+Fe        1.40432458        1.40432458        1.40432458
  
 K_POINTS automatic
 10 10 10  0 0 0

@@ -12,7 +12,7 @@
  >>> Writing output file(s) (2 atoms):
  ..> Successfully wrote POSCAR file: POSCAR
  \o/ Program terminated successfully!
-     Total time: 0.007 s.; CPU time: 0.003 s.
+     Total time: 0.008 s.; CPU time: 0.003 s.
   ___________________________________________________
  |              ___________                          |
  |     o---o    A T O M S K                          |
@@ -25,7 +25,7 @@
  >>> Writing output file(s) (2 atoms):
  ..> Successfully wrote PW file: POSCAR_1_1.pw
  \o/ Program terminated successfully!
-     Total time: 0.004 s.; CPU time: 0.002 s.
+     Total time: 0.005 s.; CPU time: 0.002 s.
   ___________________________________________________
  |              ___________                          |
  |     o---o    A T O M S K                          |
@@ -51,7 +51,7 @@
  >>> Writing output file(s) (2 atoms):
  ..> Successfully wrote PW file: POSCAR_1_3.pw
  \o/ Program terminated successfully!
-     Total time: 0.004 s.; CPU time: 0.002 s.
+     Total time: 0.004 s.; CPU time: 0.001 s.
   ___________________________________________________
  |              ___________                          |
  |     o---o    A T O M S K                          |
@@ -77,7 +77,7 @@
  >>> Writing output file(s) (2 atoms):
  ..> Successfully wrote PW file: POSCAR_1_5.pw
  \o/ Program terminated successfully!
-     Total time: 0.004 s.; CPU time: 0.001 s.
+     Total time: 0.004 s.; CPU time: 0.002 s.
   ___________________________________________________
  |              ___________                          |
  |     o---o    A T O M S K                          |
@@ -90,7 +90,7 @@
  >>> Writing output file(s) (2 atoms):
  ..> Successfully wrote PW file: POSCAR_1_6.pw
  \o/ Program terminated successfully!
-     Total time: 0.003 s.; CPU time: 0.001 s.
+     Total time: 0.004 s.; CPU time: 0.001 s.
   ___________________________________________________
  |              ___________                          |
  |     o---o    A T O M S K                          |
