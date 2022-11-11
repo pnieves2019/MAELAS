@@ -22,7 +22,7 @@ To illustrate this example we apply it to bcc Fe. The folder ```./input``` conta
 
 4) ```structure.pw``` relaxed structure in ```QuantumEspresso``` format
 
-To run this example in you local machine just type
+To run this example in your local machine just type
 
 ```./run.sh```
 
@@ -30,5 +30,6 @@ or to run it in supercomputer facilities
 
 ```qsub jsub```
 
-The obtained results are shown in folder ```./output```. Note that ```ATOMSK``` genereates a default input file for ```QuantumEspresso```. 
+The obtained results are shown in folder ```./output```. Note that ```ATOMSK``` generates a default input file for ```QuantumEspresso```. 
 In this example, this default input file is modified (e.g, pseudopotential folder, k-point mesh, cut-off, intial magnetization, ...) through the script ```run.sh```.
+The calculated isotropic magnetoelastic constants are printed in the file ```output_derivation.dat```.
