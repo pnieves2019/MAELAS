@@ -9,6 +9,21 @@ Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. L
 UPDATE HISTORY FOR MAELAS
 ------------------
 
+Date: November 26, 2022 (new url for the online visualzation tool MAELASviewer)
+
+Starting November 28th, 2022, due to a change in free Heroku services, the original Heroku url for the online visualization tool MAELASviewer:
+
+[https://maelasviewer.herokuapp.com](https://maelasviewer.herokuapp.com)
+
+will no longer be available. To fix this problem, we have migrated MAELASviewer to the following new url:
+
+[http://www.md-esg.eu/maelasviewer/](http://www.md-esg.eu/maelasviewer/)
+
+Note that this visualization tool can also be used offline by running it on your local computer, see more details here
+
+[https://github.com/pnieves2019/MAELASviewer](https://github.com/pnieves2019/MAELASviewer)
+
+
 
 Date: October 4, 2022 (version 3.0.0)
 
@@ -636,11 +651,19 @@ The crystal systems not supported by MAELAS might be included in the new version
 Visualization tool
 ---------------------------------------------------------------------
 
-We have also developed an online visualization tool called MAELASviewer that is available at
+We have also developed an online visualization tool called MAELASviewer. This interactive applet shows 
+the magnetostriction for the supported crystal systems of MAELAS. Users can simulate the Joule and Wiedemann effects. 
+Starting November 28th, 2022, due to a change in free Heroku services, the original Heroku url for MAELASviewer:
 
 [https://maelasviewer.herokuapp.com](https://maelasviewer.herokuapp.com)
 
-This interactive applet shows the magnetostriction for the supported crystal systems of MAELAS. Users can simulate the Joule and Wiedemann effects.
+will no longer be available. To fix this problem, we have migrated MAELASviewer to the following new url
+
+[http://www.md-esg.eu/maelasviewer/](http://www.md-esg.eu/maelasviewer/)
+
+Note that this visualization tool can also be used offline by running it on your local computer, see more details here
+
+[https://github.com/pnieves2019/MAELASviewer](https://github.com/pnieves2019/MAELASviewer)
 
 
 --------------------------------------------------------------------
