@@ -9,7 +9,7 @@ Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. L
 UPDATE HISTORY FOR MAELAS
 ------------------
 
-Date: November 26, 2022 (new url for the online visualzation tool MAELASviewer)
+**Date: November 26, 2022** (new url for the online visualzation tool MAELASviewer)
 
 Starting November 28th, 2022, due to a change in free Heroku services, the original Heroku url for the online visualization tool MAELASviewer:
 
@@ -25,7 +25,7 @@ Note that this visualization tool can also be used offline by running it on your
 
 
 
-Date: October 4, 2022 (version 3.0.0)
+**Date: October 4, 2022** (version 3.0.0)
 
 The main new features of version 3.0 are:
 
@@ -44,7 +44,7 @@ P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 [https://arxiv.org/abs/2210.00791](https://arxiv.org/abs/2210.00791)
 
 
-Date: September 15, 2021 (version 2.0.1)
+**Date: September 15, 2021** (version 2.0.1)
 
 We included the calculation of saturation magnetostriction for polycrystals with tetragonal, trigonal and orthorhombic symmetries. 
 
@@ -57,7 +57,7 @@ P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 [https://doi.org/10.1016/j.cpc.2021.108197](https://doi.org/10.1016/j.cpc.2021.108197)
 
 
-Date: June 7, 2021 (version 2.0.0)
+**Date: June 7, 2021** (version 2.0.0)
 
 The main new features of version 2.0 are:
 
@@ -75,7 +75,7 @@ The new method ```-mode 2``` is more accurate than ```-mode 1```, especially for
 elastic constants in trigonal (I) symmetry.
 
 
-Date: September 3, 2020 (version 1.0.0)
+**Date: September 3, 2020** (version 1.0.0)
 
 Implementation of the method based on the length optimization of the unit cell
 proposed by Wu and Freeman [R. Wu, A. J. Freeman, Journal of Applied Physics 79, 6209–6212 (1996)] to calculate the anisotropic magnetostrictive coefficients. This method can be executed by adding tag ```-mode 1``` in the command line. If the elastic tensor is provided, then it also calculates the anisotropic magnetoelastic constants.
