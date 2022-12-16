@@ -294,27 +294,38 @@ class run:
 
   def der(self):
   
-        structure0 = Structure.from_file(self.args.pos[0])
-        nat = len(structure0.species)
-        vol = float(structure0.volume)
         
+        generator = generate.VASP(self.args)
+        structure0 = Structure.from_file(self.args.pos[0])
+        generator.poscar2()
+        generator.incar()
+    
         sym1 = float(self.args.sympre[0])
         sym2 = float(self.args.symang[0])
     
         aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
         
         
+        if self.args.noconv == False:
+          structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
+          bb = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
+          structure2 = bb.apply_transformation(structure1)
+          
+        
+        if self.args.noconv == True:
+          structure2 = structure0
+          
+        
         if int(self.args.sg0[0]) == 0:
             sg = aa.get_space_group_number()
-            pg = aa.get_point_group_symbol()
         elif 0 < int(self.args.sg0[0]) <= 230:
-            sg = int(self.args.sg0[0])
-            pg = 'set by user'  
+            sg = int(self.args.sg0[0])   
         else:
             print("Space group number must be in the range 1-230")
             exit(-1)
         
-        
+        nat = len(structure2.species)
+        vol = float(structure2.volume)
         
         
         if 230 >= sg >= 207:

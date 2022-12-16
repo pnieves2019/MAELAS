@@ -335,9 +335,34 @@ class run:
 
   def der(self):
   
+        
+        generator = generate.VASP(self.args)
         structure0 = Structure.from_file(self.args.pos[0])
-        nat = len(structure0.species)
-        vol = float(structure0.volume)
+        generator.poscar2()
+        generator.incar()
+    
+        sym1 = float(self.args.sympre[0])
+        sym2 = float(self.args.symang[0])
+    
+        aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
+        
+        if self.args.noconv == False:
+          structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
+          bb = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
+          structure2 = bb.apply_transformation(structure1)
+          
+        
+        if self.args.noconv == True:
+          structure2 = structure0
+
+        # Convention: lattice vector a1 along x-axis
+        angle = -math.pi*(60.0/180.0)
+        dd = DeformStructureTransformation(deformation=((math.cos(angle), math.sin(angle), 0), (-math.sin(angle), math.cos(angle), 0), (0, 0, 1)))
+        structure2b = dd.apply_transformation(structure2)
+        
+        
+        nat = len(structure2b.species)
+        vol = float(structure2b.volume)
         
         for j in range(1,7):
 

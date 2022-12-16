@@ -153,9 +153,27 @@ class run:
 
   def der(self):
   
+        generator = generate.VASP(self.args)
         structure0 = Structure.from_file(self.args.pos[0])
-        nat = len(structure0.species)
-        vol = float(structure0.volume)
+        generator.poscar2()
+        generator.incar()
+    
+        sym1 = float(self.args.sympre[0])
+        sym2 = float(self.args.symang[0])
+    
+        aa = SpacegroupAnalyzer(structure0,symprec=sym1, angle_tolerance=sym2)
+        
+        if self.args.noconv == False:
+          structure1 = aa.get_conventional_standard_structure(international_monoclinic=True)
+          bb = ConventionalCellTransformation(symprec=sym1, angle_tolerance=sym2, international_monoclinic=True)
+          structure2 = bb.apply_transformation(structure1)
+          
+        
+        if self.args.noconv == True:
+          structure2 = structure0
+        
+        nat = len(structure2.species)
+        vol = float(structure2.volume)
         
         for j in range(1,3):
 
