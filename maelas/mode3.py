@@ -348,7 +348,6 @@ class run:
           print("Number of isotropic magnetoelastic constants =", 3)
           jval=4
     
-        print("Point group =", str(pg))
         
         for j in range(1,int(jval)):
 
