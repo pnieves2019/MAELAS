@@ -102,7 +102,8 @@ then it can also calculate the anisotropic magnetoelastic constants (b<sup>ani</
 then it can also calculate the anisotropic magnetostrictive coefficients (&lambda;<sup>ani</sup>) and anisotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>ani</sup>). It requires spin-polarized calculations with SOC.
 
 ```-mode 3``` = the value of isotropic magnetolastic constants (b<sup>iso</sup>) from the calculated energies given by VASP. If the elastic tensor is provided,
-then it can also calculate the isotropic magnetostrictive coefficients (&lambda;<sup>iso</sup>) and isotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>iso</sup>). It requires spin-polarized calculations without SOC (including only isotropic magnetic interactions) or spin-polarized calculations with SOC (including anisotropic magnetic interactions).
+then it can also calculate the isotropic magnetostrictive coefficients (&lambda;<sup>iso</sup>) and isotropic contribution to the spontaneous volume magnetostriction (&omega;<sub>s</sub><sup>iso</sup>). It requires spin-polarized calculations without SOC (including only isotropic magnetic interactions) or spin-polarized calculations with SOC (including anisotropic magnetic interactions). **Warning: the required reference state for this mode to obtain the spontaneous volume magnetostriction combines the equilibrium volume of the paramagnetic state and magnetic order of the ground state.**
+
 
 
 MAELAS can also be used with other DFT codes instead of VASP, after file conversion to VASP format files.

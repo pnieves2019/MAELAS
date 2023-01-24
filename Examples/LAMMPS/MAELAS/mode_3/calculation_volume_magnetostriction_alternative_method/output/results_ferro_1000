@@ -40,8 +40,8 @@ Setting up Verlet run ...
   Time step     : 0.001
 Per MPI rank memory allocation (min/avg/max) = 5.499 | 5.499 | 5.499 Mbytes
 TotEng 
-  -8.5600001 
-Loop time of 2.6e-06 on 1 procs for 0 steps with 2 atoms
+  -8.7823309 
+Loop time of 2.9e-06 on 1 procs for 0 steps with 2 atoms
 
 0.0% CPU use with 1 MPI tasks x no OpenMP threads
 
@@ -53,7 +53,7 @@ Neigh   | 0          | 0          | 0          |   0.0 |  0.00
 Comm    | 0          | 0          | 0          |   0.0 |  0.00
 Output  | 0          | 0          | 0          |   0.0 |  0.00
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 2.6e-06    |            |       |100.00
+Other   |            | 2.9e-06    |            |       |100.00
 
 Nlocal:        2.00000 ave           2 max           2 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
@@ -68,5 +68,5 @@ Total # of neighbors = 128
 Ave neighs/atom = 64.000000
 Neighbor list builds = 0
 Dangerous builds = 0
-23.553520979625 -8.56000013869592
+23.553520979625 -8.78233089832793
 Total wall time: 0:00:00

@@ -17,7 +17,7 @@ set         group all spin 2.2 0.0 0.0 1.0
 
 pair_style 	hybrid/overlay eam/alloy spin/exchange 3.5
 pair_coeff 	* * eam/alloy Fe_Mishin2006.eam.alloy Fe
-pair_coeff 	* * spin/exchange exchange 3.4 0.02726 0.2171 1.841 offset no
+pair_coeff 	* * spin/exchange exchange 3.5 0.02726 0.2171 1.841 offset no
 
 
 neighbor     0.1 bin
