@@ -17,7 +17,6 @@ Space group symbol = P-3m1
 Mode= 3 , direct calculation of the isotropic magnetoelastic constants (b)
 Trigonal (I) system
 Number of isotropic magnetoelastic constants = 2
-Point group = -3m
 strain -0.01
 strain -0.006666666666666666
 strain -0.003333333333333333
@@ -66,27 +65,21 @@ Isotropic magnetoelastic constant:
  
 Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
-b_11 = 0.008045494284390642  eV
+b_11 = 0.008045494506089412  eV
  
-b_12 = -0.02011374189120628  eV
+b_12 = -0.020113742067125025  eV
  
-b_11 = 0.001340915714065107  eV/atom
+b_11 = 0.001340915751014902  eV/atom
  
-b_12 = -0.0033522903152010466  eV/atom
+b_12 = -0.0033522903445208376  eV/atom
  
-b_11 = 0.0001248301532777975  eV/A^3
+b_11 = 0.0001248301591118475  eV/A^3
  
-b_12 = -0.00031207547908406754  eV/A^3
+b_12 = -0.00031207548779922987  eV/A^3
  
-b_11 = 19.999994618704513  MPa
+b_11 = 19.99999555342233  MPa
  
-b_12 = -50.00000190996407  MPa
- 
-Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
- 
-b 1α,0 = -10.000012672555048  MPa
- 
-b 2α,0 = -98.99494445691268  MPa
+b_12 = -50.00000330628695  MPa
  
  
  
@@ -117,13 +110,13 @@ Isotropic Magnetostrictive coefficients:
  
 Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
-λα 1,0 = 9.162705531449058 x 10⁻⁶
+λα 1,0 = -69.19430607050984 x 10⁻⁶
  
-λα 2,0 = 157.61678943477378 x 10⁻⁶
+λα 2,0 = 157.61679428811655 x 10⁻⁶
  
  ------------------------------ 
  
 Spontaneous volume magnetostriction (isotropic contribution):
  
-ω_s^iso = 175.9422004976719 x 10⁻⁶
+ω_s^iso = 19.22818214709687 x 10⁻⁶
  

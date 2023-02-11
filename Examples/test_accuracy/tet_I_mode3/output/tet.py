@@ -28,7 +28,9 @@ a=2.6973452608889064
 c=3.7593376255716939
 v0=((a**2.0)*c)*((10.0**(-10.0))**3.0)
 
-lmb_alpha10=(b11*c33+b12*c13)/(c33*(c11+c12)-2.0*c13**2.0)
+#lmb_alpha10=(b11*c33+b12*c13)/(c33*(c11+c12)-2.0*c13**2.0)
+
+lmb_alpha10=(-b11*c33+b12*c13)/(c33*(c11+c12)-2.0*c13**2.0)
 lmb_alpha20=(2*b11*c13-b12*(c11+c12))/(c33*(c11+c12)-2.0*c13**2.0)
 lmba12=(-b21*c33+b22*c13)/(c33*(c11+c12)-2.0*c13**2.0)
 lmba22=(2.0*b21*c13-b22*(c11+c12))/(c33*(c11+c12)-2.0*c13**2.0)
@@ -50,7 +52,7 @@ def elas0(eexx,eexy,eexz,eeyy,eeyz,eezz,cc11,cc12,cc13,cc33,cc44,cc66):
 
 def em0(eexx,eexy,eexz,eeyy,eeyz,eezz,bb11,bb12,bb21,bb22,bb3,bb4,bbp3,aax,aay,aaz):
     
-    ene0 = bb11*(eexx+eeyy)+bb12*eezz+bb21*(aaz**2.0-(1.0/3.0))*(eexx+eeyy) 
+    ene0 = bb11*(eexx+eeyy)+bb12*eezz
     ene0 = ene0 + bb21*(aaz**2.0-(1.0/3.0))*(eexx+eeyy) + bb22*(aaz**2.0-(1.0/3.0))*eezz + bb3*(0.5*(aax**2.0-aay**2.0)*(eexx-eeyy))+2.0*bbp3*aax*aay*eexy
     ene0 = ene0 + 2.0*bb4*(aax*aaz*eexz+aay*aaz*eeyz)
     

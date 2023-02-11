@@ -848,7 +848,11 @@ class run:
             bb12 = (b12/vol)*1.602176565e-19*1e30*1e-9  #GPa
 
             
-            lambdaalpha10 = (bb11*c33+bb12*c13)/(c33*(c11+c12)-2.0*c13**2.0)
+          #  lambdaalpha10 = (bb11*c33+bb12*c13)/(c33*(c11+c12)-2.0*c13**2.0)
+          
+          # correct sign in lambdaalpha10
+            
+            lambdaalpha10 = (-bb11*c33+bb12*c13)/(c33*(c11+c12)-2.0*c13**2.0)
             
             lambdaalpha20 = (2.0*bb11*c13-bb12*(c11+c12))/(c33*(c11+c12)-2.0*c13**2.0)   
 

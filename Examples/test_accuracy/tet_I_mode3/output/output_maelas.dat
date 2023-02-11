@@ -17,7 +17,6 @@ Space group symbol = P4/mmm
 Mode= 3 , direct calculation of the isotropic magnetoelastic constants (b)
 Tetragonal (I) system
 Number of isotropic magnetoelastic constants = 2
-Point group = 4/mmm
 strain -0.01
 strain -0.006666666666666666
 strain -0.003333333333333333
@@ -113,19 +112,19 @@ Isotropic Magnetostrictive coefficients:
  
 Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
-λα 1,0 = -20.192793108098048 x 10⁻⁶
+λα 1,0 = -175.8393773582935 x 10⁻⁶
  
 λα 2,0 = 366.5654138446431 x 10⁻⁶
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
  
-λ 1α,0 = 217.45321841896467 x 10⁻⁶
+λ 1α,0 = 9.924439418704063 x 10⁻⁶
  
-λ 2α,0 = 257.8388046351607 x 10⁻⁶
+λ 2α,0 = 361.603194135291 x 10⁻⁶
  
  ------------------------------ 
  
 Spontaneous volume magnetostriction (isotropic contribution):
  
-ω_s^iso = 326.179827628447 x 10⁻⁶
+ω_s^iso = 14.886659128056097 x 10⁻⁶
  

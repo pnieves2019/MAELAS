@@ -17,7 +17,6 @@ Space group symbol = P6_3/mmc
 Mode= 3 , direct calculation of the isotropic magnetoelastic constants (b)
 Hexagonal (I) system
 Number of isotropic magnetoelastic constants = 2
-Point group = 6/mmm
 strain -0.01
 strain -0.006666666666666666
 strain -0.003333333333333333
@@ -113,24 +112,24 @@ Isotropic Magnetostrictive coefficients:
  
 Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
  
-λα 1,0 = 13.60331593838185 x 10⁻⁶
+λα 1,0 = -83.31188223842203 x 10⁻⁶
  
 λα 2,0 = 187.60402145184972 x 10⁻⁶
  
 Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993):
  
-λ 1α,0 = 214.81065332861343 x 10⁻⁶
+λ 1α,0 = 20.980256975005652 x 10⁻⁶
  
-λ 2α,0 = 174.0007055134679 x 10⁻⁶
+λ 2α,0 = 270.91590369027176 x 10⁻⁶
  
 ...............
  
 Using the convention in reference E.R. Callen et al., Phys. Rev. 139, A455 (1965):
  
-λ 21α = 87.00035275673395 x 10⁻⁶
+λ 21α = 135.45795184513588 x 10⁻⁶
  ------------------------------ 
  
 Spontaneous volume magnetostriction (isotropic contribution):
  
-ω_s^iso = 214.81065332861343 x 10⁻⁶
+ω_s^iso = 20.980256975005652 x 10⁻⁶
  
