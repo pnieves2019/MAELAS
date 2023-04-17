@@ -36,12 +36,12 @@ a cubic fitting of the energy versus strain. This new method can be executed by 
 
 - The results are also printed using the universal notation proposed by E. du Tremolet de Lacheisserie [E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993)] which is valid for any crystal symmetry.
 
-More details about these updates can be found in the Manual, as well as in the preprint of version 3.0 
+More details about these updates can be found in the Manual, as well as in the publication of version 3.0 
 
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
-“Automated calculations of exchange magnetostriction”, 2022, arXiv:2210.00791
+“Automated calculations of exchange magnetostriction”, Computational Materials Science 224 (2023) 112158
 
-[https://arxiv.org/abs/2210.00791](https://arxiv.org/abs/2210.00791)
+[https://doi.org/10.1016/j.commatsci.2023.112158](https://doi.org/10.1016/j.commatsci.2023.112158)
 
 
 **Date: September 15, 2021** (version 2.0.1)
@@ -653,7 +653,14 @@ Visualization tool
 ---------------------------------------------------------------------
 
 We have also developed an online visualization tool called MAELASviewer. This interactive applet shows 
-the magnetostriction for the supported crystal systems of MAELAS. Users can simulate the Joule and Wiedemann effects. 
+the magnetostriction for the supported crystal systems of MAELAS. Users can simulate the Joule and Wiedemann effects.
+
+
+P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
+“MAELASviewer: An Online Tool to Visualize Magnetostriction”, Sensors 2020, 20(22), 6436.
+
+[https://doi.org/10.3390/s20226436](https://doi.org/10.3390/s20226436)
+ 
 Starting November 28th, 2022, due to a change in free Heroku services, the original Heroku url for MAELASviewer:
 
 [https://maelasviewer.herokuapp.com](https://maelasviewer.herokuapp.com)
@@ -668,10 +675,10 @@ Note that this visualization tool can also be used offline by running it on your
 
 
 --------------------------------------------------------------------
-Manuscript
+Publications
 --------------------------------------------------------------------
 
-Published version 1.0:
+Version 1.0:
 
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 “MAELAS: MAgneto-ELAStic properties calculation via computational high-throughput approach”, Comput. Phys. Commun. 264, 107964 (2021).
@@ -679,7 +686,7 @@ P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 [https://doi.org/10.1016/j.cpc.2021.107964](https://doi.org/10.1016/j.cpc.2021.107964)
 
 
-Published version 2.0:
+Version 2.0:
 
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 “MAELAS 2.0: A new version of a computer program  for the calculation of magneto-elastic properties”, Computer Physics Communications 271 (2022) 108197
@@ -687,10 +694,10 @@ P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
 [https://doi.org/10.1016/j.cpc.2021.108197](https://doi.org/10.1016/j.cpc.2021.108197)
 
 
-Preprint version 3.0:
+Version 3.0:
 
 P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut,
-“Automated calculations of exchange magnetostriction”, 2022, arXiv:2210.00791
+“Automated calculations of exchange magnetostriction”, Computational Materials Science 224 (2023) 112158
 
-[https://arxiv.org/abs/2210.00791](https://arxiv.org/abs/2210.00791)
+[https://doi.org/10.1016/j.commatsci.2023.112158](https://doi.org/10.1016/j.commatsci.2023.112158)
 
