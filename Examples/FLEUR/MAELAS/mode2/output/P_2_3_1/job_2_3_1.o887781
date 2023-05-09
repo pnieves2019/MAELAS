@@ -1,0 +1,14 @@
+
+The following have been reloaded with a version change:
+  1) GCCcore/12.2.0 => GCCcore/8.2.0
+  2) binutils/2.39-GCCcore-12.2.0 => binutils/2.31.1-GCCcore-8.2.0
+
+I/O warning : failed to load external entity "relax.xml"
+ 
+ *****************************************
+ Run finished successfully
+ Stop message:
+   all done
+ *****************************************
+Rank:0 used    6.685   6.426 GB/	 7023916 kB
+OK

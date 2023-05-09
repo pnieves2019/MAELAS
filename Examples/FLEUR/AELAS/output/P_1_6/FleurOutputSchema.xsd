@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="0.36">
+
+   <!--Here the FleurInputSchema is included since the out.xml contains a complete dump of the inp.xml!-->
+   <xsd:include schemaLocation="FleurInputSchema.xsd"/>
+   <xsd:element name="fleurOutput" type="FleurOutputType"/>
+
+   <xsd:complexType name="FleurOutputType">
+      <xsd:all>
+         <xsd:element maxOccurs="1" minOccurs="0" name="programVersion" type="ProgramVersionType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="parallelSetup" type="ParallelSetupType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="startDateAndTime" type="DateAndTimeType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="fleurInput" type="FleurInputType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="numericalParameters" type="NumericalParametersType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="scfLoop" type="OutSCFLoopType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="ERROR" type="ErrorType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="endDateAndTime" type="DateAndTimeType"/>
+      </xsd:all>
+      <xsd:attribute name="fleurOutputVersion" type="FleurOutputVersionType" use="required"/>
+   </xsd:complexType>
+
+   <xsd:simpleType name="FleurOutputVersionType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="0.36"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:complexType name="ProgramVersionType">
+      <xsd:all>
+         <xsd:element maxOccurs="1" minOccurs="0" name="compilationInfo" type="CompilationInfoType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="gitInfo" type="GitInfoType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="targetComputerArchitectures" type="xsd:string"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="precision" type="PrecisionType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="targetStructureClass" type="TargetStructureClassType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="additionalCompilerFlags" type="AdditionalCompilerFlagsType"/>
+      </xsd:all>
+      <xsd:attribute name="version" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="CompilationInfoType">
+      <xsd:attribute name="date" type="xsd:string" use="required"/>
+      <xsd:attribute name="user" type="xsd:string" use="required"/>
+      <xsd:attribute name="host" type="xsd:string" use="required"/>
+      <xsd:attribute name="flag" type="xsd:string" use="required"/>
+      <xsd:attribute name="link" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="GitInfoType">
+      <xsd:attribute name="version" type="xsd:string" use="required"/>
+      <xsd:attribute name="lastCommitHash" type="xsd:string" use="required"/>
+      <xsd:attribute name="branch" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="PrecisionType">
+      <xsd:attribute name="type" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:simpleType name="TargetStructureClassType">
+      <xsd:list itemType="xsd:string"/>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="AdditionalCompilerFlagsType">
+      <xsd:list itemType="xsd:string"/>
+   </xsd:simpleType>
+
+   <xsd:complexType name="ParallelSetupType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="1" minOccurs="0" name="openMP" type="OMPSetupType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="mpi" type="MPISetupType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="mem" type="MemorySetupType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="OMPSetupType">
+      <xsd:attribute name="ompThreads" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="MPISetupType">
+      <xsd:attribute name="mpiProcesses" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="MemorySetupType">
+      <xsd:attribute name="memoryPerNode" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="DateAndTimeType">
+      <xsd:attribute name="date" type="xsd:string" use="required"/>
+      <xsd:attribute name="time" type="xsd:string" use="required"/>
+      <xsd:attribute name="zone" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="ErrorType">
+      <xsd:attribute name="Message" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="NumericalParametersType">
+      <xsd:sequence>
+         <xsd:element name="atomsInCell" type="AtomsInCellType"/>
+         <xsd:element name="basis" type="BasisType"/>
+         <xsd:element name="density" type="DensityType"/>
+         <xsd:element name="bands" type="BandsType"/>
+         <xsd:element name="volumes" type="CellVolumesType"/>
+         <xsd:element name="kPointList" type="kPointListOutputType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="AtomsInCellType">
+      <xsd:attribute name="nat" type="xsd:positiveInteger" use="required"/>
+      <xsd:attribute name="ntype" type="xsd:positiveInteger" use="required"/>
+      <xsd:attribute name="jmtd" type="xsd:positiveInteger" use="required"/>
+      <xsd:attribute name="n_u" type="xsd:nonNegativeInteger" use="required"/>
+      <xsd:attribute name="n_hia" type="xsd:nonNegativeInteger" use="required"/>
+      <xsd:attribute name="n_opc" type="xsd:nonNegativeInteger" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="BasisType">
+      <xsd:attribute name="nvd" type="xsd:positiveInteger" use="required"/>
+      <xsd:attribute name="lmaxd" type="xsd:positiveInteger" use="required"/>
+      <xsd:attribute name="nlotot" type="xsd:nonNegativeInteger" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="DensityType">
+      <xsd:attribute name="ng3" type="xsd:positiveInteger" use="required"/>
+      <xsd:attribute name="ng2" type="xsd:nonNegativeInteger" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="BandsType">
+      <xsd:attribute name="numbands" type="xsd:positiveInteger" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="CellVolumesType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="mtVolume" type="MTVolumeType"/>
+      </xsd:sequence>
+      <xsd:attribute name="unitCell" type="xsd:double" use="required"/>
+      <xsd:attribute name="interstitial" type="xsd:double" use="required"/>
+      <xsd:attribute name="omegaTilda" type="xsd:double" use="optional"/>
+      <xsd:attribute name="surfaceArea" type="xsd:double" use="optional"/>
+      <xsd:attribute name="z1" type="xsd:double" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="MTVolumeType">
+      <xsd:attribute name="atomType" type="xsd:positiveInteger" use="required"/>
+      <xsd:attribute name="mtRadius" type="xsd:double" use="required"/>
+      <xsd:attribute name="mtVolume" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="kPointListOutputType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="kPoint" type="KPointType"/>
+      </xsd:sequence>
+      <xsd:attribute name="weightScale" type="xsd:double" use="required"/>
+      <xsd:attribute name="count" type="xsd:positiveInteger" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="OutSCFLoopType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="iteration" type="IterationType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:group name="GeneralIterationType">
+      <xsd:sequence>
+         <!--These tags can occur in a iteration/Forcetheorem iteration/!-->
+         <xsd:element maxOccurs="1" minOccurs="0" name="energyParameters" type="OutEnergyParameterType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="hubbard1Iteration" type="Hubbard1Type"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="eigenvalues" type="EigenvaluesType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="bandgap" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="sumValenceSingleParticleEnergies" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="FermiEnergy" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="valenceDensity" type="ChargeDensityType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="onSiteExchangeSplitting" type="OnSiteExchangeSplittingType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="noncollinearTorque" type="GFTorqueType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="coreStates" type="OutCoreStatesType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="slaterIntegrals" type="SlaterIntegralsListType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="allElectronCharges" type="ChargeDensityType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="magneticMomentsInMTSpheres" type="MTMagneticMomentsType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="orbitalMagneticMomentsInMTSpheres" type="MTOrbMagneticMomentsType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="rdmft" type="RDMFTOutType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="totalEnergy" type="TotalEnergyType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="totalForcesOnRepresentativeAtoms" type="OutTotalForcesType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="ldaUDensityMatrix" type="LDAUDensityMatrixType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="ldaUDensityMatrixConvergence" type="LDAUDensityMatrixConvergenceType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="densityConvergence" type="DensityConvergenceType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="timing" type="TimingType"/>
+      </xsd:sequence>
+   </xsd:group>
+
+   <xsd:complexType name="IterationType">
+      <xsd:sequence>
+         <xsd:choice>
+            <xsd:group maxOccurs="unbounded" ref="GeneralIterationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="Forcetheorem_Loop" type="Forcetheorem_LoopType"/>
+         </xsd:choice>
+         <xsd:choice>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Forcetheorem_SSDISP" type="Forcetheorem_SSDISP_SummaryType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Forcetheorem_DMI" type="Forcetheorem_DMI_SummaryType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Forcetheorem_MAE" type="Forcetheorem_MAE_SummaryType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Forcetheorem_JIJ" type="Forcetheorem_JIJ_SummaryType"/>
+         </xsd:choice>
+      </xsd:sequence>
+      <xsd:attribute name="numberForCurrentRun" type="xsd:integer" use="required"/>
+      <xsd:attribute name="overallNumber" type="xsd:integer" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Forcetheorem_LoopType">
+      <xsd:sequence>
+         <xsd:group maxOccurs="unbounded" ref="GeneralIterationType"/>
+      </xsd:sequence>
+      <xsd:attribute name="No" type="xsd:integer" use="required"/>
+      <xsd:attribute name="calculationType" type="ForceTheoremEnum" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Forcetheorem_DMI_SummaryType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="Entry" type="Entry_DMI_Type"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="allAtoms" type="Entry_DMIATOMS_Type"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="singleAtom" type="Entry_DMIATOMS_Type"/>
+      </xsd:sequence>
+      <xsd:attribute name="Angles" type="xsd:integer" use="required"/>
+      <xsd:attribute name="qPoints" type="xsd:integer" use="required"/>
+      <xsd:attribute name="ef" type="xsd:integer" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Forcetheorem_JIJ_SummaryType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="Config" type="Entry_JIJ_Type"/>
+      </xsd:sequence>
+      <xsd:attribute name="Configs" type="xsd:integer" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Forcetheorem_MAE_SummaryType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="Angle" type="Entry_MAE_Type"/>
+      </xsd:sequence>
+      <xsd:attribute name="Angles" type="xsd:integer" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Forcetheorem_SSDISP_SummaryType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="Entry" type="Entry_SSDISP_Type"/>
+      </xsd:sequence>
+      <xsd:attribute name="qvectors" type="xsd:integer" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Entry_SSDISP_Type">
+      <xsd:attribute name="q" type="xsd:integer" use="required"/>
+      <xsd:attribute name="ev-sum" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Entry_MAE_Type">
+      <xsd:attribute name="phi" type="xsd:double" use="required"/>
+      <xsd:attribute name="theta" type="xsd:double" use="required"/>
+      <xsd:attribute name="ev-sum" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Entry_JIJ_Type">
+      <xsd:attribute name="n" type="xsd:integer" use="required"/>
+      <xsd:attribute name="q" type="Double3DVecType" use="required"/>
+      <xsd:attribute name="iatom" type="xsd:integer" use="required"/>
+      <xsd:attribute name="jatom" type="xsd:integer" use="required"/>
+      <xsd:attribute name="phase" type="FleurBool" use="required"/>
+      <xsd:attribute name="ev-sum" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Entry_DMI_Type">
+      <xsd:attribute name="q" type="xsd:integer" use="required"/>
+      <xsd:attribute name="ef-shift" type="xsd:double" use="required"/>
+      <xsd:attribute name="phi" type="xsd:double" use="optional"/>
+      <xsd:attribute name="theta" type="xsd:double" use="optional"/>
+      <xsd:attribute name="ev-sum" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Entry_DMIATOMS_Type">
+      <xsd:attribute name="atomType" type="xsd:integer" use="optional"/>
+      <xsd:attribute name="ef-shift" type="xsd:double" use="required"/>
+      <xsd:attribute name="q" type="xsd:integer" use="required"/>
+      <xsd:attribute name="phi" type="xsd:double" use="required"/>
+      <xsd:attribute name="theta" type="xsd:double" use="required"/>
+      <xsd:attribute name="H_so" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="OutEnergyParameterType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="atomicEP" type="AtomicEPType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="heAtomicEP" type="AtomicEPType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="loAtomicEP" type="AtomicEPType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="heloAtomicEP" type="AtomicEPType"/>
+         <xsd:element maxOccurs="2" minOccurs="0" name="vacuumEP" type="VacuumEPType"/>
+      </xsd:sequence>
+      <xsd:attribute name="units" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="AtomicEPType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute default="1" name="spin" type="xsd:integer" use="optional"/>
+      <xsd:attribute name="branch" type="xsd:string" use="required"/>
+      <xsd:attribute name="branchLowest" type="xsd:double" use="optional"/>
+      <xsd:attribute name="branchHighest" type="xsd:double" use="optional"/>
+      <xsd:attribute name="value" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="HEAtomicEPType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute default="1" name="spin" type="xsd:integer" use="optional"/>
+      <xsd:attribute name="branch" type="xsd:string" use="required"/>
+      <xsd:attribute name="logDerivMT" type="xsd:double" use="optional"/>
+      <xsd:attribute name="value" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="VacuumEPType">
+      <xsd:attribute name="vacuum" type="xsd:integer" use="required"/>
+      <xsd:attribute default="1" name="spin" type="xsd:integer" use="optional"/>
+      <xsd:attribute name="vzIR" type="xsd:double" use="optional"/>
+      <xsd:attribute name="vzInf" type="xsd:double" use="optional"/>
+      <xsd:attribute name="value" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="EigenvaluesType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="1" name="eigenvaluesAt" type="EigenvaluesAtType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="EigenvaluesAtType">
+      <xsd:simpleContent>
+         <xsd:extension base="DoubleVecType">
+            <xsd:attribute default="1" name="spin" type="xsd:integer" use="optional"/>
+            <xsd:attribute name="ikpt" type="xsd:integer" use="required"/>
+            <xsd:attribute name="k_x" type="xsd:double" use="optional"/>
+            <xsd:attribute name="k_y" type="xsd:double" use="optional"/>
+            <xsd:attribute name="k_z" type="xsd:double" use="optional"/>
+         </xsd:extension>
+      </xsd:simpleContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="SingleValueType">
+      <xsd:attribute name="value" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="ChargeDensityType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="mtCharges" type="MTChargesType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="spinDependentCharge" type="SpinDependentChargeType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="totalCharge" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="fixedCharges" type="FixedChargeDensityType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="FixedChargeDensityType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="spinDependentCharge" type="SpinDependentChargeType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="totalCharge" type="SingleValueType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="MTChargesType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="mtCharge" type="MTChargeType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="mtJcharge" type="MTJChargeType"/>
+      </xsd:sequence>
+      <xsd:attribute default="1" name="spin" type="xsd:integer" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="MTChargeType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="total" type="xsd:double" use="required"/>
+      <xsd:attribute name="s" type="xsd:double" use="required"/>
+      <xsd:attribute name="p" type="xsd:double" use="required"/>
+      <xsd:attribute name="d" type="xsd:double" use="required"/>
+      <xsd:attribute name="f" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="MTJChargeType">
+      <xsd:sequence>
+         <xsd:element name="lowJ" type="JChargeType"/>
+         <xsd:element name="highJ" type="JChargeType"/>
+      </xsd:sequence>
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="JChargeType">
+      <xsd:attribute name="p" type="xsd:double" use="required"/>
+      <xsd:attribute name="d" type="xsd:double" use="required"/>
+      <xsd:attribute name="f" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="SpinDependentChargeType">
+      <xsd:attribute default="1" name="spin" type="xsd:integer" use="optional"/>
+      <xsd:attribute name="total" type="xsd:double" use="required"/>
+      <xsd:attribute name="interstitial" type="xsd:double" use="required"/>
+      <xsd:attribute name="mtSpheres" type="xsd:double" use="required"/>
+      <xsd:attribute name="vacuum1" type="xsd:double" use="optional"/>
+      <xsd:attribute name="vacuum2" type="xsd:double" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="OutCoreStatesType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="state" type="OutStateType"/>
+      </xsd:sequence>
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="atomicNumber" type="xsd:integer" use="required"/>
+      <xsd:attribute default="1" name="spin" type="xsd:integer" use="optional"/>
+      <xsd:attribute name="kinEnergy" type="xsd:double" use="required"/>
+      <xsd:attribute name="eigValSum" type="xsd:double" use="required"/>
+      <xsd:attribute name="lostElectrons" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="SlaterIntegralsListType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="slaterIntegral" type="SlaterIntegralType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="SlaterIntegralType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="state" type="SlaterCalculationType"/>
+      </xsd:sequence>
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="atomicNumber" type="xsd:integer" use="required"/>
+      <xsd:attribute default="1" name="spin" type="xsd:integer" use="optional"/>
+      <xsd:attribute name="l" type="xsd:nonNegativeInteger" use="required"/>
+      <xsd:attribute name="n" type="xsd:nonNegativeInteger" use="required"/>
+      <xsd:attribute name="screening" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="SlaterCalculationType">
+      <xsd:simpleContent>
+         <xsd:extension base="DoubleVecType">
+            <xsd:attribute name="n" type="xsd:nonNegativeInteger" use="required"/>
+            <xsd:attribute name="l" type="xsd:nonNegativeInteger" use="required"/>
+            <xsd:attribute name="j" type="xsd:double" use="required"/>
+            <xsd:attribute name="units" type="xsd:string" use="required"/>
+         </xsd:extension>
+      </xsd:simpleContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="MTMagneticMomentsType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="magneticMoment" type="MagneticMomentType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="globalMagMoment" type="MagneticMomentVecType"/>         
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="localMagMoment" type="MagneticMomentVecType"/>         
+      </xsd:sequence>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="MTOrbMagneticMomentsType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="orbMagMoment" type="MagneticMomentType"/>
+      </xsd:sequence>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="MagneticMomentType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="moment" type="xsd:double" use="required"/>
+      <xsd:attribute name="spinUpCharge" type="xsd:double" use="required"/>
+      <xsd:attribute name="spinDownCharge" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+    <xsd:complexType name="MagneticMomentVecType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="vec" type="Double3DVecType" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="OutStateType">
+      <xsd:attribute name="n" type="xsd:integer" use="required"/>
+      <xsd:attribute name="l" type="xsd:integer" use="required"/>
+      <xsd:attribute name="j" type="xsd:double" use="required"/>
+      <xsd:attribute name="energy" type="xsd:double" use="required"/>
+      <xsd:attribute name="weight" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="OutTotalForcesType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="forceTotal" type="ForceTotalType"/>
+      </xsd:sequence>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="ForceTotalType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="x" type="xsd:double" use="required"/>
+      <xsd:attribute name="y" type="xsd:double" use="required"/>
+      <xsd:attribute name="z" type="xsd:double" use="required"/>
+      <xsd:attribute name="F_x" type="xsd:double" use="required"/>
+      <xsd:attribute name="F_y" type="xsd:double" use="required"/>
+      <xsd:attribute name="F_z" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="OnSiteExchangeSplittingType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="bxcIntegral" type="BxcIntegralType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="excSplit" type="ExcSplitType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="GFTorqueType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="torque" type="TorqueType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="TorqueType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="sigma_x" type="xsd:double" use="required"/>
+      <xsd:attribute name="sigma_y" type="xsd:double" use="required"/>
+      <xsd:attribute name="sigma_z" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="ExcSplitType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="l" type="xsd:integer" use="required"/>
+      <xsd:attribute name="Delta" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="BxcIntegralType">
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="Delta" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="LDAUDensityMatrixType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="densityMatrixFor" type="DensityMatrixForType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="DensityMatrixForType">
+      <xsd:simpleContent>
+         <xsd:extension base="FortranComplexVecType">
+            <xsd:attribute name="spin" type="xsd:integer" use="required"/>
+            <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+            <xsd:attribute name="uIndex" type="xsd:integer" use="required"/>
+            <xsd:attribute name="l" type="xsd:integer" use="required"/>
+            <xsd:attribute name="U" type="xsd:double" use="required"/>
+            <xsd:attribute name="J" type="xsd:double" use="required"/>
+         </xsd:extension>
+      </xsd:simpleContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="DensityMatrixForHubbard1Type">
+      <xsd:simpleContent>
+         <xsd:extension base="FortranComplexVecType">
+            <xsd:attribute name="spin" type="xsd:integer" use="required"/>
+            <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+            <xsd:attribute name="hiaIndex" type="xsd:integer" use="required"/>
+            <xsd:attribute name="l" type="xsd:integer" use="required"/>
+            <xsd:attribute name="U" type="xsd:double" use="required"/>
+            <xsd:attribute name="J" type="xsd:double" use="required"/>
+            <xsd:attribute name="muMatch" type="DoubleVecType" use="required"/>
+         </xsd:extension>
+      </xsd:simpleContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="Hubbard1Type">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="solverParameters" type="Hubbard1ParametersType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="hubbard1DensityMatrix" type="Hubbard1DensityMatrixType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="hubbard1Distance" type="Hubbard1DistanceType"/>
+      </xsd:sequence>
+      <xsd:attribute name='number' type='xsd:positiveInteger' use='required'/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Hubbard1ParametersType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="1" minOccurs="0" name="slaterParameters" type="FleurDouble4DVecType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="exchange" type="Hubbard1ExchangeType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="socParameter" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="crystalField" type="CrystalFieldMatrixType"/>
+      </xsd:sequence>
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+      <xsd:attribute name="l" type="xsd:integer" use="required"/>
+      <xsd:attribute name="chemPot" type="xsd:double" use="required"/>
+      <xsd:attribute name="occupation" type="xsd:integer" use="required"/>
+      <xsd:attribute name="energy_unit" type="xsd:string" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="Hubbard1ExchangeType">
+      <xsd:attribute name="l" type="xsd:integer" use="required"/>
+      <xsd:attribute name="J" type="xsd:double" use="required"/>
+      <xsd:attribute name="moment" type="xsd:double" use="required"/>
+   </xsd:complexType>
+   
+   <xsd:complexType name="Hubbard1DensityMatrixType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="densityMatrixFor" type="DensityMatrixForHubbard1Type"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="CrystalFieldMatrixType">
+      <xsd:simpleContent>
+         <xsd:extension base="DoubleVecType">
+            <xsd:attribute name="factor" type="xsd:double" use="required"/>
+         </xsd:extension>
+      </xsd:simpleContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="Hubbard1DistanceType">
+      <xsd:attribute name="occupationDistance" type="xsd:double" use="required"/>
+      <xsd:attribute name="elementDistance" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="RDMFTOutType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="occupations" type="RDMFTOccupationsType"/>
+      </xsd:sequence>
+      <xsd:attribute name="energy" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="RDMFTOccupationsType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="state" type="RDMFTStateType"/>
+      </xsd:sequence>
+      <xsd:attribute name="spin" type="xsd:integer" use="required"/>
+      <xsd:attribute name="kpoint" type="xsd:integer" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="RDMFTStateType">
+      <xsd:attribute name="index" type="xsd:integer" use="required"/>
+      <xsd:attribute name="energy" type="xsd:double" use="required"/>
+      <xsd:attribute name="occupation" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="TotalEnergyType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="1" minOccurs="0" name="sumOfEigenvalues" type="SumOfEigenvaluesType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="densityCoulombPotentialIntegral" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="densityEffectivePotentialIntegral" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="chargeDenXCDenIntegral" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="FockExchangeEnergyValence" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="FockExchangeEnergyCore" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="vdWEnergy" type="SingleValueType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="atomTypeDependentContributions" type="AtomTypeDependentContributionsType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="dftUCorrection" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="tkbTimesEntropy" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="freeEnergy" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="extrapolationTo0K" type="SingleValueType"/>
+      </xsd:sequence>
+      <xsd:attribute name="value" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+      <xsd:attribute name="comment" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="SumOfEigenvaluesType">
+      <xsd:all>
+         <xsd:element maxOccurs="1" minOccurs="0" name="coreElectrons" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="valenceElectrons" type="SingleValueType"/>
+      </xsd:all>
+      <xsd:attribute name="value" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="AtomTypeDependentContributionsType">
+      <xsd:all>
+         <xsd:element maxOccurs="1" minOccurs="0" name="electronNucleiInteractionDifferentMTs" type="SingleValueType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="MadelungTerm" type="SingleValueType"/>
+      </xsd:all>
+      <xsd:attribute name="atomType" type="xsd:integer" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="DensityConvergenceType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="chargeDensity" type="DensityDistanceType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="overallChargeDensity" type="DensityDistanceType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="spinDensity" type="DensityDistanceType"/>
+      </xsd:sequence>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="LDAUDensityMatrixConvergenceType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="3" minOccurs="0" name="distance" type="DensityMatrixDistanceType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="DensityMatrixDistanceType">
+      <xsd:attribute name="spin" type="xsd:integer" use="required"/>
+      <xsd:attribute name="distance" type="xsd:double" use="required"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="DensityDistanceType">
+      <xsd:attribute name="spin" type="xsd:integer" use="optional"/>
+      <xsd:attribute name="distance" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="TimingType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="compositeTimer" type="CompositeTimerType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="timer" type="TimerType"/>
+      </xsd:sequence>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="CompositeTimerType">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="compositeTimer" type="CompositeTimerType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="timer" type="TimerType"/>
+      </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="value" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:complexType name="TimerType">
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="value" type="xsd:double" use="required"/>
+      <xsd:attribute name="units" type="xsd:string" use="optional"/>
+   </xsd:complexType>
+
+   <xsd:simpleType name="ForceTheoremEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="SSDISP"/>
+         <xsd:enumeration value="MAE"/>
+         <xsd:enumeration value="JIJ"/>
+         <xsd:enumeration value="DMI"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <!-- Cannot be in the FleurInputSchema.xsd since we still support older FleurInputSchemas -->
+   <xsd:simpleType name="FleurDouble4DVecType">
+      <xsd:restriction base="FleurDoubleVecType">
+         <xsd:length value="4"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="FortranComplexVecType">
+      <xsd:list itemType="FortranComplex"/>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="FortranComplex">
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+
+</xsd:schema>

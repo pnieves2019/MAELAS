@@ -1,0 +1,34 @@
+      Welcome to FLEUR        (www.flapw.de)   
+      MaX-Release 6.1          (www.max-centre.eu)
+ Now copying inp_dump.xml
+ 
+ ========== k-point set info ==========
+ Selected k-point list: testset
+ k-point list type: mesh
+ 20 x 20 x 20
+ Number of k points: 781
+ 
+ --------------------------------------------------------
+ Number of OMP-threads:           1
+ --------------------------------------------------------
+ Iteration:           1  Distance:   12.5307457868659     
+ Iteration:           2  Distance:   12.1562596527609     
+ Iteration:           3  Distance:   10.5040665866782     
+ Iteration:           4  Distance:   4.05762374017903     
+ Iteration:           5  Distance:  0.720259094400670     
+ Iteration:           6  Distance:  0.578183687935155     
+ Iteration:           7  Distance:  0.111145434305108     
+ Iteration:           8  Distance:  0.207273745985056     
+ Iteration:           9  Distance:  0.114781567567976     
+ Iteration:          10  Distance:  7.225924457277554E-002
+ Iteration:          11  Distance:  4.495210384190465E-002
+ Iteration:          12  Distance:  9.398510714005178E-003
+ Iteration:          13  Distance:  8.666391405414661E-003
+ Iteration:          14  Distance:  1.445493944184379E-003
+ Iteration:          15  Distance:  4.974291632316562E-004
+ Iteration:          16  Distance:  4.675845288742702E-004
+ Iteration:          17  Distance:  2.346998078626054E-004
+ Iteration:          18  Distance:  5.763976619174948E-005
+ Iteration:          19  Distance:  3.872401852949098E-005
+ Iteration:          20  Distance:  1.475131931810498E-005
+ Iteration:          21  Distance:  3.015628607094341E-006

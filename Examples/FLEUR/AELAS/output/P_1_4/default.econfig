@@ -1,0 +1,117 @@
+!This file contains the defaults of the electronic configuration used by inpgen
+! DO NOT MODIFY THIS FILE IN THE WORKING DIRECTORY
+! TO MODIFY:
+! - either specify a file 'econfig' in your calculation directory to overwrite
+! - or to change the defaults permanently, change this file in the FLEUR-sources
+
+&atom desc="Hydrogen (H)" z=1 econfig="|1s1" lo="" /
+&atom desc="Helium (He)" z=2 econfig="|1s2" lo="" /
+
+&atom desc="Lithium (Li)" z=3 econfig="1s2|2s1" lo="" /
+&atom desc="Beryllium (Be)" z=4 econfig="1s2|2s2" lo="" /
+&atom desc="Boron (B)" z=5 econfig="1s2|2s2 2p1" lo="" /
+&atom desc="Carbon (C)" z=6 econfig="1s2|2s2 2p2" lo="" /
+&atom desc="Nitrogen (N)" z=7 econfig="1s2|2s2 2p3" lo="" /
+&atom desc="Oxygen (O)" z=8 econfig="1s2|2s2 2p4" lo="" /
+&atom desc="Fluorine (F)" z=9 econfig="1s2|2s2 2p5" lo="" /
+&atom desc="Neon (Ne)" z=10 econfig="1s2|2s2 2p6" lo="" /
+
+&atom desc="Sodium (Na)" z=11 econfig="1s2|2s2 2p6 3s1" lo="2s 2p" /
+&atom desc="Magnesium (Mg)" z=12 econfig="1s2|2s2 2p6 3s2" lo="2s 2p" /
+&atom desc="Aluminum (Al)" z=13 econfig="1s2 2s2 2p6|3s2 3p1" lo="" /
+&atom desc="Silicon (Si)" z=14 econfig="1s2 2s2 2p6|3s2 3p2" lo="" /
+&atom desc="Phosphorous (P)" z=15 econfig="1s2 2s2 2p6|3s2 3p3" lo="" /
+&atom desc="Sulfur (S)" z=16 econfig="1s2 2s2 2p6|3s2 3p4" lo="" /
+&atom desc="Chlorine (Cl)" z=17 econfig="1s2 2s2 2p6|3s2 3p5" lo="" /
+&atom desc="Argon (Ar)" z=18 econfig="1s2 2s2 2p6|3s2 3p6" lo="" /
+
+&atom desc="Potassium (K)" z=19 econfig="1s2 2s2 2p6|3s2 3p6 4s1" lo="3s 3p" /
+&atom desc="Calcium (Ca)" z=20 econfig="1s2 2s2 2p6|3s2 3p6 4s2" lo="3s 3p" /
+&atom desc="Scandium (Sc)" z=21 econfig="1s2 2s2 2p6|3s2 3p6 4s2 3d1" lo="3s 3p" /
+&atom desc="Titanium (Ti)" z=22 econfig="1s2 2s2 2p6|3s2 3p6 4s2 3d2" lo="3s 3p" /
+&atom desc="Vanadium (V)" z=23 econfig="1s2 2s2 2p6|3s2 3p6 4s2 3d3" lo="3s 3p" /
+&atom desc="Chromium (Cr)" z=24 econfig="1s2 2s2 2p6|3s2 3p6 4s1 3d5" lo="3s 3p" /
+&atom desc="Manganese (Mn)" z=25 econfig="1s2 2s2 2p6|3s2 3p6 4s2 3d5" lo="3s 3p" /
+&atom desc="Iron (Fe)" z=26 econfig="1s2 2s2 2p6|3s2 3p6 4s2 3d6" lo="3s 3p" /
+&atom desc="Cobalt (Co)" z=27 econfig="1s2 2s2 2p6 3s2|3p6 4s2 3d7" lo="3p" /
+&atom desc="Nickel (Ni)" z=28 econfig="1s2 2s2 2p6 3s2|3p6 4s2 3d8" lo="3p" /
+&atom desc="Copper (Cu)" z=29 econfig="1s2 2s2 2p6 3s2 3p6|4s1 3d10" lo="" /
+&atom desc="Zinc (Zn)" z=30 econfig="1s2 2s2 2p6 3s2 3p6|4s2 3d10" lo="" /
+&atom desc="Gallium (Ga)" z=31 econfig="1s2 2s2 2p6 3s2 3p6|4s2 3d10 4p1" lo="" /
+&atom desc="Germanium (Ge)" z=32 econfig="1s2 2s2 2p6 3s2 3p6|4s2 3d10 4p2" lo="" /
+&atom desc="Arsenic (As)" z=33 econfig="1s2 2s2 2p6 3s2 3p6|4s2 3d10 4p3" lo="" /
+&atom desc="Selenium (Se)" z=34 econfig="1s2 2s2 2p6 3s2 3p6|4s2 3d10 4p4" lo="" /
+&atom desc="Bromine (Br)" z=35 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p5" lo="" /
+&atom desc="Krypton (Kr)" z=36 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p6" lo="" /
+
+&atom desc="Rubidium (Rb)" z=37 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p6 5s1" lo="4s 4p" /
+&atom desc="Strontium (Sr)" z=38 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p6 5s2" lo="4s 4p" /
+&atom desc="Yttrium (Y)" z=39 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p6 5s2 4d1" lo="4s 4p" /
+&atom desc="Zirconium (Zr)" z=40 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p6 5s2 4d2" lo="4s 4p" /
+&atom desc="Niobium (Nb)" z=41 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p6 5s1 4d4" lo="4s 4p" /
+&atom desc="Molybdenum (Mo)" z=42 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p6 5s1 4d5" lo="4s 4p" /
+&atom desc="Technetium (Tc)" z=43 econfig="1s2 2s2 2p6 3s2 3p6 3d10|4s2 4p6 5s2 4d5" lo="4s 4p" /
+&atom desc="Ruthenium (Ru)" z=44 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10|4p6 5s1 4d7" lo="4p" /
+&atom desc="Rhodium (Rh)" z=45 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10|4p6 5s1 4d8" lo="4p" /
+&atom desc="Palladium (Pd)" z=46 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10|4p6 4d10" lo="4p" /
+&atom desc="Silver (Ag)" z=47 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10|4p6 5s1 4d10" lo="4p" /
+&atom desc="Cadmium (Cd)" z=48 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10|4p6 5s2 4d10" lo="4p" /
+&atom desc="Indium (In)" z=49 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6|5s2 4d10 5p1" lo="4d" /
+&atom desc="Tin (Sn)" z=50 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6|5s2 4d10 5p2" lo="4d" /
+&atom desc="Antimony (Sb)" z=51 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6|5s2 4d10 5p3" lo="4d" /
+&atom desc="Tellurium (Te)" z=52 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6|5s2 4d10 5p4" lo="4d" /
+&atom desc="Iodine (I)" z=53 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6|5s2 4d10 5p5" lo="4d" /
+&atom desc="Xenon (Xe)" z=54 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6|5s2 4d10 5p6" lo="4d" /
+
+&atom desc="Cesium (Cs)" z=55 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s1" lo="5s 5p" /
+&atom desc="Barium (Ba)" z=56 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2" lo="5s 5p" /
+&atom desc="Lanthanum (La)" z=57 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 5d1" lo="5s 5p" /
+&atom desc="Cerium (Ce)" z=58 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 5d1 4f1" lo="5s 5p" /
+&atom desc="Praseodymium (Pr)" z=59 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f3" lo="5s 5p" /
+&atom desc="Neodymium (Nd)" z=60 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f4" lo="5s 5p" /
+&atom desc="Promethium (Pm)" z=61 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f5" lo="5s 5p" /
+&atom desc="Samarium (Sm)" z=62 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f6" lo="5s 5p" /
+&atom desc="Europium (Eu)" z=63 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f7" lo="5s 5p" /
+&atom desc="Gadolinium (Gd)" z=64 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f7 5d1" lo="5s 5p" /
+&atom desc="Terbium (Tb)" z=65 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f9" lo="5s 5p" /
+&atom desc="Dysprosium (Dy)" z=66 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f10" lo="5s 5p" /
+&atom desc="Holmium (Ho)" z=67 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f11" lo="5s 5p" /
+&atom desc="Erbium (Er)" z=68 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f12" lo="5s 5p" /
+&atom desc="Thulium (Tm)" z=69 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f13" lo="5s 5p" /
+&atom desc="Ytterbium (Yb)" z=70 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f14" lo="5s 5p" /
+&atom desc="Lutetium (Lu)" z=71 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f14 5d1" lo="5s 5p" /
+
+&atom desc="Hafnium (Hf)" z=72 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f14 5d2" lo="5s 5p 4f" /
+&atom desc="Tantalum (Ta)" z=73 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10|5s2 5p6 6s2 4f14 5d3" lo="5s 5p 4f" /
+&atom desc="Tungsten (W)" z=74 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10 4f14|5s2 5p6 6s2 5d4" lo="5s 5p" /
+&atom desc="Rhenium (Re)" z=75 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10 4f14|5s2 5p6 6s2 5d5" lo="5s 5p" /
+&atom desc="Osmium (Os)" z=76 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 4f14|5p6 6s2 5d6" lo="5p" /
+&atom desc="Iridium (Ir)" z=77 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 4f14|5p6 6s2 5d7" lo="5p" /
+&atom desc="Platinum (Pt)" z=78 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 4f14|5p6 6s1 5d9" lo="5p" /
+&atom desc="Gold (Au)" z=79 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 4f14|5p6 6s1 5d10" lo="5p" /
+&atom desc="Mercury (Hg)" z=80 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 4f14|5p6 6s2 5d10" lo="5p" /
+&atom desc="Thallium (Tl)" z=81 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 4f14 5p6|6s2 5d10 6p1" lo="5d" /
+&atom desc="Lead (Pb)" z=82 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 4f14 5p6|6s2 5d10 6p2" lo="5d" /
+&atom desc="Bismuth (Bi)" z=83 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14|6s2 5d10 6p3" lo="5d" /
+&atom desc="Polonium (Po)" z=84 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14|6s2 5d10 6p4" lo="5d" /
+&atom desc="Astatine (At)" z=85 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14|6s2 5d10 6p5" lo="5d" /
+&atom desc="Radon (Rn)" z=86 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14|6s2 5d10 6p6" lo="5d" /
+
+&atom desc="Francium (Fr)" z=87 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s1" lo="6s 6p" /
+&atom desc="Radium (Ra)" z=88 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2" lo="6s 6p" /
+
+&atom desc="Actinium (Ac)" z=89 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 6d1" lo="6s 6p" /
+&atom desc="Thorium (Th)" z=90 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 6d2" lo="6s 6p" /
+&atom desc="Protactinium (Pa)" z=91 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f2 6d1" lo="6s 6p" /
+&atom desc="Uranium (U)" z=92 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f3 6d1" lo="6s 6p" /
+&atom desc="Neptunium (Np)" z=93 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f4 6d1" lo="6s 6p" /
+&atom desc="Plutonium (Pu)" z=94 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f6" lo="6s 6p" /
+&atom desc="Americium (Am)" z=95 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f7" lo="6s 6p" /
+&atom desc="Curium (Cm)" z=96 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f7 6d1" lo="6s 6p" /
+&atom desc="Berkelium (Bk)" z=97 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f9" lo="6s 6p" /
+&atom desc="Californium (Cf)" z=98 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f10" lo="6s 6p" /
+&atom desc="Einsteinium (Es)" z=99 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f11" lo="6s 6p" /
+&atom desc="Fermium (Fm)" z=100 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f12" lo="6s 6p" /
+&atom desc="Mendelevium (Md)" z=101 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f13" lo="6s 6p" /
+&atom desc="Nobelium (No)" z=102 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 4f14 5d10|6s2 6p6 7s2 5f14" lo="6s 6p" /
+&atom desc="Lawrencium (Lr)" z=103 econfig="1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6|7s2 5f14 7p1" lo="6s 6p" /

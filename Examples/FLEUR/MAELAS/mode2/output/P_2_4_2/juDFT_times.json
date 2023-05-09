@@ -1,0 +1,837 @@
+{
+   "timername" : "Total Run",
+   "totaltime" : 4908.59134,
+   "subtimers": [
+      {
+         "timername" : "Initialization",
+         "totaltime" : 1.50086,
+         "mintime"   : 1.50086,
+         "maxtime"   : 1.50086,
+         "ncalls"    : 1,
+         "subtimers": [
+            {
+               "timername" : "star-setup",
+               "totaltime" : 1.3130E-03,
+               "mintime"   : 1.3130E-03,
+               "maxtime"   : 1.3130E-03,
+               "ncalls"    : 1
+            },
+            {
+               "timername" : "stepf",
+               "totaltime" : 4.3931E-03,
+               "mintime"   : 4.3931E-03,
+               "maxtime"   : 4.3931E-03,
+               "ncalls"    : 1,
+               "subtimers": [
+                  {
+                     "timername" : "ustep",
+                     "totaltime" : 1.5998E-04,
+                     "mintime"   : 1.5998E-04,
+                     "maxtime"   : 1.5998E-04,
+                     "ncalls"    : 1
+                  },
+                  {
+                     "timername" : "Oldstepf",
+                     "totaltime" : 2.5492E-03,
+                     "mintime"   : 2.5492E-03,
+                     "maxtime"   : 2.5492E-03,
+                     "ncalls"    : 1
+                  }
+               ]
+            },
+            {
+               "timername" : "init_kpts",
+               "totaltime" : 8.3230E-03,
+               "mintime"   : 8.3230E-03,
+               "maxtime"   : 8.3230E-03,
+               "ncalls"    : 1,
+               "subtimers": [
+                  {
+                     "timername" : "gen_bz",
+                     "totaltime" : 8.2381E-03,
+                     "mintime"   : 8.2381E-03,
+                     "maxtime"   : 8.2381E-03,
+                     "ncalls"    : 1
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "timername" : "generation of start-density",
+         "totaltime" : 0.26899,
+         "mintime"   : 0.26899,
+         "maxtime"   : 0.26899,
+         "ncalls"    : 1,
+         "subtimers": [
+            {
+               "timername" : "qpw_to_nmt",
+               "totaltime" : 0.10280,
+               "mintime"   : 5.1374E-02,
+               "maxtime"   : 5.1426E-02,
+               "ncalls"    : 2
+            },
+            {
+               "timername" : "cdntot",
+               "totaltime" : 1.0309E-03,
+               "mintime"   : 1.0309E-03,
+               "maxtime"   : 1.0309E-03,
+               "ncalls"    : 1
+            }
+         ]
+      },
+      {
+         "timername" : "Load inDen",
+         "totaltime" : 8.4870E-03,
+         "mintime"   : 8.4870E-03,
+         "maxtime"   : 8.4870E-03,
+         "ncalls"    : 1,
+         "subtimers": [
+            {
+               "timername" : "Qfix main",
+               "totaltime" : 9.5367E-07,
+               "mintime"   : 9.5367E-07,
+               "maxtime"   : 9.5367E-07,
+               "ncalls"    : 1
+            }
+         ]
+      },
+      {
+         "timername" : "Initialize potentials",
+         "totaltime" : 2.0270E-03,
+         "mintime"   : 2.0270E-03,
+         "maxtime"   : 2.0270E-03,
+         "ncalls"    : 1
+      },
+      {
+         "timername" : "Initialize GF",
+         "totaltime" : 1.9073E-05,
+         "mintime"   : 1.9073E-05,
+         "maxtime"   : 1.9073E-05,
+         "ncalls"    : 1
+      },
+      {
+         "timername" : "Open/allocate eigenvector stor",
+         "totaltime" : 1.29642,
+         "mintime"   : 1.29642,
+         "maxtime"   : 1.29642,
+         "ncalls"    : 1,
+         "subtimers": [
+            {
+               "timername" : "Open file/memory for IO of eig",
+               "totaltime" : 1.29640,
+               "mintime"   : 1.29640,
+               "maxtime"   : 1.29640,
+               "ncalls"    : 1
+            }
+         ]
+      },
+      {
+         "timername" : "Pre-scf sanity check",
+         "totaltime" : 2.1458E-06,
+         "mintime"   : 2.1458E-06,
+         "maxtime"   : 2.1458E-06,
+         "ncalls"    : 1
+      },
+      {
+         "timername" : "Iteration",
+         "totaltime" : 4905.50353,
+         "mintime"   : 244.75691,
+         "maxtime"   : 245.95615,
+         "ncalls"    : 20,
+         "subtimers": [
+            {
+               "timername" : "generation of potential",
+               "totaltime" : 6.99504,
+               "mintime"   : 0.34212,
+               "maxtime"   : 0.37637,
+               "ncalls"    : 20,
+               "subtimers": [
+                  {
+                     "timername" : "psqpw",
+                     "totaltime" : 0.31340,
+                     "mintime"   : 1.5371E-02,
+                     "maxtime"   : 1.5941E-02,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "mpmom",
+                           "totaltime" : 0.16797,
+                           "mintime"   : 8.3480E-03,
+                           "maxtime"   : 8.5342E-03,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "loop",
+                           "totaltime" : 0.14525,
+                           "mintime"   : 6.9740E-03,
+                           "maxtime"   : 7.5290E-03,
+                           "ncalls"    : 20
+                        }
+                     ]
+                  },
+                  {
+                     "timername" : "interstitial",
+                     "totaltime" : 1.1587E-04,
+                     "mintime"   : 5.0068E-06,
+                     "maxtime"   : 6.9141E-06,
+                     "ncalls"    : 20
+                  },
+                  {
+                     "timername" : "MT-spheres",
+                     "totaltime" : 0.24820,
+                     "mintime"   : 1.2065E-02,
+                     "maxtime"   : 1.2914E-02,
+                     "ncalls"    : 20
+                  },
+                  {
+                     "timername" : "den-pot integrals",
+                     "totaltime" : 4.5985E-02,
+                     "mintime"   : 1.1170E-03,
+                     "maxtime"   : 2.3960E-02,
+                     "ncalls"    : 20
+                  },
+                  {
+                     "timername" : "Vxc in interstitial",
+                     "totaltime" : 0.37306,
+                     "mintime"   : 1.8476E-02,
+                     "maxtime"   : 2.0130E-02,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "init_pw_grid",
+                           "totaltime" : 5.4433E-03,
+                           "mintime"   : 2.5606E-04,
+                           "maxtime"   : 3.5691E-04,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "pw_to_grid",
+                           "totaltime" : 0.10015,
+                           "mintime"   : 4.8862E-03,
+                           "maxtime"   : 6.2289E-03,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "apply_cutoffs",
+                           "totaltime" : 6.1989E-06,
+                           "mintime"   : 0.0000E+00,
+                           "maxtime"   : 1.1921E-06,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "pw_from_grid",
+                           "totaltime" : 0.11888,
+                           "mintime"   : 1.1320E-03,
+                           "maxtime"   : 4.8549E-03,
+                           "ncalls"    : 40
+                        },
+                        {
+                           "timername" : "finish_pw_grid",
+                           "totaltime" : 1.1206E-05,
+                           "mintime"   : 0.0000E+00,
+                           "maxtime"   : 1.1921E-06,
+                           "ncalls"    : 20
+                        }
+                     ]
+                  },
+                  {
+                     "timername" : "Vxc in MT",
+                     "totaltime" : 5.96659,
+                     "mintime"   : 0.29267,
+                     "maxtime"   : 0.30620,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "init_mt_grid",
+                           "totaltime" : 1.7220E-02,
+                           "mintime"   : 7.5102E-04,
+                           "maxtime"   : 9.0504E-04,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "mt_to_grid",
+                           "totaltime" : 1.70459,
+                           "mintime"   : 3.7698E-02,
+                           "maxtime"   : 4.8384E-02,
+                           "ncalls"    : 40
+                        },
+                        {
+                           "timername" : "mt_from_grid",
+                           "totaltime" : 0.32932,
+                           "mintime"   : 1.0731E-03,
+                           "maxtime"   : 2.7440E-03,
+                           "ncalls"    : 160
+                        },
+                        {
+                           "timername" : "finish_mt_grid",
+                           "totaltime" : 7.5364E-04,
+                           "mintime"   : 1.9073E-06,
+                           "maxtime"   : 5.4693E-04,
+                           "ncalls"    : 20
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "timername" : "H generation and diagonalizati",
+               "totaltime" : 3385.94896,
+               "mintime"   : 169.13170,
+               "maxtime"   : 169.46796,
+               "ncalls"    : 20,
+               "subtimers": [
+                  {
+                     "timername" : "eigen",
+                     "totaltime" : 2061.56728,
+                     "mintime"   : 102.98713,
+                     "maxtime"   : 103.27244,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "Updating energy parameters",
+                           "totaltime" : 18.92099,
+                           "mintime"   : 0.94181,
+                           "maxtime"   : 0.95687,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "tlmplm",
+                           "totaltime" : 0.39125,
+                           "mintime"   : 1.9060E-02,
+                           "maxtime"   : 2.4733E-02,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "t_lapw_init",
+                           "totaltime" : 35.74929,
+                           "mintime"   : 1.9288E-04,
+                           "maxtime"   : 3.0980E-03,
+                           "ncalls"    : 160160
+                        },
+                        {
+                           "timername" : "Setup of H&S matrices",
+                           "totaltime" : 795.27683,
+                           "mintime"   : 4.2760E-03,
+                           "maxtime"   : 1.1330E-02,
+                           "ncalls"    : 160160,
+                           "subtimers": [
+                              {
+                                 "timername" : "t_mat_alloc",
+                                 "totaltime" : 4.33382,
+                                 "mintime"   : 1.5974E-05,
+                                 "maxtime"   : 1.5872E-03,
+                                 "ncalls"    : 160160
+                              },
+                              {
+                                 "timername" : "Interstitial part",
+                                 "totaltime" : 86.43150,
+                                 "mintime"   : 4.1795E-04,
+                                 "maxtime"   : 1.4899E-03,
+                                 "ncalls"    : 160160
+                              },
+                              {
+                                 "timername" : "MT part",
+                                 "totaltime" : 691.25243,
+                                 "mintime"   : 3.7000E-03,
+                                 "maxtime"   : 1.0125E-02,
+                                 "ncalls"    : 160160,
+                                 "subtimers": [
+                                    {
+                                       "timername" : "fjgj coefficients",
+                                       "totaltime" : 21.59320,
+                                       "mintime"   : 5.1975E-05,
+                                       "maxtime"   : 1.0586E-04,
+                                       "ncalls"    : 320320
+                                    },
+                                    {
+                                       "timername" : "spherical setup",
+                                       "totaltime" : 237.42477,
+                                       "mintime"   : 5.9509E-04,
+                                       "maxtime"   : 9.5510E-04,
+                                       "ncalls"    : 320320
+                                    },
+                                    {
+                                       "timername" : "non-spherical setup",
+                                       "totaltime" : 287.49241,
+                                       "mintime"   : 7.4697E-04,
+                                       "maxtime"   : 6.0329E-03,
+                                       "ncalls"    : 320320
+                                    },
+                                    {
+                                       "timername" : "LO setup",
+                                       "totaltime" : 142.06858,
+                                       "mintime"   : 3.9911E-04,
+                                       "maxtime"   : 2.6131E-03,
+                                       "ncalls"    : 320320,
+                                       "subtimers": [
+                                          {
+                                             "timername" : "hlomat",
+                                             "totaltime" : 134.41898,
+                                             "mintime"   : 3.7503E-04,
+                                             "maxtime"   : 2.5849E-03,
+                                             "ncalls"    : 320320
+                                          }
+                                       ]
+                                    }
+                                 ]
+                              },
+                              {
+                                 "timername" : "Matrix redistribution",
+                                 "totaltime" : 8.32120,
+                                 "mintime"   : 3.5048E-05,
+                                 "maxtime"   : 1.8039E-03,
+                                 "ncalls"    : 160160,
+                                 "subtimers": [
+                                    {
+                                       "timername" : "t_mat_alloc",
+                                       "totaltime" : 5.41924,
+                                       "mintime"   : 2.0981E-05,
+                                       "maxtime"   : 7.3004E-04,
+                                       "ncalls"    : 160160
+                                    },
+                                    {
+                                       "timername" : "t_mat_free",
+                                       "totaltime" : 0.29963,
+                                       "mintime"   : 0.0000E+00,
+                                       "maxtime"   : 1.7369E-03,
+                                       "ncalls"    : 320320
+                                    }
+                                 ]
+                              }
+                           ]
+                        },
+                        {
+                           "timername" : "Diagonalization",
+                           "totaltime" : 1203.51232,
+                           "mintime"   : 4.8370E-03,
+                           "maxtime"   : 1.4454E-02,
+                           "ncalls"    : 160160,
+                           "subtimers": [
+                              {
+                                 "timername" : "t_mat_alloc",
+                                 "totaltime" : 0.92671,
+                                 "mintime"   : 4.0531E-06,
+                                 "maxtime"   : 5.5075E-05,
+                                 "ncalls"    : 160160
+                              }
+                           ]
+                        },
+                        {
+                           "timername" : "t_mat_free",
+                           "totaltime" : 0.17999,
+                           "mintime"   : 0.0000E+00,
+                           "maxtime"   : 1.9073E-05,
+                           "ncalls"    : 480480
+                        },
+                        {
+                           "timername" : "EV output",
+                           "totaltime" : 6.16191,
+                           "mintime"   : 3.3855E-05,
+                           "maxtime"   : 8.4877E-05,
+                           "ncalls"    : 160160,
+                           "subtimers": [
+                              {
+                                 "timername" : "IO (write)",
+                                 "totaltime" : 6.05454,
+                                 "mintime"   : 3.3855E-05,
+                                 "maxtime"   : 8.3923E-05,
+                                 "ncalls"    : 160160
+                              }
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "timername" : "2nd variation SOC",
+                     "totaltime" : 1324.38165,
+                     "mintime"   : 66.05725,
+                     "maxtime"   : 66.41432,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "eigenso: spnorb",
+                           "totaltime" : 0.22380,
+                           "mintime"   : 1.0847E-02,
+                           "maxtime"   : 1.1436E-02,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "t_lapw_init",
+                           "totaltime" : 17.94790,
+                           "mintime"   : 1.6904E-04,
+                           "maxtime"   : 5.8413E-04,
+                           "ncalls"    : 80080
+                        },
+                        {
+                           "timername" : "eigenso: alineso",
+                           "totaltime" : 1281.65244,
+                           "mintime"   : 1.5132E-02,
+                           "maxtime"   : 3.3993E-02,
+                           "ncalls"    : 80080,
+                           "subtimers": [
+                              {
+                                 "timername" : "IO (read)",
+                                 "totaltime" : 3.56871,
+                                 "mintime"   : 0.0000E+00,
+                                 "maxtime"   : 7.7009E-05,
+                                 "ncalls"    : 320320
+                              },
+                              {
+                                 "timername" : "alineso SOC: -help",
+                                 "totaltime" : 611.10475,
+                                 "mintime"   : 7.0109E-03,
+                                 "maxtime"   : 8.7740E-03,
+                                 "ncalls"    : 80080,
+                                 "subtimers": [
+                                    {
+                                       "timername" : "abcof",
+                                       "totaltime" : 603.55765,
+                                       "mintime"   : 3.4518E-03,
+                                       "maxtime"   : 4.3089E-03,
+                                       "ncalls"    : 160160
+                                    }
+                                 ]
+                              },
+                              {
+                                 "timername" : "alineso SOC: -ham",
+                                 "totaltime" : 487.35708,
+                                 "mintime"   : 6.0470E-03,
+                                 "maxtime"   : 6.4428E-03,
+                                 "ncalls"    : 80080
+                              },
+                              {
+                                 "timername" : "alineso SOC: -diag",
+                                 "totaltime" : 124.48357,
+                                 "mintime"   : 1.3931E-03,
+                                 "maxtime"   : 6.0511E-03,
+                                 "ncalls"    : 80080
+                              }
+                           ]
+                        },
+                        {
+                           "timername" : "t_mat_alloc",
+                           "totaltime" : 1.71745,
+                           "mintime"   : 1.5974E-05,
+                           "maxtime"   : 1.9097E-04,
+                           "ncalls"    : 80080
+                        },
+                        {
+                           "timername" : "eigenso: write_eig",
+                           "totaltime" : 14.24157,
+                           "mintime"   : 6.9857E-05,
+                           "maxtime"   : 2.7418E-04,
+                           "ncalls"    : 160160,
+                           "subtimers": [
+                              {
+                                 "timername" : "cpy zmat",
+                                 "totaltime" : 3.17560,
+                                 "mintime"   : 1.4782E-05,
+                                 "maxtime"   : 5.1022E-05,
+                                 "ncalls"    : 160160
+                              },
+                              {
+                                 "timername" : "IO (write)",
+                                 "totaltime" : 10.84389,
+                                 "mintime"   : 4.9829E-05,
+                                 "maxtime"   : 2.5487E-04,
+                                 "ncalls"    : 160160
+                              },
+                              {
+                                 "timername" : "cpy buffers",
+                                 "totaltime" : 5.9898E-02,
+                                 "mintime"   : 0.0000E+00,
+                                 "maxtime"   : 8.1062E-06,
+                                 "ncalls"    : 160160
+                              }
+                           ]
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "timername" : "determination of fermi energy",
+               "totaltime" : 31.34903,
+               "mintime"   : 1.53383,
+               "maxtime"   : 1.61936,
+               "ncalls"    : 20
+            },
+            {
+               "timername" : "Wannier",
+               "totaltime" : 4.0531E-06,
+               "mintime"   : 0.0000E+00,
+               "maxtime"   : 1.1921E-06,
+               "ncalls"    : 20
+            },
+            {
+               "timername" : "generation of new charge densi",
+               "totaltime" : 1479.51195,
+               "mintime"   : 73.63120,
+               "maxtime"   : 74.54402,
+               "ncalls"    : 20,
+               "subtimers": [
+                  {
+                     "timername" : "cdnval",
+                     "totaltime" : 1476.84917,
+                     "mintime"   : 36.73521,
+                     "maxtime"   : 37.21626,
+                     "ncalls"    : 40,
+                     "subtimers": [
+                        {
+                           "timername" : "init",
+                           "totaltime" : 0.16886,
+                           "mintime"   : 3.9592E-03,
+                           "maxtime"   : 4.8430E-03,
+                           "ncalls"    : 40
+                        },
+                        {
+                           "timername" : "t_lapw_init",
+                           "totaltime" : 34.94116,
+                           "mintime"   : 1.9693E-04,
+                           "maxtime"   : 4.0388E-04,
+                           "ncalls"    : 160160
+                        },
+                        {
+                           "timername" : "t_mat_alloc",
+                           "totaltime" : 0.80171,
+                           "mintime"   : 2.8610E-06,
+                           "maxtime"   : 2.3603E-04,
+                           "ncalls"    : 160160
+                        },
+                        {
+                           "timername" : "IO (read)",
+                           "totaltime" : 1.98931,
+                           "mintime"   : 8.8215E-06,
+                           "maxtime"   : 3.0041E-05,
+                           "ncalls"    : 160160
+                        },
+                        {
+                           "timername" : "abcof",
+                           "totaltime" : 130.19821,
+                           "mintime"   : 7.2098E-04,
+                           "maxtime"   : 1.5020E-03,
+                           "ncalls"    : 160160,
+                           "subtimers": [
+                              {
+                                 "timername" : "fjgj coefficients",
+                                 "totaltime" : 23.84688,
+                                 "mintime"   : 5.8174E-05,
+                                 "maxtime"   : 2.3603E-04,
+                                 "ncalls"    : 320320
+                              },
+                              {
+                                 "timername" : "fill work array",
+                                 "totaltime" : 2.60409,
+                                 "mintime"   : 5.9605E-06,
+                                 "maxtime"   : 3.4904E-04,
+                                 "ncalls"    : 320320
+                              },
+                              {
+                                 "timername" : "hsmt_ab",
+                                 "totaltime" : 39.68908,
+                                 "mintime"   : 1.1182E-04,
+                                 "maxtime"   : 5.9795E-04,
+                                 "ncalls"    : 320320
+                              },
+                              {
+                                 "timername" : "gemm",
+                                 "totaltime" : 58.97521,
+                                 "mintime"   : 1.5378E-04,
+                                 "maxtime"   : 5.1785E-04,
+                                 "ncalls"    : 320320
+                              },
+                              {
+                                 "timername" : "local orbitals",
+                                 "totaltime" : 2.72526,
+                                 "mintime"   : 6.9141E-06,
+                                 "maxtime"   : 2.1219E-05,
+                                 "ncalls"    : 320320
+                              }
+                           ]
+                        },
+                        {
+                           "timername" : "eparas",
+                           "totaltime" : 5.84682,
+                           "mintime"   : 3.0994E-05,
+                           "maxtime"   : 1.7023E-04,
+                           "ncalls"    : 160160
+                        },
+                        {
+                           "timername" : "pwden",
+                           "totaltime" : 703.61675,
+                           "mintime"   : 2.0070E-03,
+                           "maxtime"   : 5.6870E-03,
+                           "ncalls"    : 160160
+                        },
+                        {
+                           "timername" : "cdnmt",
+                           "totaltime" : 1.67990,
+                           "mintime"   : 4.1893E-02,
+                           "maxtime"   : 4.2785E-02,
+                           "ncalls"    : 40,
+                           "subtimers": [
+                              {
+                                 "timername" : "cdnmt spherical diagonal",
+                                 "totaltime" : 6.5159E-02,
+                                 "mintime"   : 8.0681E-04,
+                                 "maxtime"   : 8.3590E-04,
+                                 "ncalls"    : 80
+                              },
+                              {
+                                 "timername" : "cdnmt LO diagonal",
+                                 "totaltime" : 0.18305,
+                                 "mintime"   : 2.2490E-03,
+                                 "maxtime"   : 2.9891E-03,
+                                 "ncalls"    : 80
+                              },
+                              {
+                                 "timername" : "cdnmt non-spherical diagonal",
+                                 "totaltime" : 1.42506,
+                                 "mintime"   : 1.7752E-02,
+                                 "maxtime"   : 1.7880E-02,
+                                 "ncalls"    : 80
+                              }
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "timername" : "cdntot",
+                     "totaltime" : 4.2236E-02,
+                     "mintime"   : 1.0359E-03,
+                     "maxtime"   : 1.1439E-03,
+                     "ncalls"    : 40
+                  },
+                  {
+                     "timername" : "cdngen: cdncore",
+                     "totaltime" : 2.18806,
+                     "mintime"   : 0.10749,
+                     "maxtime"   : 0.13421,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "qpw_to_nmt",
+                           "totaltime" : 2.05352,
+                           "mintime"   : 5.1211E-02,
+                           "maxtime"   : 5.1514E-02,
+                           "ncalls"    : 40
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "timername" : "determination of total energy",
+               "totaltime" : 4.2634E-03,
+               "mintime"   : 1.8501E-04,
+               "maxtime"   : 2.6894E-04,
+               "ncalls"    : 20,
+               "subtimers": [
+                  {
+                     "timername" : "force_a3",
+                     "totaltime" : 3.6621E-04,
+                     "mintime"   : 1.2875E-05,
+                     "maxtime"   : 4.1008E-05,
+                     "ncalls"    : 20
+                  }
+               ]
+            },
+            {
+               "timername" : "Charge Density Mixing",
+               "totaltime" : 1.68226,
+               "mintime"   : 2.4824E-02,
+               "maxtime"   : 0.21126,
+               "ncalls"    : 20,
+               "subtimers": [
+                  {
+                     "timername" : "Reading of distances",
+                     "totaltime" : 0.25718,
+                     "mintime"   : 6.6729E-03,
+                     "maxtime"   : 2.1784E-02,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "read history",
+                           "totaltime" : 9.0694E-04,
+                           "mintime"   : 0.0000E+00,
+                           "maxtime"   : 8.8191E-04,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "metric",
+                           "totaltime" : 4.6367E-02,
+                           "mintime"   : 2.2540E-03,
+                           "maxtime"   : 2.3758E-03,
+                           "ncalls"    : 20
+                        }
+                     ]
+                  },
+                  {
+                     "timername" : "Mixing",
+                     "totaltime" : 1.07205,
+                     "mintime"   : 5.0902E-04,
+                     "maxtime"   : 0.17142,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "Broyden-loop",
+                           "totaltime" : 1.05606,
+                           "mintime"   : 4.9980E-03,
+                           "maxtime"   : 0.17051,
+                           "ncalls"    : 18,
+                           "subtimers": [
+                              {
+                                 "timername" : "Broyden-1.loop",
+                                 "totaltime" : 0.32049,
+                                 "mintime"   : 0.0000E+00,
+                                 "maxtime"   : 9.4440E-03,
+                                 "ncalls"    : 106
+                              },
+                              {
+                                 "timername" : "metric",
+                                 "totaltime" : 0.23212,
+                                 "mintime"   : 2.1479E-03,
+                                 "maxtime"   : 2.2669E-03,
+                                 "ncalls"    : 106
+                              },
+                              {
+                                 "timername" : "Broyden-2.loop",
+                                 "totaltime" : 0.22639,
+                                 "mintime"   : 0.0000E+00,
+                                 "maxtime"   : 7.0179E-03,
+                                 "ncalls"    : 106
+                              }
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "timername" : "Postprocessing",
+                     "totaltime" : 0.35294,
+                     "mintime"   : 1.6516E-02,
+                     "maxtime"   : 1.8602E-02,
+                     "ncalls"    : 20,
+                     "subtimers": [
+                        {
+                           "timername" : "qfix",
+                           "totaltime" : 1.6928E-05,
+                           "mintime"   : 0.0000E+00,
+                           "maxtime"   : 1.1921E-06,
+                           "ncalls"    : 20
+                        },
+                        {
+                           "timername" : "Density output",
+                           "totaltime" : 0.34809,
+                           "mintime"   : 1.6257E-02,
+                           "maxtime"   : 1.8359E-02,
+                           "ncalls"    : 20
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

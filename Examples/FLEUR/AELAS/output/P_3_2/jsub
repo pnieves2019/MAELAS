@@ -1,0 +1,32 @@
+#!/bin/bash
+#PBS -A project-id
+#PBS -q qprod
+#PBS -l select=1:ncpus=36:mpiprocs=1:ompthreads=1
+#PBS -l walltime=48:00:00
+#PBS -N job_AA_BB
+#PBS -j oe
+#PBS -S /bin/bash
+
+
+
+# change to scratch directory, exit on failure
+SCRDIR=/scratch/P_AA_BB
+mkdir -p $SCRDIR
+cd $SCRDIR || exit
+
+# copy input file to scratch
+cp -f -r $PBS_O_WORKDIR/* .
+
+
+# load modules
+
+ml purge
+ml intel
+ml libxml2
+ml ifort
+
+
+fleur >> log
+
+
+exit

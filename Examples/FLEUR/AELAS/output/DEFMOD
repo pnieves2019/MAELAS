@@ -1,0 +1,6 @@
+ 229  0.0180   7
+ Cubic system with 03 independent elastic constants
+
+ 0.0, 0.0, 0.0, strain, strain, strain   
+ strain, strain, 0.0, 0.0, 0.0, 0.0000   
+ strain, strain, strain, 0.0, 0.0, 0.0   

@@ -1,0 +1,32 @@
+{
+   "url":"www.flapw.de/collect.pl",
+   "calculation-id":"6D063F8BAE815589",
+   "data": {
+        "githash":"59a0b6f82c2151820ec848f0d26e81e3be5aa768",
+        "MPI-PE":1,
+        "OMP":1,
+        "A-Types":2,
+        "fi%atoms":2,
+        "Real":true,
+        "Spins":2,
+        "Noco":false,
+        "SOC":false,
+        "SpinSpiral":false,
+        "PlaneWaves":251,
+        "LOs":8,
+        "nkpt":286,
+        "gpu_per_node":0,
+        "diag-solver":4,
+        "Iterations":20,
+        "Runtime":186.46,
+        "cpu_model":"85",
+        "cpu_modelname":"Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz",
+        "VmPeak":621100,
+        "VmSize":617956,
+        "VmHWM":364744,
+        "VmData":342256,
+        "VmStk":6012,
+        "VmExe":23432,
+        "VmSwap":0
+      }
+}
