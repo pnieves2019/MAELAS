@@ -52,7 +52,7 @@
  sed -i "s/sssz/${s1zb1}/" ${lmp_file}_${i}_${j}_${k}
  fi
  
- if [ $i == 1 ] && [ $k==2 ]
+ if [ $i == 1 ] && [ $k == 2 ]
  then
  sed -i "s/sssx/${s2xb1}/" ${lmp_file}_${i}_${j}_${k}
  sed -i "s/sssy/${s2yb1}/" ${lmp_file}_${i}_${j}_${k}
