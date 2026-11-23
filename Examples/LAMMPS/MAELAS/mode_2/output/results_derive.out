@@ -1,0 +1,110 @@
+    __  ______    ________    ___   _____         _____  ____ 
+   /  |/  /   |  / ____/ /   /   | / ___/   _   _|__  / / __ \
+  / /|_/ / /| | / __/ / /   / /| | \__ \   | | / //_ < / / / /
+ / /  / / ___ |/ /___/ /___/ ___ |___/ /   | |/ /__/ // /_/ / 
+/_/  /_/_/  |_/_____/_____/_/  |_/____/    |___/____(_)____/  
+                                                              
+
+MAELAS version 3.0
+ 
+Authors: P. Nieves, S. Arapan, S.H. Zhang, A.P. Kądzielawa, R.F. Zhang and D. Legut 
+ 
+--------------------------------------------------------------------------------------------------------
+Derivation of anisotropic magnetoelastic constants from the energy written in the OSZICAR files (mode=2):
+--------------------------------------------------------------------------------------------------------
+Space group number = 229
+Space group symbol = Im-3m
+Mode= 2 , direct calculation of the magnetoelastic constants (b)
+Cubic (I) system
+Point group = m-3m
+Number of anisotropic magnetoelastic constants = 2
+strain -0.01
+strain -0.005
+strain 0.0
+strain 0.004999999999999999
+strain 0.01
+strain -0.01
+strain -0.005
+strain 0.0
+strain 0.004999999999999999
+strain 0.01
+strain -0.01
+strain -0.005
+strain 0.0
+strain 0.004999999999999999
+strain 0.01
+strain -0.01
+strain -0.005
+strain 0.0
+strain 0.004999999999999999
+strain 0.01
+
+Fit of linear function f(x)=A*x+B to energy vs strain
+
+-------------------------
+Calculation of b_1:
+-------------------------
+ 
+Deformation x-direction (εxx), spin1=[1,0,0] and spin2=[1,1,0]
+
+Fitting parameters:
+A = -0.0002734278866035167 , B = -1.978886882625375e-06
+R-squared = 0.9996621133741576
+
+
+Fit of linear function f(x)=A*x+B to energy vs strain
+
+-------------------------
+Calculation of b_2:
+-------------------------
+ 
+Deformation xy-direction  (εxy), spin1=[1,1,0] and spin2=[-1,1,0]
+
+Fitting parameters:
+A = 0.0030233239912291765 , B = 1.0741143496124685e-23
+R-squared = 0.9999998931747409
+
+ 
+----------------------------------------------
+Anisotropic magnetoelastic constants:
+----------------------------------------------
+ 
+ 
+Using the convention in reference P. Nieves et al., Comput. Phys. Commun. 264, 107964 (2021):
+ 
+b1 = -0.0005468557732070334  eV
+ 
+b2 = 0.0015116619956145882  eV
+ 
+b1 = -0.0002734278866035167  eV/atom
+ 
+b2 = 0.0007558309978072941  eV/atom
+ 
+b1 = -2.3217675670394283e-05  eV/A^3
+ 
+b2 = 6.418013607429369e-05  eV/A^3
+ 
+b1 = -3.719881585287639  MPa
+ 
+b2 = 10.282790995674445  MPa
+ 
+Using the convention in reference E. D. T. de Lacheisserie, Magnetostriction: Theory and Application of Magnetoelasticity (CRC Press, Boca Raton, FL, 1993).
+ 
+b γ,2 = -3.719881585287639  MPa
+ 
+b ε,2 = 10.282790995674445  MPa
+ 
+----------------------------------------------
+Magnetocrystalline anisotropy energy:
+----------------------------------------------
+ 
+These energies correspond to the central points in the data files ene_1_1.dat and ene_1_2.dat:
+ 
+E(1,0,0) =  -8.82963801593839  eV
+ 
+E(1,1,0) =  -8.8296359945659  eV
+ 
+E(1,1,0) - E(1,0,0) =  2.0213724898354712 x 10⁻⁶ eV
+ 
+[E(1,1,0) - E(1,0,0)]/Natom =  1.0106862449177356 x 10⁻⁶ eV/atom
+ 
